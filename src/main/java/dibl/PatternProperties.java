@@ -15,13 +15,15 @@ public class PatternProperties
     /** dimensions of input matrix */
     private final int rows, cols;
 
+    private int[][][] ms;
+
     /** Later changes to the argument do not affect the created object. */
     PatternProperties(final PairTraversalPattern ptp)
     {
         rows = ptp.getNumberOfRows();
         cols = ptp.getNumberOfColumns();
 
-        final int[][][] m = new int[2 * rows][2 * cols][6];
+        ms = new int[2 * rows][2 * cols][6];
         t2b = new int[2 * rows][2 * cols][6];
         l2r = new int[2 * rows][2 * cols][6];
         r2l = new int[2 * rows][2 * cols][6];
@@ -36,15 +38,15 @@ public class PatternProperties
                 for (int i = 0; i < tuple.length && i < 6; i++)
                     connections[i] = Integer.parseInt(tuple[i]);
                 // concatenate the matrix 4 times into a bigger one
-                t2b[r][c] = m[r][c] = m[r + rows][c] = m[r][c + cols] = m[r + rows][c + cols] = connections;
+                t2b[r][c] = ms[r][c] = ms[r + rows][c] = ms[r][c + cols] = ms[r + rows][c + cols] = connections;
             }
         }
         for (int r = 0; r < rows; r++)
         {
             for (int c = 0; c < cols; c++)
             {
-                r2l[r][c] = m[r + cols - 1 - c][c];
-                l2r[r][c] = m[r][c + rows - 1 - r];
+                r2l[r][c] = ms[r + cols - 1 - c][c];
+                l2r[r][c] = ms[r][c + rows - 1 - r];
             }
         }
     }
@@ -54,6 +56,21 @@ public class PatternProperties
         return "r2l" + Arrays.toString(startPoints(r2l).toArray()) //
                 + " t2b" + Arrays.toString(startPoints(t2b).toArray()) //
                 + " l2r" + Arrays.toString(startPoints(l2r).toArray());
+    }
+
+    public String smallest()
+    {
+        Set<String> result = new TreeSet<String>();
+        for (int y = 0; y < rows; y++)
+            for (int x = 0; x < cols; x++)
+            {
+                String s = "";
+                for (int r = 0; r < rows; r++)
+                    for (int c = 0; c < cols; c++)
+                        s += Arrays.toString(ms[r + y][c + x]);
+                result.add(s);
+            }
+        return result.iterator().next();
     }
 
     private Set<String> startPoints(final int[][][] m)
