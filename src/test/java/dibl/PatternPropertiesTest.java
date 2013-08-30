@@ -2,8 +2,8 @@ package dibl;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.junit.Test;
 
@@ -14,17 +14,26 @@ public class PatternPropertiesTest
     @Test
     public void unique() throws Exception
     {
-        Set<String> all = new TreeSet<String>();
+        Map<String, File> signed = new TreeMap<String, File>();
+        Map<String, File> unsigned = new TreeMap<String, File>();
         for (final File file : new File(INPUT).listFiles())
         {
             final PatternProperties pp = new PatternProperties(new PairTraversalPattern(new FileInputStream(file)));
             String s = pp.smallest();
-            if (!all.contains(s))
+            if (signed.containsKey(s))
+                System.out.println(file.getName() + "\tduplicates " + unsigned.get(s).getName());
+            else
             {
-                System.out.println(file.getName() + "\t" + pp.startPoints());
-                all.add(s);
+                signed.put(s, file);
+                if (unsigned.containsKey(s))
+                    System.out.println(file.getName() + "\tflips " + signed.get(s).getName());
+                else
+                    System.out.println(file.getName() + "\t" + pp.startPoints());
             }
+            if (!unsigned.containsKey(s))
+                unsigned.put(s, file);
         }
-        System.out.println(all.size());
+        System.out.println(signed.size());
+        System.out.println(unsigned.size());
     }
 }

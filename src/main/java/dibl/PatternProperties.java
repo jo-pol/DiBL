@@ -73,6 +73,21 @@ public class PatternProperties
         return result.iterator().next();
     }
 
+    public String unsignedSmallest()
+    {
+        Set<String> result = new TreeSet<String>();
+        for (int y = 0; y < rows; y++)
+            for (int x = 0; x < cols; x++)
+            {
+                String s = "";
+                for (int r = 0; r < rows; r++)
+                    for (int c = 0; c < cols; c++)
+                        s += Arrays.toString(ms[r + y][c + x]).replaceAll("-", "");
+                result.add(s);
+            }
+        return result.iterator().next();
+    }
+
     private Set<String> startPoints(final int[][][] m)
     {
         final Set<String> result = new TreeSet<String>();
