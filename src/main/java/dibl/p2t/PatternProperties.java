@@ -1,4 +1,4 @@
-package dibl;
+package dibl.p2t;
 
 import java.util.Arrays;
 import java.util.Set;
