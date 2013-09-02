@@ -14,8 +14,8 @@
    height="1052.3622"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.2 r9819"
-   sodipodi:docname="3x3_1_tcptc.svg">
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="3x3.svg">
   <title
      id="title4222">3x3 Template</title>
   <sodipodi:namedview
@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.74499066"
-     inkscape:cx="372.04724"
-     inkscape:cy="526.18109"
+     inkscape:zoom="2.42995"
+     inkscape:cx="525.94729"
+     inkscape:cy="59.226666"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4512"
      showgrid="true"
      inkscape:snap-bbox="true"
-     inkscape:snap-grids="true"
-     inkscape:window-width="1680"
+     inkscape:snap-grids="false"
+     inkscape:window-width="1280"
      inkscape:window-height="1002"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -919,17 +919,17 @@ and http://dibl.googlecode.com</dc:description>
       <g
          inkscape:transform-center-x="3.0685921"
          inkscape:transform-center-y="-2.6574826"
-         transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59578,47.834672)"
-         id="g7018"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59577,47.834615)"
+         id="g4738"
          inkscape:label="tcp (-1,0,1,1,-1,0)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
-           id="g7020"
+           id="g4740"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7022"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
+             id="path4742"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -0.2201,21.49195 -4.145672,32.11184"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -941,32 +941,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7024"
+             id="path4744"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
              transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7026"
+             id="path4746"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -22.400231,12.94895 -31.534066,9.47165"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7028"
+           id="g4748"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 63.640783,-157.735 c 0.78292,10.5451 19.015149,30.69523 20.787774,53.11142"
-             id="path7030"
+             id="path4750"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)"
+             transform="matrix(1.8765092,0,0,1.8765092,-12.410382,130.82217)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7032"
+             id="path4752"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -978,24 +978,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -5.319723,12.67671 -11.874638,19.13903"
-             id="path7034"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -4.585765,24.85102 -11.14068,31.31334"
+             id="path4754"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7036"
+           id="g4756"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 57.11054,-134.92787 c -6.252162,5.4693 -26.913231,15.42093 -35.966559,22.29973"
-             id="path7038"
+             d="m 54.712554,-122.96957 c -11.677344,11.01816 -23.994664,12.13668 -33.568573,10.34143"
+             id="path4758"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7040"
+             id="path4760"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1004,50 +1004,36 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-32.114402,120.9649)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-33.431087,136.49653)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 25.823157,18.50365 15.036897,44.861148"
-             id="path7042"
+             d="m 43.021362,-126.53404 c 5.117341,9.23503 8.535766,16.0593 10.830872,32.792288"
+             id="path4762"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7044"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
          inkscape:label="tcp (-1,0,1,1,0,-1)"
-         id="g7046"
-         transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59578,47.834672)"
+         id="g4764"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59577,47.834625)"
          inkscape:transform-center-y="-2.6574826"
          inkscape:transform-center-x="3.0685921">
         <g
            inkscape:label="twist left"
-           id="g7048"
+           id="g4766"
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
-             id="path7050"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -2.172777,20.55706 -4.535251,28.79245"
+             id="path4768"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)"
+             transform="matrix(1.8765092,0,0,1.8765092,-8.8679371,131.55035)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7052"
+             id="path4770"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1060,16 +1046,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -28.252427,18.76383 -47.531961,31.51562"
-             id="path7054"
+             id="path4772"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
-           id="g7056">
+           id="g4774">
           <path
              inkscape:connector-curvature="0"
-             id="path7058"
+             id="path4776"
              d="m 63.640783,-157.735 c 0.78292,10.5451 16.672977,31.88648 20.787743,53.1115"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -1082,29 +1068,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7060"
+             id="path4778"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-14.520399,129.85714)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7062"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -4.022489,13.11015 -11.696139,15.65774"
+             id="path4780"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -6.91802,20.30846 -13.018257,30.44948"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7064"
+           id="g4782"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7066"
-             d="m 58.171751,-138.24822 c -8.741564,0.46601 -23.205148,9.93441 -17.402877,44.506551"
+             id="path4784"
+             d="m 53.117701,-124.28419 c -8.51988,8.62229 -12.301134,10.88697 -12.348827,30.542521"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)"
+             transform="matrix(1.7814779,0,0,1.7814779,-34.947658,134.59085)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -1113,52 +1099,38 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7068"
+             id="path4786"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7070"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 21.578562,10.86567 15.036911,44.861173"
+             id="path4788"
+             d="m 40.232612,-128.37554 c 6.561054,8.74658 12.051777,19.47323 13.619636,34.633813"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7072"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
          inkscape:transform-center-x="3.0686026"
-         transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59577,47.834652)"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59576,47.834615)"
          inkscape:label="tcp (-1,1,0,1,-1,0)"
-         id="g7074"
+         id="g4790"
          inkscape:transform-center-y="-2.6574671">
         <g
            inkscape:label="twist left"
-           id="g7076"
+           id="g4792"
            transform="matrix(0.46177369,0.08250049,-0.08249056,0.46171815,123.6125,451.65576)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 46.472358,-138.51381 c 7.4603,4.56266 18.555618,0.23133 27.213498,6.18279"
-             id="path7078"
+             d="m 46.472358,-138.51381 c 9.324459,2.60008 15.898192,4.0356 23.113092,11.98553"
+             id="path4794"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-25.652516,127.83034)"
+             transform="matrix(1.8765092,0,0,1.8765092,-26.432581,132.00674)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7080"
+             id="path4796"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1171,16 +1143,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 58.023225,-148.25191 c 3.010771,2.2462 3.98557,22.31035 -7.565296,32.04846"
-             id="path7082"
+             id="path4798"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.00171229,0.46908244,-0.46902603,0.00171209,112.9374,373.32661)"
-           id="g7084">
+           id="g4800">
           <path
              inkscape:connector-curvature="0"
-             id="path7086"
+             id="path4802"
              d="m 62.055954,-158.07344 c 0.78292,10.5451 11.258736,19.66843 26.365931,19.72358"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -1193,29 +1165,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7088"
+             id="path4804"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
              transform="matrix(1.8765092,0,0,1.8765092,-15.121145,120.72906)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7090"
-             d="m 77.163148,-158.01828 c -1.249014,7.59552 -10.388176,16.4329 -13.824862,22.33626"
+             id="path4806"
+             d="m 77.163148,-158.01828 c -4.104312,6.81917 -8.348678,16.98744 -8.223227,26.70699"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7092"
+           id="g4808"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7094"
-             d="m 64.17651,-126.37296 c -6.820143,-3.70602 -23.407544,-5.14151 -43.032496,13.74488"
+             id="path4810"
+             d="m 60.248682,-120.75899 c -12.365459,-0.15887 -25.510548,0.32077 -39.104668,8.13091"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-26.716741,124.33598)"
+             transform="matrix(1.7814779,0,0,1.7814779,-33.953893,130.93111)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -1224,52 +1196,38 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7096"
+             id="path4812"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7098"
-             d="m 46.845972,-139.52767 c 11.083973,6.76254 13.547946,26.89959 7.006295,45.785976"
+             id="path4814"
+             d="m 41.789047,-134.53663 c 7.321314,11.00624 10.628329,20.64632 12.06322,40.794936"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7100"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
-         transform="translate(61.371858,-301.1811)"
+         transform="translate(61.371884,-301.18111)"
          inkscape:label="tcp (-1,1,0,1,0,-1)"
-         id="g7102"
+         id="g4816"
          inkscape:transform-center-x="3.0685927"
          inkscape:transform-center-y="-2.6574808">
         <g
            inkscape:label="twist left"
-           id="g7104"
+           id="g4818"
            transform="matrix(-0.15943933,-0.44115799,0.44110493,-0.15942015,230.7465,419.91197)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 0.701814,18.94077 3.677594,25.63071"
-             id="path7106"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -2.071771,23.97754 -5.578144,32.77448"
+             id="path4820"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-6.1173409,123.93872)"
+             transform="matrix(1.8765092,0,0,1.8765092,-7.5396497,127.87463)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7108"
+             id="path4822"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1282,16 +1240,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -31.772607,11.25824 -47.53197,31.51561"
-             id="path7110"
+             id="path4824"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.23602411,0.40538116,-0.40533242,0.23599573,107.8792,401.66902)"
-           id="g7112">
+           id="g4826">
           <path
              inkscape:connector-curvature="0"
-             id="path7114"
+             id="path4828"
              d="m 46.70254,-138.17729 c 7.48303,6.0856 19.890805,12.29463 32.694249,3.89666"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -1304,29 +1262,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7116"
+             id="path4830"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
              transform="matrix(1.8765092,0,0,1.8765092,-26.134384,135.00712)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7118"
-             d="m 59.813327,-145.68403 c 0.489917,7.22315 -2.141383,19.21481 -3.077096,26.24051"
+             id="path4832"
+             d="m 59.813327,-145.68403 c -1.765974,11.0982 0.04652,21.60902 8.500753,29.52316"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7120"
+           id="g4834"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7122"
-             d="m 49.254701,-139.85726 c -6.639854,2.69935 -30.226233,24.10013 17.680791,38.56102"
+             id="path4836"
+             d="m 52.243678,-128.19885 c 0.234791,7.18335 -1.830956,21.11079 14.691814,26.90261"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-43.694634,123.43731)"
+             transform="matrix(1.7814779,0,0,1.7814779,-29.04865,134.49785)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -1335,43 +1293,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7124"
+             id="path4838"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7126"
-             d="m 30.912509,-124.79886 c 7.432077,-4.67985 20.660768,-9.83805 42.564634,12.17079"
+             id="path4840"
+             d="m 40.776127,-118.52125 c 13.111132,-0.49478 20.95967,3.01609 32.701016,5.89318"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7128"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
-         id="g7130"
+         id="g4842"
          inkscape:label="tcp (-1,1,1,-1,0,0)"
-         transform="translate(61.371868,-301.1811)">
+         transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
-           id="g7132"
+           id="g4844"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7134"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -0.09706,16.92271 -0.632151,24.25759"
+             id="path4846"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -0.983015,19.50971 -1.518106,26.84459"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -1383,32 +1327,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7136"
+             id="path4848"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
              transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7138"
+             id="path4850"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -21.779747,12.46422 -31.53415,9.47165"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7140"
+           id="g4852"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 63.640783,-157.735 c 0.78292,10.5451 7.660137,24.27223 20.363297,25.87647"
-             id="path7142"
+             id="path4854"
              inkscape:connector-curvature="0" />
           <path
              transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7144"
+             id="path4856"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1420,24 +1364,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -8.478331,12.5675 -14.048146,19.40992"
-             id="path7146"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -7.640369,15.74149 -13.210184,22.58391"
+             id="path4858"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7148"
+           id="g4860"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 54.939905,-135.2209 c -7.125912,7.12591 -22.020251,20.66487 -33.795974,22.59284"
-             id="path7150"
+             d="m 54.939905,-131.93813 c -7.125912,7.12591 -22.020251,17.3821 -33.795974,19.31007"
+             id="path4862"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7152"
+             id="path4864"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1446,48 +1390,34 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,120.55483)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,126.83244)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 39.281347,-134.28297 c 8.532646,9.47075 21.482244,16.20969 34.195788,21.65491"
-             id="path7154"
+             d="m 40.688082,-131.93813 c 8.532646,9.47075 20.075509,13.86485 32.789053,19.31007"
+             id="path4866"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7156"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
-         transform="translate(61.371858,-301.1811)"
+         transform="translate(61.371884,-301.18111)"
          inkscape:label="tcp (-1,1,1,0,-1,0)"
-         id="g7158">
+         id="g4868">
         <g
            inkscape:label="twist left"
-           id="g7160"
+           id="g4870"
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
-             id="path7162"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -5.439491,17.55127 -5.328307,26.82523"
+             id="path4872"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)"
+             transform="matrix(1.8765092,0,0,1.8765092,-10.46726,129.37992)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7164"
+             id="path4874"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1500,16 +1430,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -29.113572,10.55288 -47.531961,31.51562"
-             id="path7166"
+             id="path4876"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
-           id="g7168">
+           id="g4878">
           <path
              inkscape:connector-curvature="0"
-             id="path7170"
+             id="path4880"
              d="m 63.640783,-157.735 c 0.78292,10.5451 7.660137,24.27223 20.363297,25.87647"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -1522,29 +1452,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7172"
+             id="path4882"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-17.922722,122.63709)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7174"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -4.022489,13.11015 -11.696139,15.65774"
+             id="path4884"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -14.424056,12.80243 -18.316912,22.96045"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7176"
+           id="g4886"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7178"
-             d="m 58.171751,-138.24822 c -8.741564,0.46601 -27.900417,12.56468 -17.402877,44.506551"
+             id="path4888"
+             d="m 49.906277,-132.87793 c -4.556997,5.24895 -10.966912,26.32614 -9.137403,39.136261"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)"
+             transform="matrix(1.7814779,0,0,1.7814779,-35.740697,129.82728)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -1553,43 +1483,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7180"
+             id="path4890"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7182"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 15.91942,10.19821 34.661798,25.97484"
+             id="path4892"
+             d="m 38.217539,-129.03702 c 7.385514,6.96658 15.919423,12.58967 35.259596,16.40896"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7184"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
-         id="g7186"
+         id="g4894"
          inkscape:label="tcp (-1,1,1,0,0,-1)"
-         transform="translate(61.371858,-301.1811)">
+         transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
-           id="g7188"
+           id="g4896"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7190"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
+             id="path4898"
+             d="m 79.618474,-153.45798 c -2.897444,8.51292 -6.591641,23.60526 -3.809829,31.40966"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -1601,32 +1517,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7192"
+             id="path4900"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-11.152862,129.95793)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7194"
+             id="path4902"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -36.536682,10.55657 -36.442533,56.393769"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7196"
+           id="g4904"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 63.640783,-157.735 c 0.78292,10.5451 7.092519,26.63958 20.363297,25.87647"
-             id="path7198"
+             id="path4906"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)"
+             transform="matrix(1.8765092,0,0,1.8765092,-14.678872,126.72733)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7200"
+             id="path4908"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1638,24 +1554,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -4.022489,13.11015 -11.696139,15.65774"
-             id="path7202"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -8.875307,13.46412 -10.731781,22.82338"
+             id="path4910"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7204"
+           id="g4912"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 58.171751,-138.24822 c -8.741564,0.46601 -40.653395,14.62396 8.763742,36.952"
-             id="path7206"
+             d="m 57.275058,-131.07381 c -3.660305,7.93935 -5.682372,20.90156 9.660435,29.77759"
+             id="path4914"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7208"
+             id="path4916"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1664,48 +1580,34 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-27.371564,129.52834)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 27.575184,18.88823 34.661798,25.97484"
-             id="path7215"
+             d="m 42.701006,-127.24342 c 7.983308,5.17298 21.896129,8.72448 30.776129,14.61536"
+             id="path4918"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7223"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
-         transform="translate(61.371858,-301.1811)"
+         transform="translate(61.371874,-301.18111)"
          inkscape:label="tcp (0,0,1,1,-1,-1)"
-         id="g7225">
+         id="g4920">
         <g
            inkscape:label="1st twist left"
-           id="g7227"
+           id="g4922"
            transform="matrix(-0.15943933,-0.44115799,0.44110493,-0.15942015,230.7465,419.91198)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
-             id="path7231"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -0.823768,14.79356 -4.842296,24.97322"
+             id="path4924"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)"
+             transform="matrix(1.8765092,0,0,1.8765092,-7.9535956,129.02013)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7233"
+             id="path4926"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1718,16 +1620,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -14.427964,16.35646 -31.534163,9.47165"
-             id="path7235"
+             id="path4928"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="1st twist right"
            transform="matrix(0.3304806,-0.33290215,0.33286212,0.33044086,187.97026,464.84366)"
-           id="g7237">
+           id="g4930">
           <path
              inkscape:connector-curvature="0"
-             id="path7239"
+             id="path4932"
              d="m 63.640783,-157.735 c 3.433641,11.05219 22.6967,35.56221 -2.583415,67.096614"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -1740,29 +1642,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7241"
+             id="path4934"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-15.141337,126.26141)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7243"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -8.20579,14.08669 -15.87944,16.63428"
+             id="path4936"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -10.098316,23.04477 -16.696143,28.9429"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross top"
-           id="g7245"
+           id="g4938"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7247"
-             d="m 34.843493,-134.96546 c -1.473464,4.1005 4.679289,29.30852 5.925381,41.223791"
+             id="path4940"
+             d="m 42.913729,-126.29639 c 1.216615,10.52336 -1.298664,24.87791 -2.144855,32.554721"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-46.180028,127.0117)"
+             transform="matrix(1.7814779,0,0,1.7814779,-39.903178,138.96904)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -1771,43 +1673,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7249"
+             id="path4942"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7251"
-             d="m 27.112432,-122.03481 c 7.672752,-5.38426 33.017088,-18.53845 26.739743,28.293141"
+             id="path4944"
+             d="m 33.190096,-116.56175 c 11.857319,2.98588 14.983519,11.86052 20.662079,22.820081"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7253"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
-         id="g7255"
+         id="g4946"
          inkscape:label="tcp (0,1,0,1,-1,-1)"
-         transform="translate(61.371868,-301.1811)">
+         transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(-0.15943933,-0.44115799,0.44110493,-0.15942015,230.7465,419.91198)"
-           id="g7257"
+           id="g4948"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7259"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
+             id="path4950"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -4.014142,19.53551 -7.864068,26.15664"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -1819,32 +1707,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7261"
+             id="path4952"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-9.2575142,128.23096)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7263"
+             id="path4954"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -23.740867,14.11756 -31.534163,9.47165"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7265"
+           id="g4956"
            transform="matrix(0.3304806,-0.33290215,0.33286212,0.33044086,187.97026,464.84366)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 96.653857,-135.19901 c -7.936985,2.09594 -25.035369,22.51086 -35.596489,44.560624"
-             id="path7267"
+             id="path4958"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-0.11767958,140.12406)"
+             transform="matrix(1.8765092,0,0,1.8765092,-3.2995191,143.28313)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7269"
+             id="path4960"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1856,24 +1744,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 100.51062,-120.59055 c -8.266901,2.18306 -21.370351,-12.26331 -30.859757,-11.87783"
-             id="path7271"
+             d="m 100.51062,-120.59055 c -8.462051,-2.25662 -21.402752,-3.3855 -31.536241,-0.25444"
+             id="path4962"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7273"
+           id="g4964"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 43.307308,-136.86573 c -1.473464,4.1005 -14.553045,11.38447 -2.538434,43.124061"
-             id="path7275"
+             d="m 51.078646,-128.19666 c -1.473464,4.1005 -11.862966,20.95035 -10.309772,34.454991"
+             id="path4966"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7277"
+             id="path4968"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1882,43 +1770,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-46.180028,127.0117)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-37.810894,141.06158)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 27.112432,-122.03481 c 7.672752,-5.38426 37.969835,-16.70265 26.739743,28.293141"
-             id="path7279"
+             d="m 35.330011,-114.12178 c 8.270548,2.08908 16.002965,9.16382 18.522164,20.380111"
+             id="path4970"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7281"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
-         inkscape:transform-center-x="-2.657481"
+         inkscape:transform-center-x="-2.6574808"
          inkscape:transform-center-y="-3.068594"
-         transform="matrix(0.8660254,0.5,-0.5,0.8660254,286.83741,-331.2128)"
-         id="g7283"
+         transform="matrix(0.8660254,0.5,-0.5,0.8660254,286.83745,-331.21281)"
+         id="g4972"
          inkscape:label="tcp (0,1,1,-1,-1,0)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
-           id="g7286"
+           id="g4974"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7289"
-             d="m 59.042626,-151.28678 c -0.563016,8.49972 19.263166,14.24675 22.945911,18.94577"
+             id="path4976"
+             d="m 59.042626,-151.28678 c 3.927741,6.62649 5.932969,14.19636 6.405197,22.50278"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -1930,32 +1804,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7291"
+             id="path4978"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-14.100093,127.29522)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-21.019178,127.97286)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7299"
-             d="m 73.914437,-153.9441 c 9.736932,11.55226 -9.497232,24.93488 -22.574124,23.97168"
+             id="path4980"
+             d="m 73.914437,-153.9441 c -0.938078,11.19016 -12.386171,23.25494 -22.574124,23.97168"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7301"
+           id="g4982"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 43.309392,-153.89867 c 3.228652,12.0772 45.751608,2.13487 31.306976,59.399258"
-             id="path7307"
+             d="m 43.309392,-153.89867 c 9.140312,13.78982 32.555258,27.45222 31.306976,59.399258"
+             id="path4984"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.4138409,0,0,1.4138409,-3.7814366,55.767232)"
+             transform="matrix(1.4138409,0,0,1.4138409,-10.979719,59.123023)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7315"
+             id="path4986"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1967,24 +1841,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 57.916095,-157.7559 c -1.843707,4.89265 4.955613,12.69111 2.628453,18.62348"
-             id="path7323"
+             d="m 57.916095,-157.7559 c -2.278753,8.27313 -3.962796,24.07302 -5.031107,32.54655"
+             id="path4988"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7325"
+           id="g4990"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 52.651695,-140.75978 c -2.157715,6.23045 -21.554532,22.75814 -24.225283,40.20447"
-             id="path7331"
+             d="m 41.691927,-129.25371 c -2.934274,6.67885 -9.038771,19.32826 -13.265515,28.6984"
+             id="path4992"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7334"
+             id="path4994"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -1993,48 +1867,34 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-35.220183,119.46272)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-46.756287,134.75336)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 34.137367,19.1172 0.941547,44.590031"
-             id="path7336"
+             d="m 30.87386,-123.66197 c 5.693676,5.45045 12.518834,18.13819 8.883024,29.649101"
+             id="path4996"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7338"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
-         transform="translate(61.371858,-301.1811)"
+         transform="translate(61.371884,-301.18111)"
          inkscape:label="tcp (0,1,1,-1,0,-1)"
-         id="g7340">
+         id="g4998">
         <g
            inkscape:label="twist left"
-           id="g7342"
+           id="g5000"
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
-             id="path7344"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -3.105055,17.53806 -4.606809,25.82599"
+             id="path5002"
              inkscape:connector-curvature="0" />
           <path
              transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7346"
+             id="path5004"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2046,17 +1906,17 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 93.826338,-148.32249 c -6.582824,6.25584 -21.086444,17.61629 -31.53416,9.47166"
-             id="path7348"
+             d="m 93.826338,-148.32249 c -6.582824,6.25584 -19.392244,12.66922 -31.53416,9.47166"
+             id="path5006"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
-           id="g7350">
+           id="g5008">
           <path
              inkscape:connector-curvature="0"
-             id="path7352"
+             id="path5010"
              d="m 63.640783,-157.735 c 0.78292,10.5451 17.881627,26.54689 20.787743,53.1115"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -2069,29 +1929,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7354"
+             id="path5012"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-14.678872,126.72733)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7356"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -4.022489,13.11015 -11.696139,15.65774"
+             id="path5014"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -7.714489,19.03196 -13.589256,26.05137"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7358"
+           id="g5016"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7360"
-             d="m 58.171751,-138.24822 c -8.05064,3.23004 -22.759212,9.41261 -37.027822,25.62016"
+             id="path5018"
+             d="m 53.688287,-128.68235 c -8.05064,5.32258 -23.655905,11.80408 -32.544358,16.05429"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)"
+             transform="matrix(1.7814779,0,0,1.7814779,-39.028571,130.1262)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -2100,43 +1960,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7362"
+             id="path5020"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7364"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 26.706656,16.6711 15.036838,44.861231"
+             id="path5022"
+             d="m 37.918644,-130.23276 c 6.787718,8.46125 13.256263,25.34017 15.933531,36.491091"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7366"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
-         id="g7368"
+         id="g5024"
          inkscape:label="tcp (0,1,1,0,-1,-1)"
-         transform="translate(61.371858,-301.1811)">
+         transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
-           id="g7370"
+           id="g5026"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7372"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
+             id="path5028"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -7.554864,22.46244 -9.634553,30.06469"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -2148,32 +1994,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7374"
+             id="path5030"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-11.381395,130.1506)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7376"
+             id="path5032"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -31.756555,10.32764 -47.531961,31.51562"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7378"
+           id="g5034"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 63.640783,-157.735 c 0.78292,10.5451 18.30441,32.74076 20.787743,53.1115"
-             id="path7380"
+             id="path5036"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)"
+             transform="matrix(1.8765092,0,0,1.8765092,-14.297342,128.17247)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7382"
+             id="path5038"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2185,24 +2031,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -4.022489,13.11015 -11.696139,15.65774"
-             id="path7384"
+             d="m 78.21894,-153.77123 c -1.843707,4.89265 -9.476062,22.89811 -13.142802,32.42623"
+             id="path5040"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7386"
+           id="g5042"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 58.171751,-138.24822 c -8.741564,0.46601 -26.962595,13.50261 -17.402877,44.506551"
-             id="path7388"
+             d="m 52.492696,-122.40474 c -4.855895,7.34148 -10.523225,18.58449 -11.723822,28.663071"
+             id="path5044"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7390"
+             id="path5046"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2211,43 +2057,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-35.740697,141.48568)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 20.675862,12.23829 15.036838,44.861231"
-             id="path7392"
+             d="m 37.918644,-123.65622 c 4.695434,8.76018 11.389838,17.98125 15.933531,29.914551"
+             id="path5048"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7394"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
          inkscape:transform-center-y="-2.6574815"
-         transform="translate(61.371868,-301.1811)"
-         id="g7396"
+         transform="translate(61.371894,-301.18111)"
+         id="g5050"
          inkscape:label="tcp (1,0,0,1,-1,-1)"
          inkscape:transform-center-x="-3.0686005">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
-           id="g7398"
+           id="g5052"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7400"
-             d="m 42.308872,-139.11728 c 5.808829,6.9622 16.570348,-3.86375 29.365191,3.37203"
+             id="path5054"
+             d="m 42.308872,-139.11728 c 4.652959,5.59083 9.744454,14.01107 14.357456,22.67103"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -2259,32 +2091,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7402"
+             id="path5056"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-26.705412,127.41281)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-35.291513,138.56116)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7404"
-             d="m 53.859739,-148.85538 c 5.045408,6.53991 10.366233,17.37623 -7.565362,32.04851"
+             id="path5058"
+             d="m 53.859739,-148.85538 c 2.831848,7.62413 1.570568,18.53596 -7.565362,32.04851"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7406"
+           id="g5060"
            transform="matrix(0.00171229,0.46908244,-0.46902603,0.00171209,116.16204,370.81097)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 67.393692,-151.17881 c -0.04776,13.08479 -1.281278,26.04638 26.365941,19.7237"
-             id="path7408"
+             d="m 67.393692,-151.17881 c 7.125735,13.11098 13.992949,17.73195 26.365941,19.7237"
+             id="path5062"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-18.41952,125.24031)"
+             transform="matrix(1.8765092,0,0,1.8765092,-4.9921284,131.56697)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7410"
+             id="path5064"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2296,24 +2128,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 82.500887,-151.12365 c -1.843707,4.89265 -18.907872,6.47345 -22.066731,21.05611"
-             id="path7412"
+             d="m 82.500887,-151.12365 c -1.843707,4.89265 -1.319942,19.39189 0.925325,27.41769"
+             id="path5066"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7414"
+           id="g5068"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 65.426451,-134.62043 c -12.368914,-3.33453 -35.858483,-6.30455 -24.657577,40.878761"
-             id="path7416"
+             d="m 59.149601,-111.60254 c -8.483245,2.34521 -17.924626,9.23999 -18.380727,17.860871"
+             id="path5070"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7418"
+             id="path5072"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2322,50 +2154,36 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-36.039595,148.36115)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 29.564935,-132.90971 c 9.040843,-3.49006 33.84696,-14.34632 24.28724,39.168041"
-             id="path7420"
+             d="m 34.646194,-108.99502 c 8.443049,1.59181 16.809796,8.07369 19.205981,15.253351"
+             id="path5074"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7422"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
          inkscape:transform-center-x="-3.0685756"
-         transform="translate(61.371858,-301.1811)"
+         transform="translate(61.371884,-301.18111)"
          inkscape:label="tcp (1,0,1,-1,-1,0)"
-         id="g7424"
+         id="g5076"
          inkscape:transform-center-y="-2.6574831">
         <g
            inkscape:label="twist left"
-           id="g7426"
+           id="g5078"
            transform="matrix(0.46177369,0.08250049,-0.08249056,0.46171815,123.6125,451.65576)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 46.472358,-138.51381 c 7.4603,4.56266 22.017897,-3.30095 30.675777,2.65051"
-             id="path7428"
+             d="m 46.472358,-138.51381 c 6.692944,1.96677 13.590844,7.31482 18.46597,17.58619"
+             id="path5080"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-25.652516,127.83034)"
+             transform="matrix(1.8765092,0,0,1.8765092,-28.079437,134.64099)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7430"
+             id="path5082"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2378,16 +2196,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 58.023225,-148.25191 c 3.010771,2.2462 2.924231,24.37762 -7.565411,32.04851"
-             id="path7432"
+             id="path5084"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.00171229,0.46908244,-0.46902603,0.00171209,112.9374,373.32661)"
-           id="g7434">
+           id="g5086">
           <path
              inkscape:connector-curvature="0"
-             id="path7436"
+             id="path5088"
              d="m 62.055954,-158.07344 c 0.78292,10.5451 18.69238,36.90962 33.824034,45.92082"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -2400,29 +2218,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7438"
+             id="path5090"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-15.121145,120.72906)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-13.367049,131.49715)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7440"
-             d="m 77.163148,-158.01828 c -1.249014,7.59552 -10.388176,16.4329 -13.824862,22.33626"
+             id="path5092"
+             d="m 77.163148,-158.01828 c -1.249014,7.59552 -5.342961,26.31619 -6.702652,36.41223"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7442"
+           id="g5094"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7444"
-             d="m 64.17651,-126.37296 c -6.820143,-3.70602 -23.656092,-7.15529 -43.032618,13.7449"
+             id="path5096"
+             d="m 50.128318,-119.19856 c -8.015733,-0.41775 -20.96601,-0.57875 -28.984426,6.5705"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-26.451816,121.42529)"
+             transform="matrix(1.7814779,0,0,1.7814779,-46.17906,133.38263)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -2431,45 +2249,31 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7446"
+             id="path5098"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7448"
-             d="m 50.875448,-142.39589 c 4.732938,4.20231 15.639134,33.58441 -23.189874,41.09966"
+             id="path5100"
+             d="m 36.229464,-129.84068 c 0.249474,10.47992 -0.501338,21.32813 -8.54389,28.54445"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7450"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
          inkscape:transform-center-y="-2.6574831"
-         id="g7452"
+         id="g5102"
          inkscape:label="tcp (1,0,1,-1,0,-1)"
-         transform="translate(61.371858,-301.1811)"
+         transform="translate(61.371884,-301.18111)"
          inkscape:transform-center-x="-3.0685756">
         <g
            transform="matrix(0.46177369,0.08250049,-0.08249056,0.46171815,123.6125,451.65576)"
-           id="g7454"
+           id="g5104"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7456"
-             d="m 46.472358,-138.51381 c 7.4603,4.56266 22.017897,-3.30095 30.675777,2.65051"
+             id="path5106"
+             d="m 46.472358,-138.51381 c 7.4603,4.56266 15.209521,11.27693 22.175712,19.65633"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -2481,32 +2285,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7458"
+             id="path5108"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-25.652516,127.83034)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-28.45764,135.92324)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7460"
+             id="path5110"
              d="m 58.023225,-148.25191 c 3.010771,2.2462 2.231828,24.50134 -7.565411,32.04851"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7462"
+           id="g5112"
            transform="matrix(0.00171229,0.46908244,-0.46902603,0.00171209,112.9374,373.32661)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 62.055954,-158.07344 c 0.78292,10.5451 12.678621,20.84767 26.365948,19.72366"
-             id="path7464"
+             d="m 62.055954,-158.07344 c 4.074045,9.66031 16.449122,17.92128 26.365948,19.72366"
+             id="path5114"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-15.121145,120.72906)"
+             transform="matrix(1.8765092,0,0,1.8765092,-11.840931,122.83358)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7466"
+             id="path5116"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2518,24 +2322,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 77.163148,-158.01828 c -1.249014,7.59552 -10.388176,16.4329 -13.824862,22.33626"
-             id="path7468"
+             d="m 77.163148,-158.01828 c -1.249014,7.59552 -2.640891,23.03776 -3.088621,28.95203"
+             id="path5118"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7470"
+           id="g5120"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 64.17651,-126.37296 c -6.820143,-3.70602 -18.732529,-8.56219 -43.032618,13.7449"
-             id="path7472"
+             d="m 57.600762,-115.61135 c -11.00471,-1.31455 -25.308276,0.40582 -36.45687,2.98329"
+             id="path5122"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7474"
+             id="path5124"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2544,49 +2348,35 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-26.451816,121.42529)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-36.913233,136.6709)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 50.875448,-142.39589 c 4.732938,4.20231 5.420869,22.1739 2.976727,48.654221"
-             id="path7476"
+             d="m 39.517338,-127.15028 c 4.732938,8.08845 10.502129,21.87497 14.334837,33.408611"
+             id="path5126"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7478"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
          inkscape:label="tcp (1,0,1,0,-1,-1)"
-         id="g7480"
-         transform="translate(61.371868,-301.1811)"
+         id="g5128"
+         transform="translate(61.371884,-301.18111)"
          inkscape:transform-center-y="-2.6574754">
         <g
            inkscape:label="twist left"
-           id="g7482"
+           id="g5130"
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
-             id="path7484"
+             d="m 79.618474,-153.45798 c -0.563016,8.49972 -7.626639,23.3049 -10.055729,30.0288"
+             id="path5132"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)"
+             transform="matrix(1.8765092,0,0,1.8765092,-15.185583,136.73825)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7486"
+             id="path5134"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2598,18 +2388,18 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 93.826338,-148.32249 c -7.359975,9.62232 -34.350675,13.43468 -47.531961,31.51562"
-             id="path7488"
+             d="m 93.826338,-148.32249 c -7.274996,11.11457 -33.043817,27.97184 -47.531961,31.51562"
+             id="path5136"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.00171229,0.46908244,-0.46902603,0.00171209,116.16204,370.81097)"
-           id="g7490">
+           id="g5138">
           <path
              inkscape:connector-curvature="0"
-             id="path7492"
-             d="m 67.393692,-151.17881 c -0.04776,13.08479 3.649978,19.73849 26.365941,19.7237"
+             id="path5140"
+             d="m 67.393692,-151.17881 c 3.555354,8.61391 10.239866,15.87639 26.365941,19.7237"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -2621,29 +2411,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7494"
+             id="path5142"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-18.41952,125.24031)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-4.393246,131.27024)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7496"
-             d="m 82.500887,-151.12365 c -1.843707,4.89265 -18.907872,6.47345 -22.066731,21.05611"
+             id="path5144"
+             d="m 82.500887,-151.12365 c -1.843707,4.89265 -0.445594,20.94865 4.205531,29.52222"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7498"
+           id="g5146"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7500"
-             d="m 65.426451,-134.62043 c -12.368914,-3.33453 -38.569971,-0.85819 -24.657577,40.878761"
+             id="path5148"
+             d="m 57.057318,-108.31428 c -6.092064,3.24201 -11.968083,7.51196 -16.288444,14.572611"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)"
+             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,148.36115)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -2652,50 +2442,36 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7502"
+             id="path5150"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7504"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 23.189825,16.20213 15.036838,44.861231"
+             id="path5152"
+             d="m 37.619746,-123.35729 c 4.396537,7.86339 11.23392,19.78933 16.232429,29.615621"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7506"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
-         transform="matrix(0.5,0.8660254,-0.8660254,0.5,497.11218,-244.4882)"
+         transform="matrix(0.5,0.8660254,-0.8660254,0.5,497.11221,-244.48821)"
          inkscape:label="tcp (1,1,0,-1,-1,0)"
-         id="g7508">
+         id="g5154">
         <g
            inkscape:label="twist left"
-           id="g7510"
+           id="g5156"
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 79.618474,-153.45798 c -0.563016,8.49972 -1.312682,16.41795 2.370063,21.11697"
-             id="path7512"
+             d="m 79.618474,-153.45798 c -0.909823,8.25802 -3.939647,18.70935 -6.530098,29.08427"
+             id="path5158"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-7.0392543,126.4899)"
+             transform="matrix(1.8765092,0,0,1.8765092,-11.998963,131.02011)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7514"
+             id="path5160"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2708,16 +2484,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 93.826338,-148.32249 c -7.359975,9.62232 -40.498968,25.05835 -47.531961,31.51562"
-             id="path7516"
+             id="path5162"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.45354202,0.11975352,-0.11973912,0.45348748,127.15904,451.90174)"
-           id="g7518">
+           id="g5164">
           <path
              inkscape:connector-curvature="0"
-             id="path7520"
+             id="path5166"
              d="m 63.640783,-157.735 c 0.78292,10.5451 18.829044,46.66836 20.787743,53.1115"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -2730,29 +2506,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7522"
+             id="path5168"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-15.136708,124.99316)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-17.07456,127.5641)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7524"
-             d="m 78.21894,-153.77123 c -1.843707,4.89265 -4.022489,13.11015 -11.696139,15.65774"
+             id="path5170"
+             d="m 78.21894,-153.77123 c -4.123175,6.44135 -10.785221,14.05945 -13.550115,24.75696"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7526"
+           id="g5172"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7528"
-             d="m 58.171751,-138.24822 c -8.741564,0.46601 -28.453116,7.54604 -17.402877,44.506551"
+             id="path5174"
+             d="m 54.056544,-129.92388 c -6.673616,10.63473 -10.912621,23.19713 -13.28767,36.182211"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-34.246209,117.27206)"
+             transform="matrix(1.7814779,0,0,1.7814779,-34.711036,138.40474)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -2761,51 +2537,37 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7530"
+             id="path5176"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7532"
-             d="m 38.815337,-138.6029 c 7.086615,1.88471 26.817897,9.42449 15.036838,44.861231"
+             id="path5178"
+             d="m 39.169989,-126.66204 c 5.581397,6.88361 13.749366,21.89883 14.682186,32.920371"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7534"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
-         transform="translate(61.371878,-301.1811)"
+         transform="translate(61.371904,-301.18111)"
          inkscape:label="tcp (1,1,0,-1,0,-1)"
-         id="g7536"
+         id="g5180"
          inkscape:transform-center-y="-2.9685376">
         <g
            inkscape:label="twist left"
-           id="g7538"
+           id="g5182"
            transform="matrix(0.46177369,0.08250049,-0.08249056,0.46171815,123.6125,451.65576)">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 83.781914,-152.85452 c -3.439127,6.15796 -3.206687,9.93332 -1.793377,20.51351"
-             id="path7540"
+             d="m 83.781914,-152.85452 c -3.439127,6.15796 -4.666198,23.85912 -3.252888,34.43931"
+             id="path5184"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-4.7377759,124.09326)"
+             transform="matrix(1.8765092,0,0,1.8765092,-7.1121281,131.19819)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7542"
+             id="path5186"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2818,16 +2580,16 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 97.989778,-147.71902 c -8.482203,8.35881 -34.771096,22.67424 -47.531964,31.51562"
-             id="path7544"
+             id="path5188"
              inkscape:connector-curvature="0" />
         </g>
         <g
            inkscape:label="twist right"
            transform="matrix(0.00171229,0.46908244,-0.46902603,0.00171209,112.9374,373.32661)"
-           id="g7546">
+           id="g5190">
           <path
              inkscape:connector-curvature="0"
-             id="path7548"
+             id="path5192"
              d="m 62.055954,-158.07344 c 0.78292,10.5451 12.678621,20.84767 26.365948,19.72366"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
@@ -2840,29 +2602,29 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7550"
+             id="path5194"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-15.121145,120.72906)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-10.945335,123.13579)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7552"
-             d="m 77.163148,-158.01828 c -1.249014,7.59552 -10.388176,16.4329 -13.824862,22.33626"
+             id="path5196"
+             d="m 77.163148,-158.01828 c -1.249014,7.59552 -1.124593,17.06459 -1.577778,24.47352"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
            inkscape:label="cross"
-           id="g7554"
+           id="g5198"
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)">
           <path
              inkscape:connector-curvature="0"
-             id="path7556"
-             d="m 64.17651,-126.37296 c -6.820143,-3.70602 -24.359458,-6.21735 -43.032618,13.7449"
+             id="path5200"
+             d="m 62.084222,-114.11668 c -13.302849,0.0882 -30.038508,0.95706 -40.94033,1.48862"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
-             transform="matrix(1.7814779,0,0,1.7814779,-26.451816,121.42529)"
+             transform="matrix(1.7814779,0,0,1.7814779,-31.234178,137.86664)"
              sodipodi:open="true"
              sodipodi:end="6.2505032"
              sodipodi:start="0"
@@ -2871,44 +2633,30 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7558"
+             id="path5202"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc" />
           <path
              inkscape:connector-curvature="0"
-             id="path7560"
-             d="m 55.020992,-138.07709 c -0.546281,5.7256 -5.297296,29.16915 -1.168817,44.335421"
+             id="path5204"
+             d="m 51.135323,-124.62508 c -0.546281,5.7256 -1.411627,15.71714 2.716852,30.883411"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
-        <path
-           inkscape:label="pin"
-           sodipodi:open="true"
-           sodipodi:end="6.2505032"
-           sodipodi:start="0"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           sodipodi:ry="3.5433071"
-           sodipodi:rx="3.5433071"
-           sodipodi:cy="170.07872"
-           sodipodi:cx="95.669289"
-           id="path7562"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           sodipodi:type="arc" />
       </g>
       <g
          inkscape:transform-center-y="-2.9685376"
-         id="g7564"
+         id="g5206"
          inkscape:label="tcp (1,1,0,0,-1,-1)"
-         transform="translate(61.371878,-301.1811)">
+         transform="translate(61.371904,-301.18111)">
         <g
            transform="matrix(0.46177369,0.08250049,-0.08249056,0.46171815,123.6125,451.65576)"
-           id="g7566"
+           id="g5208"
            inkscape:label="twist left">
           <path
              inkscape:connector-curvature="0"
-             id="path7568"
-             d="m 83.781914,-152.85452 c -3.439127,6.15796 -3.206687,9.93332 -1.793377,20.51351"
+             id="path5210"
+             d="m 83.781914,-152.85452 c -3.439127,6.15796 -1.870565,27.61095 -0.457255,38.19114"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
@@ -2920,32 +2668,32 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:rx="4"
              sodipodi:cy="-141.7323"
              sodipodi:cx="46.062992"
-             id="path7570"
+             id="path5212"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
              sodipodi:type="arc"
-             transform="matrix(1.8765092,0,0,1.8765092,-4.7377759,124.09326)" />
+             transform="matrix(1.8765092,0,0,1.8765092,-4.8626273,138.69158)" />
           <path
              inkscape:connector-curvature="0"
-             id="path7572"
-             d="m 97.989778,-147.71902 c -8.482203,8.35881 -49.716876,3.13591 -36.442498,56.39375"
+             id="path5214"
+             d="m 97.989778,-147.71902 c -8.482203,8.35881 -29.78897,43.3032 -36.442498,56.39375"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
         </g>
         <g
-           id="g7574"
+           id="g5216"
            transform="matrix(0.00171229,0.46908244,-0.46902603,0.00171209,112.9374,373.32661)"
            inkscape:label="twist right">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 62.055954,-158.07344 c 0.78292,10.5451 12.678621,20.84767 26.365948,19.72366"
-             id="path7576"
+             id="path5218"
              inkscape:connector-curvature="0" />
           <path
-             transform="matrix(1.8765092,0,0,1.8765092,-15.121145,120.72906)"
+             transform="matrix(1.8765092,0,0,1.8765092,-10.053012,124.33479)"
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7578"
+             id="path5220"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2957,24 +2705,24 @@ and http://dibl.googlecode.com</dc:description>
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 77.163148,-158.01828 c -1.249014,7.59552 -10.388176,16.4329 -13.824862,22.33626"
-             id="path7580"
+             d="m 77.163148,-158.01828 c -1.249014,7.59552 -0.23009,17.66572 1.407902,25.38122"
+             id="path5222"
              inkscape:connector-curvature="0" />
         </g>
         <g
            transform="matrix(0.46908557,0,0,0.46902915,146.57998,462.07779)"
-           id="g7582"
+           id="g5224"
            inkscape:label="cross">
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 64.17651,-126.37296 c -6.820143,-3.70602 -30.993471,-18.2828 -23.407626,32.631291"
-             id="path7584"
+             d="m 61.187534,-111.12735 c -9.809119,4.36519 -18.140873,9.81696 -20.41865,17.385681"
+             id="path5226"
              inkscape:connector-curvature="0" />
           <path
              sodipodi:type="arc"
              style="fill:#ffffff;fill-opacity:0.78306879;stroke:none"
-             id="path7586"
+             id="path5228"
              sodipodi:cx="46.062992"
              sodipodi:cy="-141.7323"
              sodipodi:rx="4"
@@ -2983,28 +2731,14 @@ and http://dibl.googlecode.com</dc:description>
              sodipodi:start="0"
              sodipodi:end="6.2505032"
              sodipodi:open="true"
-             transform="matrix(1.7814779,0,0,1.7814779,-26.451816,121.42529)" />
+             transform="matrix(1.7814779,0,0,1.7814779,-29.141895,145.04104)" />
           <path
              sodipodi:nodetypes="cc"
              style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 55.020992,-138.07709 c -0.546281,5.7256 -1.168701,29.22593 -1.168701,44.335041"
-             id="path7588"
+             d="m 53.227606,-120.44 c -0.546281,5.7256 -0.272008,19.06218 0.624685,26.697951"
+             id="path5230"
              inkscape:connector-curvature="0" />
         </g>
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:none"
-           id="path7590"
-           sodipodi:cx="95.669289"
-           sodipodi:cy="170.07872"
-           sodipodi:rx="3.5433071"
-           sodipodi:ry="3.5433071"
-           d="m 99.212596,170.07872 c 0,1.95691 -1.586393,3.54331 -3.543307,3.54331 -1.956915,0 -3.543307,-1.5864 -3.543307,-3.54331 0,-1.95691 1.586392,-3.54331 3.543307,-3.54331 1.911842,0 3.478943,1.51671 3.541415,3.42753"
-           transform="matrix(0.40121536,0,0,0.42686368,130.38868,333.10821)"
-           sodipodi:start="0"
-           sodipodi:end="6.2505032"
-           sodipodi:open="true"
-           inkscape:label="pin" />
       </g>
       <g
          id="g3408"
@@ -7055,7 +6789,7 @@ and http://dibl.googlecode.com</dc:description>
        sodipodi:linespacing="125%"
        transform="translate(0,-4.372441e-5)"><tspan
          sodipodi:role="line"
-         id="tspan3895"></tspan></text>
+         id="tspan3895" /></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"

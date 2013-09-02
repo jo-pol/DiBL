@@ -9,7 +9,7 @@ Source of the code is available at http://dibl.googlecode.com/
 
 Execute with a command line, for example:
 
-	java -jar dobl.0.0.1-SNAPSHOT.jar tcptc < input/3x3_1.txt > 3x3_1_tcptc.svg
+	java -jar dibl-0.0.1-SNAPSHOT.jar tcptc < input/3x3_1.txt > 3x3_1_tcptc.svg
 
 Standard input:
 	text version of a traversal pattern
