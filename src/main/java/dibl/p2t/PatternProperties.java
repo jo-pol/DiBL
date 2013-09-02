@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
+import dibl.matrix.Extractor;
+
 public class PatternProperties
 {
     /** Index for connection with adjacent node. */
@@ -24,9 +26,9 @@ public class PatternProperties
         cols = ptp.getNumberOfColumns();
 
         ms = new String[2 * rows][2 * cols];
-        t2b = new String[2 * rows][2 * cols];
-        l2r = new String[2 * rows][2 * cols];
-        r2l = new String[2 * rows][2 * cols];
+        t2b = new String[rows][cols];
+        l2r = new String[rows][cols];
+        r2l = new String[rows][cols];
         for (int r = 0; r < rows; r++)
         {
             for (int c = 0; c < cols; c++)
@@ -55,30 +57,18 @@ public class PatternProperties
     public String smallest()
     {
         Set<String> result = new TreeSet<String>();
-        for (int y = 0; y < rows; y++)
-            for (int x = 0; x < cols; x++)
-            {
-                String s = "";
-                for (int r = 0; r < rows; r++)
-                    for (int c = 0; c < cols; c++)
-                        s += ms[r + y][c + x];
-                result.add(s);
-            }
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                result.add(Arrays.deepToString(Extractor.shift(t2b, r, c)));
         return result.iterator().next();
     }
 
     public String unsignedSmallest()
     {
         Set<String> result = new TreeSet<String>();
-        for (int y = 0; y < rows; y++)
-            for (int x = 0; x < cols; x++)
-            {
-                String s = "";
-                for (int r = 0; r < rows; r++)
-                    for (int c = 0; c < cols; c++)
-                        s += ms[r + y][c + x].replaceAll("-", "");
-                result.add(s);
-            }
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                result.add(Arrays.deepToString(Extractor.shift(t2b, r, c)).replaceAll("-", ""));
         return result.iterator().next();
     }
 
