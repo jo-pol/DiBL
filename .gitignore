@@ -2,6 +2,6 @@
 .classpath
 .project
 .settings
-/src/main/assembly/input
+/src/main/assembly/input/*
 !/src/main/assembly/input/3x3_1.txt
 !/src/main/assembly/input/4x4_522.txt
