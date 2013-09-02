@@ -10,12 +10,12 @@ public class PatternProperties
     private final int west = 3, east = 0;
 
     /** Orientations for tiles. Two sides in ascii-art: \__, V, __/ */
-    private final int[][][] t2b, l2r, r2l;
+    private final String[][] t2b, l2r, r2l;
 
     /** dimensions of input matrix */
     private final int rows, cols;
 
-    private int[][][] ms;
+    private String[][]ms;
 
     /** Later changes to the argument do not affect the created object. */
     PatternProperties(final PairTraversalPattern ptp)
@@ -23,22 +23,16 @@ public class PatternProperties
         rows = ptp.getNumberOfRows();
         cols = ptp.getNumberOfColumns();
 
-        ms = new int[2 * rows][2 * cols][6];
-        t2b = new int[2 * rows][2 * cols][6];
-        l2r = new int[2 * rows][2 * cols][6];
-        r2l = new int[2 * rows][2 * cols][6];
+        ms = new String[2 * rows][2 * cols];
+        t2b = new String[2 * rows][2 * cols];
+        l2r = new String[2 * rows][2 * cols];
+        r2l = new String[2 * rows][2 * cols];
         for (int r = 0; r < rows; r++)
         {
             for (int c = 0; c < cols; c++)
             {
-                final String[] tuple = ptp.getTuple(toAlpha(c, r)).replaceAll("[()]", "").split(",");
-                tuple[0] = tuple[0].replace("(", "");
-                tuple[tuple.length - 1] = tuple[tuple.length - 1].replace(")", "");
-                final int[] connections = new int[tuple.length];
-                for (int i = 0; i < tuple.length && i < 6; i++)
-                    connections[i] = Integer.parseInt(tuple[i]);
                 // concatenate the matrix 4 times into a bigger one
-                t2b[r][c] = ms[r][c] = ms[r + rows][c] = ms[r][c + cols] = ms[r + rows][c + cols] = connections;
+                t2b[r][c] = ms[r][c] = ms[r + rows][c] = ms[r][c + cols] = ms[r + rows][c + cols] = ptp.getTuple(toAlpha(c, r));
             }
         }
         for (int r = 0; r < rows; r++)
@@ -53,9 +47,9 @@ public class PatternProperties
 
     public String startPoints()
     {
-        return "r2l" + Arrays.toString(startPoints(r2l).toArray()) //
-                + " t2b" + Arrays.toString(startPoints(t2b).toArray()) //
-                + " l2r" + Arrays.toString(startPoints(l2r).toArray());
+        return "r2l" + Arrays.deepToString(startPoints(r2l).toArray()) //
+                + " t2b" + Arrays.deepToString(startPoints(t2b).toArray()) //
+                + " l2r" + Arrays.deepToString(startPoints(l2r).toArray());
     }
 
     public String smallest()
@@ -67,7 +61,7 @@ public class PatternProperties
                 String s = "";
                 for (int r = 0; r < rows; r++)
                     for (int c = 0; c < cols; c++)
-                        s += Arrays.toString(ms[r + y][c + x]);
+                        s += ms[r + y][c + x];
                 result.add(s);
             }
         return result.iterator().next();
@@ -82,13 +76,13 @@ public class PatternProperties
                 String s = "";
                 for (int r = 0; r < rows; r++)
                     for (int c = 0; c < cols; c++)
-                        s += Arrays.toString(ms[r + y][c + x]).replaceAll("-", "");
+                        s += ms[r + y][c + x].replaceAll("-", "");
                 result.add(s);
             }
         return result.iterator().next();
     }
 
-    private Set<String> startPoints(final int[][][] m)
+    private Set<String> startPoints(final String[][] m)
     {
         final Set<String> result = new TreeSet<String>();
         final Set<Integer> properColumns = new TreeSet<Integer>();
@@ -98,7 +92,7 @@ public class PatternProperties
             int properTuples = 0;
             for (int c = 0; c < cols; c++)
             {
-                if (0 <= m[r][c][east])
+                if (!m[r][c].split(",")[east].contains("-"))
                     properTuples++;
             }
             if (properTuples == cols)
@@ -109,7 +103,7 @@ public class PatternProperties
             int properTuples = 0;
             for (int r = 0; r < rows; r++)
             {
-                if (0 <= m[r][c][west])
+                if (!m[r][c].split(",")[west].contains("-"))
                     properTuples++;
             }
             if (properTuples == cols)
@@ -128,3 +122,4 @@ public class PatternProperties
         return "ABCDEFGHIJ".substring(column, column + 1) + (row + 1);
     }
 }
+
