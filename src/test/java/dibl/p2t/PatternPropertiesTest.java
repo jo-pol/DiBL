@@ -1,4 +1,4 @@
-package dibl;
+package dibl.p2t;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.junit.Test;
+
+import dibl.p2t.PairTraversalPattern;
+import dibl.p2t.PatternProperties;
 
 public class PatternPropertiesTest
 {

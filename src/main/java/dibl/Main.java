@@ -21,6 +21,8 @@ import java.io.InputStreamReader;
 
 import org.jdom2.JDOMException;
 
+import dibl.p2t.Generator;
+
 public class Main
 {
     private static String README = "README.txt";// not final to allow WhiteboxTest

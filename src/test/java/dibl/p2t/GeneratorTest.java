@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl;
+package dibl.p2t;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +26,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
 
-import dibl.Generator;
+import dibl.p2t.Generator;
 
 public class GeneratorTest
 {
