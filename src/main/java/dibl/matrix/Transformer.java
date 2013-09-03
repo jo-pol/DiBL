@@ -1,6 +1,6 @@
 package dibl.matrix;
 
-interface Transformer<O>
+public interface Transformer<O>
 {
    O flipLeftRight(O o);
    O flipBotomUp(O o);

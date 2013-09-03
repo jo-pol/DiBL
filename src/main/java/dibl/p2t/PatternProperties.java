@@ -5,71 +5,70 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import dibl.matrix.Extractor;
+import dibl.matrix.MatrixTransformer;
 
 public class PatternProperties
 {
     /** Index for connection with adjacent node. */
     private final int west = 3, east = 0;
 
-    /** Orientations for tiles. Two sides in ascii-art: \__, V, __/ */
-    private final String[][] t2b, l2r, r2l;
+    private final String[][] matrix;
 
     /** dimensions of input matrix */
     private final int rows, cols;
 
-    private String[][]ms;
+    private static MatrixTransformer<TupleTransformer> matrixTransformer;
 
     /** Later changes to the argument do not affect the created object. */
     PatternProperties(final PairTraversalPattern ptp)
     {
         rows = ptp.getNumberOfRows();
         cols = ptp.getNumberOfColumns();
+        matrixTransformer = new MatrixTransformer<TupleTransformer>(new TupleTransformer());
 
-        ms = new String[2 * rows][2 * cols];
-        t2b = new String[rows][cols];
-        l2r = new String[rows][cols];
-        r2l = new String[rows][cols];
+        matrix = new String[rows][cols];
         for (int r = 0; r < rows; r++)
-        {
             for (int c = 0; c < cols; c++)
-            {
-                // concatenate the matrix 4 times into a bigger one
-                t2b[r][c] = ms[r][c] = ms[r + rows][c] = ms[r][c + cols] = ms[r + rows][c + cols] = ptp.getTuple(toAlpha(c, r));
-            }
-        }
-        for (int r = 0; r < rows; r++)
-        {
-            for (int c = 0; c < cols; c++)
-            {
-                r2l[r][c] = ms[r + cols - 1 - c][c];
-                l2r[r][c] = ms[r][c + rows - 1 - r];
-            }
-        }
+                matrix[r][c] = ptp.getTuple(toAlpha(c, r));
     }
 
     public String startPoints()
     {
-        return "r2l" + Arrays.deepToString(startPoints(r2l).toArray()) //
-                + " t2b" + Arrays.deepToString(startPoints(t2b).toArray()) //
-                + " l2r" + Arrays.deepToString(startPoints(l2r).toArray());
+        return Arrays.deepToString(startPoints(matrix).toArray());
     }
 
     public String smallest()
     {
         Set<String> result = new TreeSet<String>();
+        addSigned(result, matrix);
+        addSigned(result, matrixTransformer.flipBottomUp(matrix));
+        addSigned(result, matrixTransformer.flipLeftRight(matrix));
+        addSigned(result, matrixTransformer.rotate180(matrix));
+        return result.iterator().next();
+    }
+
+    private void addSigned(Set<String> result, String[][] matrix2)
+    {
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
-                result.add(Arrays.deepToString(Extractor.shift(t2b, r, c)));
-        return result.iterator().next();
+                result.add(Arrays.deepToString(Extractor.shift(matrix2, r, c)));
     }
 
     public String unsignedSmallest()
     {
         Set<String> result = new TreeSet<String>();
+        addUnsigned(result, matrix);
+        addUnsigned(result, matrixTransformer.flipBottomUp(matrix));
+        addUnsigned(result, matrixTransformer.flipLeftRight(matrix));
+        addUnsigned(result, matrixTransformer.rotate180(matrix));
+        return result.iterator().next();
+    }
+
+    private void addUnsigned(Set<String> result, String[][] matrix2)
+    {
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
-                result.add(Arrays.deepToString(Extractor.shift(t2b, r, c)).replaceAll("-", ""));
-        return result.iterator().next();
+                result.add(Arrays.deepToString(Extractor.shift(matrix2, r, c)).replaceAll("-", ""));
     }
 
     private Set<String> startPoints(final String[][] m)
@@ -112,4 +111,3 @@ public class PatternProperties
         return "ABCDEFGHIJ".substring(column, column + 1) + (row + 1);
     }
 }
-
