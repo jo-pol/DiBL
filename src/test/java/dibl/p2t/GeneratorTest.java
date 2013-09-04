@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import org.junit.AfterClass;
@@ -78,16 +79,35 @@ public class GeneratorTest
         Generator.generate(new PairTraversalPattern(in), out, "tcp");
     }
 
-    @Ignore// generates 16K files
+    @Test
+    public void customMix() throws Exception
+    {
+        String[][] stichTypes = { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
+                {"tc", "tcptc", "tc", "tcptc"}};
+        PairTraversalPattern pattern = read("src/main/assembly/input/4x4_522.txt");
+        PatternProperties props = new PatternProperties(pattern);
+        // TODO arguments for flipped/rotated versions require a way back from PatternProperties
+        Generator.generateCustomMix(stichTypes, "target/custom-mix", //
+                pattern, props.toBottomUpPattern(), props.toLeftRightPattern(), props.toRotatedPattern());
+    }
+
+    private PairTraversalPattern read(String string) throws IOException, FileNotFoundException
+    {
+        return new PairTraversalPattern(new FileInputStream(string));
+    }
+
+    @Ignore
+    // generates 16K files
     @Test
     public void standardInOut4x4() throws Exception
     {
         final FileInputStream in = new FileInputStream("src/main/assembly/input/4x4_522.txt");
 
-        new Generator(new PairTraversalPattern(in)).variations("tcp","tcptcp");
+        new Generator(new PairTraversalPattern(in)).variations("tcp", "tcptcp");
     }
 
-    @Ignore// creates thousands of files once cfg/4x4.svg is developed
+    @Ignore
+    // creates thousands of files once cfg/4x4.svg is developed
     @Test
     public void standardInOutAll() throws Exception
     {

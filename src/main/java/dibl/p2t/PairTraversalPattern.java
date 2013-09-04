@@ -58,7 +58,16 @@ public class PairTraversalPattern
         }
     }
 
-    private String toAlpha(int column)
+    public PairTraversalPattern(final String[][] tuples)
+    {
+        nrOfRows = tuples.length;
+        nrOfColumns = tuples[0].length;
+        for (int row = 0; row < nrOfRows; row++)
+            for (int column = 0; column < nrOfColumns; column++)
+                cells.put(toAlpha(column) + (row + 1), tuples[row][column]);
+    }
+
+    private String toAlpha(final int column)
     {
         return "ABCDEFGHIJ".substring(column, column + 1);
     }
