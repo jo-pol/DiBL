@@ -48,6 +48,9 @@ public class PatternPropertiesTest
             assertTrue(file.getName(),props1.smallest().equals(props3.smallest()));
             PatternProperties props4 = new PatternProperties(new PatternProperties(props1.toRotatedPattern()).toRotatedPattern());
             assertTrue(file.getName(),props1.smallest().equals(props4.smallest()));
+            // flip along both axes is a rotation
+            PatternProperties props5 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toLeftRightPattern());
+            assertTrue(file.getName(),props5.smallest().equals(new PatternProperties(props1.toRotatedPattern()).smallest()));
         }
     }
 
