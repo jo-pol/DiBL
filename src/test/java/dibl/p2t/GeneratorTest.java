@@ -80,13 +80,23 @@ public class GeneratorTest
     }
 
     @Test
-    public void customMix() throws Exception
+    public void customMix4x4() throws Exception
     {
         String[][] stichTypes = { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
                 {"tc", "tcptc", "tc", "tcptc"}};
         PairTraversalPattern pattern = read("src/main/assembly/input/4x4_522.txt");
         PatternProperties props = new PatternProperties(pattern);
-        Generator.generateCustomMix(stichTypes, "target/custom-mix", //
+        Generator.generateCustomMix(stichTypes, "target/custom-mix4x4", //
+                pattern, props.toBottomUpPattern(), props.toLeftRightPattern(), props.toRotatedPattern());
+    }
+
+    @Test
+    public void customMix3x3() throws Exception
+    {
+        String[][] stichTypes = { {"tc", "tcptc", "tc"}, {"tc", "tcptc", "tc"}, {"tcptc", "tc", "tcptc"}};
+        PairTraversalPattern pattern = read("src/main/assembly/input/3x3_1.txt");
+        PatternProperties props = new PatternProperties(pattern);
+        Generator.generateCustomMix(stichTypes, "target/custom-mix3x3", //
                 pattern, props.toBottomUpPattern(), props.toLeftRightPattern(), props.toRotatedPattern());
     }
 

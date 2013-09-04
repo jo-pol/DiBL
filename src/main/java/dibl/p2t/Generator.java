@@ -59,20 +59,24 @@ public class Generator
         template.write(out);
     }
 
-    public static void generateCustomMix(final String[][] stichTypes, String fileName,final PairTraversalPattern... traversalPatterns) throws FileNotFoundException, IOException, JDOMException
+    public static void generateCustomMix(final String[][] stichTypes, String fileName, final PairTraversalPattern... traversalPatterns)
+            throws FileNotFoundException, IOException, JDOMException
     {
         // fix the variants
         final TemplateDoc template = getTemplate(traversalPatterns[0]);
-        int i=0;
-        for (PairTraversalPattern tp:traversalPatterns)
+        int i = 0;
+        for (PairTraversalPattern tp : traversalPatterns)
         {
             for (int r = 0; r < tp.getNumberOfRows(); r++)
                 for (int c = 0; c < tp.getNumberOfColumns(); c++)
                 {
                     String cellID = "ABCDEFGHIJKL".substring(c, c + 1) + (r + 1);
-                    template.replaceClonesInBaseTile(cellID, stichTypes[r][c], tp.getTuple(cellID));
+                    if (tp.isEmpty(cellID))
+                        template.setEmpty(cellID);
+                    else
+                        template.replaceClonesInBaseTile(cellID, stichTypes[r][c], tp.getTuple(cellID));
                 }
-            writeVariation(fileName+"-"+(i++)+".svg", template);
+            writeVariation(fileName + "-" + (i++) + ".svg", template);
         }
     }
 
