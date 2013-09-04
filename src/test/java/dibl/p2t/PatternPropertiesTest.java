@@ -14,6 +14,8 @@
 // @formatter:on
 package dibl.p2t;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -33,6 +35,23 @@ public class PatternPropertiesTest
     private static final String INPUT = "src/main/assembly/input";
 
     @Test
+    public void flipTwiceForOriginal() throws Exception
+    {
+        File[] files = new File(INPUT).listFiles();
+        for (final File file : files)
+        {
+            PairTraversalPattern pattern1 = new PairTraversalPattern(new FileInputStream(file));
+            final PatternProperties props1 = new PatternProperties(pattern1);
+            PatternProperties props2 = new PatternProperties(new PatternProperties(props1.toLeftRightPattern()).toLeftRightPattern());
+            assertTrue(file.getName(),props1.smallest().equals(props2.smallest()));
+            PatternProperties props3 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toBottomUpPattern());
+            assertTrue(file.getName(),props1.smallest().equals(props3.smallest()));
+            PatternProperties props4 = new PatternProperties(new PatternProperties(props1.toRotatedPattern()).toRotatedPattern());
+            assertTrue(file.getName(),props1.smallest().equals(props4.smallest()));
+        }
+    }
+
+    @Test
     public void unique() throws Exception
     {
         File[] files = new File(INPUT).listFiles();
@@ -47,9 +66,9 @@ public class PatternPropertiesTest
             addToCollection(file, pp.unsignedSmallest(), unsigned);
         }
         printLookALikes(unsigned.values());
-        System.out.println(files.length+" files");
-        System.out.println(signed.size()+" mathematically different patterns");
-        System.out.println(unsigned.size()+" groups of identical/look-a-like patterns");
+        System.out.println(files.length + " files");
+        System.out.println(signed.size() + " mathematically different patterns");
+        System.out.println(unsigned.size() + " groups of identical/look-a-like patterns");
     }
 
     private void addToCollection(final File file, String key, Map<String, List<File>> fileLists)
