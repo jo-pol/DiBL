@@ -22,7 +22,6 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
 public class Generator
