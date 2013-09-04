@@ -14,7 +14,9 @@
 // @formatter:on
 package dibl.p2t;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -44,6 +46,24 @@ public class PatternProperties
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
                 matrix[r][c] = ptp.getTuple(toAlpha(c, r));
+    }
+
+    public List<PairTraversalPattern> toVariationList(){
+        return createVariations();
+    }
+
+    public PairTraversalPattern[] toVariationsArray(){
+        return createVariations().toArray(new PairTraversalPattern[0]);
+    }
+
+    private List<PairTraversalPattern> createVariations()
+    {
+        List<PairTraversalPattern> list = new ArrayList<PairTraversalPattern>();
+        list.add(new PairTraversalPattern(matrix));
+        list.add(new PairTraversalPattern(matrixTransformer.flipBottomUp(matrix)));
+        list.add(new PairTraversalPattern(matrixTransformer.flipLeftRight(matrix)));
+        list.add(new PairTraversalPattern(matrixTransformer.rotate180(matrix)));
+        return list;
     }
 
     public PairTraversalPattern toPattern(){
