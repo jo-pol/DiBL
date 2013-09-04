@@ -18,7 +18,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,9 +41,8 @@ public class Generator
      * @throws IOException
      * @throws JDOMException
      */
-    public static void generate(final InputStream in, final PrintStream out, final String stichType) throws IOException, JDOMException
+    public static void generate(final PairTraversalPattern traversalPattern, final PrintStream out, final String stichType) throws IOException, JDOMException
     {
-        final PairTraversalPattern traversalPattern = new PairTraversalPattern(in);
         final TemplateDoc template = getTemplate(traversalPattern);
 
         for (final String cellID : traversalPattern.getCellKeys())
@@ -69,14 +67,13 @@ public class Generator
     }
 
     /**
-     * @param in
-     *        text version of a traversal pattern.
+     * @param traversalPattern
      * @throws IOException
      * @throws JDOMException
      */
-    public Generator(final InputStream in) throws IOException, JDOMException
+    public Generator(final PairTraversalPattern traversalPattern) throws IOException, JDOMException
     {
-        traversalPattern = new PairTraversalPattern(in);
+        this.traversalPattern = traversalPattern;
         template = getTemplate(traversalPattern);
     }
 
