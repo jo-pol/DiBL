@@ -16,12 +16,14 @@ package dibl;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.jdom2.JDOMException;
 
 import dibl.p2t.Generator;
+import dibl.p2t.PairTraversalPattern;
 
 public class Main
 {
@@ -29,23 +31,30 @@ public class Main
 
     public static void main(final String... args) throws IOException, JDOMException
     {
-        if (args.length == 1)
-            Generator.generate(System.in, System.out, args[0]);
-        else if (args.length > 1)
-            new Generator(System.in).variations(args);
+        if (args.length < 1)
+            showUsage();
         else
         {
-            final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(README)));
-            try
-            {
-                String line;
-                while (null != (line = reader.readLine()))
-                    System.out.println(line);
-            }
-            finally
-            {
-                reader.close();
-            }
+            final PairTraversalPattern pattern = new PairTraversalPattern(System.in);
+            if (args.length == 1)
+                Generator.generate(pattern, System.out, args[0]);
+            else
+                new Generator(pattern).variations(args);
+        }
+    }
+
+    private static void showUsage() throws FileNotFoundException, IOException
+    {
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(README)));
+        try
+        {
+            String line;
+            while (null != (line = reader.readLine()))
+                System.out.println(line);
+        }
+        finally
+        {
+            reader.close();
         }
     }
 }

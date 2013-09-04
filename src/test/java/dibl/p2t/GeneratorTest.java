@@ -48,7 +48,7 @@ public class GeneratorTest
         final PrintStream out = new PrintStream(new FileOutputStream("target/3x3_1_tcptc.svg"));
         final FileInputStream in = new FileInputStream("src/main/assembly/input/3x3_1.txt");
 
-        Generator.generate(in, out, "tcptc");
+        Generator.generate(new PairTraversalPattern(in), out, "tcptc");
     }
 
     @Test
@@ -57,7 +57,7 @@ public class GeneratorTest
         final PrintStream out = new PrintStream(new FileOutputStream("target/4x4_522_tcptc.svg"));
         final FileInputStream in = new FileInputStream("src/main/assembly/input/4x4_522.txt");
 
-        Generator.generate(in, out, "tcptc");
+        Generator.generate(new PairTraversalPattern(in), out, "tcptc");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class GeneratorTest
         final PrintStream out = new PrintStream(new FileOutputStream("target/3x3_1_tcp.svg"));
         final FileInputStream in = new FileInputStream("src/main/assembly/input/3x3_1.txt");
 
-        Generator.generate(in, out, "tcp");
+        Generator.generate(new PairTraversalPattern(in), out, "tcp");
     }
 
     @Test
@@ -75,7 +75,7 @@ public class GeneratorTest
         final PrintStream out = new PrintStream(new FileOutputStream("target/4x4_522_tcp.svg"));
         final FileInputStream in = new FileInputStream("src/main/assembly/input/4x4_522.txt");
 
-        Generator.generate(in, out, "tcp");
+        Generator.generate(new PairTraversalPattern(in), out, "tcp");
     }
 
     @Ignore// generates 16K files
@@ -84,7 +84,7 @@ public class GeneratorTest
     {
         final FileInputStream in = new FileInputStream("src/main/assembly/input/4x4_522.txt");
 
-        new Generator(in).variations("tcp","tcptcp");
+        new Generator(new PairTraversalPattern(in)).variations("tcp","tcptcp");
     }
 
     @Ignore// creates thousands of files once cfg/4x4.svg is developed
@@ -100,7 +100,7 @@ public class GeneratorTest
                 // not finding a proper template does not prevent creting the file
                 final FileInputStream in = new FileInputStream(file);
                 final PrintStream out = new PrintStream(new FileOutputStream("target/" + file.getName() + ".svg"));
-                Generator.generate(in, out, "tcptc");
+                Generator.generate(new PairTraversalPattern(in), out, "tcptc");
                 if (++i % 20 == 0)
                     System.out.print(" " + i);
             }
