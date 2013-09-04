@@ -41,9 +41,6 @@ public class PatternProperties
     {
         Set<String> result = new TreeSet<String>();
         addSigned(result, matrix);
-        addSigned(result, matrixTransformer.flipBottomUp(matrix));
-        addSigned(result, matrixTransformer.flipLeftRight(matrix));
-        addSigned(result, matrixTransformer.rotate180(matrix));
         return result.iterator().next();
     }
 
