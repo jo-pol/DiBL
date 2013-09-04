@@ -46,6 +46,22 @@ public class PatternProperties
                 matrix[r][c] = ptp.getTuple(toAlpha(c, r));
     }
 
+    public PairTraversalPattern toPattern(){
+        return new PairTraversalPattern(matrix);
+    }
+
+    public PairTraversalPattern toBottomUpPattern(){
+        return new PairTraversalPattern(matrixTransformer.flipBottomUp(matrix));
+    }
+
+    public PairTraversalPattern toLeftRightPattern(){
+        return new PairTraversalPattern(matrixTransformer.flipLeftRight(matrix));
+    }
+
+    public PairTraversalPattern toRotatedPattern(){
+        return new PairTraversalPattern(matrixTransformer.rotate180(matrix));
+    }
+    
     public String startPoints()
     {
         return Arrays.deepToString(startPoints(matrix).toArray());
