@@ -86,7 +86,6 @@ public class GeneratorTest
                 {"tc", "tcptc", "tc", "tcptc"}};
         PairTraversalPattern pattern = read("src/main/assembly/input/4x4_522.txt");
         PatternProperties props = new PatternProperties(pattern);
-        // TODO arguments for flipped/rotated versions require a way back from PatternProperties
         Generator.generateCustomMix(stichTypes, "target/custom-mix", //
                 pattern, props.toBottomUpPattern(), props.toLeftRightPattern(), props.toRotatedPattern());
     }
