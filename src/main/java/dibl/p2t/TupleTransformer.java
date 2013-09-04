@@ -37,8 +37,8 @@ public class TupleTransformer implements Transformer<String>
         {
             String s[] = t.replaceAll("[()]", "").split(",");
             flippedLeftRight.put(t, fmt(s[3], s[2], s[1], s[0], s[5], s[4]));
-            rotated180.put(t, fmt(s[3], inv(s[4]), inv(s[5]), s[0], inv(s[1]), inv(s[2])));
-            flippedBottomUp.put(t, fmt(inv(s[0]), inv(s[5]), inv(s[4]), s[3], inv(s[2]), inv(s[1])));
+            rotated180.put(t, fmt(inv(s[3]), inv(s[4]), inv(s[5]), inv(s[0]), inv(s[1]), inv(s[2])));
+            flippedBottomUp.put(t, fmt(inv(s[0]), inv(s[5]), inv(s[4]), inv(s[3]), inv(s[2]), inv(s[1])));
         }
     }
 
