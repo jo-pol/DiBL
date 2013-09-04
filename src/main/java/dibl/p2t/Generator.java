@@ -37,9 +37,11 @@ public class Generator
      * @param out
      *        an SVG file
      * @param stichType
-     *        the prefix of stitch labels in the template
+     *        the prefix of a stitch label in the template with the same dimensions as the
+     *        traversalPattern.
      * @throws IOException
      * @throws JDOMException
+     *         in case of a problem with the template for a traversalPattern
      */
     public static void generate(final PairTraversalPattern traversalPattern, final PrintStream out, final String stichType) throws IOException, JDOMException
     {
@@ -58,6 +60,21 @@ public class Generator
         template.write(out);
     }
 
+    /**
+     * GeNerates one thread diagram for each traversalPattern.
+     * 
+     * @param stichTypes
+     *        A matrix with at least the same dimensions as the traversalPatterns. Each cell should
+     *        contain a prefix of a stitch label in the template with the same dimensions as the
+     *        traversalPattern.
+     * @param fileName
+     *        A sequence number and svg extension will be added for each generated diagram.
+     * @param traversalPatterns
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws JDOMException
+     *         in case of a problem with the template for a traversalPattern
+     */
     public static void generateCustomMix(final String[][] stichTypes, String fileName, final PairTraversalPattern... traversalPatterns)
             throws FileNotFoundException, IOException, JDOMException
     {
@@ -103,7 +120,7 @@ public class Generator
      * types multiplied with the number of non-zero tuples in the matrix of the traversal pattern.
      * 
      * @param stichTypes
-     *        prefixes of stitch labels in the template
+     *        prefixes of stitch labels in the template with the same dimensions as the traversalPattern passed on to the constructor.
      * @throws IOException
      * @throws JDOMException
      */
