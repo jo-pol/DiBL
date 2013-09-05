@@ -44,17 +44,11 @@ public class GeneratorTest
     }
 
     @Test
-    public void standardInOut3x3_1_tcptc() throws Exception
+    public void variants3x3_tcptc() throws Exception
     {
-        final PrintStream out = new PrintStream(new FileOutputStream("target/3x3_1_tcptc.svg"));
-        Generator.generate(read("3x3_1.txt"), out, "tcptc");
-    }
-
-    @Test
-    public void standardInOut4x4_522_tcptc() throws Exception
-    {
-        final PrintStream out = new PrintStream(new FileOutputStream("target/4x4_522_tcptc.svg"));
-        Generator.generate(read("4x4_522.txt"), out, "tcptc");
+        int i = 0;
+        for (PairTraversalPattern pattern : loadVariants("3x3_1.txt"))
+            Generator.generate(pattern, new PrintStream(new FileOutputStream("target/3x3_" + (++i) + "_tcptc.svg")), "tcptc");
     }
 
     @Test
@@ -119,6 +113,6 @@ public class GeneratorTest
 
     private PairTraversalPattern read(final String string) throws IOException, FileNotFoundException
     {
-        return new PairTraversalPattern(new FileInputStream(INPUT_FOLDER+"/" + string));
+        return new PairTraversalPattern(new FileInputStream(INPUT_FOLDER + "/" + string));
     }
 }

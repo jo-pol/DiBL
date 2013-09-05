@@ -55,6 +55,20 @@ public class PatternPropertiesTest
     }
 
     @Test
+    public void matrixes3x3_9() throws Exception
+    {
+            PatternProperties pp9 = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/3x3_9.txt")));
+            PatternProperties pp20 = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/3x3_20.txt")));
+            PatternProperties pp21 = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/3x3_21.txt")));
+            assertTrue(pp9.smallest().equals(pp20.smallest()));
+            assertTrue(pp21.smallest().equals(new PatternProperties(pp9.toRotatedPattern()).smallest()));
+            System.out.println(pp9.smallest());
+            System.out.println(pp21.smallest());
+            System.out.println(new PatternProperties(pp9.toBottomUpPattern()).smallest());
+            System.out.println(new PatternProperties(pp9.toLeftRightPattern()).smallest());
+    }
+
+    @Test
     public void unique() throws Exception
     {
         File[] files = new File(INPUT).listFiles();
