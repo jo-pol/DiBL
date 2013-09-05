@@ -4,4 +4,7 @@
 .settings
 /src/main/assembly/input/*
 !/src/main/assembly/input/3x3_1.txt
+!/src/main/assembly/input/3x3_9.txt
+!/src/main/assembly/input/3x3_20.txt
+!/src/main/assembly/input/3x3_21.txt
 !/src/main/assembly/input/4x4_522.txt
