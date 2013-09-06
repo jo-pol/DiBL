@@ -28,6 +28,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class PatternPropertiesTest
@@ -43,29 +44,34 @@ public class PatternPropertiesTest
             PairTraversalPattern pattern1 = new PairTraversalPattern(new FileInputStream(file));
             final PatternProperties props1 = new PatternProperties(pattern1);
             PatternProperties props2 = new PatternProperties(new PatternProperties(props1.toLeftRightPattern()).toLeftRightPattern());
-            assertTrue(file.getName(),props1.smallest().equals(props2.smallest()));
+            assertTrue(file.getName(), props1.smallest().equals(props2.smallest()));
             PatternProperties props3 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toBottomUpPattern());
-            assertTrue(file.getName(),props1.smallest().equals(props3.smallest()));
+            assertTrue(file.getName(), props1.smallest().equals(props3.smallest()));
             PatternProperties props4 = new PatternProperties(new PatternProperties(props1.toRotatedPattern()).toRotatedPattern());
-            assertTrue(file.getName(),props1.smallest().equals(props4.smallest()));
+            assertTrue(file.getName(), props1.smallest().equals(props4.smallest()));
             // flip along both axes is a rotation
             PatternProperties props5 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toLeftRightPattern());
-            assertTrue(file.getName(),props5.smallest().equals(new PatternProperties(props1.toRotatedPattern()).smallest()));
+            assertTrue(file.getName(), props5.smallest().equals(new PatternProperties(props1.toRotatedPattern()).smallest()));
         }
     }
 
+    @Ignore //don't break the build with not commited input 
     @Test
-    public void matrixes3x3_9() throws Exception
+    public void searchForFlippedVersions() throws Exception
     {
-            PatternProperties pp9 = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/3x3_9.txt")));
-            PatternProperties pp20 = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/3x3_20.txt")));
-            PatternProperties pp21 = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/3x3_21.txt")));
-            assertTrue(pp9.smallest().equals(pp20.smallest()));
-            assertTrue(pp21.smallest().equals(new PatternProperties(pp9.toRotatedPattern()).smallest()));
-            System.out.println(pp9.smallest());
-            System.out.println(pp21.smallest());
-            System.out.println(new PatternProperties(pp9.toBottomUpPattern()).smallest());
-            System.out.println(new PatternProperties(pp9.toLeftRightPattern()).smallest());
+        int[] nrs = {408,618,687,717,1132,1199};
+        System.out.println();
+        for (Integer i:nrs)
+        {
+            PairTraversalPattern pattern = new PairTraversalPattern(new FileInputStream(INPUT+"/4x4_"+i+".txt"));
+            System.out.println(i+" "+new PatternProperties(pattern).smallest());
+        }
+        System.out.println();
+        PatternProperties props = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/4x4_"+nrs[0]+".txt")));
+        System.out.println(new PatternProperties(props.toLeftRightPattern()).smallest());
+        System.out.println(new PatternProperties(props.toBottomUpPattern()).smallest());
+        System.out.println(new PatternProperties(props.toRotatedPattern()).smallest());
+        System.out.println();
     }
 
     @Test
@@ -79,13 +85,14 @@ public class PatternPropertiesTest
         for (final File file : files)
         {
             final PatternProperties pp = new PatternProperties(new PairTraversalPattern(new FileInputStream(file)));
+            if (!signed.containsKey(pp.smallest()))
+                addToCollection(file, pp.unsignedSmallest(), unsigned);
             addToCollection(file, pp.smallest(), signed);
-            addToCollection(file, pp.unsignedSmallest(), unsigned);
         }
         printLookALikes(unsigned.values());
         System.out.println(files.length + " files");
         System.out.println(signed.size() + " mathematically different patterns");
-        System.out.println(unsigned.size() + " groups of identical/look-a-like patterns");
+        System.out.println(unsigned.size() + " groups of look-a-like patterns");
     }
 
     private void addToCollection(final File file, String key, Map<String, List<File>> fileLists)
