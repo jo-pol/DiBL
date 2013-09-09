@@ -60,8 +60,8 @@ public class PatternProperties
     {
         List<PairTraversalPattern> list = new ArrayList<PairTraversalPattern>();
         list.add(new PairTraversalPattern(matrix));
-        list.add(new PairTraversalPattern(matrixTransformer.flipBottomUp(matrix)));
-        list.add(new PairTraversalPattern(matrixTransformer.flipLeftRight(matrix)));
+        list.add(new PairTraversalPattern(matrixTransformer.flipNE2SW(matrix)));
+        list.add(new PairTraversalPattern(matrixTransformer.flipNW2SE(matrix)));
         list.add(new PairTraversalPattern(matrixTransformer.rotate180(matrix)));
         return list;
     }
@@ -71,11 +71,11 @@ public class PatternProperties
     }
 
     public PairTraversalPattern toBottomUpPattern(){
-        return new PairTraversalPattern(matrixTransformer.flipBottomUp(matrix));
+        return new PairTraversalPattern(matrixTransformer.flipNW2SE(matrix));
     }
 
     public PairTraversalPattern toLeftRightPattern(){
-        return new PairTraversalPattern(matrixTransformer.flipLeftRight(matrix));
+        return new PairTraversalPattern(matrixTransformer.flipNE2SW(matrix));
     }
 
     public PairTraversalPattern toRotatedPattern(){
@@ -105,8 +105,8 @@ public class PatternProperties
     {
         Set<String> result = new TreeSet<String>();
         addUnsigned(result, matrix);
-        addUnsigned(result, matrixTransformer.flipBottomUp(matrix));
-        addUnsigned(result, matrixTransformer.flipLeftRight(matrix));
+        addUnsigned(result, matrixTransformer.flipNE2SW(matrix));
+        addUnsigned(result, matrixTransformer.flipNW2SE(matrix));
         addUnsigned(result, matrixTransformer.rotate180(matrix));
         return result.iterator().next();
     }

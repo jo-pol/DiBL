@@ -16,19 +16,19 @@ package dibl.matrix;
 
 public class MatrixTransformer<H extends Transformer<String>>
 {
-    private H helper;
+    private final H helper;
 
-    public MatrixTransformer(H helper)
+    public MatrixTransformer(final H helper)
     {
         this.helper = helper;
     }
 
     /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
-    public String[][] rotate180(String[][] mat)
+    public String[][] rotate180(final String[][] mat)
     {
         final int M = mat.length;
         final int N = mat[0].length;
-        String[][] ret = new String[N][M];
+        final String[][] ret = new String[N][M];
         for (int r = 0; r < M; r++)
             for (int c = 0; c < N; c++)
                 ret[M - 1 - r][N - 1 - c] = helper.rotate180(mat[r][c]);
@@ -36,11 +36,11 @@ public class MatrixTransformer<H extends Transformer<String>>
     }
 
     /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
-    public String[][] flipLeftRight(String[][] mat)
+    public String[][] flipLeftRight(final String[][] mat)
     {
         final int M = mat.length;
         final int N = mat[0].length;
-        String[][] ret = new String[N][M];
+        final String[][] ret = new String[N][M];
         for (int r = 0; r < M; r++)
             for (int c = 0; c < N; c++)
                 ret[r][N - 1 - c] = helper.flipLeftRight(mat[r][c]);
@@ -48,14 +48,39 @@ public class MatrixTransformer<H extends Transformer<String>>
     }
 
     /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
-    public String[][] flipBottomUp(String[][] mat)
+    public String[][] flipBottomUp(final String[][] mat)
     {
         final int M = mat.length;
         final int N = mat[0].length;
-        String[][] ret = new String[N][M];
+        final String[][] ret = new String[N][M];
         for (int r = 0; r < M; r++)
             for (int c = 0; c < N; c++)
                 ret[M - 1 - r][c] = helper.flipBotomUp(mat[r][c]);
+        return ret;
+    }
+
+    /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
+    public String[][] flipNE2SW(final String[][] mat)
+    {
+        final int M = mat.length;
+        final int N = mat[0].length;
+        final String[][] ret = new String[M][N];
+        for (int r = 0; r < M; r++)
+            for (int c = 0; c < N; c++)
+                ret[c][r] = helper.flipLeftRight(mat[r][c]);
+        return ret;
+        // TODO code smell. Helper should be method argument: interface with one method.
+    }
+
+    /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
+    public String[][] flipNW2SE(final String[][] mat)
+    {
+        final int M = mat.length;
+        final int N = mat[0].length;
+        final String[][] ret = new String[M][N];
+        for (int r = 0; r < M; r++)
+            for (int c = 0; c < N; c++)
+                ret[N - 1 - c][M - 1 - r] = helper.flipBotomUp(mat[r][c]);
         return ret;
     }
 }
