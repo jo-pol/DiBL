@@ -48,22 +48,17 @@ public class PatternProperties
                 matrix[r][c] = ptp.getTuple(toAlpha(c, r));
     }
 
-    public List<PairTraversalPattern> toVariationList(){
-        return createVariations();
-    }
-
-    public PairTraversalPattern[] toVariationsArray(){
-        return createVariations().toArray(new PairTraversalPattern[0]);
-    }
-
-    private List<PairTraversalPattern> createVariations()
-    {
-        List<PairTraversalPattern> list = new ArrayList<PairTraversalPattern>();
-        list.add(new PairTraversalPattern(matrix));
-        list.add(new PairTraversalPattern(matrixTransformer.flipNE2SW(matrix)));
-        list.add(new PairTraversalPattern(matrixTransformer.flipNW2SE(matrix)));
-        list.add(new PairTraversalPattern(matrixTransformer.rotate180(matrix)));
-        return list;
+    public PairTraversalPattern[] toPatterns(){
+        // TODO prevent duplicates, sadly 2D arrays lack comparators so we can't put them in a set
+        List<String[][]> matrixes = new ArrayList<String[][]>();
+        matrixes.add(matrix);
+        matrixes.add(matrixTransformer.flipNE2SW(matrix));
+        matrixes.add(matrixTransformer.flipNW2SE(matrix));
+        matrixes.add(matrixTransformer.rotate180(matrix));
+        PairTraversalPattern[] result =  new PairTraversalPattern[matrixes.size()];
+        for (int i=0;i<result.length;i++)
+            result[i] = new PairTraversalPattern((String[][])matrixes.toArray()[i]);
+        return result;
     }
 
     public PairTraversalPattern toPattern(){
