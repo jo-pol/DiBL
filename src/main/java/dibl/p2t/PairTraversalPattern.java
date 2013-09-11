@@ -42,13 +42,13 @@ public class PairTraversalPattern
             final String[] dimensions = reader.readLine().split("\\s");
             nrOfRows = Integer.parseInt(dimensions[0].trim());
             nrOfColumns = Integer.parseInt(dimensions[1].trim());
-            for (int row = 1; row <= nrOfRows; row++)
+            for (int row = 0; row < nrOfRows; row++)
             {
                 final String[] tuples = reader.readLine().split("\t");
                 for (int column = 0; column < tuples.length; column++)
                 {
                     if (tuples[column].length() > 0)
-                        cells.put(toAlpha(column) + row, tuples[column]);
+                        cells.put(toCellID(row, column), tuples[column]);
                 }
             }
         }
@@ -64,12 +64,7 @@ public class PairTraversalPattern
         nrOfColumns = tuples[0].length;
         for (int row = 0; row < nrOfRows; row++)
             for (int column = 0; column < nrOfColumns; column++)
-                cells.put(toAlpha(column) + (row + 1), tuples[row][column]);
-    }
-
-    private String toAlpha(final int column)
-    {
-        return "ABCDEFGHIJ".substring(column, column + 1);
+                cells.put(toCellID(row, column), tuples[row][column]);
     }
 
     /**
@@ -82,6 +77,16 @@ public class PairTraversalPattern
     public String getTuple(final String cell)
     {
         return cells.get(cell);
+    }
+
+    public String getTuple(final int row, final int column)
+    {
+        return cells.get(toCellID(row, column));
+    }
+
+    private String toCellID(final int row, final int column)
+    {
+        return "ABCDEFGHIJ".substring(column, column + 1) + (row + 1);
     }
 
     public Set<String> getCellKeys()
@@ -107,5 +112,10 @@ public class PairTraversalPattern
     public boolean isEmpty(final String cell)
     {
         return cells.get(cell).matches("[(0,)]+");
+    }
+
+    public boolean isEmpty(final int row, final int column)
+    {
+        return cells.get(toCellID(row, column)).matches("[(0,)]+");
     }
 }

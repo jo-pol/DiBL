@@ -117,9 +117,9 @@ public class TemplateDoc
     {
         if (!tileElements.containsKey(cellID))
             return;
-        final String stitchID = idsByLabels.get(stichType + " " + tuple);
+        String stitchID = idsByLabels.get(stichType + " " + tuple);
         if (stitchID == null)
-            return;
+            stitchID = idsByLabels.get(EMPTY_TUPLE);
         for (final Element el : tileElements.get(cellID))
             el.setAttribute("href", "#" + stitchID, NS_XLINK);
     }
