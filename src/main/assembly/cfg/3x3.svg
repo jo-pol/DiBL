@@ -921,7 +921,7 @@ and http://dibl.googlecode.com</dc:description>
          inkscape:transform-center-y="-2.6574826"
          transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59577,47.834615)"
          id="g4738"
-         inkscape:label="tcp (-1,0,1,1,-1,0)">
+         inkscape:label="tc (-1,0,1,1,-1,0)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
            id="g4740"
@@ -1014,7 +1014,7 @@ and http://dibl.googlecode.com</dc:description>
         </g>
       </g>
       <g
-         inkscape:label="tcp (-1,0,1,1,0,-1)"
+         inkscape:label="tc (-1,0,1,1,0,-1)"
          id="g4764"
          transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59577,47.834625)"
          inkscape:transform-center-y="-2.6574826"
@@ -1113,7 +1113,7 @@ and http://dibl.googlecode.com</dc:description>
       <g
          inkscape:transform-center-x="3.0686026"
          transform="matrix(0.5,-0.8660254,0.8660254,0.5,-205.59576,47.834615)"
-         inkscape:label="tcp (-1,1,0,1,-1,0)"
+         inkscape:label="tc (-1,1,0,1,-1,0)"
          id="g4790"
          inkscape:transform-center-y="-2.6574671">
         <g
@@ -1209,7 +1209,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          transform="translate(61.371884,-301.18111)"
-         inkscape:label="tcp (-1,1,0,1,0,-1)"
+         inkscape:label="tc (-1,1,0,1,0,-1)"
          id="g4816"
          inkscape:transform-center-x="3.0685927"
          inkscape:transform-center-y="-2.6574808">
@@ -1306,7 +1306,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          id="g4842"
-         inkscape:label="tcp (-1,1,1,-1,0,0)"
+         inkscape:label="tc (-1,1,1,-1,0,0)"
          transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
@@ -1401,7 +1401,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          transform="translate(61.371884,-301.18111)"
-         inkscape:label="tcp (-1,1,1,0,-1,0)"
+         inkscape:label="tc (-1,1,1,0,-1,0)"
          id="g4868">
         <g
            inkscape:label="twist left"
@@ -1496,7 +1496,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          id="g4894"
-         inkscape:label="tcp (-1,1,1,0,0,-1)"
+         inkscape:label="tc (-1,1,1,0,0,-1)"
          transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
@@ -1591,7 +1591,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          transform="translate(61.371874,-301.18111)"
-         inkscape:label="tcp (0,0,1,1,-1,-1)"
+         inkscape:label="tc (0,0,1,1,-1,-1)"
          id="g4920">
         <g
            inkscape:label="1st twist left"
@@ -1686,7 +1686,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          id="g4946"
-         inkscape:label="tcp (0,1,0,1,-1,-1)"
+         inkscape:label="tc (0,1,0,1,-1,-1)"
          transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(-0.15943933,-0.44115799,0.44110493,-0.15942015,230.7465,419.91198)"
@@ -1784,7 +1784,7 @@ and http://dibl.googlecode.com</dc:description>
          inkscape:transform-center-y="-3.068594"
          transform="matrix(0.8660254,0.5,-0.5,0.8660254,286.83745,-331.21281)"
          id="g4972"
-         inkscape:label="tcp (0,1,1,-1,-1,0)">
+         inkscape:label="tc (0,1,1,-1,-1,0)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
            id="g4974"
@@ -1878,7 +1878,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          transform="translate(61.371884,-301.18111)"
-         inkscape:label="tcp (0,1,1,-1,0,-1)"
+         inkscape:label="tc (0,1,1,-1,0,-1)"
          id="g4998">
         <g
            inkscape:label="twist left"
@@ -1973,7 +1973,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          id="g5024"
-         inkscape:label="tcp (0,1,1,0,-1,-1)"
+         inkscape:label="tc (0,1,1,0,-1,-1)"
          transform="translate(61.371884,-301.18111)">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
@@ -2070,7 +2070,7 @@ and http://dibl.googlecode.com</dc:description>
          inkscape:transform-center-y="-2.6574815"
          transform="translate(61.371894,-301.18111)"
          id="g5050"
-         inkscape:label="tcp (1,0,0,1,-1,-1)"
+         inkscape:label="tc (1,0,0,1,-1,-1)"
          inkscape:transform-center-x="-3.0686005">
         <g
            transform="matrix(0.30233436,-0.3586575,0.35861437,0.302298,187.45913,466.48122)"
@@ -2166,7 +2166,7 @@ and http://dibl.googlecode.com</dc:description>
       <g
          inkscape:transform-center-x="-3.0685756"
          transform="translate(61.371884,-301.18111)"
-         inkscape:label="tcp (1,0,1,-1,-1,0)"
+         inkscape:label="tc (1,0,1,-1,-1,0)"
          id="g5076"
          inkscape:transform-center-y="-2.6574831">
         <g
@@ -2263,7 +2263,7 @@ and http://dibl.googlecode.com</dc:description>
       <g
          inkscape:transform-center-y="-2.6574831"
          id="g5102"
-         inkscape:label="tcp (1,0,1,-1,0,-1)"
+         inkscape:label="tc (1,0,1,-1,0,-1)"
          transform="translate(61.371884,-301.18111)"
          inkscape:transform-center-x="-3.0685756">
         <g
@@ -2358,7 +2358,7 @@ and http://dibl.googlecode.com</dc:description>
         </g>
       </g>
       <g
-         inkscape:label="tcp (1,0,1,0,-1,-1)"
+         inkscape:label="tc (1,0,1,0,-1,-1)"
          id="g5128"
          transform="translate(61.371884,-301.18111)"
          inkscape:transform-center-y="-2.6574754">
@@ -2455,7 +2455,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          transform="matrix(0.5,0.8660254,-0.8660254,0.5,497.11221,-244.48821)"
-         inkscape:label="tcp (1,1,0,-1,-1,0)"
+         inkscape:label="tc (1,1,0,-1,-1,0)"
          id="g5154">
         <g
            inkscape:label="twist left"
@@ -2550,7 +2550,7 @@ and http://dibl.googlecode.com</dc:description>
       </g>
       <g
          transform="translate(61.371904,-301.18111)"
-         inkscape:label="tcp (1,1,0,-1,0,-1)"
+         inkscape:label="tc (1,1,0,-1,0,-1)"
          id="g5180"
          inkscape:transform-center-y="-2.9685376">
         <g
@@ -2647,7 +2647,7 @@ and http://dibl.googlecode.com</dc:description>
       <g
          inkscape:transform-center-y="-2.9685376"
          id="g5206"
-         inkscape:label="tcp (1,1,0,0,-1,-1)"
+         inkscape:label="tc (1,1,0,0,-1,-1)"
          transform="translate(61.371904,-301.18111)">
         <g
            transform="matrix(0.46177369,0.08250049,-0.08249056,0.46171815,123.6125,451.65576)"

@@ -15,15 +15,18 @@
 package dibl;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 import org.jdom2.JDOMException;
 
 import dibl.p2t.Generator;
 import dibl.p2t.PairTraversalPattern;
+import dibl.p2t.TemplateDoc;
 
 public class Main
 {
@@ -39,7 +42,35 @@ public class Main
             if (args.length == 1)
                 Generator.generate(pattern, System.out, args[0]);
             else
-                new Generator(pattern).variations(args);
+                new Generator(pattern).permutations(new File("."), args);
+        }
+    }
+
+    public static void mainNew(final String... args) throws FileNotFoundException, IOException, JDOMException
+    {
+        if (args.length < 3)
+        {
+            showUsage();
+            return;
+        }
+        final String fileName = args[0];
+        final FileInputStream input = new FileInputStream(fileName);
+
+        final File folder = new File(args[1]);
+        folder.mkdirs();
+
+        final String[] stitches = Arrays.copyOfRange(args, 2, args.length);
+
+        if (fileName.endsWith(".svg"))
+        {
+            final TemplateDoc template = new TemplateDoc(input);
+            // TODO Generator.buildPermutations(template, folder, stitches);
+        }
+        else
+        {
+            // assume extension txt
+            final PairTraversalPattern pattern = new PairTraversalPattern(input);
+            Generator.buildSymetricVariants(pattern, folder, stitches);
         }
     }
 
