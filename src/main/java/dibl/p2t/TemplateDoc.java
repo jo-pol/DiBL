@@ -79,9 +79,9 @@ public class TemplateDoc
                 int r = cellID.toCharArray()[1] - '1';
                 int c = cellID.toCharArray()[0] - 'A';
                 if (r >= getNrOfRows())
-                    nrOfRows = r+1;
+                    nrOfRows = r + 1;
                 if (r >= getNrOfCols())
-                    nrOfCols = c+1;
+                    nrOfCols = c + 1;
             }
         }
     }
@@ -128,6 +128,20 @@ public class TemplateDoc
                 }
             }
         }
+    }
+
+    public Map<String,Boolean> getEmptyCells()
+    {
+        Map<String,Boolean> result = new TreeMap<String,Boolean>();
+        for (final Set<Element> elements : tileElements.values())
+        {
+            Element element = elements.iterator().next();
+            String href = element.getAttribute("href", NS_XLINK).getValue();
+            String tuple = labelsByIDs.get(href);
+            String cellID = element.getAttribute("label", NS_INKSCAPE).getValue();
+            result.put(cellID,EMPTY_TUPLE.equals(tuple));
+        }
+        return result;
     }
 
     public void setEmpty(final String cellID)
