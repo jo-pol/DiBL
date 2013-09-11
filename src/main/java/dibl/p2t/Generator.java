@@ -47,28 +47,52 @@ public class Generator
      * @throws JDOMException
      *         in case of trouble with the content of the template
      */
-    private void permutations(TemplateDoc template, final File folder, final String... stitches) throws FileNotFoundException, IOException, JDOMException
+    public static void permutations(TemplateDoc template, final File folder, final String... stitches) throws FileNotFoundException, IOException, JDOMException
     {
-        String[][] stitchMatrix = new String[template.getNrOfRows()][template.getNrOfCols()];
         final int nrOfCells = template.getNrOfCols() * template.getNrOfRows();
-
-        // TODO get info about empty stitches from the template, not of the pattern
-        final String regexp = possibleVariations(stitches.length);
+        final String regexp = possiblePermutations(template, stitches).toString();
 
         for (int i = 0; i < Integer.MAX_VALUE; i++)
         {
-            final String variation = pad(nrOfCells, Integer.toString(i, stitches.length));
-            if (variation.length() > nrOfCells)
+            final String permutation = pad(nrOfCells, Integer.toString(i, stitches.length));
+            if (permutation.length() > nrOfCells)
                 break;
-            if (!variation.matches(regexp))
+            if (!permutation.matches(regexp))
                 continue; // skip variations on empty nodes
 
-            for (int r = 0; r < template.getNrOfRows(); r++)
-                for (int c = 0; c < template.getNrOfCols(); c++)
-                    stitchMatrix[r][c] = stitches[(r * template.getNrOfRows() + c) % stitches.length];
+            String[][] stitchMatrix = toMatrix(template, permutation.toCharArray(), stitches);
             template.replaceClonesInBaseTile(stitchMatrix);
-            writeVariation(folder + "/" + variation + ".svg", template);
+            writeVariation(folder + "/" + permutation + ".svg", template);
         }
+    }
+
+    private static String[][] toMatrix(TemplateDoc template, char[] chars, final String... stitches)
+    {
+        int nrOfRows = template.getNrOfRows();
+        int nrOfCols = template.getNrOfCols();
+        String[][] stitchMatrix = new String[nrOfRows][nrOfCols];
+        for (int row = 0; row < nrOfRows; row++)
+            for (int col = 0; col < nrOfCols; col++)
+            {
+                int j = row * nrOfRows + col;
+                stitchMatrix[row][col] = stitches[chars[j] - '0'];
+            }
+        return stitchMatrix;
+    }
+
+    private static StringBuffer possiblePermutations(TemplateDoc template, final String... stitches)
+    {
+        final StringBuffer regexp1 = new StringBuffer();
+
+        Map<String, Boolean> emptyCells = template.getEmptyCells();
+        for (String cellID : emptyCells.keySet())
+        {
+            if (emptyCells.get(cellID))
+                regexp1.append("0");
+            else
+                regexp1.append("[" + "0123456789".substring(0, stitches.length) + "]");
+        }
+        return regexp1;
     }
 
     /**
@@ -193,19 +217,6 @@ public class Generator
         if (variation.length() < nrOfCells)
             return "00000000000000000".substring(0, nrOfCells - variation.length()) + variation;
         return variation;
-    }
-
-    private String possibleVariations(final int length)
-    {
-        final StringBuffer regexp = new StringBuffer();
-        for (final String cell : traversalPattern.getCellKeys())
-        {
-            if (traversalPattern.isEmpty(cell))
-                regexp.append("0");
-            else
-                regexp.append("[" + "0123456789".substring(0, length) + "]");
-        }
-        return regexp.toString();
     }
 
     private static void writeVariation(final String fileName, final TemplateDoc template) throws FileNotFoundException, IOException, JDOMException

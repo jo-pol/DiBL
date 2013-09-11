@@ -32,21 +32,7 @@ public class Main
 {
     private static String README = "README.txt";// not final to allow WhiteboxTest
 
-    public static void main(final String... args) throws IOException, JDOMException
-    {
-        if (args.length < 1)
-            showUsage();
-        else
-        {
-            final PairTraversalPattern pattern = new PairTraversalPattern(System.in);
-            if (args.length == 1)
-                Generator.generate(pattern, System.out, args[0]);
-            else
-                new Generator(pattern).permutations(new File("."), args);
-        }
-    }
-
-    public static void mainNew(final String... args) throws FileNotFoundException, IOException, JDOMException
+    public static void main(final String... args) throws FileNotFoundException, IOException, JDOMException
     {
         if (args.length < 3)
         {
@@ -61,17 +47,10 @@ public class Main
 
         final String[] stitches = Arrays.copyOfRange(args, 2, args.length);
 
-        if (fileName.endsWith(".svg"))
-        {
-            final TemplateDoc template = new TemplateDoc(input);
-            // TODO Generator.buildPermutations(template, folder, stitches);
-        }
+        if (fileName.endsWith(".txt"))
+            Generator.symetricVariants(new PairTraversalPattern(input), folder, stitches);
         else
-        {
-            // assume extension txt
-            final PairTraversalPattern pattern = new PairTraversalPattern(input);
-            Generator.symetricVariants(pattern, folder, stitches);
-        }
+            Generator.permutations(new TemplateDoc(input), folder, stitches);
     }
 
     private static void showUsage() throws FileNotFoundException, IOException

@@ -72,14 +72,13 @@ public class GeneratorTest
     @Test
     public void customMix3x3new() throws Exception
     {
-        Main.mainNew("src/main/assembly/input/3x3_1.txt", "target/3x3", "tc", "tcptc");
+        Main.main("src/main/assembly/input/3x3_1.txt", "target/3x3", "tc", "tcptc");
     }
 
-    //@Ignore
-    // generates 16K files
     @Test
     public void stitchPermutations() throws Exception
     {
+        // generates 256K files
         String folder = "target/permutations";
         new File(folder).mkdirs();
         new Generator(read("3x3_1.txt")).permutations(new File(folder), "tc", "tcptc");
