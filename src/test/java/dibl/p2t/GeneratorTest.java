@@ -70,32 +70,19 @@ public class GeneratorTest
     }
 
     @Test
-    public void customMix4x4() throws Exception
-    {
-        final String[][] stiches = { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
-                {"tc", "tcptc", "tc", "tcptc"}};
-        Generator.generateCustomMix(stiches, "target/custom-mix4x4", loadVariants("4x4_522.txt"));
-    }
-
-    @Test
-    public void customMix3x3() throws Exception
-    {
-        final String[][] stiches = { {"tc", "tcptc", "tc"}, {"tc", "tcptc", "tc"}, {"tcptc", "tc", "tcptc"}};
-        Generator.generateCustomMix(stiches, "target/custom-mix3x3", loadVariants("3x3_1.txt"));
-    }
-
-    @Test
     public void customMix3x3new() throws Exception
     {
         Main.mainNew("src/main/assembly/input/3x3_1.txt", "target/3x3", "tc", "tcptc");
     }
 
-    @Ignore
+    //@Ignore
     // generates 16K files
     @Test
     public void stitchPermutations() throws Exception
     {
-        new Generator(read("4x4_522.txt")).permutations(new File("."), "tc", "tcptcp");
+        String folder = "target/permutations";
+        new File(folder).mkdirs();
+        new Generator(read("3x3_1.txt")).permutations(new File(folder), "tc", "tcptc");
     }
 
     @Ignore

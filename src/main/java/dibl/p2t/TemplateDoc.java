@@ -43,7 +43,8 @@ public class TemplateDoc
     private final Document doc;
     private final Map<String, Set<Element>> tileElements = new TreeMap<String, Set<Element>>();
     private final Map<String, String> idsByLabels = new TreeMap<String, String>();
-    private final Map<String, Set<String>> stitchTypesByTuple = new TreeMap<String, Set<String>>();
+    private final Map<String, String> labelsByIDs = new TreeMap<String, String>();
+    private int nrOfRows = 1, nrOfCols = 1;
 
     /**
      * @param input
@@ -57,7 +58,6 @@ public class TemplateDoc
         doc = new SAXBuilder().build(input);
         collectTileElements();
         collectStitches();
-        collectStitcheTypes();
     }
 
     private void collectTileElements()
@@ -69,13 +69,19 @@ public class TemplateDoc
         {
             if (el.getName().equals("use"))
             {
-                final String value = el.getAttributeValue("label", NS_INKSCAPE);
-                if (value != null && value.trim().length() > 0)
+                final String cellID = el.getAttributeValue("label", NS_INKSCAPE);
+                if (cellID != null && cellID.trim().length() > 0)
                 {
-                    if (!tileElements.containsKey(value.trim()))
-                        tileElements.put(value.trim(), new HashSet<Element>());
-                    tileElements.get(value.trim()).add((el));
+                    if (!tileElements.containsKey(cellID.trim()))
+                        tileElements.put(cellID.trim(), new HashSet<Element>());
+                    tileElements.get(cellID.trim()).add((el));
                 }
+                int r = cellID.toCharArray()[1] - '1';
+                int c = cellID.toCharArray()[0] - 'A';
+                if (r >= getNrOfRows())
+                    nrOfRows = r+1;
+                if (r >= getNrOfCols())
+                    nrOfCols = c+1;
             }
         }
     }
@@ -89,28 +95,8 @@ public class TemplateDoc
             final String label = el.getAttributeValue("label", NS_INKSCAPE);
             final String id = el.getAttributeValue("id");
             idsByLabels.put(label, id);
+            labelsByIDs.put("#" + id, label);
         }
-    }
-
-    private void collectStitcheTypes()
-    {
-        for (final String label : idsByLabels.keySet())
-        {
-            if (label.contains(" "))
-            {
-                final String[] strings = label.split(" ");
-                final String stitchType = strings[0].trim();
-                final String tuple = strings[1].trim();
-                if (!stitchTypesByTuple.containsKey(tuple))
-                    stitchTypesByTuple.put(tuple, new HashSet<String>());
-                stitchTypesByTuple.get(tuple).add(stitchType);
-            }
-        }
-    }
-
-    public Set<String> getStitchTypes(final String tuple) throws JDOMException
-    {
-        return stitchTypesByTuple.get(tuple);
     }
 
     public void replaceClonesInBaseTile(final String cellID, final String stichType, final String tuple)
@@ -122,6 +108,26 @@ public class TemplateDoc
             stitchID = idsByLabels.get(EMPTY_TUPLE);
         for (final Element el : tileElements.get(cellID))
             el.setAttribute("href", "#" + stitchID, NS_XLINK);
+    }
+
+    public void replaceClonesInBaseTile(final String[][] stitchTypes)
+    {
+        for (final Set<Element> elements : tileElements.values())
+        {
+            for (final Element el : elements)
+            {
+                char[] cellID = el.getAttribute("label", NS_INKSCAPE).getValue().toCharArray();
+                int r = cellID[1] - '1';
+                int c = cellID[0] - 'A';
+                String attribute = el.getAttribute("href", NS_XLINK).getValue();
+                String oldLabel = labelsByIDs.get(attribute);
+                if (!oldLabel.equals(EMPTY_TUPLE))
+                {
+                    String newLabel = oldLabel.replaceAll("[a-z]+", stitchTypes[r][c]);
+                    el.setAttribute("href", "#" + idsByLabels.get(newLabel), NS_XLINK);
+                }
+            }
+        }
     }
 
     public void setEmpty(final String cellID)
@@ -139,5 +145,15 @@ public class TemplateDoc
     {
         final XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
         xmlOutputter.output(doc, out);
+    }
+
+    public int getNrOfRows()
+    {
+        return nrOfRows;
+    }
+
+    public int getNrOfCols()
+    {
+        return nrOfCols;
     }
 }

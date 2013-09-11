@@ -70,7 +70,7 @@ public class Main
         {
             // assume extension txt
             final PairTraversalPattern pattern = new PairTraversalPattern(input);
-            Generator.buildSymetricVariants(pattern, folder, stitches);
+            Generator.symetricVariants(pattern, folder, stitches);
         }
     }
 
