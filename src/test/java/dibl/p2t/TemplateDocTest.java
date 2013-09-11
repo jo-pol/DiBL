@@ -14,22 +14,39 @@
 // @formatter:on
 package dibl.p2t;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
-
-import dibl.p2t.TemplateDoc;
 
 public class TemplateDocTest
 {
+    private static final String FOLDER = "target/TemplateDocTest/";
+
+    @BeforeClass
+    public static void createFolder()
+    {
+        new File(FOLDER).mkdirs();
+    }
+
     @Test
-    public void test() throws Exception
+    public void mix3x3() throws Exception
     {
         final TemplateDoc t = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
-        assertThat(t.getStitchTypes("(0,1,1,0,-1,-1)").toArray().length,is(2));
-        assertThat(t.getStitchTypes("(0,1,1,0,-1,-1)").contains("tcptc"),is(true));
+        final String[][] stitches = { {"tc", "tcptc", "tc"}, {"tc", "tcptc", "tc"}, {"tcptc", "tc", "tcptc"}};
+        t.replaceClonesInBaseTile(stitches);
+        t.write(new FileOutputStream(FOLDER + "3x3.svg"));
+    }
+
+    @Test
+    public void mix4x4() throws Exception
+    {
+        final TemplateDoc t = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/4x4.svg"));
+        final String[][] stitches = { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
+                {"tc", "tcptc", "tc", "tcptc"}};
+        t.replaceClonesInBaseTile(stitches);
+        t.write(new FileOutputStream(FOLDER + "4x4.svg"));
     }
 }
