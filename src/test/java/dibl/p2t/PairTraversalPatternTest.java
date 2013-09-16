@@ -35,7 +35,7 @@ public class PairTraversalPatternTest
     @Test
     public void test() throws Exception
     {
-        final String input = INPUT+"/3x3_1.txt";
+        final String input = INPUT + "/3x3_1.txt";
         final PairTraversalPattern tp = new PairTraversalPattern(new FileInputStream(input));
         final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(input)));
         assertThat(reader.readLine(), is(tp.getNumberOfRows() + "\t" + tp.getNumberOfColumns()));
@@ -50,11 +50,13 @@ public class PairTraversalPatternTest
     {
         final Set<String> tuples = new TreeSet<String>();
         for (final File file : new File(INPUT).listFiles())
-        {
-            final PairTraversalPattern t = new PairTraversalPattern(new FileInputStream(file));
-            for (final String cell : t.getCellKeys())
-                tuples.add(t.getTuple(cell));
-        }
+            if (file.getName().endsWith(".txt"))
+            {
+
+                final PairTraversalPattern t = new PairTraversalPattern(new FileInputStream(file));
+                for (final String cell : t.getCellKeys())
+                    tuples.add(t.getTuple(cell));
+            }
         for (final Object tuple : tuples.toArray())
 
             System.out.println(tuple);

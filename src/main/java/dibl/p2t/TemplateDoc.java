@@ -121,7 +121,7 @@ public class TemplateDoc
                 int c = cellID[0] - 'A';
                 String attribute = el.getAttribute("href", NS_XLINK).getValue();
                 String oldLabel = labelsByIDs.get(attribute);
-                if (!oldLabel.equals(EMPTY_TUPLE))
+                if (oldLabel!=null&&!oldLabel.equals(EMPTY_TUPLE))
                 {
                     String newLabel = oldLabel.replaceAll("[a-z]+", stitchTypes[r][c]);
                     el.setAttribute("href", "#" + idsByLabels.get(newLabel), NS_XLINK);

@@ -40,34 +40,36 @@ public class PatternPropertiesTest
     {
         File[] files = new File(INPUT).listFiles();
         for (final File file : files)
-        {
-            PairTraversalPattern pattern1 = new PairTraversalPattern(new FileInputStream(file));
-            final PatternProperties props1 = new PatternProperties(pattern1);
-            PatternProperties props2 = new PatternProperties(new PatternProperties(props1.toLeftRightPattern()).toLeftRightPattern());
-            assertTrue(file.getName(), props1.smallest().equals(props2.smallest()));
-            PatternProperties props3 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toBottomUpPattern());
-            assertTrue(file.getName(), props1.smallest().equals(props3.smallest()));
-            PatternProperties props4 = new PatternProperties(new PatternProperties(props1.toRotatedPattern()).toRotatedPattern());
-            assertTrue(file.getName(), props1.smallest().equals(props4.smallest()));
-            // flip along both axes is a rotation
-            PatternProperties props5 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toLeftRightPattern());
-            assertTrue(file.getName(), props5.smallest().equals(new PatternProperties(props1.toRotatedPattern()).smallest()));
-        }
+            if (file.getName().endsWith(".txt"))
+            {
+                PairTraversalPattern pattern1 = new PairTraversalPattern(new FileInputStream(file));
+                final PatternProperties props1 = new PatternProperties(pattern1);
+                PatternProperties props2 = new PatternProperties(new PatternProperties(props1.toLeftRightPattern()).toLeftRightPattern());
+                assertTrue(file.getName(), props1.smallest().equals(props2.smallest()));
+                PatternProperties props3 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toBottomUpPattern());
+                assertTrue(file.getName(), props1.smallest().equals(props3.smallest()));
+                PatternProperties props4 = new PatternProperties(new PatternProperties(props1.toRotatedPattern()).toRotatedPattern());
+                assertTrue(file.getName(), props1.smallest().equals(props4.smallest()));
+                // flip along both axes is a rotation
+                PatternProperties props5 = new PatternProperties(new PatternProperties(props1.toBottomUpPattern()).toLeftRightPattern());
+                assertTrue(file.getName(), props5.smallest().equals(new PatternProperties(props1.toRotatedPattern()).smallest()));
+            }
     }
 
-    @Ignore //don't break the build with not commited input 
+    @Ignore
+    // don't break the build with not commited input
     @Test
     public void searchForFlippedVersions() throws Exception
     {
-        int[] nrs = {408,618,687,717,1132,1199};
+        int[] nrs = {408, 618, 687, 717, 1132, 1199};
         System.out.println();
-        for (Integer i:nrs)
+        for (Integer i : nrs)
         {
-            PairTraversalPattern pattern = new PairTraversalPattern(new FileInputStream(INPUT+"/4x4_"+i+".txt"));
-            System.out.println(i+" "+new PatternProperties(pattern).smallest());
+            PairTraversalPattern pattern = new PairTraversalPattern(new FileInputStream(INPUT + "/4x4_" + i + ".txt"));
+            System.out.println(i + " " + new PatternProperties(pattern).smallest());
         }
         System.out.println();
-        PatternProperties props = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT+"/4x4_"+nrs[0]+".txt")));
+        PatternProperties props = new PatternProperties(new PairTraversalPattern(new FileInputStream(INPUT + "/4x4_" + nrs[0] + ".txt")));
         System.out.println(new PatternProperties(props.toLeftRightPattern()).smallest());
         System.out.println(new PatternProperties(props.toBottomUpPattern()).smallest());
         System.out.println(new PatternProperties(props.toRotatedPattern()).smallest());
@@ -83,12 +85,13 @@ public class PatternPropertiesTest
         Map<String, List<File>> signed = new TreeMap<String, List<File>>();
         Map<String, List<File>> unsigned = new TreeMap<String, List<File>>();
         for (final File file : files)
-        {
-            final PatternProperties pp = new PatternProperties(new PairTraversalPattern(new FileInputStream(file)));
-            if (!signed.containsKey(pp.smallest()))
-                addToCollection(file, pp.unsignedSmallest(), unsigned);
-            addToCollection(file, pp.smallest(), signed);
-        }
+            if (file.getName().endsWith(".txt"))
+            {
+                final PatternProperties pp = new PatternProperties(new PairTraversalPattern(new FileInputStream(file)));
+                if (!signed.containsKey(pp.smallest()))
+                    addToCollection(file, pp.unsignedSmallest(), unsigned);
+                addToCollection(file, pp.smallest(), signed);
+            }
         printLookALikes(unsigned.values());
         System.out.println(files.length + " files");
         System.out.println(signed.size() + " mathematically different patterns");
@@ -118,7 +121,10 @@ public class PatternPropertiesTest
             @Override
             public int compare(File o1, File o2)
             {
-                return toInt(o1.getName()).compareTo(toInt(o2.getName()));
+                if (o1.getName().endsWith(".txt") && o2.getName().endsWith(".txt"))
+                    return toInt(o1.getName()).compareTo(toInt(o2.getName()));
+                else
+                    return o1.getName().compareTo(o2.getName());
             }
         };
     }
