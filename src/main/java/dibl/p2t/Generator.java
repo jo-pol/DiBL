@@ -29,8 +29,6 @@ public class Generator
 {
     private static String CFG = "cfg/"; // not final to allow WhiteboxTest
     private static final Map<String, TemplateDoc> templates = new HashMap<String, TemplateDoc>();
-    private final PairTraversalPattern traversalPattern;
-    private final TemplateDoc template;
 
     /**
      * Generates thread diagrams for permutations of the specified stitches.
@@ -74,8 +72,8 @@ public class Generator
         for (int row = 0; row < nrOfRows; row++)
             for (int col = 0; col < nrOfCols; col++)
             {
-                int j = row * nrOfRows + col;
-                stitchMatrix[row][col] = stitches[chars[j] - '0'];
+                int j = row * nrOfCols + col;
+                stitchMatrix[row][col] = stitches[(chars[j] - '0')%stitches.length];
             }
         return stitchMatrix;
     }
@@ -183,25 +181,6 @@ public class Generator
     public static void resetTemplates()
     {
         templates.clear();
-    }
-
-    /**
-     * @param traversalPattern
-     * @throws IOException
-     * @throws JDOMException
-     */
-    public Generator(final PairTraversalPattern traversalPattern) throws IOException, JDOMException
-    {
-        this.traversalPattern = traversalPattern;
-        template = getTemplate(traversalPattern);
-    }
-
-    public void permutations(final File folder, final String... stitchTypes) throws IOException, JDOMException
-    {
-        // bootstrap for the current command line interface
-        applyCustomMix(template, buildStitchesMatrix(stitchTypes, template.getNrOfRows(), template.getNrOfCols()), traversalPattern);
-
-        permutations(template, folder, stitchTypes);
     }
 
     private static TemplateDoc getTemplate(final PairTraversalPattern traversalPattern) throws FileNotFoundException, IOException, JDOMException

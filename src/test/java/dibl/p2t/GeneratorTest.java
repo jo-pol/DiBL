@@ -79,9 +79,20 @@ public class GeneratorTest
     public void stitchPermutations() throws Exception
     {
         // generates 256K files
-        String folder = "target/permutations";
-        new File(folder).mkdirs();
-        new Generator(read("3x3_1.txt")).permutations(new File(folder), "tc", "tcptc");
+        TemplateDoc template = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
+        String[] stitchTypes = {"tc", "tcptc"};
+        File folder = new File("target/permutations");
+        folder.mkdirs();
+        Generator.permutations(template, folder, stitchTypes);
+    }
+
+    @Test
+    public void flanders() throws Exception
+    {
+        File folder = new File("target/flanders");
+        folder.mkdirs();
+        TemplateDoc template = new TemplateDoc(new FileInputStream(INPUT_FOLDER + "/flanders.svg"));
+        Generator.permutations(template,folder, "tc", "ctc","tctc");
     }
 
     @Ignore
