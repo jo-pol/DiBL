@@ -14,7 +14,7 @@
    height="1052.3622"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.2 r9819"
    sodipodi:docname="3x3.svg">
   <title
      id="title4222">3x3 Template</title>
@@ -25,8 +25,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.42995"
-     inkscape:cx="525.94729"
+     inkscape:zoom="0.8"
+     inkscape:cx="308.44729"
      inkscape:cy="59.226666"
      inkscape:document-units="px"
      inkscape:current-layer="g4512"
@@ -446,8 +446,8 @@
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
         <dc:date>2013</dc:date>
-        <dc:description>An template to transform pair traversal diagrams into thread diagrams. See http://web.uvic.ca/~vmi/papers/bridges2012.html
-and http://dibl.googlecode.com</dc:description>
+        <dc:description>A bobbin lace template 
+http://dibl.googlecode.com can vary the stiches or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/bridges2012.html</dc:description>
       </cc:Work>
       <cc:License
          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
