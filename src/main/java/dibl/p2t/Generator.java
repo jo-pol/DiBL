@@ -55,12 +55,12 @@ public class Generator
         for (int i = 0; i < Integer.MAX_VALUE; i++)
         {
             final String permutation = pad(nrOfCells, Integer.toString(i, stitches.length));
-            if(j++>getMaxPermutations())
-                break;
             if (permutation.length() > nrOfCells)
                 break;
             if (!permutation.matches(regexp))
                 continue; // skip variations on empty nodes
+            if(j++>getMaxPermutations())
+                break;
 
             String[][] stitchMatrix = toMatrix(template, permutation.toCharArray(), stitches);
             template.replaceClonesInBaseTile(stitchMatrix);
