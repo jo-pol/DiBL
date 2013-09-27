@@ -139,7 +139,7 @@ public class TemplateDoc
             String href = element.getAttribute("href", NS_XLINK).getValue();
             String tuple = labelsByIDs.get(href);
             String cellID = element.getAttribute("label", NS_INKSCAPE).getValue();
-            result.put(cellID,EMPTY_TUPLE.equals(tuple));
+            result.put(cellID,!tuple.contains("1"));
         }
         return result;
     }

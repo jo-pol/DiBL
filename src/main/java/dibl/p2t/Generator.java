@@ -29,6 +29,7 @@ public class Generator
 {
     private static String CFG = "cfg/"; // not final to allow WhiteboxTest
     private static final Map<String, TemplateDoc> templates = new HashMap<String, TemplateDoc>();
+    private static int maxPermutations = 500;
 
     /**
      * Generates thread diagrams for permutations of the specified stitches.
@@ -50,7 +51,7 @@ public class Generator
         final int nrOfCells = template.getNrOfCols() * template.getNrOfRows();
         final String regexp = possiblePermutations(template, stitches).toString();
 
-        for (int i = 0; i < Integer.MAX_VALUE; i++)
+        for (int i = 0; i < getMaxPermutations(); i++)
         {
             final String permutation = pad(nrOfCells, Integer.toString(i, stitches.length));
             if (permutation.length() > nrOfCells)
@@ -209,5 +210,15 @@ public class Generator
         {
             out.close();
         }
+    }
+
+    public static int getMaxPermutations()
+    {
+        return maxPermutations;
+    }
+
+    public static void setMaxPermutations(int maxPermutations)
+    {
+        Generator.maxPermutations = maxPermutations;
     }
 }
