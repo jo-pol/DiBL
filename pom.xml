@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dibl</groupId>
 	<artifactId>dibl</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>DIagrams for Bobbin Lace</name>
 	<description>Turns pair traversal diagrams for bobbin lace into thread diagrams</description>
 	<licenses>
