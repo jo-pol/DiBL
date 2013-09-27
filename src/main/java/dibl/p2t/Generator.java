@@ -51,9 +51,12 @@ public class Generator
         final int nrOfCells = template.getNrOfCols() * template.getNrOfRows();
         final String regexp = possiblePermutations(template, stitches).toString();
 
-        for (int i = 0; i < getMaxPermutations(); i++)
+        int j = 0;
+        for (int i = 0; i < Integer.MAX_VALUE; i++)
         {
             final String permutation = pad(nrOfCells, Integer.toString(i, stitches.length));
+            if(j++>getMaxPermutations())
+                break;
             if (permutation.length() > nrOfCells)
                 break;
             if (!permutation.matches(regexp))
