@@ -166,6 +166,12 @@ public class Generator
     {
         final TemplateDoc template = getTemplate(traversalPattern);
 
+        generate(traversalPattern, stichType, template);
+        template.write(out);
+    }
+
+    public static void generate(final PairTraversalPattern traversalPattern, final String stichType, final TemplateDoc template)
+    {
         for (final String cellID : traversalPattern.getCellKeys())
         {
             if (traversalPattern.isEmpty(cellID))
@@ -176,7 +182,6 @@ public class Generator
                 template.replaceClonesInBaseTile(cellID, stichType, tuple);
             }
         }
-        template.write(out);
     }
 
     /**
