@@ -115,6 +115,14 @@ public class GeneratorTest
     }
 
     @Test
+    public void replaceBrickedStitches() throws Exception
+    {
+        final TemplateDoc template = new TemplateDoc(new FileInputStream("src/test/resources/3x3.svg"));
+        template.replaceClonesInBaseTile(new String[][] {{"tcptc","tcptc","tcptc"},{"tcptc","tcptc","tcptc"},{"tcptc","tcptc","tcptc"}});
+        template.write(new FileOutputStream("target/brickedStitches.svg"));
+    }
+
+    @Test
     public void bricked3x3() throws Exception
     {
         final String outputFolder = "target/bricked";
