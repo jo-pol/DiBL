@@ -32,21 +32,31 @@ public class TemplateDocTest
     }
 
     @Test
-    public void mix3x3() throws Exception
+    public void mix3x3stitches() throws Exception
     {
-        final TemplateDoc t = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
-        final String[][] stitches = { {"tc", "tcptc", "tc"}, {"tc", "tcptc", "tc"}, {"tcptc", "tc", "tcptc"}};
-        t.replaceClonesInBaseTile(stitches);
-        t.write(new FileOutputStream(FOLDER + "3x3.svg"));
+        String[][] stitches = new String[][] { {"tc", "tcptc", "tc"}, {"tc", "tcptc", "tc"}, {"tcptc", "tc", "tcptc"}};
+        final TemplateDoc template = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
+        template.replaceStitches(stitches);
+        template.write(new FileOutputStream(FOLDER + "3x3stitches.svg"));
+    }
+
+    @Test
+    public void change3x3tuples() throws Exception
+    {
+        String[][] tuples = new String[][] { {"(1,0,1,0,-1,-1)", "(-1,0,1,1,-1,0)", "(1,1,0,0,-1,-1)"},//
+                {"(-1,1,1,0,-1,0)", "(0,1,0,1,-1,-1)", "(0,1,1,-1,0,-1)"},//
+                {"(-1,1,1,-1,0,0)", "(1,1,0,-1,0,-1)", "(0,0,1,1,-1,-1)"}};
+        final TemplateDoc template = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
+        template.replaceTuples(tuples, "tc");
+        template.write(new FileOutputStream(FOLDER + "3x3tuples.svg"));
     }
 
     @Test
     public void mix4x4() throws Exception
     {
         final TemplateDoc t = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/4x4.svg"));
-        final String[][] stitches = { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
-                {"tc", "tcptc", "tc", "tcptc"}};
-        t.replaceClonesInBaseTile(stitches);
+        t.replaceStitches(new String[][] { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
+                {"tc", "tcptc", "tc", "tcptc"}});
         t.write(new FileOutputStream(FOLDER + "4x4.svg"));
     }
 }
