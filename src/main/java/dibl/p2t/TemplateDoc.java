@@ -76,8 +76,8 @@ public class TemplateDoc
                         tileElements.put(cellID.trim(), new HashSet<Element>());
                     tileElements.get(cellID.trim()).add((el));
                 }
-                int r = cellID.toCharArray()[1] - '1';
-                int c = cellID.toCharArray()[0] - 'A';
+                final int r = cellID.toCharArray()[1] - '1';
+                final int c = cellID.toCharArray()[0] - 'A';
                 if (r >= getNrOfRows())
                     nrOfRows = r + 1;
                 if (r >= getNrOfCols())
@@ -110,36 +110,73 @@ public class TemplateDoc
             el.setAttribute("href", "#" + stitchID, NS_XLINK);
     }
 
-    public void replaceClonesInBaseTile(final String[][] stitchTypes)
+    public void replaceStitches(final String[][] newValues)
+    {
+        replace(newValues, "^[^ ]*");
+    }
+
+    public void replaceTuples(final String[][] newValues, final String defaultStitch)
+    {
+        final int rows = newValues.length;
+        final int cols = newValues[0].length;
+        final String[][] defaults = new String[rows][cols];
+        for (int r=0 ; r<rows;r++)
+            for (int c=0 ; c<cols;c++)
+                defaults[r][c] = defaultStitch+" (";
+        replace (newValues, "[(].*");
+        replace (defaults, "^[(]");//TODO not for new zero-tuples!
+    }
+
+    private void replace(final String[][] newValues, final String searchPattern)
     {
         for (final Set<Element> elements : tileElements.values())
         {
             for (final Element el : elements)
             {
-                char[] cellID = el.getAttribute("label", NS_INKSCAPE).getValue().toCharArray();
-                int r = cellID[1] - '1';
-                int c = cellID[0] - 'A';
-                String attribute = el.getAttribute("href", NS_XLINK).getValue();
-                String oldLabel = labelsByIDs.get(attribute);
-                if (oldLabel!=null&&!oldLabel.equals(EMPTY_TUPLE))
+                final char[] cellID = el.getAttribute("label", NS_INKSCAPE).getValue().toCharArray();
+                final int r = cellID[1] - '1';
+                final int c = cellID[0] - 'A';
+                final String attribute = el.getAttribute("href", NS_XLINK).getValue();
+                final String oldLabel = labelsByIDs.get(attribute);
+                if (oldLabel != null)
                 {
-                    String newLabel = oldLabel.replaceAll("[a-z]+", stitchTypes[r][c]);
+                    final String newLabel = oldLabel.replaceAll(searchPattern, newValues[r][c]);
                     el.setAttribute("href", "#" + idsByLabels.get(newLabel), NS_XLINK);
                 }
             }
         }
     }
 
-    public Map<String,Boolean> getEmptyCells()
+    public void replaceClonesInBaseTile(final String[][] stitchTypes)
     {
-        Map<String,Boolean> result = new TreeMap<String,Boolean>();
         for (final Set<Element> elements : tileElements.values())
         {
-            Element element = elements.iterator().next();
-            String href = element.getAttribute("href", NS_XLINK).getValue();
-            String tuple = labelsByIDs.get(href);
-            String cellID = element.getAttribute("label", NS_INKSCAPE).getValue();
-            result.put(cellID,!tuple.contains("1"));
+            for (final Element el : elements)
+            {
+                final char[] cellID = el.getAttribute("label", NS_INKSCAPE).getValue().toCharArray();
+                final int r = cellID[1] - '1';
+                final int c = cellID[0] - 'A';
+                final String attribute = el.getAttribute("href", NS_XLINK).getValue();
+                final String oldLabel = labelsByIDs.get(attribute);
+                if (oldLabel != null && !oldLabel.equals(EMPTY_TUPLE))
+                {
+                    final String newLabel = oldLabel.replaceAll("[a-z]+", stitchTypes[r][c]);
+                    el.setAttribute("href", "#" + idsByLabels.get(newLabel), NS_XLINK);
+                }
+            }
+        }
+    }
+
+    public Map<String, Boolean> getEmptyCells()
+    {
+        final Map<String, Boolean> result = new TreeMap<String, Boolean>();
+        for (final Set<Element> elements : tileElements.values())
+        {
+            final Element element = elements.iterator().next();
+            final String href = element.getAttribute("href", NS_XLINK).getValue();
+            final String tuple = labelsByIDs.get(href);
+            final String cellID = element.getAttribute("label", NS_INKSCAPE).getValue();
+            result.put(cellID, !tuple.contains("1"));
         }
         return result;
     }
