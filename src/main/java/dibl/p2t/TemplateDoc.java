@@ -120,11 +120,11 @@ public class TemplateDoc
         final int rows = newValues.length;
         final int cols = newValues[0].length;
         final String[][] defaults = new String[rows][cols];
-        for (int r=0 ; r<rows;r++)
-            for (int c=0 ; c<cols;c++)
-                defaults[r][c] = defaultStitch+" (";
-        replace (newValues, "[(].*");
-        replace (defaults, "^[(]");//TODO not for new zero-tuples!
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                defaults[r][c] = defaultStitch + " " + newValues[r][c];
+        replace(newValues, "[(].*");
+        replace(defaults, "^[(].*");
     }
 
     private void replace(final String[][] newValues, final String searchPattern)
@@ -141,7 +141,9 @@ public class TemplateDoc
                 if (oldLabel != null)
                 {
                     final String newLabel = oldLabel.replaceAll(searchPattern, newValues[r][c]);
-                    el.setAttribute("href", "#" + idsByLabels.get(newLabel), NS_XLINK);
+                    String newID = idsByLabels.get(newLabel);
+                    if (newID != null)
+                        el.setAttribute("href", "#" + newID, NS_XLINK);
                 }
             }
         }
