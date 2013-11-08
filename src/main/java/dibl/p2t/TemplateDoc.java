@@ -99,6 +99,7 @@ public class TemplateDoc
         }
     }
 
+    @Deprecated
     public void replaceClonesInBaseTile(final String cellID, final String stichType, final String tuple)
     {
         if (!tileElements.containsKey(cellID))
@@ -110,21 +111,33 @@ public class TemplateDoc
             el.setAttribute("href", "#" + stitchID, NS_XLINK);
     }
 
-    public void replaceStitches(final String[][] newValues)
+    public TemplateDoc replaceStitches(final String[][] newValues)
     {
         replace(newValues, "^[^ ]*");
+        return this;
     }
 
-    public void replaceTuples(final String[][] newValues, final String defaultStitch)
+    public TemplateDoc replaceTuples(final String[][] newValues, final String defaultStitch)
     {
-        final int rows = newValues.length;
-        final int cols = newValues[0].length;
-        final String[][] defaults = new String[rows][cols];
-        for (int r = 0; r < rows; r++)
-            for (int c = 0; c < cols; c++)
+        final String[][] defaults = new String[nrOfRows][nrOfCols];
+        for (int r = 0; r < nrOfRows; r++)
+            for (int c = 0; c < nrOfCols; c++)
                 defaults[r][c] = defaultStitch + " " + newValues[r][c];
         replace(newValues, "[(].*");
+        // add stitches to node that were empty
         replace(defaults, "^[(].*");
+        // TODO remove stitches from nodes that became empty
+        return this;
+    }
+
+    public TemplateDoc replaceBoth(final String[][] stitches, final String[][] tuples)
+    {
+        final String[][] newValues = new String[nrOfRows][nrOfCols];
+        for (int r = 0; r < nrOfRows; r++)
+            for (int c = 0; c < nrOfCols; c++)
+                newValues[r][c] = stitches[r][c] + " " + tuples[r][c];
+        replace(newValues, "^.*$");
+        return this;
     }
 
     private void replace(final String[][] newValues, final String searchPattern)
@@ -149,6 +162,7 @@ public class TemplateDoc
         }
     }
 
+    @Deprecated
     public void replaceClonesInBaseTile(final String[][] stitchTypes)
     {
         for (final Set<Element> elements : tileElements.values())
@@ -169,6 +183,7 @@ public class TemplateDoc
         }
     }
 
+    @Deprecated
     public Map<String, Boolean> getEmptyCells()
     {
         final Map<String, Boolean> result = new TreeMap<String, Boolean>();
@@ -183,6 +198,7 @@ public class TemplateDoc
         return result;
     }
 
+    @Deprecated
     public void setEmpty(final String cellID)
     {
         if (!tileElements.containsKey(cellID))
