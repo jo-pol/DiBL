@@ -23,6 +23,7 @@ import java.util.TreeSet;
 import dibl.matrix.Extractor;
 import dibl.matrix.MatrixTransformer;
 
+@Deprecated
 public class PatternProperties
 {
     /** Index for connection with adjacent node. */
