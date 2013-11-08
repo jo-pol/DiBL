@@ -154,7 +154,7 @@ public class TemplateDoc
                 if (oldLabel != null)
                 {
                     final String newLabel = oldLabel.replaceAll(searchPattern, newValues[r][c]);
-                    String newID = idsByLabels.get(newLabel);
+                    final String newID = idsByLabels.get(newLabel);
                     if (newID != null)
                         el.setAttribute("href", "#" + newID, NS_XLINK);
                 }
