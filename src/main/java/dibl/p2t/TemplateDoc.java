@@ -14,6 +14,7 @@
 // @formatter:on
 package dibl.p2t;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -58,6 +59,21 @@ public class TemplateDoc
         doc = new SAXBuilder().build(input);
         collectTileElements();
         collectStitches();
+    }
+
+    public TemplateDoc(final String input) throws IOException, JDOMException
+    {
+        final FileInputStream inputStream = new FileInputStream(input);
+        try
+        {
+            doc = new SAXBuilder().build(inputStream);
+            collectTileElements();
+            collectStitches();
+        }
+        finally
+        {
+            inputStream.close();
+        }
     }
 
     private void collectTileElements()
@@ -124,7 +140,7 @@ public class TemplateDoc
             for (int c = 0; c < nrOfCols; c++)
                 defaults[r][c] = defaultStitch + " " + newValues[r][c];
         replace(newValues, "[(].*");
-        // add stitches to node that were empty
+        // add stitches to nodes that were empty
         replace(defaults, "^[(].*");
         // TODO remove stitches from nodes that became empty
         return this;
@@ -135,7 +151,10 @@ public class TemplateDoc
         final String[][] newValues = new String[nrOfRows][nrOfCols];
         for (int r = 0; r < nrOfRows; r++)
             for (int c = 0; c < nrOfCols; c++)
-                newValues[r][c] = stitches[r][c] + " " + tuples[r][c];
+                if (!tuples[r][c].matches("[(0,)]*"))
+                    newValues[r][c] = stitches[r][c] + " " + tuples[r][c];
+                else
+                    newValues[r][c] = tuples[r][c];
         replace(newValues, "^.*$");
         return this;
     }
