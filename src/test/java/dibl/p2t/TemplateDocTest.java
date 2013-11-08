@@ -60,7 +60,7 @@ public class TemplateDocTest
                 {"(-1,1,1,-1,0,0)", "(1,1,0,-1,0,-1)", "(0,0,1,1,-1,-1)"}};
         final FileInputStream inputStream = new FileInputStream("src/main/assembly/cfg/3x3.svg");
         final FileOutputStream outputStream = new FileOutputStream(OUTPUT_FOLDER + "3x3both.svg");
-        new TemplateDoc(inputStream).replaceBoth(stitches,tuples).write(outputStream);
+        new TemplateDoc(inputStream).replaceBoth(stitches, tuples).write(outputStream);
     }
 
     @Test
