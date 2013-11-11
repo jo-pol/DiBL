@@ -17,7 +17,7 @@ public class ApiTest
 {
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
     private static final String INPUT_FOLDER = "src/test/resources/";
-    private String[][] stitches = new String[][] { //
+    private final String[][] stitches = new String[][] { //
     {"tcptc", "tc", "tcptc", "tc"}, //
             {"tc", "tcptc", "tc", "tcptc"}, //
             {"tcptc", "tc", "tcptc", "tc"}, //
@@ -36,13 +36,12 @@ public class ApiTest
         loop("4x4_", 222,INPUT_FOLDER+"/4x4.svg");
     }
 
-    private void loop(String dim, int n, String template) throws IOException, FileNotFoundException, JDOMException
+    private void loop(final String dim, final int n, final String template) throws IOException, FileNotFoundException, JDOMException
     {
         for (int i = 1; i < n; i++)
         {
-            String[][] tuples = MatrixReader.read(new FileInputStream(INPUT_FOLDER + dim + i + ".txt"));
+            final String[][] tuples = MatrixReader.read(new FileInputStream(INPUT_FOLDER + dim + i + ".txt"));
             new TemplateDoc(template).replaceBoth(stitches, tuples).write(new FileOutputStream(OUTPUT_FOLDER + dim + i + "_both.svg"));
-            new TemplateDoc(template).replaceTuples(tuples,"tc").write(new FileOutputStream(OUTPUT_FOLDER + dim + i + "_tuples.svg"));
         }
     }
 }
