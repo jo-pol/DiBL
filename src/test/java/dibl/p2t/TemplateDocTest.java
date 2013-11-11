@@ -55,10 +55,10 @@ public class TemplateDocTest
     public void changeBoth3x3() throws Exception
     {
         final String[][] stitches = new String[][] { {"tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc"}, {"tc", "tcptc", "tc"}};
-        final String[][] tuples = new String[][] { {"(1,0,1,0,-1,-1)", "(-1,0,1,1,-1,0)", "(1,1,0,0,-1,-1)"},//
-                {"(-1,1,1,0,-1,0)", "(0,1,0,1,-1,-1)", "(0,1,1,-1,0,-1)"},//
-                {"(-1,1,1,-1,0,0)", "(1,1,0,-1,0,-1)", "(0,0,1,1,-1,-1)"}};
-        final FileInputStream inputStream = new FileInputStream("src/main/assembly/cfg/3x3.svg");
+        final String[][] tuples = new String[][] { {"(1,0,0,1,0,-1,0,-1)", "(-1,0,0,1,1,-1,0,0)", "(1,1,0,0,0,-1,0,-1)"},//
+                {"(-1,1,0,,1,0,-1,0,0)", "(0,1,0,0,1,-1,0,-1)", "(0,1,0,1,-1,0,0,-1)"},//
+                {"(-1,1,0,1,-1,0,0,0)", "(1,1,0,0,-1,0,0,-1)", "(0,0,0,1,1,-1,0,-1)"}};
+        final FileInputStream inputStream = new FileInputStream("src/test/resources/3x3.svg");
         final FileOutputStream outputStream = new FileOutputStream(OUTPUT_FOLDER + "3x3both.svg");
         new TemplateDoc(inputStream).replaceBoth(stitches, tuples).write(outputStream);
     }
@@ -66,9 +66,16 @@ public class TemplateDocTest
     @Test
     public void mix4x4() throws Exception
     {
-        final TemplateDoc t = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/4x4.svg"));
-        t.replaceStitches(new String[][] { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
-                {"tc", "tcptc", "tc", "tcptc"}});
-        t.write(new FileOutputStream(OUTPUT_FOLDER + "4x4.svg"));
+        String[][] stitches = new String[][] { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
+                {"tc", "tcptc", "tc", "tcptc"}};
+        final String[][] tuples = new String[][] { {"(-1,1,0,1,-1,0,0,0)", "(-1,1,0,0,1,-1,0,0)", "(-1,0,0,1,1,-1,0,0)", "(1,0,0,0,1,-1,0,-1)"},//
+                {"(1,1,0,0,-1,-1,0,0)", "(1,1,0,0,-1,-1,0,0)", "(1,1,0,0,-1,-1,0,0)", "(1,0,0,1,-1,0,0,-1)"},//
+                {"(-1,1,0,1,0,0,0,-1)", "(-1,1,0,0,1,-1,0,0)", "(0,1,0,0,1,-1,0,-1)", "(0,0,0,0,0,0,0,0)"},//
+                {"(-1,1,0,1,-1,0,0,0)", "(-1,1,0,0,1,0,0,-1)", "(-1,0,0,1,1,-1,0,0)", "(1,0,0,0,1,-1,0,-1)"}};
+
+        final TemplateDoc t = new TemplateDoc(new FileInputStream("src/test/resources/4x4.svg"));
+        t.replaceStitches(stitches).write(new FileOutputStream(OUTPUT_FOLDER + "4x4_stitches.svg"));
+        // TODO the zero-tuple should be replaced in the output
+        t.replaceTuples(tuples, "tc").write(new FileOutputStream(OUTPUT_FOLDER + "4x4_tuples.svg"));
     }
 }
