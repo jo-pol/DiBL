@@ -202,7 +202,6 @@ public class TemplateDoc
         }
     }
 
-    @Deprecated
     public Map<String, Boolean> getEmptyCells()
     {
         final Map<String, Boolean> result = new TreeMap<String, Boolean>();
