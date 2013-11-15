@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import dibl.matrix.Extractor;
-import dibl.matrix.MatrixTransformer;
+import dibl.math.Extractor;
+import dibl.math.MatrixTransformer;
 
 @Deprecated
 public class PatternProperties
