@@ -12,14 +12,13 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.p2t;
+package dibl.math;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import dibl.math.Transformer;
 
 public class TupleTransformer implements Transformer<String>
 {

@@ -22,6 +22,7 @@ import java.util.TreeSet;
 
 import dibl.math.Extractor;
 import dibl.math.MatrixTransformer;
+import dibl.math.TupleTransformer;
 
 @Deprecated
 public class PatternProperties
