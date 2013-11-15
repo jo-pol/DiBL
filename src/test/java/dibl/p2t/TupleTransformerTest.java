@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import dibl.math.TupleTransformer;
+
 public class TupleTransformerTest
 {
     @Test
