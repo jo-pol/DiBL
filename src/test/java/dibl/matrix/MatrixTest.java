@@ -20,6 +20,10 @@ import java.util.Arrays;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import dibl.math.Extractor;
+import dibl.math.MatrixTransformer;
+import dibl.math.Transformer;
 import static org.hamcrest.core.Is.is;
 
 public class MatrixTest

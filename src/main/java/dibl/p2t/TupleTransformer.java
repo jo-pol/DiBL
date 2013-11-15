@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import dibl.matrix.Transformer;
+import dibl.math.Transformer;
 
 public class TupleTransformer implements Transformer<String>
 {
