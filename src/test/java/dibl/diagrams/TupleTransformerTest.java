@@ -1,4 +1,4 @@
-package dibl.p2t;
+package dibl.diagrams;
 
 import static org.junit.Assert.assertTrue;
 

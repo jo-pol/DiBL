@@ -15,10 +15,10 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import dibl.diagrams.TemplateDoc;
 import dibl.math.MatrixReader;
 import dibl.math.MatrixTransformer;
 import dibl.math.TupleTransformer;
-import dibl.p2t.TemplateDoc;
 
 public class ApiTest
 {
