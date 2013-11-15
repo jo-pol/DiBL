@@ -1,4 +1,4 @@
-package dibl.diagrams;
+package dibl.matrix;
 
 import static org.junit.Assert.assertTrue;
 
