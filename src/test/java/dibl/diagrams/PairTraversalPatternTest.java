@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.p2t;
+package dibl.diagrams;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -26,7 +26,7 @@ import java.util.TreeSet;
 
 import org.junit.Test;
 
-import dibl.p2t.PairTraversalPattern;
+import dibl.diagrams.PairTraversalPattern;
 
 public class PairTraversalPatternTest
 {

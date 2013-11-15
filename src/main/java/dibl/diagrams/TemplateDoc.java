@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.p2t;
+package dibl.diagrams;
 
 import java.io.FileInputStream;
 import java.io.IOException;

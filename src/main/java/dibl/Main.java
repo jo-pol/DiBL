@@ -24,9 +24,9 @@ import java.util.Arrays;
 
 import org.jdom2.JDOMException;
 
-import dibl.p2t.Generator;
-import dibl.p2t.PairTraversalPattern;
-import dibl.p2t.TemplateDoc;
+import dibl.diagrams.Generator;
+import dibl.diagrams.PairTraversalPattern;
+import dibl.diagrams.TemplateDoc;
 
 public class Main
 {
