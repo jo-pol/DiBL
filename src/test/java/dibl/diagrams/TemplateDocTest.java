@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.p2t;
+package dibl.diagrams;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import dibl.diagrams.TemplateDoc;
 
 public class TemplateDocTest
 {

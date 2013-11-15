@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.p2t;
+package dibl.diagrams;
 
 import static org.junit.Assert.assertTrue;
 
@@ -30,6 +30,9 @@ import java.util.TreeSet;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import dibl.diagrams.PairTraversalPattern;
+import dibl.diagrams.PatternProperties;
 
 public class PatternPropertiesTest
 {
