@@ -17,8 +17,8 @@ import org.junit.Test;
 
 import dibl.math.MatrixReader;
 import dibl.math.MatrixTransformer;
+import dibl.math.TupleTransformer;
 import dibl.p2t.TemplateDoc;
-import dibl.p2t.TupleTransformer;
 
 public class ApiTest
 {
