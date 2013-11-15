@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.matrix;
+package dibl.math;
 
 public class MatrixTransformer<H extends Transformer<String>>
 {

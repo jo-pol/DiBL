@@ -15,8 +15,8 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import dibl.matrix.MatrixReader;
-import dibl.matrix.MatrixTransformer;
+import dibl.math.MatrixReader;
+import dibl.math.MatrixTransformer;
 import dibl.p2t.TemplateDoc;
 import dibl.p2t.TupleTransformer;
 
