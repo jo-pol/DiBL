@@ -19,11 +19,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.jdom2.JDOMException;
+
+import dibl.math.MatrixTransformer;
+import dibl.math.TupleTransformer;
 
 public class Generator
 {
@@ -59,11 +61,11 @@ public class Generator
                 break;
             if (!permutation.matches(regexp))
                 continue; // skip variations on empty nodes
-            if(j++>getMaxPermutations())
+            if (j++ > getMaxPermutations())
                 break;
 
             String[][] stitchMatrix = toMatrix(template, permutation.toCharArray(), stitches);
-            template.replaceClonesInBaseTile(stitchMatrix);
+            template.replaceStitches(stitchMatrix);
             writeVariation(folder + "/" + permutation + ".svg", template);
         }
     }
@@ -77,7 +79,7 @@ public class Generator
             for (int col = 0; col < nrOfCols; col++)
             {
                 int j = row * nrOfCols + col;
-                stitchMatrix[row][col] = stitches[(chars[j] - '0')%stitches.length];
+                stitchMatrix[row][col] = stitches[(chars[j] - '0') % stitches.length];
             }
         return stitchMatrix;
     }
@@ -113,22 +115,22 @@ public class Generator
      * @throws JDOMException
      *         in case of trouble with the content of the template
      */
-    public static void symetricVariants(final PairTraversalPattern primaryPattern, final File folder, final String... stitches) throws IOException,
-            FileNotFoundException, JDOMException
+    public static void symetricVariants(String[][] tuples, final File folder, final String[] stitches) throws IOException, FileNotFoundException, JDOMException
     {
-        final String[][] stitchMatrix = buildStitchesMatrix(stitches, primaryPattern.getNumberOfRows(), primaryPattern.getNumberOfColumns());
-        final TemplateDoc template = readTemplate(primaryPattern.getNumberOfRows(), primaryPattern.getNumberOfColumns());
-        int i = 0;
-        for (final PairTraversalPattern variantPattern : new PatternProperties(primaryPattern).toPatterns())
+        final int rows = tuples.length;
+        final int cols = tuples[0].length;
+        String[][] stitchMatrix = buildStitchesMatrix(stitches, rows, cols);
+
+        final MatrixTransformer<TupleTransformer> t = new MatrixTransformer<TupleTransformer>(new TupleTransformer());
+        String[][][] variants = {tuples, t.flipNW2SE(t.flipNE2SW(tuples)), t.flipNE2SW(tuples), t.flipNW2SE(tuples)};
+
+        final TemplateDoc template = getTemplate(rows + "x" + cols);
+        int i=1;
+        for (String[][] variant : variants)
         {
-            applyCustomMix(template, stitchMatrix, variantPattern);
+            template.replaceBoth(stitchMatrix,variant);
             template.write(new FileOutputStream(folder + "/" + (i++) + ".svg"));
         }
-    }
-
-    private static TemplateDoc readTemplate(final int numberOfRows, final int numberOfColumns) throws IOException, JDOMException, FileNotFoundException
-    {
-        return new TemplateDoc(new FileInputStream(CFG + "/" + numberOfRows + "x" + numberOfColumns + ".svg"));
     }
 
     private static String[][] buildStitchesMatrix(final String[] args, final int numberOfRows, final int numberOfColumns)
@@ -140,50 +142,6 @@ public class Generator
         return stitches;
     }
 
-    private static void applyCustomMix(final TemplateDoc template, final String[][] stitches, final PairTraversalPattern pattern)
-    {
-        for (final String cellID : pattern.getCellKeys())
-        {
-            final String tuple = pattern.getTuple(cellID);
-            final String stitchType = stitches[cellID.charAt(1) - '1'][cellID.charAt(0) - 'A'];
-            template.replaceClonesInBaseTile(cellID, stitchType, tuple);
-        }
-    }
-
-    /**
-     * @param in
-     *        text version of a traversal pattern.
-     * @param out
-     *        an SVG file
-     * @param stichType
-     *        the prefix of a stitch label in the template with the same dimensions as the
-     *        traversalPattern.
-     * @throws IOException
-     * @throws JDOMException
-     *         in case of a problem with the template for a traversalPattern
-     */
-    public static void generate(final PairTraversalPattern traversalPattern, final PrintStream out, final String stichType) throws IOException, JDOMException
-    {
-        final TemplateDoc template = getTemplate(traversalPattern);
-
-        generate(traversalPattern, stichType, template);
-        template.write(out);
-    }
-
-    public static void generate(final PairTraversalPattern traversalPattern, final String stichType, final TemplateDoc template)
-    {
-        for (final String cellID : traversalPattern.getCellKeys())
-        {
-            if (traversalPattern.isEmpty(cellID))
-                template.setEmpty(cellID);
-            else
-            {
-                final String tuple = traversalPattern.getTuple(cellID);
-                template.replaceClonesInBaseTile(cellID, stichType, tuple);
-            }
-        }
-    }
-
     /**
      * clears the cash of previously loaded templates.
      */
@@ -192,9 +150,8 @@ public class Generator
         templates.clear();
     }
 
-    private static TemplateDoc getTemplate(final PairTraversalPattern traversalPattern) throws FileNotFoundException, IOException, JDOMException
+    private static TemplateDoc getTemplate(final String dimensions) throws IOException, JDOMException, FileNotFoundException
     {
-        final String dimensions = traversalPattern.getDimensions();
         if (!templates.containsKey(dimensions))
             templates.put(dimensions, new TemplateDoc(new FileInputStream(CFG + dimensions + ".svg")));
         return templates.get(dimensions);
