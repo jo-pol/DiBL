@@ -25,8 +25,8 @@ import java.util.Arrays;
 import org.jdom2.JDOMException;
 
 import dibl.diagrams.Generator;
-import dibl.diagrams.PairTraversalPattern;
 import dibl.diagrams.TemplateDoc;
+import dibl.math.MatrixReader;
 
 public class Main
 {
@@ -48,7 +48,7 @@ public class Main
         final String[] stitches = Arrays.copyOfRange(args, 2, args.length);
 
         if (fileName.endsWith(".txt"))
-            Generator.symetricVariants(new PairTraversalPattern(input), folder, stitches);
+            Generator.symetricVariants(MatrixReader.read(new FileInputStream(fileName)), folder, stitches);
         else
             Generator.permutations(new TemplateDoc(input), folder, stitches);
     }
