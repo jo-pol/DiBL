@@ -17,14 +17,14 @@ import org.junit.Test;
 
 import dibl.diagrams.TemplateDoc;
 import dibl.math.MatrixReader;
-import dibl.math.MatrixTransformer;
-import dibl.math.TupleTransformer;
+import dibl.math.MatrixFlipper;
+import dibl.math.TupleFlipper;
 
 public class ApiTest
 {
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
     private static final String INPUT_FOLDER = "src/test/resources/";
-    private final MatrixTransformer<TupleTransformer> transformer = new MatrixTransformer<TupleTransformer>(new TupleTransformer());
+    private final MatrixFlipper<TupleFlipper> transformer = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
     private List<Closeable> closeables=new ArrayList<Closeable>();
     private final String[][] stitches = new String[][] { //
     {"tcptc", "tc", "tcptc", "tc"}, //
@@ -65,7 +65,7 @@ public class ApiTest
     @Test
     public void flipOldAlongX() throws Exception
     {
-        final MatrixTransformer<TupleTransformer> transformer = new MatrixTransformer<TupleTransformer>(new TupleTransformer());
+        final MatrixFlipper<TupleFlipper> transformer = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
         final String[][] tuples = MatrixReader.read(openInputStream("src/main/assembly/input/4x4_1.txt"));
         final TemplateDoc template = new TemplateDoc(openInputStream("src/main/assembly/cfg/4x4.svg"));
         template.replaceBoth(stitches, transformer.flipNW2SE(tuples));

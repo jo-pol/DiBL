@@ -23,19 +23,19 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dibl.math.Extractor;
-import dibl.math.MatrixTransformer;
-import dibl.math.Transformer;
+import dibl.math.MatrixFlipper;
+import dibl.math.XYFlipper;
 
 public class MatrixTest
 {
-    private static MatrixTransformer<Transformer<String>> transformer;
+    private static MatrixFlipper<XYFlipper<String>> transformer;
     private static String[][] m = { {"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
     private static String[][] m4 = { {"a", "b", "c", "d"}, {"e", "f", "g", "h"}, {"i", "j", "k", "l"}, {"m", "n", "o", "p"}};
 
     @BeforeClass
     public static void init()
     {
-        transformer = new MatrixTransformer<Transformer<String>>(new Transformer<String>()
+        transformer = new MatrixFlipper<XYFlipper<String>>(new XYFlipper<String>()
         {
             @Override
             public String flipLeftRight(final String o)
@@ -44,7 +44,7 @@ public class MatrixTest
             }
 
             @Override
-            public String flipBotomUp(final String o)
+            public String flipBottomUp(final String o)
             {
                 return o;
             }
