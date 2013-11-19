@@ -21,8 +21,6 @@ import java.io.FileOutputStream;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import dibl.diagrams.TemplateDoc;
-
 public class TemplateDocTest
 {
     private static final String OUTPUT_FOLDER = "target/TemplateDocTest/";
@@ -43,17 +41,6 @@ public class TemplateDocTest
     }
 
     @Test
-    public void change3x3tuples() throws Exception
-    {
-        final String[][] tuples = new String[][] { {"(1,0,1,0,-1,-1)", "(-1,0,1,1,-1,0)", "(1,1,0,0,-1,-1)"},//
-                {"(-1,1,1,0,-1,0)", "(0,1,0,1,-1,-1)", "(0,1,1,-1,0,-1)"},//
-                {"(-1,1,1,-1,0,0)", "(1,1,0,-1,0,-1)", "(0,0,1,1,-1,-1)"}};
-        final TemplateDoc template = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
-        template.replaceTuples(tuples, "tc");
-        template.write(new FileOutputStream(OUTPUT_FOLDER + "3x3tuples.svg"));
-    }
-
-    @Test
     public void changeBoth3x3() throws Exception
     {
         final String[][] stitches = new String[][] { {"tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc"}, {"tc", "tcptc", "tc"}};
@@ -70,14 +57,7 @@ public class TemplateDocTest
     {
         String[][] stitches = new String[][] { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
                 {"tc", "tcptc", "tc", "tcptc"}};
-        final String[][] tuples = new String[][] { {"(-1,1,0,1,-1,0,0,0)", "(-1,1,0,0,1,-1,0,0)", "(-1,0,0,1,1,-1,0,0)", "(1,0,0,0,1,-1,0,-1)"},//
-                {"(1,1,0,0,-1,-1,0,0)", "(1,1,0,0,-1,-1,0,0)", "(1,1,0,0,-1,-1,0,0)", "(1,0,0,1,-1,0,0,-1)"},//
-                {"(-1,1,0,1,0,0,0,-1)", "(-1,1,0,0,1,-1,0,0)", "(0,1,0,0,1,-1,0,-1)", "(0,0,0,0,0,0,0,0)"},//
-                {"(-1,1,0,1,-1,0,0,0)", "(-1,1,0,0,1,0,0,-1)", "(-1,0,0,1,1,-1,0,0)", "(1,0,0,0,1,-1,0,-1)"}};
-
         final TemplateDoc t = new TemplateDoc(new FileInputStream("src/test/resources/4x4.svg"));
         t.replaceStitches(stitches).write(new FileOutputStream(OUTPUT_FOLDER + "4x4_stitches.svg"));
-        // TODO the zero-tuple should be replaced in the output
-        t.replaceTuples(tuples, "tc").write(new FileOutputStream(OUTPUT_FOLDER + "4x4_tuples.svg"));
     }
 }

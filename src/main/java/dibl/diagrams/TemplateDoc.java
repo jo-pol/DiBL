@@ -120,19 +120,6 @@ public class TemplateDoc
         return this;
     }
 
-    public TemplateDoc replaceTuples(final String[][] newValues, final String defaultStitch)
-    {
-        final String[][] defaults = new String[nrOfRows][nrOfCols];
-        for (int r = 0; r < nrOfRows; r++)
-            for (int c = 0; c < nrOfCols; c++)
-                defaults[r][c] = defaultStitch + " " + newValues[r][c];
-        replace(newValues, "[(].*");
-        // add stitches to nodes that were empty
-        replace(defaults, "^[(].*");
-        // TODO remove stitches from nodes that became empty
-        return this;
-    }
-
     public TemplateDoc replaceBoth(final String[][] stitches, final String[][] tuples)
     {
         final String[][] newValues = new String[nrOfRows][nrOfCols];
