@@ -21,7 +21,8 @@ public class TupleTransformerTest
 
     private void checkRotation(String input, String expected)
     {
-        String actual = new TupleTransformer().rotate180(input);
+        TupleTransformer transformer = new TupleTransformer();
+        String actual = transformer.flipLeftRight(transformer.flipBotomUp(input));
         assertTrue(actual+" != "+expected,actual.equals( expected));
     }
 }
