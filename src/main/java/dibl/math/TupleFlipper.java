@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class TupleTransformer implements Transformer<String>
+public class TupleFlipper implements XYFlipper<String>
 {
     private static final List<String> tuples = Arrays.asList(new String[] {"(-1,0,1,1,-1,0)", "(-1,0,1,1,0,-1)", "(-1,1,0,1,-1,0)", "(-1,1,0,1,0,-1)",
             "(-1,1,1,-1,0,0)", "(-1,1,1,0,-1,0)", "(-1,1,1,0,0,-1)", "(0,0,0,0,0,0)", "(0,0,1,1,-1,-1)", "(0,1,0,1,-1,-1)", "(0,1,1,-1,-1,0)",
@@ -50,7 +50,7 @@ public class TupleTransformer implements Transformer<String>
     }
 
     @Override
-    public String flipBotomUp(String value)
+    public String flipBottomUp(String value)
     {
         if (!tuples.contains(value))
             throw new IllegalArgumentException();
