@@ -115,18 +115,6 @@ public class TemplateDoc
         }
     }
 
-    @Deprecated
-    public void replaceClonesInBaseTile(final String cellID, final String stichType, final String tuple)
-    {
-        if (!tileElements.containsKey(cellID))
-            return;
-        String stitchID = idsByLabels.get(stichType + " " + tuple);
-        if (stitchID == null)
-            stitchID = idsByLabels.get(EMPTY_TUPLE);
-        for (final Element el : tileElements.get(cellID))
-            el.setAttribute("href", "#" + stitchID, NS_XLINK);
-    }
-
     public TemplateDoc replaceStitches(final String[][] newValues)
     {
         replace(newValues, "^[^ ]*");
@@ -181,27 +169,6 @@ public class TemplateDoc
         }
     }
 
-    @Deprecated
-    public void replaceClonesInBaseTile(final String[][] stitchTypes)
-    {
-        for (final Set<Element> elements : tileElements.values())
-        {
-            for (final Element el : elements)
-            {
-                final char[] cellID = el.getAttribute("label", NS_INKSCAPE).getValue().toCharArray();
-                final int r = cellID[1] - '1';
-                final int c = cellID[0] - 'A';
-                final String attribute = el.getAttribute("href", NS_XLINK).getValue();
-                final String oldLabel = labelsByIDs.get(attribute);
-                if (oldLabel != null && !oldLabel.equals(EMPTY_TUPLE))
-                {
-                    final String newLabel = oldLabel.replaceAll("[a-z]+", stitchTypes[r][c]);
-                    el.setAttribute("href", "#" + idsByLabels.get(newLabel), NS_XLINK);
-                }
-            }
-        }
-    }
-
     public Map<String, Boolean> getEmptyCells()
     {
         final Map<String, Boolean> result = new TreeMap<String, Boolean>();
@@ -214,18 +181,6 @@ public class TemplateDoc
             result.put(cellID, !tuple.contains("1"));
         }
         return result;
-    }
-
-    @Deprecated
-    public void setEmpty(final String cellID)
-    {
-        if (!tileElements.containsKey(cellID))
-            return;
-        final String stitchID = idsByLabels.get(EMPTY_TUPLE);
-        if (stitchID == null)
-            return;
-        for (final Element el : tileElements.get(cellID))
-            el.setAttribute("href", "#" + stitchID, NS_XLINK);
     }
 
     public void write(final OutputStream out) throws IOException
