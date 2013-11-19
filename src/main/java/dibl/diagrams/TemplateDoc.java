@@ -38,7 +38,6 @@ import org.jdom2.xpath.XPathFactory;
 
 public class TemplateDoc
 {
-    private static final String EMPTY_TUPLE = "(0,0,0,0,0,0)";
     private static final Namespace NS_INKSCAPE = Namespace.getNamespace("inkscape", "http://www.inkscape.org/namespaces/inkscape");
     private static final Namespace NS_XLINK = Namespace.getNamespace("xlink", "http://www.w3.org/1999/xlink");
     private final Document doc;
