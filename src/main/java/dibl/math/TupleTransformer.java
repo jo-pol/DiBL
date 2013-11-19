@@ -41,6 +41,7 @@ public class TupleTransformer implements Transformer<String>
         }
     }
 
+    @Override
     public String flipLeftRight(String value)
     {
         if (!tuples.contains(value))
@@ -48,18 +49,12 @@ public class TupleTransformer implements Transformer<String>
         return flippedLeftRight.get(value);
     }
 
+    @Override
     public String flipBotomUp(String value)
     {
         if (!tuples.contains(value))
             throw new IllegalArgumentException();
         return flippedBottomUp.get(value);
-    }
-
-    public String rotate180(String value)
-    {
-        if (!tuples.contains(value))
-            throw new IllegalArgumentException();
-        return rotated180.get(value);
     }
 
     private static String inv(String v)

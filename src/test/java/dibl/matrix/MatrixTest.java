@@ -14,6 +14,7 @@
 // @formatter:on
 package dibl.matrix;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
@@ -24,7 +25,6 @@ import org.junit.Test;
 import dibl.math.Extractor;
 import dibl.math.MatrixTransformer;
 import dibl.math.Transformer;
-import static org.hamcrest.core.Is.is;
 
 public class MatrixTest
 {
@@ -37,17 +37,14 @@ public class MatrixTest
     {
         transformer = new MatrixTransformer<Transformer<String>>(new Transformer<String>()
         {
+            @Override
             public String flipLeftRight(final String o)
             {
                 return o;
             }
 
+            @Override
             public String flipBotomUp(final String o)
-            {
-                return o;
-            }
-
-            public String rotate180(final String o)
             {
                 return o;
             }
@@ -106,7 +103,7 @@ public class MatrixTest
     @Test
     public void rotate180()
     {
-        final String s = Arrays.deepToString(transformer.rotate180(m));
+        final String s = Arrays.deepToString(transformer.flipLeftRight((transformer.flipBottomUp(m))));
         assertThat(s, is("[[9, 8, 7], [6, 5, 4], [3, 2, 1]]"));
     }
 }
