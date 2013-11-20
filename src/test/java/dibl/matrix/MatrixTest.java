@@ -19,103 +19,96 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import dibl.math.Matrix;
-import dibl.math.MatrixFlipper;
 import dibl.math.Flipper;
+import dibl.math.Matrix;
 
 public class MatrixTest
 {
-    private static MatrixFlipper<Flipper<String>> transformer;
+    private static TF transformer=new TF();
     private static String[][] m = { {"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+    private static final Matrix<TF> M = new Matrix<TF>(m,transformer);
     private static String[][] m4 = { {"a", "b", "c", "d"}, {"e", "f", "g", "h"}, {"i", "j", "k", "l"}, {"m", "n", "o", "p"}};
-
-    @BeforeClass
-    public static void init()
-    {
-        transformer = new MatrixFlipper<Flipper<String>>(new Flipper<String>()
+    private static final Matrix<TF> M4 = new Matrix<TF>(m4,transformer);
+    private static class TF implements Flipper<String>{
+        @Override
+        public String flipLeftRight(final String o)
         {
-            @Override
-            public String flipLeftRight(final String o)
-            {
-                return o;
-            }
+            return o;
+        }
 
-            @Override
-            public String flipBottomUp(final String o)
-            {
-                return o;
-            }
+        @Override
+        public String flipBottomUp(final String o)
+        {
+            return o;
+        }
 
-            @Override
-            public String flipNW2SE(String o)
-            {
-                return o;
-            }
+        @Override
+        public String flipNW2SE(String o)
+        {
+            return o;
+        }
 
-            @Override
-            public String flipNE2SW(String o)
-            {
-                return o;
-            }
-        });
+        @Override
+        public String flipNE2SW(String o)
+        {
+            return o;
+        }
     }
-
     @Test
     public void skewDown()
     {
-        final String s = Arrays.deepToString(new Matrix(m).skewDown());
+        final String s = Arrays.deepToString(M.skewDown());
         assertThat(s, is("[[1, 5, 9], [4, 8, 3], [7, 2, 6]]"));
     }
 
     @Test
     public void skewUp()
     {
-        final String s = Arrays.deepToString(new Matrix(m).skewUp());
+        final String s = Arrays.deepToString(M.skewUp());
         assertThat(s, is("[[1, 8, 6], [4, 2, 9], [7, 5, 3]]"));
     }
 
     @Test
     public void shift()
     {
-        final String s = Arrays.deepToString(new Matrix(m).shift( 1, 1));
+        final String s = Arrays.deepToString(M.shift( 1, 1));
         assertThat(s, is("[[5, 6, 4], [8, 9, 7], [2, 3, 1]]"));
     }
 
     @Test
     public void ne2sw()
     {
-        final String s = Arrays.deepToString(transformer.flipNE2SW(m4));
+        final String s = Arrays.deepToString(M4.flipNE2SW());
         assertThat(s, is("[[a, e, i, m], [b, f, j, n], [c, g, k, o], [d, h, l, p]]"));
     }
 
     @Test
     public void nw2se()
     {
-        final String s = Arrays.deepToString(transformer.flipNW2SE(m4));
+        final String s = Arrays.deepToString(M4.flipNW2SE());
         assertThat(s, is("[[p, l, h, d], [o, k, g, c], [n, j, f, b], [m, i, e, a]]"));
     }
 
     @Test
     public void flipBottomUp()
     {
-        final String s = Arrays.deepToString(transformer.flipBottomUp(m));
+        final String s = Arrays.deepToString(M.flipBottomUp());
         assertThat(s, is("[[7, 8, 9], [4, 5, 6], [1, 2, 3]]"));
     }
 
     @Test
     public void flipLeftRight()
     {
-        final String s = Arrays.deepToString(transformer.flipLeftRight(m));
+        final String s = Arrays.deepToString(M.flipLeftRight());
         assertThat(s, is("[[3, 2, 1], [6, 5, 4], [9, 8, 7]]"));
     }
 
     @Test
     public void rotate180()
     {
-        final String s = Arrays.deepToString(transformer.flipLeftRight((transformer.flipBottomUp(m))));
+        final String s = Arrays.deepToString(new Matrix<TF>(M.flipBottomUp(),transformer).flipLeftRight());
         assertThat(s, is("[[9, 8, 7], [6, 5, 4], [3, 2, 1]]"));
     }
 }
