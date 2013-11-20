@@ -14,8 +14,10 @@
 // @formatter:on
 package dibl.math;
 
-public interface XYFlipper<O>
+public interface Flipper<O>
 {
    O flipLeftRight(O o);
    O flipBottomUp(O o);
+   O flipNW2SE(O o);
+   O flipNE2SW(O o);
 }

@@ -22,20 +22,20 @@ import java.util.Arrays;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import dibl.math.Extractor;
+import dibl.math.Matrix;
 import dibl.math.MatrixFlipper;
-import dibl.math.XYFlipper;
+import dibl.math.Flipper;
 
 public class MatrixTest
 {
-    private static MatrixFlipper<XYFlipper<String>> transformer;
+    private static MatrixFlipper<Flipper<String>> transformer;
     private static String[][] m = { {"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
     private static String[][] m4 = { {"a", "b", "c", "d"}, {"e", "f", "g", "h"}, {"i", "j", "k", "l"}, {"m", "n", "o", "p"}};
 
     @BeforeClass
     public static void init()
     {
-        transformer = new MatrixFlipper<XYFlipper<String>>(new XYFlipper<String>()
+        transformer = new MatrixFlipper<Flipper<String>>(new Flipper<String>()
         {
             @Override
             public String flipLeftRight(final String o)
@@ -48,27 +48,39 @@ public class MatrixTest
             {
                 return o;
             }
+
+            @Override
+            public String flipNW2SE(String o)
+            {
+                return o;
+            }
+
+            @Override
+            public String flipNE2SW(String o)
+            {
+                return o;
+            }
         });
     }
 
     @Test
     public void skewDown()
     {
-        final String s = Arrays.deepToString(Extractor.skewDown(m));
+        final String s = Arrays.deepToString(new Matrix(m).skewDown());
         assertThat(s, is("[[1, 5, 9], [4, 8, 3], [7, 2, 6]]"));
     }
 
     @Test
     public void skewUp()
     {
-        final String s = Arrays.deepToString(Extractor.skewUp(m));
+        final String s = Arrays.deepToString(new Matrix(m).skewUp());
         assertThat(s, is("[[1, 8, 6], [4, 2, 9], [7, 5, 3]]"));
     }
 
     @Test
     public void shift()
     {
-        final String s = Arrays.deepToString(Extractor.shift(m, 1, 1));
+        final String s = Arrays.deepToString(new Matrix(m).shift( 1, 1));
         assertThat(s, is("[[5, 6, 4], [8, 9, 7], [2, 3, 1]]"));
     }
 
