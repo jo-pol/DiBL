@@ -12,10 +12,10 @@ import java.util.List;
 import org.jdom2.JDOMException;
 import org.junit.After;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import dibl.diagrams.Template;
+import dibl.math.LongTupleFlipper;
 import dibl.math.Matrix;
 import dibl.math.TupleFlipper;
 
@@ -23,7 +23,6 @@ public class ApiTest
 {
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
     private static final String INPUT_FOLDER = "src/test/resources/";
-    private final TupleFlipper transformer = new TupleFlipper();
     private final List<Closeable> closeables = new ArrayList<Closeable>();
     private final String[][] stitches = new String[][] { //
     {"tcptc", "tc", "tcptc", "tc"}, //
@@ -71,24 +70,22 @@ public class ApiTest
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
     }
 
-    @Ignore("static initializer of TupleTransformer does not accommodate longer tuples")
     @Test
     public void flipNewAlongX() throws Exception
     {
         final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
-        final String[][] tuples = new Matrix<TupleFlipper>(input,transformer).flipBottomUp();
+        final String[][] tuples = new Matrix<LongTupleFlipper>(input,new LongTupleFlipper()).flipBottomUp();
         final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
     }
 
-    @Ignore("static initializer of TupleTransformer does not accommodate longer tuples")
     @Test
     public void rotateNew() throws Exception
     {
         final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
-        final String[][] bottomUp = new Matrix<TupleFlipper>(input,transformer).flipBottomUp();
-        final String[][] rotated = new Matrix<TupleFlipper>(bottomUp,transformer).flipLeftRight();
+        final String[][] bottomUp = new Matrix<LongTupleFlipper>(input,new LongTupleFlipper()).flipBottomUp();
+        final String[][] rotated = new Matrix<LongTupleFlipper>(bottomUp,new LongTupleFlipper()).flipLeftRight();
         final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, rotated);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_newRotated.svg"));
