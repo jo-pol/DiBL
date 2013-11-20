@@ -21,7 +21,7 @@ import java.io.FileOutputStream;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TemplateDocTest
+public class TemplateTest
 {
     private static final String OUTPUT_FOLDER = "target/TemplateDocTest/";
 
