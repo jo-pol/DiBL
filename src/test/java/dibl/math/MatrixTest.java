@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.matrix;
+package dibl.math;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
