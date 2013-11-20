@@ -36,7 +36,7 @@ import org.jdom2.output.XMLOutputter;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
 
-public class TemplateDoc
+public class Template
 {
     private static final Namespace NS_INKSCAPE = Namespace.getNamespace("inkscape", "http://www.inkscape.org/namespaces/inkscape");
     private static final Namespace NS_XLINK = Namespace.getNamespace("xlink", "http://www.w3.org/1999/xlink");
@@ -53,14 +53,14 @@ public class TemplateDoc
      * @throws JDOMException
      * @throws XPathExpressionException
      */
-    public TemplateDoc(final InputStream input) throws IOException, JDOMException
+    public Template(final InputStream input) throws IOException, JDOMException
     {
         doc = new SAXBuilder().build(input);
         collectTileElements();
         collectStitches();
     }
 
-    public TemplateDoc(final String input) throws IOException, JDOMException
+    public Template(final String input) throws IOException, JDOMException
     {
         final FileInputStream inputStream = new FileInputStream(input);
         try
@@ -114,13 +114,13 @@ public class TemplateDoc
         }
     }
 
-    public TemplateDoc replaceStitches(final String[][] newValues)
+    public Template replaceStitches(final String[][] newValues)
     {
         replace(newValues, "^[^ ]*");
         return this;
     }
 
-    public TemplateDoc replaceBoth(final String[][] stitches, final String[][] tuples)
+    public Template replaceBoth(final String[][] stitches, final String[][] tuples)
     {
         final String[][] newValues = new String[nrOfRows][nrOfCols];
         for (int r = 0; r < nrOfRows; r++)

@@ -30,7 +30,7 @@ import dibl.math.TupleFlipper;
 public class Generator
 {
     private static String CFG = "cfg/"; // not final to allow WhiteboxTest
-    private static final Map<String, TemplateDoc> templates = new HashMap<String, TemplateDoc>();
+    private static final Map<String, Template> templates = new HashMap<String, Template>();
     private static int maxPermutations = 500;
 
     /**
@@ -48,7 +48,7 @@ public class Generator
      * @throws JDOMException
      *         in case of trouble with the content of the template
      */
-    public static void permutations(TemplateDoc template, final File folder, final String... stitches) throws FileNotFoundException, IOException, JDOMException
+    public static void permutations(Template template, final File folder, final String... stitches) throws FileNotFoundException, IOException, JDOMException
     {
         final int nrOfCells = template.getNrOfCols() * template.getNrOfRows();
         final String regexp = possiblePermutations(template, stitches).toString();
@@ -70,7 +70,7 @@ public class Generator
         }
     }
 
-    private static String[][] toMatrix(TemplateDoc template, char[] chars, final String... stitches)
+    private static String[][] toMatrix(Template template, char[] chars, final String... stitches)
     {
         int nrOfRows = template.getNrOfRows();
         int nrOfCols = template.getNrOfCols();
@@ -84,7 +84,7 @@ public class Generator
         return stitchMatrix;
     }
 
-    private static StringBuffer possiblePermutations(TemplateDoc template, final String... stitches)
+    private static StringBuffer possiblePermutations(Template template, final String... stitches)
     {
         final StringBuffer regexp1 = new StringBuffer();
 
@@ -124,7 +124,7 @@ public class Generator
         final MatrixFlipper<TupleFlipper> t = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
         String[][][] variants = {tuples, t.flipNW2SE(t.flipNE2SW(tuples)), t.flipNE2SW(tuples), t.flipNW2SE(tuples)};
 
-        final TemplateDoc template = getTemplate(rows + "x" + cols);
+        final Template template = getTemplate(rows + "x" + cols);
         int i=1;
         for (String[][] variant : variants)
         {
@@ -150,10 +150,10 @@ public class Generator
         templates.clear();
     }
 
-    private static TemplateDoc getTemplate(final String dimensions) throws IOException, JDOMException, FileNotFoundException
+    private static Template getTemplate(final String dimensions) throws IOException, JDOMException, FileNotFoundException
     {
         if (!templates.containsKey(dimensions))
-            templates.put(dimensions, new TemplateDoc(new FileInputStream(CFG + dimensions + ".svg")));
+            templates.put(dimensions, new Template(new FileInputStream(CFG + dimensions + ".svg")));
         return templates.get(dimensions);
     }
 
@@ -164,7 +164,7 @@ public class Generator
         return variation;
     }
 
-    private static void writeVariation(final String fileName, final TemplateDoc template) throws FileNotFoundException, IOException, JDOMException
+    private static void writeVariation(final String fileName, final Template template) throws FileNotFoundException, IOException, JDOMException
     {
         final FileOutputStream out = new FileOutputStream(fileName);
         try

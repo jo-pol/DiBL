@@ -35,7 +35,7 @@ public class TemplateDocTest
     public void mix3x3stitches() throws Exception
     {
         final String[][] stitches = new String[][] { {"tc", "tcptc", "tc"}, {"tc", "tcptc", "tc"}, {"tcptc", "tc", "tcptc"}};
-        final TemplateDoc template = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
+        final Template template = new Template(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
         template.replaceStitches(stitches);
         template.write(new FileOutputStream(OUTPUT_FOLDER + "3x3stitches.svg"));
     }
@@ -49,7 +49,7 @@ public class TemplateDocTest
                 {"(-1,1,0,1,-1,0,0,0)", "(1,1,0,0,-1,0,0,-1)", "(0,0,0,1,1,-1,0,-1)"}};
         final FileInputStream inputStream = new FileInputStream("src/test/resources/3x3.svg");
         final FileOutputStream outputStream = new FileOutputStream(OUTPUT_FOLDER + "3x3both.svg");
-        new TemplateDoc(inputStream).replaceBoth(stitches, tuples).write(outputStream);
+        new Template(inputStream).replaceBoth(stitches, tuples).write(outputStream);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class TemplateDocTest
     {
         String[][] stitches = new String[][] { {"tcptc", "tc", "tcptc", "tc"}, {"tc", "tcptc", "tc", "tcptc"}, {"tcptc", "tc", "tcptc", "tc"},
                 {"tc", "tcptc", "tc", "tcptc"}};
-        final TemplateDoc t = new TemplateDoc(new FileInputStream("src/test/resources/4x4.svg"));
+        final Template t = new Template(new FileInputStream("src/test/resources/4x4.svg"));
         t.replaceStitches(stitches).write(new FileOutputStream(OUTPUT_FOLDER + "4x4_stitches.svg"));
     }
 }
