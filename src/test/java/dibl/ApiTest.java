@@ -17,14 +17,13 @@ import org.junit.Test;
 
 import dibl.diagrams.Template;
 import dibl.math.Matrix;
-import dibl.math.MatrixFlipper;
 import dibl.math.TupleFlipper;
 
 public class ApiTest
 {
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
     private static final String INPUT_FOLDER = "src/test/resources/";
-    private final MatrixFlipper<TupleFlipper> transformer = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
+    private final TupleFlipper transformer = new TupleFlipper();
     private List<Closeable> closeables = new ArrayList<Closeable>();
     private final String[][] stitches = new String[][] { //
     {"tcptc", "tc", "tcptc", "tc"}, //
@@ -65,10 +64,10 @@ public class ApiTest
     @Test
     public void flipOldAlongX() throws Exception
     {
-        final MatrixFlipper<TupleFlipper> transformer = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
+        final TupleFlipper transformer = new TupleFlipper();
         final String[][] tuples = Matrix.read(openInputStream("src/main/assembly/input/4x4_1.txt"));
         final Template template = new Template(openInputStream("src/main/assembly/cfg/4x4.svg"));
-        template.replaceBoth(stitches, transformer.flipNW2SE(tuples));
+        template.replaceBoth(stitches, new Matrix<TupleFlipper>(tuples,transformer).flipNW2SE());
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
     }
 
@@ -76,7 +75,8 @@ public class ApiTest
     @Test
     public void flipNewAlongX() throws Exception
     {
-        final String[][] tuples = transformer.flipBottomUp(Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
+        String[][] input = Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt"));
+        final String[][] tuples = new Matrix<TupleFlipper>(input,transformer).flipBottomUp();
         final Template template = new Template(openInputStream(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
@@ -94,7 +94,8 @@ public class ApiTest
 
     private String[][] rotate(final String[][] tuples)
     {
-        return transformer.flipLeftRight(transformer.flipBottomUp(tuples));
+        String[][] bottomUp = new Matrix<TupleFlipper>(tuples,transformer).flipBottomUp();
+        return new Matrix<TupleFlipper>(bottomUp,transformer).flipLeftRight();
     }
 
     private FileInputStream openInputStream(String file) throws FileNotFoundException
