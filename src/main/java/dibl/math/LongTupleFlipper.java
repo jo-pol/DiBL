@@ -6,15 +6,28 @@ public class LongTupleFlipper implements Flipper<String>
     {
         final String[] s = value.replaceAll("[()]", "").split(",");
         if (s.length == 6)
+            // counter clockwise starting east
+            // 2 - - - 1
+            // 3 - - - 0
+            // 4 - - - 5
             return new String[][] { {s[2], "0", s[1]}, {s[3], "", s[0]}, {s[4], "0", s[5]}};
         else if (s.length == 8)
+            // counter clockwise starting east
+            // 3 - 2 - 1
+            // 4 - - - 0
+            // 5 - 6 - 7
             return new String[][] { {s[3], s[2], s[1]}, {s[4], "", s[0]}, {s[5], s[6], s[7]}};
         throw new IllegalArgumentException("tuple should containn 6 or 8 elements, got" + s.length);
     }
 
     private String toTuple(final String[][] s)
     {
-        return String.format("%s%s,%s,%s,%s,%s,%s,%s,%s%s", "(",s[1][2], s[0][2], s[0][1], s[0][0], s[1][0], s[2][0], s[2][1], s[2][2], ")");
+        // counter clockwise starting east
+        // 0.0 - 0.1 - 0.2
+        // 1.0 - --- - 1.2
+        // 2.0 - 2.1 - 2.2
+        return String.format("%s%s,%s,%s,%s,%s,%s,%s,%s%s", "(",//
+                s[1][2], s[0][2], s[0][1], s[0][0], s[1][0], s[2][0], s[2][1], s[2][2], ")");
     }
 
     @Override
