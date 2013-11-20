@@ -3,19 +3,17 @@ package dibl;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jdom2.JDOMException;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import dibl.diagrams.PTP;
 import dibl.diagrams.Template;
-import dibl.math.LongTupleFlipper;
 import dibl.math.Matrix;
 import dibl.math.TupleFlipper;
 
@@ -51,7 +49,7 @@ public class ApiTest
         loop("4x4_", 222, new Template(INPUT_FOLDER + "/4x4.svg"));
     }
 
-    private void loop(final String dimensions, final int n, final Template template) throws IOException, FileNotFoundException, JDOMException
+    private void loop(final String dimensions, final int n, final Template template) throws Exception
     {
         for (int i = 1; i < n; i++)
         {
@@ -64,7 +62,7 @@ public class ApiTest
     public void flipOldAlongX() throws Exception
     {
         final String[][] input = Matrix.read(openInput("src/main/assembly/input/4x4_1.txt"));
-        final String[][] tuples = new Matrix<TupleFlipper>(input,new TupleFlipper()).flipNW2SE();
+        final String[][] tuples = new Matrix<TupleFlipper>(input, new TupleFlipper()).flipNW2SE();
         final Template template = new Template(openInput("src/main/assembly/cfg/4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
@@ -74,31 +72,41 @@ public class ApiTest
     public void flipNewAlongX() throws Exception
     {
         final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
-        final String[][] tuples = new Matrix<LongTupleFlipper>(input,new LongTupleFlipper()).flipBottomUp();
+        final String[][] tuples = new PTP(input).flipBottomUp();
         final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
     }
 
     @Test
+    public void flipNewAlongY() throws Exception
+    {
+        final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
+        final String[][] tuples = new PTP(input).flipLeftRight();
+        final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
+        template.replaceBoth(stitches, tuples);
+        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedNewAlongY.svg"));
+    }
+
+    @Test
     public void rotateNew() throws Exception
     {
         final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
-        final String[][] bottomUp = new Matrix<LongTupleFlipper>(input,new LongTupleFlipper()).flipBottomUp();
-        final String[][] rotated = new Matrix<LongTupleFlipper>(bottomUp,new LongTupleFlipper()).flipLeftRight();
+        final String[][] bottomUp = new PTP(input).flipBottomUp();
+        final String[][] rotated = new PTP(bottomUp).flipLeftRight();
         final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, rotated);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_newRotated.svg"));
     }
 
-    private FileInputStream openInput(final String file) throws FileNotFoundException
+    private FileInputStream openInput(final String file) throws Exception
     {
         final FileInputStream inputStream = new FileInputStream(file);
         closeables.add(inputStream);
         return inputStream;
     }
 
-    private FileOutputStream openOutput(final String file) throws FileNotFoundException
+    private FileOutputStream openOutput(final String file) throws Exception
     {
         final FileOutputStream outputStream = new FileOutputStream(file);
         closeables.add(outputStream);
