@@ -25,7 +25,7 @@ import java.util.Arrays;
 import org.jdom2.JDOMException;
 
 import dibl.diagrams.Generator;
-import dibl.diagrams.TemplateDoc;
+import dibl.diagrams.Template;
 import dibl.math.Matrix;
 
 public class Main
@@ -50,7 +50,7 @@ public class Main
         if (fileName.endsWith(".txt"))
             Generator.symetricVariants(Matrix.read(new FileInputStream(fileName)), folder, stitches);
         else
-            Generator.permutations(new TemplateDoc(input), folder, stitches);
+            Generator.permutations(new Template(input), folder, stitches);
     }
 
     private static void showUsage() throws FileNotFoundException, IOException

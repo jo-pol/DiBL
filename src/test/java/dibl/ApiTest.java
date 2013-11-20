@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import dibl.diagrams.TemplateDoc;
+import dibl.diagrams.Template;
 import dibl.math.Matrix;
 import dibl.math.MatrixFlipper;
 import dibl.math.TupleFlipper;
@@ -49,11 +49,11 @@ public class ApiTest
     @Test
     public void all() throws Exception
     {
-        loop("3x3_", 8, new TemplateDoc(INPUT_FOLDER + "/3x3.svg"));
-        loop("4x4_", 222, new TemplateDoc(INPUT_FOLDER + "/4x4.svg"));
+        loop("3x3_", 8, new Template(INPUT_FOLDER + "/3x3.svg"));
+        loop("4x4_", 222, new Template(INPUT_FOLDER + "/4x4.svg"));
     }
 
-    private void loop(final String dimensions, final int n, final TemplateDoc template) throws IOException, FileNotFoundException, JDOMException
+    private void loop(final String dimensions, final int n, final Template template) throws IOException, FileNotFoundException, JDOMException
     {
         for (int i = 1; i < n; i++)
         {
@@ -67,7 +67,7 @@ public class ApiTest
     {
         final MatrixFlipper<TupleFlipper> transformer = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
         final String[][] tuples = Matrix.read(openInputStream("src/main/assembly/input/4x4_1.txt"));
-        final TemplateDoc template = new TemplateDoc(openInputStream("src/main/assembly/cfg/4x4.svg"));
+        final Template template = new Template(openInputStream("src/main/assembly/cfg/4x4.svg"));
         template.replaceBoth(stitches, transformer.flipNW2SE(tuples));
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
     }
@@ -77,7 +77,7 @@ public class ApiTest
     public void flipNewAlongX() throws Exception
     {
         final String[][] tuples = transformer.flipBottomUp(Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
-        final TemplateDoc template = new TemplateDoc(openInputStream(INPUT_FOLDER + "4x4.svg"));
+        final Template template = new Template(openInputStream(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
     }
@@ -87,7 +87,7 @@ public class ApiTest
     public void rotateNew() throws Exception
     {
         final String[][] tuples = rotate(Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
-        final TemplateDoc template = new TemplateDoc(openInputStream(INPUT_FOLDER + "4x4.svg"));
+        final Template template = new Template(openInputStream(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_newRotated.svg"));
     }
