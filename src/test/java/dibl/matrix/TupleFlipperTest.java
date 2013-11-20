@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import dibl.math.TupleFlipper;
+import dibl.math.ShortTupleFlipper;
 
 public class TupleFlipperTest
 {
@@ -21,7 +21,7 @@ public class TupleFlipperTest
 
     private void checkRotation(String input, String expected)
     {
-        TupleFlipper transformer = new TupleFlipper();
+        ShortTupleFlipper transformer = new ShortTupleFlipper();
         String actual = transformer.flipLeftRight(transformer.flipBottomUp(input));
         assertTrue(actual+" != "+expected,actual.equals( expected));
     }
