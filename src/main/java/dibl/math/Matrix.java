@@ -142,6 +142,16 @@ public class Matrix<F extends Flipper<String>>
         return ret;
     }
 
+    public boolean isShifted(String[][] shiftedMatrix)
+    {
+        final String shifted = Arrays.deepToString(shiftedMatrix);
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                if (Arrays.deepToString(shift(r, c)).equals(shifted))
+                    return true;
+        return false;
+    }
+
     public String[][] skewDown()
     {
         final String[][] ret = new String[cols][rows];
