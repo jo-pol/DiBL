@@ -51,7 +51,7 @@ public class GeneratorTest
     public void stitchPermutations() throws Exception
     {
         // generates 256K files
-        final TemplateDoc template = new TemplateDoc(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
+        final Template template = new Template(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
         final String[] stitchTypes = {"tc", "tcptc"};
         final File folder = new File("target/permutations");
         folder.mkdirs();
@@ -63,7 +63,7 @@ public class GeneratorTest
     {
         final File folder = new File("target/flanders");
         folder.mkdirs();
-        final TemplateDoc template = new TemplateDoc(new FileInputStream(INPUT_FOLDER + "/flanders.svg"));
+        final Template template = new Template(new FileInputStream(INPUT_FOLDER + "/flanders.svg"));
         Generator.permutations(template, folder, "tc", "ctc", "tctc");
     }
 }
