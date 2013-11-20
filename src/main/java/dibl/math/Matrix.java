@@ -20,16 +20,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Matrix
+public class Matrix<H extends Flipper<String>>
 {
     /** Immutable content: no method should return the field nor any of its rows. */
     private final String[][] matrix;
     private final int rows;
     private final int cols;
+    private H helper;
 
     /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
-    public Matrix(final String[][] matrix)
+    public Matrix(final String[][] matrix,final H helper)
     {
+        this.helper = helper;
         rows = matrix.length;
         cols = matrix[0].length;
         this.matrix = new String[rows][cols];
@@ -64,6 +66,46 @@ public class Matrix
         {
             reader.close();
         }
+    }
+
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
+    public String[][] flipLeftRight()
+    {
+        final String[][] ret = new String[cols][rows];
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                ret[r][cols - 1 - c] = helper.flipLeftRight(matrix[r][c]);
+        return ret;
+    }
+
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
+    public String[][] flipBottomUp()
+    {
+        final String[][] ret = new String[cols][rows];
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                ret[rows - 1 - r][c] = helper.flipBottomUp(matrix[r][c]);
+        return ret;
+    }
+
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
+    public String[][] flipNE2SW()
+    {
+        final String[][] ret = new String[rows][cols];
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                ret[c][r] = helper.flipNE2SW(matrix[r][c]);
+        return ret;
+    }
+
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
+    public String[][] flipNW2SE()
+    {
+        final String[][] ret = new String[rows][cols];
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+                ret[cols - 1 - c][rows - 1 - r] = helper.flipNW2SE(matrix[r][c]);
+        return ret;
     }
 
     public String[][] shift(final int row, final int col)
