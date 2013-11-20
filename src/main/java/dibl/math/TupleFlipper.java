@@ -19,8 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-public class TupleFlipper implements XYFlipper<String>
+public class TupleFlipper implements Flipper<String>
 {
     private static final List<String> tuples = Arrays.asList(new String[] {"(-1,0,1,1,-1,0)", "(-1,0,1,1,0,-1)", "(-1,1,0,1,-1,0)", "(-1,1,0,1,0,-1)",
             "(-1,1,1,-1,0,0)", "(-1,1,1,0,-1,0)", "(-1,1,1,0,0,-1)", "(0,0,0,0,0,0)", "(0,0,1,1,-1,-1)", "(0,1,0,1,-1,-1)", "(0,1,1,-1,-1,0)",
@@ -44,13 +43,37 @@ public class TupleFlipper implements XYFlipper<String>
     @Override
     public String flipLeftRight(String value)
     {
+        return flipAlongY(value);
+    }
+
+    @Override
+    public String flipBottomUp(String value)
+    {
+        return flipAlongX(value);
+    }
+
+    /** Flips actually along the X axis to match the flip of a skewed matrix. */
+    @Override
+    public String flipNW2SE(String o)
+    {
+        return flipAlongX(o);
+    }
+
+    /** Flips actually along the Y axis to match the flip of a skewed matrix. */
+    @Override
+    public String flipNE2SW(String o)
+    {
+        return flipAlongY(o);
+    }
+
+    private String flipAlongY(String value)
+    {
         if (!tuples.contains(value))
             throw new IllegalArgumentException();
         return flippedLeftRight.get(value);
     }
 
-    @Override
-    public String flipBottomUp(String value)
+    private String flipAlongX(String value)
     {
         if (!tuples.contains(value))
             throw new IllegalArgumentException();
@@ -68,6 +91,6 @@ public class TupleFlipper implements XYFlipper<String>
 
     private static String fmt(String... args)
     {
-        return String.format("(%s,%s,%s,%s,%s,%s)",(Object[])args);
+        return String.format("(%s,%s,%s,%s,%s,%s)", (Object[]) args);
     }
 }

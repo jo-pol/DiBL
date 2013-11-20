@@ -16,7 +16,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import dibl.diagrams.TemplateDoc;
-import dibl.math.MatrixReader;
+import dibl.math.Matrix;
 import dibl.math.MatrixFlipper;
 import dibl.math.TupleFlipper;
 
@@ -25,7 +25,7 @@ public class ApiTest
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
     private static final String INPUT_FOLDER = "src/test/resources/";
     private final MatrixFlipper<TupleFlipper> transformer = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
-    private List<Closeable> closeables=new ArrayList<Closeable>();
+    private List<Closeable> closeables = new ArrayList<Closeable>();
     private final String[][] stitches = new String[][] { //
     {"tcptc", "tc", "tcptc", "tc"}, //
             {"tc", "tcptc", "tc", "tcptc"}, //
@@ -57,7 +57,7 @@ public class ApiTest
     {
         for (int i = 1; i < n; i++)
         {
-            final String[][] tuples = MatrixReader.read(openInputStream(INPUT_FOLDER + dimensions + i + ".txt"));
+            final String[][] tuples = Matrix.read(openInputStream(INPUT_FOLDER + dimensions + i + ".txt"));
             template.replaceBoth(stitches, tuples).write(openOutputStream(OUTPUT_FOLDER + dimensions + i + "_both.svg"));
         }
     }
@@ -66,7 +66,7 @@ public class ApiTest
     public void flipOldAlongX() throws Exception
     {
         final MatrixFlipper<TupleFlipper> transformer = new MatrixFlipper<TupleFlipper>(new TupleFlipper());
-        final String[][] tuples = MatrixReader.read(openInputStream("src/main/assembly/input/4x4_1.txt"));
+        final String[][] tuples = Matrix.read(openInputStream("src/main/assembly/input/4x4_1.txt"));
         final TemplateDoc template = new TemplateDoc(openInputStream("src/main/assembly/cfg/4x4.svg"));
         template.replaceBoth(stitches, transformer.flipNW2SE(tuples));
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
@@ -76,7 +76,7 @@ public class ApiTest
     @Test
     public void flipNewAlongX() throws Exception
     {
-        final String[][] tuples = transformer.flipBottomUp(MatrixReader.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
+        final String[][] tuples = transformer.flipBottomUp(Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
         final TemplateDoc template = new TemplateDoc(openInputStream(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
@@ -86,7 +86,7 @@ public class ApiTest
     @Test
     public void rotateNew() throws Exception
     {
-        final String[][] tuples = rotate(MatrixReader.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
+        final String[][] tuples = rotate(Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
         final TemplateDoc template = new TemplateDoc(openInputStream(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_newRotated.svg"));

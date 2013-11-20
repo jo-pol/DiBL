@@ -34,7 +34,7 @@ package dibl.math;
  * 
  * @param <H>
  */
-public class MatrixFlipper<H extends XYFlipper<String>> implements XYFlipper<String[][]>
+public class MatrixFlipper<H extends Flipper<String>> implements Flipper<String[][]>
 {
     private final H helper;
 
@@ -43,7 +43,7 @@ public class MatrixFlipper<H extends XYFlipper<String>> implements XYFlipper<Str
         this.helper = helper;
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipLeftRight(final String[][] mat)
     {
         final int M = mat.length;
@@ -55,7 +55,7 @@ public class MatrixFlipper<H extends XYFlipper<String>> implements XYFlipper<Str
         return ret;
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipBottomUp(final String[][] mat)
     {
         final int M = mat.length;
@@ -67,7 +67,7 @@ public class MatrixFlipper<H extends XYFlipper<String>> implements XYFlipper<Str
         return ret;
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipNE2SW(final String[][] mat)
     {
         final int M = mat.length;
@@ -75,12 +75,11 @@ public class MatrixFlipper<H extends XYFlipper<String>> implements XYFlipper<Str
         final String[][] ret = new String[M][N];
         for (int r = 0; r < M; r++)
             for (int c = 0; c < N; c++)
-                ret[c][r] = helper.flipLeftRight(mat[r][c]);
+                ret[c][r] = helper.flipNE2SW(mat[r][c]);
         return ret;
-        // TODO code smell. Helper should be method argument: interface with one method.
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter that the first */
+    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipNW2SE(final String[][] mat)
     {
         final int M = mat.length;
@@ -88,7 +87,7 @@ public class MatrixFlipper<H extends XYFlipper<String>> implements XYFlipper<Str
         final String[][] ret = new String[M][N];
         for (int r = 0; r < M; r++)
             for (int c = 0; c < N; c++)
-                ret[N - 1 - c][M - 1 - r] = helper.flipBottomUp(mat[r][c]);
+                ret[N - 1 - c][M - 1 - r] = helper.flipNW2SE(mat[r][c]);
         return ret;
     }
 }
