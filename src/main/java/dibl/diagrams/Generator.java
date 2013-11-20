@@ -25,7 +25,7 @@ import java.util.Map;
 import org.jdom2.JDOMException;
 
 import dibl.math.Matrix;
-import dibl.math.TupleFlipper;
+import dibl.math.ShortTupleFlipper;
 
 public class Generator
 {
@@ -121,9 +121,9 @@ public class Generator
         final int cols = tuples[0].length;
         String[][] stitchMatrix = buildStitchesMatrix(stitches, rows, cols);
 
-        final TupleFlipper f = new TupleFlipper();
-        Matrix<TupleFlipper> m = new Matrix<TupleFlipper>(tuples,f);
-        String[][] rotated = new Matrix<TupleFlipper>(m.flipNE2SW(),f).flipNW2SE();
+        final ShortTupleFlipper f = new ShortTupleFlipper();
+        Matrix<ShortTupleFlipper> m = new Matrix<ShortTupleFlipper>(tuples,f);
+        String[][] rotated = new Matrix<ShortTupleFlipper>(m.flipNE2SW(),f).flipNW2SE();
         String[][][] variants = {tuples, rotated, m.flipNE2SW(), m.flipNW2SE()};
 
         final Template template = getTemplate(rows + "x" + cols);
