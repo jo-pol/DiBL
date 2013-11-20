@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TupleFlipper implements Flipper<String>
+public class ShortTupleFlipper implements Flipper<String>
 {
     private static final List<String> tuples = Arrays.asList(new String[] {"(-1,0,1,1,-1,0)", "(-1,0,1,1,0,-1)", "(-1,1,0,1,-1,0)", "(-1,1,0,1,0,-1)",
             "(-1,1,1,-1,0,0)", "(-1,1,1,0,-1,0)", "(-1,1,1,0,0,-1)", "(0,0,0,0,0,0)", "(0,0,1,1,-1,-1)", "(0,1,0,1,-1,-1)", "(0,1,1,-1,-1,0)",

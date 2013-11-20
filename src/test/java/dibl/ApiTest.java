@@ -15,7 +15,7 @@ import org.junit.Test;
 import dibl.diagrams.PTP;
 import dibl.diagrams.Template;
 import dibl.math.Matrix;
-import dibl.math.TupleFlipper;
+import dibl.math.ShortTupleFlipper;
 
 public class ApiTest
 {
@@ -62,7 +62,7 @@ public class ApiTest
     public void flipOldAlongX() throws Exception
     {
         final String[][] input = Matrix.read(openInput("src/main/assembly/input/4x4_1.txt"));
-        final String[][] tuples = new Matrix<TupleFlipper>(input, new TupleFlipper()).flipNW2SE();
+        final String[][] tuples = new Matrix<ShortTupleFlipper>(input, new ShortTupleFlipper()).flipNW2SE();
         final Template template = new Template(openInput("src/main/assembly/cfg/4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
