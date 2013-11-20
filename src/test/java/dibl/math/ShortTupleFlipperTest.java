@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import dibl.math.ShortTupleFlipper;
 
-public class TupleFlipperTest
+public class ShortTupleFlipperTest
 {
     @Test
     public void rotateX()
