@@ -24,7 +24,7 @@ public class ApiTest
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
     private static final String INPUT_FOLDER = "src/test/resources/";
     private final TupleFlipper transformer = new TupleFlipper();
-    private List<Closeable> closeables = new ArrayList<Closeable>();
+    private final List<Closeable> closeables = new ArrayList<Closeable>();
     private final String[][] stitches = new String[][] { //
     {"tcptc", "tc", "tcptc", "tc"}, //
             {"tc", "tcptc", "tc", "tcptc"}, //
@@ -40,7 +40,7 @@ public class ApiTest
     @After
     public void clearClosables() throws IOException
     {
-        for (Closeable closeable : closeables)
+        for (final Closeable closeable : closeables)
             closeable.close();
         closeables.clear();
     }
@@ -56,58 +56,54 @@ public class ApiTest
     {
         for (int i = 1; i < n; i++)
         {
-            final String[][] tuples = Matrix.read(openInputStream(INPUT_FOLDER + dimensions + i + ".txt"));
-            template.replaceBoth(stitches, tuples).write(openOutputStream(OUTPUT_FOLDER + dimensions + i + "_both.svg"));
+            final String[][] tuples = Matrix.read(openInput(INPUT_FOLDER + dimensions + i + ".txt"));
+            template.replaceBoth(stitches, tuples).write(openOutput(OUTPUT_FOLDER + dimensions + i + "_both.svg"));
         }
     }
 
     @Test
     public void flipOldAlongX() throws Exception
     {
-        final TupleFlipper transformer = new TupleFlipper();
-        final String[][] tuples = Matrix.read(openInputStream("src/main/assembly/input/4x4_1.txt"));
-        final Template template = new Template(openInputStream("src/main/assembly/cfg/4x4.svg"));
-        template.replaceBoth(stitches, new Matrix<TupleFlipper>(tuples,transformer).flipNW2SE());
-        template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
+        final String[][] input = Matrix.read(openInput("src/main/assembly/input/4x4_1.txt"));
+        final String[][] tuples = new Matrix<TupleFlipper>(input,new TupleFlipper()).flipNW2SE();
+        final Template template = new Template(openInput("src/main/assembly/cfg/4x4.svg"));
+        template.replaceBoth(stitches, tuples);
+        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
     }
 
     @Ignore("static initializer of TupleTransformer does not accommodate longer tuples")
     @Test
     public void flipNewAlongX() throws Exception
     {
-        String[][] input = Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt"));
+        final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
         final String[][] tuples = new Matrix<TupleFlipper>(input,transformer).flipBottomUp();
-        final Template template = new Template(openInputStream(INPUT_FOLDER + "4x4.svg"));
+        final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
         template.replaceBoth(stitches, tuples);
-        template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
+        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
     }
 
     @Ignore("static initializer of TupleTransformer does not accommodate longer tuples")
     @Test
     public void rotateNew() throws Exception
     {
-        final String[][] tuples = rotate(Matrix.read(openInputStream(INPUT_FOLDER + "4x4_1.txt")));
-        final Template template = new Template(openInputStream(INPUT_FOLDER + "4x4.svg"));
-        template.replaceBoth(stitches, tuples);
-        template.write(openOutputStream(OUTPUT_FOLDER + "4x4_1_newRotated.svg"));
+        final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
+        final String[][] bottomUp = new Matrix<TupleFlipper>(input,transformer).flipBottomUp();
+        final String[][] rotated = new Matrix<TupleFlipper>(bottomUp,transformer).flipLeftRight();
+        final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
+        template.replaceBoth(stitches, rotated);
+        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_newRotated.svg"));
     }
 
-    private String[][] rotate(final String[][] tuples)
+    private FileInputStream openInput(final String file) throws FileNotFoundException
     {
-        String[][] bottomUp = new Matrix<TupleFlipper>(tuples,transformer).flipBottomUp();
-        return new Matrix<TupleFlipper>(bottomUp,transformer).flipLeftRight();
-    }
-
-    private FileInputStream openInputStream(String file) throws FileNotFoundException
-    {
-        FileInputStream inputStream = new FileInputStream(file);
+        final FileInputStream inputStream = new FileInputStream(file);
         closeables.add(inputStream);
         return inputStream;
     }
 
-    private FileOutputStream openOutputStream(String file) throws FileNotFoundException
+    private FileOutputStream openOutput(final String file) throws FileNotFoundException
     {
-        FileOutputStream outputStream = new FileOutputStream(file);
+        final FileOutputStream outputStream = new FileOutputStream(file);
         closeables.add(outputStream);
         return outputStream;
     }
