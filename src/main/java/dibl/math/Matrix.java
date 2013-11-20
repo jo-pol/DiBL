@@ -20,18 +20,37 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Matrix<H extends Flipper<String>>
+public class Matrix<F extends Flipper<String>>
 {
     /** Immutable content: no method should return the field nor any of its rows. */
     private final String[][] matrix;
     private final int rows;
     private final int cols;
-    private H helper;
+    private final F flipper;
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
-    public Matrix(final String[][] matrix,final H helper)
+    /**
+     * Creates an instance that is not affected by later changes to the constructor argument.
+     * 
+     * @param matrix
+     * @param flipper
+     *        flips the elements of the matrix along with the matrix
+     * @throws ArrayIndexOutOfBoundsException
+     *         if any row is shorter than the first
+     */
+    public Matrix(final String[][] matrix, final F flipper) throws ArrayIndexOutOfBoundsException
     {
-        this.helper = helper;
+        this(flipper, matrix);
+    }
+
+    /** Convenience constructor for <code>new Matrix<...>(Matrix.read(input),...)</code>. */
+    public Matrix(final InputStream input, final F flipper) throws ArrayIndexOutOfBoundsException, IOException
+    {
+        this(flipper, readMatrix(input));
+    }
+
+    private Matrix(final F flipper, final String[][] matrix)
+    {
+        this.flipper = flipper;
         rows = matrix.length;
         cols = matrix[0].length;
         this.matrix = new String[rows][cols];
@@ -40,6 +59,16 @@ public class Matrix<H extends Flipper<String>>
                 this.matrix[r][c] = matrix[r][c];
     }
 
+    /**
+     * Reads a tab separated file. The first line contains the dimensions of the matrix to read: rows,
+     * columns. The subsequent lines contain the values for the matrix.
+     * 
+     * @param input
+     * @return a matrix
+     * @throws RuntimeException
+     *         in case of shorter or fewer rows than specified by the dimensions
+     * @throws IOException
+     */
     public static String[][] read(final InputStream input) throws IOException
     {
         return readMatrix(input);
@@ -57,7 +86,7 @@ public class Matrix<H extends Flipper<String>>
             for (int r = 0; r < rows; r++)
             {
                 final String[] cells = reader.readLine().split("\t");
-                for (int c = 0; c < cols && c < cells.length; c++)
+                for (int c = 0; c < cols; c++)
                     matrix[r][c] = cells[c];
             }
             return matrix;
@@ -68,43 +97,39 @@ public class Matrix<H extends Flipper<String>>
         }
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipLeftRight()
     {
         final String[][] ret = new String[cols][rows];
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
-                ret[r][cols - 1 - c] = helper.flipLeftRight(matrix[r][c]);
+                ret[r][cols - 1 - c] = flipper.flipLeftRight(matrix[r][c]);
         return ret;
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipBottomUp()
     {
         final String[][] ret = new String[cols][rows];
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
-                ret[rows - 1 - r][c] = helper.flipBottomUp(matrix[r][c]);
+                ret[rows - 1 - r][c] = flipper.flipBottomUp(matrix[r][c]);
         return ret;
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipNE2SW()
     {
         final String[][] ret = new String[rows][cols];
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
-                ret[c][r] = helper.flipNE2SW(matrix[r][c]);
+                ret[c][r] = flipper.flipNE2SW(matrix[r][c]);
         return ret;
     }
 
-    /** throws ArrayIndexOutOfBounds if any row is shorter than the first */
     public String[][] flipNW2SE()
     {
         final String[][] ret = new String[rows][cols];
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
-                ret[cols - 1 - c][rows - 1 - r] = helper.flipNW2SE(matrix[r][c]);
+                ret[cols - 1 - c][rows - 1 - r] = flipper.flipNW2SE(matrix[r][c]);
         return ret;
     }
 
