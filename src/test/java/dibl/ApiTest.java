@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -51,11 +53,17 @@ public class ApiTest
 
     private void loop(final String dimensions, final int n, final Template template) throws Exception
     {
+        final PrintStream out = new PrintStream(new FileOutputStream(OUTPUT_FOLDER + dimensions+"flip.txt"));
         for (int i = 1; i < n; i++)
         {
             final String[][] tuples = Matrix.read(openInput(INPUT_FOLDER + dimensions + i + ".txt"));
             template.replaceBoth(stitches, tuples).write(openOutput(OUTPUT_FOLDER + dimensions + i + "_both.svg"));
+            out.println((dimensions + i));
+            out.println("  "+Arrays.deepToString(tuples));
+            out.println("X "+Arrays.deepToString(new PTP(tuples).flipBottomUp()));
+            out.println("Y "+Arrays.deepToString(new PTP(tuples).flipLeftRight()));
         }
+        out.close();
     }
 
     @Test
@@ -71,21 +79,27 @@ public class ApiTest
     @Test
     public void flipNewAlongX() throws Exception
     {
-        final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
-        final String[][] tuples = new PTP(input).flipBottomUp();
-        final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
-        template.replaceBoth(stitches, tuples);
-        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedNewAlongX.svg"));
+        for (int n = 1; n < 20; n++)
+        {
+            final FileInputStream input = openInput(INPUT_FOLDER + "4x4_" + n + ".txt");
+            final String[][] tuples = new PTP(input).flipBottomUp();
+            final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
+            template.replaceBoth(stitches, tuples);
+            template.write(openOutput(OUTPUT_FOLDER + "4x4_" + n + "_flippedNewAlongX.svg"));
+        }
     }
 
     @Test
     public void flipNewAlongY() throws Exception
     {
-        final FileInputStream input = openInput(INPUT_FOLDER + "4x4_1.txt");
-        final String[][] tuples = new PTP(input).flipLeftRight();
-        final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
-        template.replaceBoth(stitches, tuples);
-        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedNewAlongY.svg"));
+        for (int n = 1; n < 20; n++)
+        {
+            final FileInputStream input = openInput(INPUT_FOLDER + "4x4_" + n + ".txt");
+            final String[][] tuples = new PTP(input).flipLeftRight();
+            final Template template = new Template(openInput(INPUT_FOLDER + "4x4.svg"));
+            template.replaceBoth(stitches, tuples);
+            template.write(openOutput(OUTPUT_FOLDER + "4x4_" + n + "_flippedNewAlongY.svg"));
+        }
     }
 
     @Test
