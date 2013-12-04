@@ -11,13 +11,19 @@ public class PTP extends Matrix<LongTupleFlipper>
 {
     private static final LongTupleFlipper FLIPPER = new LongTupleFlipper();
 
-    /** Convenience constructor for {@link Matrix#Matrix(InputStream, dibl.math.Flipper)}. */
+    /**
+     * Creates a Pair Traversal Pattern. Convenience constructor for
+     * {@link Matrix#Matrix(InputStream, dibl.math.Flipper)}.
+     */
     public PTP(InputStream input) throws ArrayIndexOutOfBoundsException, IOException
     {
         super(input, FLIPPER);
     }
 
-    /** Convenience constructor for {@link Matrix#Matrix(String[][], dibl.math.Flipper). */
+    /**
+     * Creates a Pair Traversal Pattern. Convenience constructor for
+     * {@link Matrix#Matrix(String[][], dibl.math.Flipper).
+     */
     public PTP(String[][] input)
     {
         super(input, FLIPPER);
