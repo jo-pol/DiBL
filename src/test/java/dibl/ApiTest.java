@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dibl.diagrams.PTP;
+import dibl.diagrams.SM;
 import dibl.diagrams.Template;
 import dibl.math.Matrix;
 import dibl.math.ShortTupleFlipper;
@@ -53,15 +54,15 @@ public class ApiTest
 
     private void loop(final String dimensions, final int n, final Template template) throws Exception
     {
-        final PrintStream out = new PrintStream(new FileOutputStream(OUTPUT_FOLDER + dimensions+"flip.txt"));
+        final PrintStream out = new PrintStream(new FileOutputStream(OUTPUT_FOLDER + dimensions + "flip.txt"));
         for (int i = 1; i < n; i++)
         {
             final String[][] tuples = Matrix.read(openInput(INPUT_FOLDER + dimensions + i + ".txt"));
             template.replaceBoth(stitches, tuples).write(openOutput(OUTPUT_FOLDER + dimensions + i + "_both.svg"));
             out.println((dimensions + i));
-            out.println("  "+Arrays.deepToString(tuples));
-            out.println("X "+Arrays.deepToString(new PTP(tuples).flipBottomUp()));
-            out.println("Y "+Arrays.deepToString(new PTP(tuples).flipLeftRight()));
+            out.println("  " + Arrays.deepToString(tuples));
+            out.println("X " + Arrays.deepToString(new PTP(tuples).flipBottomUp()));
+            out.println("Y " + Arrays.deepToString(new PTP(tuples).flipLeftRight()));
         }
         out.close();
     }
@@ -74,6 +75,41 @@ public class ApiTest
         final Template template = new Template(openInput("src/main/assembly/cfg/4x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
+    }
+
+    @Test
+    public void flipOldwithNew() throws Exception
+    {
+        final String[][] input = Matrix.read(openInput("src/main/assembly/input/4x4_1.txt"));
+        final String[][] tuples = new PTP(input).flipNW2SE();
+        final Template template = new Template(openInput("src/main/assembly/cfg/4x4.svg"));
+        template.replaceBoth(stitches, tuples);
+        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOlWithNew.svg"));
+    }
+
+    @Test
+    public void colorCoded() throws Exception
+    {
+        String[][] ccStitches = new String[][] { //
+        {"-tc", "-ctc", "-tctc"}, //
+                {"-tctc", "-tc", "-ctc"}, //
+                {"-tcptc", "-ctcpctc", "-tctcptctc",}};
+        final String[][] tuples = PTP.read(openInput(INPUT_FOLDER + "3x3_1.txt"));
+        Template template = new Template(openInput(INPUT_FOLDER + "3x3.svg"));
+        template.replaceBoth(ccStitches, tuples);
+        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccNormal.svg"));
+        template.replaceBoth(//
+                new SM(ccStitches).flipBottomUp(),//
+                new PTP(tuples).flipBottomUp());
+        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccBottomUp.svg"));
+        template.replaceBoth(//
+                new SM(ccStitches).flipLeftRight(), //
+                new PTP(tuples).flipLeftRight());
+        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccLeftRight.svg"));
+        template.replaceBoth(//
+                new SM(new SM(ccStitches).flipBottomUp()).flipLeftRight(),//
+                new PTP(new PTP(tuples).flipBottomUp()).flipLeftRight());
+        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccRotated.svg"));
     }
 
     @Test
