@@ -11,13 +11,19 @@ public class SM extends Matrix<StitchFlipper>
 {
     private static final StitchFlipper FLIPPER = new StitchFlipper();
 
-    /** Convenience constructor for {@link Matrix#Matrix(InputStream, dibl.math.Flipper)}. */
+    /**
+     * Creates a Stitch Matrix. Convenience constructor for
+     * {@link Matrix#Matrix(InputStream, dibl.math.Flipper)}.
+     */
     public SM(InputStream input) throws ArrayIndexOutOfBoundsException, IOException
     {
         super(input, FLIPPER);
     }
 
-    /** Convenience constructor for {@link Matrix#Matrix(String[][], dibl.math.Flipper). */
+    /**
+     * Creates a Stitch Matrix. Convenience constructor for
+     * {@link Matrix#Matrix(String[][], dibl.math.Flipper).
+     */
     public SM(String[][] input)
     {
         super(input, FLIPPER);
