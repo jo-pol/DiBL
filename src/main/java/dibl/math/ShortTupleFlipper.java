@@ -69,14 +69,14 @@ public class ShortTupleFlipper implements Flipper<String>
     private String flipAlongY(String value)
     {
         if (!tuples.contains(value))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(value);
         return flippedLeftRight.get(value);
     }
 
     private String flipAlongX(String value)
     {
         if (!tuples.contains(value))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(value);
         return flippedBottomUp.get(value);
     }
 

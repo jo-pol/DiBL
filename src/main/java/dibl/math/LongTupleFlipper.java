@@ -25,7 +25,7 @@ public class LongTupleFlipper implements Flipper<String>
         @Override
         public String flipBottomUp(final String value)
         {
-            return "" + (-Integer.parseInt(value));
+            return "" + (-Integer.parseInt(value.trim()));
         }
 
         @Override
