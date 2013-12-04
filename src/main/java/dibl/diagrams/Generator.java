@@ -119,19 +119,22 @@ public class Generator
     {
         final int rows = tuples.length;
         final int cols = tuples[0].length;
+        
         String[][] stitchMatrix = buildStitchesMatrix(stitches, rows, cols);
+        SM sm = new SM(stitchMatrix);
+        String[][] rotatedStitches = new SM(sm.flipNE2SW()).flipNW2SE();
+        String[][][] stitchVariants = {stitchMatrix, sm.flipNE2SW(), sm.flipNW2SE(), rotatedStitches};
 
-        final ShortTupleFlipper f = new ShortTupleFlipper();
-        Matrix<ShortTupleFlipper> m = new Matrix<ShortTupleFlipper>(tuples,f);
-        String[][] rotated = new Matrix<ShortTupleFlipper>(m.flipNE2SW(),f).flipNW2SE();
-        String[][][] variants = {tuples, rotated, m.flipNE2SW(), m.flipNW2SE()};
+        final ShortTupleFlipper stf = new ShortTupleFlipper();
+        Matrix<ShortTupleFlipper> tm = new Matrix<ShortTupleFlipper>(tuples,stf);
+        String[][] rotatedTuples = new Matrix<ShortTupleFlipper>(tm.flipNE2SW(),stf).flipNW2SE();
+        String[][][] tupleVariants = {tuples, tm.flipNE2SW(), tm.flipNW2SE(), rotatedTuples};
 
         final Template template = getTemplate(rows + "x" + cols);
-        int i=1;
-        for (String[][] variant : variants)
+        for (int i=0;i<tupleVariants.length;i++)
         {
-            template.replaceBoth(stitchMatrix,variant);
-            template.write(new FileOutputStream(folder + "/" + (i++) + ".svg"));
+            template.replaceBoth(stitchVariants[i],tupleVariants[i]);
+            template.write(new FileOutputStream(folder + "/" + i + ".svg"));
         }
     }
 
