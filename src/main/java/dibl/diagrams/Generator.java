@@ -29,7 +29,7 @@ import dibl.math.ShortTupleFlipper;
 
 public class Generator
 {
-    private static String CFG = "cfg/"; // not final to allow WhiteboxTest
+    public static String CFG = "input/PairTraversal/diamond/";
     private static final Map<String, Template> templates = new HashMap<String, Template>();
     private static int maxPermutations = 500;
 
