@@ -9,8 +9,9 @@ See http://web.uvic.ca/~vmi/papers/bridges2012.html
 
 Command line examples:
 
-java -jar dibl-0.1.jar input/3x3_1.txt folder1 tcptc tc tc 
-java -jar dibl-0.1.jar folder1/3x3_1_1.svg folder2 tc tcptc
+java -jar dibl-0.7.jar input/stitches.txt < input/flanders.svg > result.svg
+java -jar dibl-0.7.jar input/stitches.txt input/PairTraversal/diamond/patterns/3x3_1.txt < input/PairTraversal/diamond/3x3.svg > result.svg
+java -jar dibl-0.7.jar input/stitches.txt input/PairTraversal/brick/patterns/4x4_1.txt < input/PairTraversal/diamond/4x4.svg > result.svg
 
 Further explanations:
 http://code.google.com/p/dibl/wiki/GetStarted

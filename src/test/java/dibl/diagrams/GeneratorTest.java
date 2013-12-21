@@ -22,36 +22,30 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
 
-import dibl.Main;
-
 public class GeneratorTest
 {
-    private static final String CFG = "src/main/assembly/cfg/";
-    private static final String INPUT_FOLDER = "src/main/assembly/input";
+    private static final String BRICK_PATTERNS = "src/main/assembly/input/PairTraversal/brick/";
+    private static String savedCFG;
 
     @BeforeClass
     public static void setup()
     {
-        Whitebox.setInternalState(Generator.class, "CFG", CFG);
+        savedCFG = Generator.CFG;
+        Whitebox.setInternalState(Generator.class, "CFG", "src/main/assembly/"+Generator.CFG);
     }
 
     @AfterClass
     public static void cleanup()
     {
-        Whitebox.setInternalState(Generator.class, "CFG", "cfg/");
+        Whitebox.setInternalState(Generator.class, "CFG", savedCFG);
     }
 
-    @Test
-    public void customMix3x3new() throws Exception
-    {
-        Main.main("src/main/assembly/input/3x3_1.txt", "target/3x3", "tc", "tcptc");
-    }
 
     @Test
     public void stitchPermutations() throws Exception
     {
         // generates 256K files
-        final Template template = new Template(new FileInputStream("src/main/assembly/cfg/3x3.svg"));
+        final Template template = new Template(new FileInputStream(BRICK_PATTERNS+"3x3.svg"));
         final String[] stitchTypes = {"tc", "tcptc"};
         final File folder = new File("target/permutations");
         folder.mkdirs();
@@ -63,7 +57,7 @@ public class GeneratorTest
     {
         final File folder = new File("target/flanders");
         folder.mkdirs();
-        final Template template = new Template(new FileInputStream(INPUT_FOLDER + "/flanders.svg"));
+        final Template template = new Template(new FileInputStream("src/main/assembly/input/flanders.svg"));
         Generator.permutations(template, folder, "tc", "ctc", "tctc");
     }
 }
