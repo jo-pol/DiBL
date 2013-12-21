@@ -15,16 +15,16 @@
 package dibl;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 import org.jdom2.JDOMException;
 
-import dibl.diagrams.Generator;
 import dibl.diagrams.Template;
 import dibl.math.Matrix;
 
@@ -32,25 +32,39 @@ public class Main
 {
     private static String README = "README.txt";// not final to allow WhiteboxTest
 
-    public static void main(final String... args) throws FileNotFoundException, IOException, JDOMException
+    public static void main(final String... args) throws IOException, JDOMException
     {
-        if (args.length < 3)
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        switch (args.length)
         {
+        case 1:
+            new Template(System.in).replaceStitches(readMatrix(args[0])).write(out);
+            break;
+        case 2:
+            new Template(System.in).replaceBoth(readMatrix(args[0]), readMatrix(args[1])).write(out);
+            break;
+        default:
             showUsage();
             return;
         }
-        final String fileName = args[0];
-        final FileInputStream input = new FileInputStream(fileName);
+        System.out.write(out.toByteArray());
+        // <dependency>
+        // <groupId>batik</groupId>
+        // <artifactId>batik-rasterizer</artifactId>
+        // <version>1.6-1</version>
+        // </dependency>
 
-        final File folder = new File(args[1]);
-        folder.mkdirs();
+        // final TranscoderInput input = new TranscoderInput(new
+        // ByteArrayInputStream(out.toByteArray()));
+        // new PNGTranscoder().transcode(input, new TranscoderOutput(System.out));
+    }
 
-        final String[] stitches = Arrays.copyOfRange(args, 2, args.length);
-
-        if (fileName.endsWith(".txt"))
-            Generator.symetricVariants(Matrix.read(new FileInputStream(fileName)), folder, stitches);
+    private static String[][] readMatrix(final String arg) throws IOException
+    {
+        if (new File(arg).isFile())
+            return Matrix.read(new FileInputStream(arg));
         else
-            Generator.permutations(new Template(input), folder, stitches);
+            return Matrix.read(new ByteArrayInputStream(arg.getBytes()));
     }
 
     private static void showUsage() throws FileNotFoundException, IOException

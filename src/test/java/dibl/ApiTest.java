@@ -22,8 +22,9 @@ import dibl.math.ShortTupleFlipper;
 
 public class ApiTest
 {
+    private static final String DIAMOND_FOLDER = "src/main/assembly/input/PairTraversal/diamond/";
+    private static final String BRICK_FOLDER = "src/main/assembly/input/PairTraversal/brick/";
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
-    private static final String INPUT_FOLDER = "src/test/resources/";
     private final List<Closeable> closeables = new ArrayList<Closeable>();
     private final String[][] stitches = new String[][] { //
     {"tcptc", "tc", "tcptc", "tc"}, //
@@ -48,8 +49,8 @@ public class ApiTest
     @Test
     public void all() throws Exception
     {
-        loop("3x3_", 8, new Template(INPUT_FOLDER + "/3x3.svg"));
-        loop("4x4_", 222, new Template(INPUT_FOLDER + "/4x4.svg"));
+        loop("3x3", 8, new Template(BRICK_FOLDER + "3x3.svg"));
+        loop("4x4", 222, new Template(BRICK_FOLDER + "4x4.svg"));
     }
 
     private void loop(final String dimensions, final int n, final Template template) throws Exception
@@ -57,7 +58,7 @@ public class ApiTest
         final PrintStream out = new PrintStream(new FileOutputStream(OUTPUT_FOLDER + dimensions + "flip.txt"));
         for (int i = 1; i < n; i++)
         {
-            final String[][] tuples = Matrix.read(openInput(INPUT_FOLDER + dimensions + i + ".txt"));
+            final String[][] tuples = Matrix.read(openInput(BRICK_FOLDER + dimensions + "/" + dimensions +"_" + i + ".txt"));
             template.replaceBoth(stitches, tuples).write(openOutput(OUTPUT_FOLDER + dimensions + i + ".svg"));
             out.println((dimensions + i));
             out.println("  " + Arrays.deepToString(tuples));
@@ -70,9 +71,9 @@ public class ApiTest
     @Test
     public void flipOldAlongX() throws Exception
     {
-        final String[][] input = Matrix.read(openInput("src/main/assembly/input/4x4_1.txt"));
+        final String[][] input = Matrix.read(openInput(DIAMOND_FOLDER + "4x4/4x4_1.txt"));
         final String[][] flippedTuples = new Matrix<ShortTupleFlipper>(input, new ShortTupleFlipper()).flipNW2SE();
-        final Template template = new Template(openInput("src/main/assembly/cfg/4x4.svg"));
+        final Template template = new Template(openInput(DIAMOND_FOLDER + "4x4.svg"));
         template.replaceBoth(new SM(stitches).flipNW2SE(), flippedTuples);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
     }
@@ -80,9 +81,9 @@ public class ApiTest
     @Test
     public void flipOldAlongY() throws Exception
     {
-        final String[][] input = Matrix.read(openInput("src/main/assembly/input/4x4_1.txt"));
+        final String[][] input = Matrix.read(openInput(DIAMOND_FOLDER + "4x4/4x4_1.txt"));
         final String[][] flippedTuples = new Matrix<ShortTupleFlipper>(input, new ShortTupleFlipper()).flipNE2SW();
-        final Template template = new Template(openInput("src/main/assembly/cfg/4x4.svg"));
+        final Template template = new Template(openInput(DIAMOND_FOLDER + "4x4.svg"));
         template.replaceBoth(new SM(stitches).flipNE2SW(), flippedTuples);
         template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongY.svg"));
     }
@@ -90,12 +91,12 @@ public class ApiTest
     @Test
     public void colorCoded() throws Exception
     {
-        String[][] stitches = new String[][] { //
+        final String[][] stitches = new String[][] { //
         {"-tc", "-ctc", "-tctc"}, //
                 {"-tctc", "-tc", "-ctc"}, //
                 {"-tcptc", "-ctcpctc", "-tctcptctc",}};
-        final String[][] tuples = PTP.read(openInput(INPUT_FOLDER + "3x3_1.txt"));
-        Template template = new Template(openInput(INPUT_FOLDER + "3x3.svg"));
+        final String[][] tuples = PTP.read(openInput(BRICK_FOLDER + "3x3/3x3_1.txt"));
+        final Template template = new Template(openInput(BRICK_FOLDER + "3x3.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccNormal.svg"));
         template.replaceBoth(//
