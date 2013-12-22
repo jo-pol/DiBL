@@ -30,12 +30,12 @@
 		<fileSet>
 			<directory>${project.basedir}/src/main/assembly</directory>
 			<outputDirectory>/</outputDirectory>
+			<filtered>true</filtered>
 			<includes>
 				<include>*.sh</include>
 				<include>*.bat</include>
 				<include>*.txt</include>
 			</includes>
-			<filtered>true</filtered>
 		</fileSet>
 		<!-- adds jar package to the root directory of zip package -->
 		<fileSet>
