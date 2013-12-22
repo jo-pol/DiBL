@@ -74,7 +74,7 @@ public class Main
         {
             String line;
             while (null != (line = reader.readLine()))
-                System.out.println(line);
+                System.err.println(line);
         }
         finally
         {
