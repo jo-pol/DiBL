@@ -61,10 +61,25 @@ public class Main
 
     private static String[][] readMatrix(final String arg) throws IOException
     {
-        if (new File(arg).isFile())
-            return Matrix.read(new FileInputStream(arg));
-        else
-            return Matrix.read(new ByteArrayInputStream(arg.getBytes()));
+        try
+        {
+            if (new File(arg).isFile())
+                return Matrix.read(new FileInputStream(arg));
+            else
+                return Matrix.read(new ByteArrayInputStream(arg.getBytes()));
+        }
+        catch (final IOException e)
+        {
+            throw new IOException(arg + "\n" + e.getMessage());
+        }
+        catch (final IllegalArgumentException e)
+        {
+            throw new IllegalArgumentException(arg + "\n" + e.getMessage());
+        }
+        catch (final NullPointerException e)
+        {
+            throw new NullPointerException(arg + "\n" + e.getMessage());
+        }
     }
 
     private static void showUsage() throws FileNotFoundException, IOException

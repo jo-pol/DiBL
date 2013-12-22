@@ -15,6 +15,7 @@
 package dibl.math;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -79,15 +80,13 @@ public class Matrix<F extends Flipper<String>>
         final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         try
         {
-            final String[] dimensions = reader.readLine().split("[^0-9]+");
+            final String[] dimensions = readDimensions(reader);
             final int rows = Integer.parseInt(dimensions[0].trim());
             final int cols = Integer.parseInt(dimensions[1].trim());
             final String[][] matrix = new String[rows][cols];
-            System.err.println("==" + rows + "==" + cols + "==");
             for (int r = 0; r < rows; r++)
             {
-                final String[] cells = reader.readLine().split("[;\t]");
-                System.err.println("==" + Arrays.deepToString(cells));
+                final String[] cells = readLine(reader, r, cols);
                 for (int c = 0; c < cols; c++)
                     matrix[r][c] = cells[c];
             }
@@ -96,6 +95,36 @@ public class Matrix<F extends Flipper<String>>
         finally
         {
             reader.close();
+        }
+    }
+
+    private static String[] readLine(final BufferedReader reader, final int lineNumber, final int cols) throws IOException
+    {
+        try
+        {
+            final String[] split = reader.readLine().split("[;\t]");
+            if (split.length < cols)
+                throw new IllegalArgumentException("too few elements on line " + lineNumber + " expecting " + cols + " got " + split.length);
+            return split;
+        }
+        catch (final NullPointerException e)
+        {
+            throw new EOFException("at line " + lineNumber);
+        }
+    }
+
+    private static String[] readDimensions(final BufferedReader reader) throws IOException
+    {
+        try
+        {
+            final String[] split = reader.readLine().split("[^0-9]+");
+            if (split.length < 2)
+                throw new IllegalArgumentException("expecting two numbers on the first line with the dimensions of the matrix");
+            return split;
+        }
+        catch (final NullPointerException e)
+        {
+            throw new EOFException("while raeding the dimensions of a matrix");
         }
     }
 
@@ -144,7 +173,7 @@ public class Matrix<F extends Flipper<String>>
         return ret;
     }
 
-    public boolean isShifted(String[][] shiftedMatrix)
+    public boolean isShifted(final String[][] shiftedMatrix)
     {
         final String shifted = Arrays.deepToString(shiftedMatrix);
         for (int r = 0; r < rows; r++)
