@@ -24,11 +24,18 @@
 			<directory>${project.basedir}/src/main/assembly</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
+				<include>input/**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>${project.basedir}/src/main/assembly</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
 				<include>*.sh</include>
 				<include>*.bat</include>
 				<include>*.txt</include>
-				<include>input/**/*</include>
 			</includes>
+			<filtered>true</filtered>
 		</fileSet>
 		<!-- adds jar package to the root directory of zip package -->
 		<fileSet>
