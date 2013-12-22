@@ -24,12 +24,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
 
-import dibl.Main;
-
 public class MainTest
 {
     private static final String BRICK_PATTERNS = "src/main/assembly/input/PairTraversal/brick/";
-    private static final String DIAMOND_PATTERNS = "src/main/assembly/input/PairTraversal/diamond/";
     private PrintStream savedOut;
     private InputStream savedIn;
 
