@@ -14,49 +14,80 @@
 // @formatter:on
 package dibl;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.PrintStream;
 
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.ImageTranscoder;
+import org.apache.batik.transcoder.image.JPEGTranscoder;
+import org.apache.batik.transcoder.image.PNGTranscoder;
+import org.apache.batik.transcoder.image.TIFFTranscoder;
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.jdom2.JDOMException;
 
 import dibl.diagrams.Template;
 import dibl.math.Matrix;
+import dibl.math.ShortTupleFlipper;
 
 public class Main
 {
-    private static String README = "README.txt";// not final to allow WhiteboxTest
+    private static final String NEW_LINE = System.getProperty("line.separator");
+    private Options options;
+    private CommandLine commandLine;
 
-    public static void main(final String... args) throws IOException, JDOMException
+    public static void main(final String... args) throws IOException, JDOMException, TranscoderException, ParseException
     {
+        new Main(args);
+    }
+
+    private Main(final String... args) throws ParseException, IOException, JDOMException, TranscoderException
+    {
+        options = getOptions();
+        commandLine = new BasicParser().parse(options, args);
+        if (commandLine.hasOption("help"))
+        {
+            showUsage();
+            return;
+        }
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        switch (args.length)
+        switch (commandLine.getArgList().size())
         {
         case 1:
-            new Template(System.in).replaceStitches(readMatrix(args[0])).write(out);
+            new Template(System.in).replaceStitches(readStitches()).write(out);
             break;
         case 2:
-            new Template(System.in).replaceBoth(readMatrix(args[0]), readMatrix(args[1])).write(out);
+            new Template(System.in).replaceBoth(readStitches(), readTuples()).write(out);
             break;
         default:
             showUsage();
             return;
         }
-        System.out.write(out.toByteArray());
-        // <dependency>
-        // <groupId>batik</groupId>
-        // <artifactId>batik-rasterizer</artifactId>
-        // <version>1.6-1</version>
-        // </dependency>
+        write(out.toByteArray());
+    }
 
-        // final TranscoderInput input = new TranscoderInput(new
-        // ByteArrayInputStream(out.toByteArray()));
-        // new PNGTranscoder().transcode(input, new TranscoderOutput(System.out));
+    private String[][] readStitches() throws IOException
+    {
+        return readMatrix(getArg(0));
+    }
+
+    private String[][] readTuples() throws IOException
+    {
+        String[][] tuples = readMatrix(getArg(1));
+        if (commandLine.hasOption("x"))
+            tuples = new Matrix<ShortTupleFlipper>(tuples, new ShortTupleFlipper()).flipNW2SE();
+        if (commandLine.hasOption("y"))
+            tuples = new Matrix<ShortTupleFlipper>(tuples, new ShortTupleFlipper()).flipNE2SW();
+        return tuples;
     }
 
     private static String[][] readMatrix(final String arg) throws IOException
@@ -70,30 +101,75 @@ public class Main
         }
         catch (final IOException e)
         {
-            throw new IOException(arg + "\n" + e.getMessage());
+            throw new IOException(arg + NEW_LINE + e.getMessage());
         }
         catch (final IllegalArgumentException e)
         {
-            throw new IllegalArgumentException(arg + "\n" + e.getMessage());
+            throw new IllegalArgumentException(arg + NEW_LINE + e.getMessage());
         }
         catch (final NullPointerException e)
         {
-            throw new NullPointerException(arg + "\n" + e.getMessage());
+            throw new NullPointerException(arg + NEW_LINE + e.getMessage());
         }
     }
 
-    private static void showUsage() throws FileNotFoundException, IOException
+    private void write(final byte[] svg) throws IOException, TranscoderException
     {
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(README)));
-        try
+        final ImageTranscoder transcoder = createTranscoder();
+        if (transcoder == null)
+            System.out.write(svg);
+        else
         {
-            String line;
-            while (null != (line = reader.readLine()))
-                System.err.println(line);
+            final TranscoderOutput output = new TranscoderOutput(System.out);
+            final TranscoderInput input = new TranscoderInput(new ByteArrayInputStream(svg));
+            transcoder.transcode(input, output);
         }
-        finally
+    }
+
+    private ImageTranscoder createTranscoder() throws TranscoderException
+    {
+        final String ext = commandLine.getOptionValue("ext", "svg").toLowerCase();
+        if (ext.equals("png"))
+            return new PNGTranscoder();
+        else if (ext.equals("tiff"))
+            return new TIFFTranscoder();
+        else if (ext.equals("jpg"))
         {
-            reader.close();
+            final float quality = Float.parseFloat(commandLine.getOptionValue("q", "0.95"));
+            final JPEGTranscoder transcoder = new JPEGTranscoder();
+            transcoder.addTranscodingHint(JPEGTranscoder.KEY_QUALITY, quality);
+            return transcoder;
         }
+        else if (!ext.equals("svg"))
+        {
+            System.err.println("unknown output type [" + ext + "] applied svg");
+        }
+        return null;
+    }
+
+    private void showUsage()
+    {
+        final String usage = "java -jar DiBL.jar [options] stitches [tuples]";
+        final String footer = "rotate is flip along X + Y" + NEW_LINE + "stitches and tuples are either a file or a multiline string";
+        final PrintStream saved = System.out;
+        System.setOut(System.err);
+        new HelpFormatter().printHelp(usage, "options:", options, footer);
+        System.setOut(saved);
+    }
+
+    private static Options getOptions()
+    {
+        final Options options = new Options();
+        options.addOption("help", false, "print this message");
+        options.addOption("x", false, "flip tuples along x axis");
+        options.addOption("y", false, "flip tuples along y axis");
+        options.addOption("ext", true, "output type: svg, png, jpg, tiff. Default svg.");
+        options.addOption("q", true, "jpg quality. Default 0.95 allowing 5% loss.");
+        return options;
+    }
+
+    private String getArg(final int i)
+    {
+        return (String) commandLine.getArgList().get(i);
     }
 }
