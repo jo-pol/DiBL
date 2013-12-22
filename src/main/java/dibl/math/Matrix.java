@@ -79,13 +79,15 @@ public class Matrix<F extends Flipper<String>>
         final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         try
         {
-            final String[] dimensions = reader.readLine().split("\\s");
+            final String[] dimensions = reader.readLine().split("[^0-9]+");
             final int rows = Integer.parseInt(dimensions[0].trim());
             final int cols = Integer.parseInt(dimensions[1].trim());
             final String[][] matrix = new String[rows][cols];
+            System.err.println("==" + rows + "==" + cols + "==");
             for (int r = 0; r < rows; r++)
             {
-                final String[] cells = reader.readLine().split("\t");
+                final String[] cells = reader.readLine().split("[;\t]");
+                System.err.println("==" + Arrays.deepToString(cells));
                 for (int c = 0; c < cols; c++)
                     matrix[r][c] = cells[c];
             }
