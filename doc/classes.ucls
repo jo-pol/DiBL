@@ -34,7 +34,7 @@
   </class>  
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="dibl.diagrams.Generator" project="dibl" 
     file="/dibl/src/main/java/dibl/diagrams/Generator.java" binary="false">    
-    <position height="-1" width="-1" x="496" y="133"/>    
+    <position height="-1" width="-1" x="498" y="18"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -42,7 +42,7 @@
   </class>  
   <class id="6" corner="BOTTOM_RIGHT" language="java" name="dibl.diagrams.Template" project="dibl" 
     file="/dibl/src/main/java/dibl/diagrams/Template.java" binary="false">    
-    <position height="-1" width="-1" x="149" y="569"/>    
+    <position height="-1" width="-1" x="69" y="568"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -58,7 +58,7 @@
   </class>  
   <class id="8" corner="BOTTOM_RIGHT" language="java" name="dibl.Main" project="dibl" 
     file="/dibl/src/main/java/dibl/Main.java" binary="false">    
-    <position height="-1" width="-1" x="245" y="215"/>    
+    <position height="-1" width="-1" x="216" y="178"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -81,73 +81,73 @@
     </display>  
   </class>  
   <dependency id="11">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
   </dependency>  
-  <generalization id="12">    
+  <realization id="12">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <generalization id="13">    
     <bendpoint x="726" y="207"/>    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <association id="13">    
+  <realization id="14">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="15">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="14" name="FLIPPER"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+      <attribute id="16" name="FLIPPER"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="16">    
-    <bendpoint x="1163" y="131"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="18">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="19" name="FLIPPER"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="21">    
+  <dependency id="18">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <dependency id="22">    
+  <dependency id="19">    
     <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="TARGET" refId="4"/>  
   </dependency>  
-  <association id="23">    
-    <bendpoint x="150" y="131"/>    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="24" name="templates"/>      
-      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="26">    
+  <dependency id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <realization id="21">    
     <bendpoint x="1095" y="614"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
-  <realization id="27">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
-  <realization id="28">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
-  <dependency id="29">    
-    <end type="SOURCE" refId="8"/>    
+  <generalization id="22">    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="23">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="24" name="FLIPPER"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="26">    
+    <bendpoint x="1224" y="18"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
   </dependency>  
+  <association id="27">    
+    <bendpoint x="69" y="18"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="28" name="templates"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
