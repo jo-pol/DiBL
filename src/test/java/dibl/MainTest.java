@@ -60,8 +60,8 @@ public class MainTest
     public void hybrid() throws Exception
     {
         System.setIn(new FileInputStream(DIAMOND_PATTERNS + "4x4.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/mainRotated.jpg")));
-        Main.main("-x", "-y", "-ext", "jpg", STITCHES, DIAMOND_PATTERNS + "4x4/4x4_2.txt");
+        System.setOut(new PrintStream(new FileOutputStream("target/mainRotated.png")));
+        Main.main("-x", "-y", "-ext", "png", STITCHES, DIAMOND_PATTERNS + "4x4/4x4_2.txt");
     }
 
     @Test
@@ -76,8 +76,8 @@ public class MainTest
     public void hybridY() throws Exception
     {
         System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/mainFlippedAlongY.jpg")));
-        Main.main("-y", "-ext", "jpg", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_2.txt");
+        System.setOut(new PrintStream(new FileOutputStream("target/mainFlippedAlongY.tiff")));
+        Main.main("-y", "-ext", "tiff", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_2.txt");
     }
 
     @Test
