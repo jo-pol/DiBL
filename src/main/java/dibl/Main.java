@@ -14,6 +14,7 @@
 // @formatter:on
 package dibl;
 
+import java.awt.Color;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -41,6 +42,7 @@ import dibl.math.ShortTupleFlipper;
 
 public class Main
 {
+    private static final Float JPG_QUALITY = 0.95f;
     private static final String NEW_LINE = System.getProperty("line.separator");
     private Options options;
     private CommandLine commandLine;
@@ -130,14 +132,25 @@ public class Main
     {
         final String ext = commandLine.getOptionValue("ext", "svg").toLowerCase();
         if (ext.equals("png"))
-            return new PNGTranscoder();
+        {
+            final PNGTranscoder transcoder = new PNGTranscoder();
+            transcoder.addTranscodingHint(PNGTranscoder.KEY_FORCE_TRANSPARENT_WHITE, true);
+            transcoder.addTranscodingHint(PNGTranscoder.KEY_BACKGROUND_COLOR, Color.WHITE);
+            return transcoder;
+        }
         else if (ext.equals("tiff"))
-            return new TIFFTranscoder();
+        {
+            final TIFFTranscoder transcoder = new TIFFTranscoder();
+            transcoder.addTranscodingHint(TIFFTranscoder.KEY_FORCE_TRANSPARENT_WHITE, true);
+            transcoder.addTranscodingHint(PNGTranscoder.KEY_BACKGROUND_COLOR, Color.WHITE);
+            return transcoder;
+        }
         else if (ext.equals("jpg"))
         {
-            final float quality = Float.parseFloat(commandLine.getOptionValue("q", "0.95"));
+            final float quality = Float.parseFloat(commandLine.getOptionValue("q", JPG_QUALITY.toString()));
             final JPEGTranscoder transcoder = new JPEGTranscoder();
             transcoder.addTranscodingHint(JPEGTranscoder.KEY_QUALITY, quality);
+            transcoder.addTranscodingHint(PNGTranscoder.KEY_BACKGROUND_COLOR, Color.WHITE);
             return transcoder;
         }
         else if (!ext.equals("svg"))
@@ -150,21 +163,27 @@ public class Main
     private void showUsage()
     {
         final String usage = "java -jar DiBL.jar [options] stitches [tuples]";
-        final String footer = "rotate is flip along X + Y" + NEW_LINE + "stitches and tuples are either a file or a multiline string";
+        final String header = "Transform a bobbin lace svg template into a variant." + NEW_LINE +"options:" ;
+        final String footer = "Rotate is flip along X + Y." + NEW_LINE //
+                + "The stitches and tuples arguments are either a file or a multiline string." + NEW_LINE //
+                + "A tuples argument makes garbage diagrams of non pair travesal patterns." + NEW_LINE //
+                + "Flipping applied to the wrong type of template cause garbage diagrams.";
         final PrintStream saved = System.out;
         System.setOut(System.err);
-        new HelpFormatter().printHelp(usage, "options:", options, footer);
+        new HelpFormatter().printHelp(usage, header, options, footer);
         System.setOut(saved);
     }
 
     private static Options getOptions()
     {
+        final int loss = 100 - Math.round(JPG_QUALITY * 100);
+        final String flipDiamondAlong = "flip tuples for a diamond tiled template along the ";
         final Options options = new Options();
         options.addOption("help", false, "print this message");
-        options.addOption("x", false, "flip tuples along x axis");
-        options.addOption("y", false, "flip tuples along y axis");
+        options.addOption("x", false, flipDiamondAlong + "x axis");
+        options.addOption("y", false, flipDiamondAlong + "y axis");
         options.addOption("ext", true, "output type: svg, png, jpg, tiff. Default svg.");
-        options.addOption("q", true, "jpg quality. Default 0.95 allowing 5% loss.");
+        options.addOption("q", true, "jpg quality. Default " + JPG_QUALITY + ", allowing " + loss + "% loss.");
         return options;
     }
 
