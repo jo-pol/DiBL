@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<!-- 
+  Copyright 2013, J. Pol
+ 
+  This file is part of free software: you can redistribute it and/or modify it under the terms of the
+  GNU General Public License as published by the Free Software Foundation.
+  
+  This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  
+  See the GNU General Public License for more details. A copy of the GNU General Public License is
+  available at <http://www.gnu.org/licenses/>.
+ -->
+<meta http-equiv="ContentType" content="text/html; charset=UTF-8">
+<title>DiBL: Bobbin Lace - Pair Traversal Pattern browser</title>
+<!-- 
+	TODO
+
+	something (for example PHP instructions) should transform the form arguments 
+	into a multi-line command and inject the resulting image into the page
+	
+	pattern=3x3_1&options=XXXX&A1=tc&A2=tcptc&...&D4=tcptc
+	
+	java -jar dibl-0.0.7.jar -ext png XXXX '4;4
+	tcptc;tc;tcptc;tc
+	tc;tcptc;tc;tcptc
+	tcptc;tc;tcptc;tc
+	tc;tcptc;tc;tcptc' input/PairTraversal/diamond/3x3/3x3.svg < input/PairTraversal/diamond/3x3.svg \
+ -->
+<style type="text/css">
+p {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+table,td {
+	border: 0px;
+}
+
+table,td,select {
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+</head>
+<body>
+	<h1>Bobbin Lace - Pair traversal pattern browser</h1>
+	<form action="">
+		<table>
+			<tbody>
+				<tr>
+					<td rowspan="7"><select size="12" name="pattern">
+							<option value="3x3_1">3x3_1</option>
+							<option value="3x3_2">3x3_2</option>
+							<option value="3x3_3">3x3_3</option>
+							<option value="3x3_4">3x3_4</option>
+							<option value="3x3_5">3x3_5</option>
+							<option value="3x3_6">3x3_6</option>
+							<option value="3x3_7">3x3_7</option>
+							<option value="4x4_1">4x4_1</option>
+							<option value="4x4_2">4x4_2</option>
+							<option value="4x4_3">4x4_3</option>
+							<option value="4x4_4">4x4_4</option>
+							<option value="4x4_5">4x4_5</option>
+							<option value="4x4_6">4x4_6</option>
+							<option value="4x4_7">4x4_7</option>
+							<option value="4x4_8">4x4_8</option>
+							<option value="4x4_9">4x4_9</option>
+							<option value="4x4_10">4x4_10</option>
+							<option value="4x4_11">4x4_11</option>
+							<option value="4x4_12">4x4_12</option>
+							<option value="4x4_13">4x4_13</option>
+							<option value="4x4_14">4x4_14</option>
+							<option value="4x4_16">4x4_16</option>
+							<option value="4x4_17">4x4_17</option>
+							<option value="4x4_18">4x4_18</option>
+							<option value="4x4_19">4x4_19</option>
+							<option value="4x4_20">4x4_20</option>
+							<option value="4x4_22">4x4_22</option>
+							<option value="4x4_23">4x4_23</option>
+							<option value="4x4_24">4x4_24</option>
+							<option value="4x4_25">4x4_25</option>
+							<option value="4x4_26">4x4_26</option>
+							<option value="4x4_27">4x4_27</option>
+							<option value="4x4_29">4x4_29</option>
+							<option value="4x4_33">4x4_33</option>
+							<option value="4x4_34">4x4_34</option>
+							<option value="4x4_35">4x4_35</option>
+							<option value="4x4_36">4x4_36</option>
+							<option value="4x4_40">4x4_40</option>
+							<option value="4x4_41">4x4_41</option>
+							<option value="4x4_42">4x4_42</option>
+							<option value="4x4_43">4x4_43</option>
+							<option value="4x4_44">4x4_44</option>
+							<option value="4x4_45">4x4_45</option>
+							<option value="4x4_47">4x4_47</option>
+							<option value="4x4_48">4x4_48</option>
+							<option value="4x4_49">4x4_49</option>
+							<option value="4x4_50">4x4_50</option>
+							<option value="4x4_51">4x4_51</option>
+							<option value="4x4_52">4x4_52</option>
+							<option value="4x4_54">4x4_54</option>
+							<option value="4x4_55">4x4_55</option>
+							<option value="4x4_56">4x4_56</option>
+							<option value="4x4_58">4x4_58</option>
+							<option value="4x4_60">4x4_60</option>
+							<option value="4x4_61">4x4_61</option>
+							<option value="4x4_65">4x4_65</option>
+							<option value="4x4_67">4x4_67</option>
+							<option value="4x4_70">4x4_70</option>
+							<option value="4x4_74">4x4_74</option>
+							<option value="4x4_75">4x4_75</option>
+							<option value="4x4_79">4x4_79</option>
+							<option value="4x4_81">4x4_81</option>
+							<option value="4x4_86">4x4_86</option>
+							<option value="4x4_87">4x4_87</option>
+							<option value="4x4_88">4x4_88</option>
+							<option value="4x4_92">4x4_92</option>
+							<option value="4x4_96">4x4_96</option>
+							<option value="4x4_98">4x4_98</option>
+							<option value="4x4_101">4x4_101</option>
+							<option value="4x4_102">4x4_102</option>
+							<option value="4x4_106">4x4_106</option>
+							<option value="4x4_109">4x4_109</option>
+							<option value="4x4_112">4x4_112</option>
+							<option value="4x4_113">4x4_113</option>
+							<option value="4x4_117">4x4_117</option>
+							<option value="4x4_118">4x4_118</option>
+							<option value="4x4_122">4x4_122</option>
+							<option value="4x4_125">4x4_125</option>
+							<option value="4x4_131">4x4_131</option>
+							<option value="4x4_132">4x4_132</option>
+							<option value="4x4_133">4x4_133</option>
+							<option value="4x4_134">4x4_134</option>
+							<option value="4x4_135">4x4_135</option>
+							<option value="4x4_136">4x4_136</option>
+							<option value="4x4_137">4x4_137</option>
+							<option value="4x4_138">4x4_138</option>
+							<option value="4x4_144">4x4_144</option>
+							<option value="4x4_145">4x4_145</option>
+							<option value="4x4_146">4x4_146</option>
+							<option value="4x4_147">4x4_147</option>
+							<option value="4x4_149">4x4_149</option>
+							<option value="4x4_151">4x4_151</option>
+							<option value="4x4_153">4x4_153</option>
+							<option value="4x4_158">4x4_158</option>
+							<option value="4x4_162">4x4_162</option>
+							<option value="4x4_165">4x4_165</option>
+							<option value="4x4_166">4x4_166</option>
+							<option value="4x4_167">4x4_167</option>
+							<option value="4x4_169">4x4_169</option>
+							<option value="4x4_170">4x4_170</option>
+							<option value="4x4_171">4x4_171</option>
+							<option value="4x4_172">4x4_172</option>
+							<option value="4x4_174">4x4_174</option>
+							<option value="4x4_176">4x4_176</option>
+							<option value="4x4_177">4x4_177</option>
+							<option value="4x4_178">4x4_178</option>
+							<option value="4x4_179">4x4_179</option>
+							<option value="4x4_180">4x4_180</option>
+							<option value="4x4_182">4x4_182</option>
+							<option value="4x4_185">4x4_185</option>
+							<option value="4x4_186">4x4_186</option>
+							<option value="4x4_189">4x4_189</option>
+							<option value="4x4_190">4x4_190</option>
+							<option value="4x4_191">4x4_191</option>
+							<option value="4x4_194">4x4_194</option>
+							<option value="4x4_195">4x4_195</option>
+							<option value="4x4_196">4x4_196</option>
+							<option value="4x4_197">4x4_197</option>
+							<option value="4x4_198">4x4_198</option>
+							<option value="4x4_199">4x4_199</option>
+							<option value="4x4_200">4x4_200</option>
+							<option value="4x4_201">4x4_201</option>
+							<option value="4x4_205">4x4_205</option>
+							<option value="4x4_206">4x4_206</option>
+							<option value="4x4_207">4x4_207</option>
+							<option value="4x4_209">4x4_209</option>
+							<option value="4x4_210">4x4_210</option>
+							<option value="4x4_211">4x4_211</option>
+							<option value="4x4_212">4x4_212</option>
+							<option value="4x4_221">4x4_221</option>
+							<option value="4x4_222">4x4_222</option>
+							<option value="4x4_227">4x4_227</option>
+							<option value="4x4_231">4x4_231</option>
+							<option value="4x4_232">4x4_232</option>
+							<option value="4x4_242">4x4_242</option>
+							<option value="4x4_244">4x4_244</option>
+							<option value="4x4_245">4x4_245</option>
+							<option value="4x4_251">4x4_251</option>
+							<option value="4x4_254">4x4_254</option>
+							<option value="4x4_256">4x4_256</option>
+							<option value="4x4_265">4x4_265</option>
+							<option value="4x4_281">4x4_281</option>
+							<option value="4x4_291">4x4_291</option>
+							<option value="4x4_325">4x4_325</option>
+							<option value="4x4_335">4x4_335</option>
+							<option value="4x4_336">4x4_336</option>
+							<option value="4x4_338">4x4_338</option>
+							<option value="4x4_342">4x4_342</option>
+							<option value="4x4_343">4x4_343</option>
+							<option value="4x4_344">4x4_344</option>
+							<option value="4x4_345">4x4_345</option>
+							<option value="4x4_346">4x4_346</option>
+							<option value="4x4_349">4x4_349</option>
+							<option value="4x4_350">4x4_350</option>
+							<option value="4x4_351">4x4_351</option>
+							<option value="4x4_352">4x4_352</option>
+							<option value="4x4_353">4x4_353</option>
+							<option value="4x4_355">4x4_355</option>
+							<option value="4x4_356">4x4_356</option>
+							<option value="4x4_360">4x4_360</option>
+							<option value="4x4_364">4x4_364</option>
+							<option value="4x4_365">4x4_365</option>
+							<option value="4x4_366">4x4_366</option>
+							<option value="4x4_367">4x4_367</option>
+							<option value="4x4_372">4x4_372</option>
+							<option value="4x4_374">4x4_374</option>
+							<option value="4x4_382">4x4_382</option>
+							<option value="4x4_390">4x4_390</option>
+							<option value="4x4_392">4x4_392</option>
+							<option value="4x4_393">4x4_393</option>
+							<option value="4x4_397">4x4_397</option>
+							<option value="4x4_407">4x4_407</option>
+							<option value="4x4_408">4x4_408</option>
+							<option value="4x4_413">4x4_413</option>
+							<option value="4x4_414">4x4_414</option>
+							<option value="4x4_417">4x4_417</option>
+							<option value="4x4_418">4x4_418</option>
+							<option value="4x4_419">4x4_419</option>
+							<option value="4x4_420">4x4_420</option>
+							<option value="4x4_421">4x4_421</option>
+							<option value="4x4_423">4x4_423</option>
+							<option value="4x4_426">4x4_426</option>
+							<option value="4x4_427">4x4_427</option>
+							<option value="4x4_428">4x4_428</option>
+							<option value="4x4_429">4x4_429</option>
+							<option value="4x4_434">4x4_434</option>
+							<option value="4x4_440">4x4_440</option>
+							<option value="4x4_444">4x4_444</option>
+							<option value="4x4_446">4x4_446</option>
+							<option value="4x4_447">4x4_447</option>
+							<option value="4x4_448">4x4_448</option>
+							<option value="4x4_456">4x4_456</option>
+							<option value="4x4_466">4x4_466</option>
+							<option value="4x4_496">4x4_496</option>
+							<option value="4x4_497">4x4_497</option>
+							<option value="4x4_499">4x4_499</option>
+							<option value="4x4_500">4x4_500</option>
+							<option value="4x4_502">4x4_502</option>
+							<option value="4x4_509">4x4_509</option>
+							<option value="4x4_510">4x4_510</option>
+							<option value="4x4_512">4x4_512</option>
+							<option value="4x4_515">4x4_515</option>
+							<option value="4x4_516">4x4_516</option>
+							<option value="4x4_517">4x4_517</option>
+							<option value="4x4_518">4x4_518</option>
+							<option value="4x4_520">4x4_520</option>
+							<option value="4x4_521">4x4_521</option>
+							<option value="4x4_522">4x4_522</option>
+							<option value="4x4_558">4x4_558</option>
+							<option value="4x4_559">4x4_559</option>
+							<option value="4x4_569">4x4_569</option>
+							<option value="4x4_575">4x4_575</option>
+							<option value="4x4_601">4x4_601</option>
+							<option value="4x4_629">4x4_629</option>
+							<option value="4x4_656">4x4_656</option>
+							<option value="4x4_740">4x4_740</option>
+					</select></td>
+					<td rowspan="7"><p>
+							<input type="radio" name="options" value="" checked="checked">as
+							is
+						</p>
+						<p>
+							<input type="radio" name="options" value="-x" />flip &#10594;
+						</p>
+						<p>
+							<input type="radio" name="options" value="-y" />flip &#10595;
+						</p>
+						<p>
+							<input type="radio" name="options" value="-x -y" />rotate
+						</p></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><select size="1" name="A1">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td><select size="1" name="A2">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="B1">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><select size="1" name="A3">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="B2">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="C1">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="A4">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="B3">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="C2">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="D1">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td />
+					<td><select size="1" name="B4">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td />
+					<td><select size="1" name="C3">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td />
+					<td><select size="1" name="D2">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td />
+				</tr>
+				<tr>
+					<td />
+					<td />
+					<td><select size="1" name="C4">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td />
+					<td><select size="1" name="D3">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td />
+					<td />
+				</tr>
+				<tr>
+					<td />
+					<td />
+					<td />
+					<td><select size="1" name="D4">
+							<option value="tc">tc</option>
+							<option value="tcptc">tcptc</option>
+					</select></td>
+					<td />
+					<td />
+					<td />
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<img alt="diagram"
+		src="http://dibl.googlecode.com/git/src/main/assembly/input/PairTraversal/diamond/3x3.svg">
+	<p>
+		Powered by: <a href="https://code.google.com/p/dibl/">DiBL</a>
+	</p>
+	<p>
+		Based on: <a href="http://web.uvic.ca/~vmi/">Veronika Irvine</a>.
+		Broadening the Palette for Bobbin Lace: A Combinatorial Approach. <em><a
+			href="http://www.bridgesmathart.org/">Bridges 2012</a>: Mathematics,
+			Music, Art, Architecture, Culture, pages 191-198. Tessellations
+			Publishing, 2012.</em>
+</body>
+</html>
