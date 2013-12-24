@@ -56,23 +56,24 @@ public class Main
     {
         options = getOptions();
         commandLine = new BasicParser().parse(options, args);
-        if (commandLine.hasOption("help"))
+        final int nrOfArgs = commandLine.getArgList().size();
+        if (commandLine.hasOption("help") || nrOfArgs < 1 || nrOfArgs > 2)
         {
             showUsage();
             return;
         }
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        switch (commandLine.getArgList().size())
+        final String[][] stitches = readStitches();
+        switch (nrOfArgs)
         {
         case 1:
-            new Template(System.in).replaceStitches(readStitches()).write(out);
+            new Template(System.in).replaceStitches(stitches).write(out);
             break;
         case 2:
-            new Template(System.in).replaceBoth(readStitches(), readTuples()).write(out);
+            // error handling: process arguments before reading from standard input
+            final String[][] tuples = readTuples();
+            new Template(System.in).replaceBoth(stitches, tuples).write(out);
             break;
-        default:
-            showUsage();
-            return;
         }
         write(out.toByteArray());
     }
@@ -163,7 +164,7 @@ public class Main
     private void showUsage()
     {
         final String usage = "java -jar DiBL.jar [options] stitches [tuples]";
-        final String header = "Transform a bobbin lace svg template into a variant." + NEW_LINE +"options:" ;
+        final String header = "Transform a bobbin lace svg template into a variant." + NEW_LINE + "options:";
         final String footer = "Rotate is flip along X + Y." + NEW_LINE //
                 + "The stitches and tuples arguments are either a file or a multiline string." + NEW_LINE //
                 + "A tuples argument makes garbage diagrams of non pair travesal patterns." + NEW_LINE //
