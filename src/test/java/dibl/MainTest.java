@@ -38,6 +38,18 @@ public class MainTest
     }
 
     @Test
+    public void help() throws Exception
+    {
+        Main.main("-help");
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void wrongHelp() throws Exception
+    {
+        Main.main("help");
+    }
+
+    @Test
     public void inlineSingleArg() throws Exception
     {
         System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));

@@ -9,9 +9,9 @@ See http://web.uvic.ca/~vmi/papers/bridges2012.html
 
 Command line examples (on windows replace / with \):
 
-java -jar dibl-${pom.version}.jar help
+java -jar dibl-${pom.version}.jar -help
 java -jar dibl-${pom.version}.jar -ext jpg input/stitches.txt < input/flanders.svg > diagram.jpg
-java -jar dibl-${pom.version}.jar input/stitches.txt input/PairTraversal/diamond/3x3/3x3_1.txt < input/diamond/3x3.svg > diagram.jpg
+java -jar dibl-${pom.version}.jar input/stitches.txt input/PairTraversal/diamond/3x3/3x3_1.txt < input/PairTraversal/diamond/3x3.svg > diagram.jpg
 
 Further explanations:
 http://code.google.com/p/dibl/wiki/GetStarted
