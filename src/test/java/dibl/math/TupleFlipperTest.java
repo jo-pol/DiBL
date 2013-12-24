@@ -1,8 +1,5 @@
 package dibl.math;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
 import java.util.Arrays;
 
 import org.junit.Test;
