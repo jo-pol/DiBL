@@ -84,7 +84,7 @@
 				<configuration>
 					<encoding>UTF-8</encoding>
 					<descriptors>
-						<descriptor>src/main/assembly/zip.xml</descriptor>
+						<descriptor>src/main/assembly/distribute.xml</descriptor>
 					</descriptors>
 				</configuration>
 				<executions>
