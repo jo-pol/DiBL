@@ -63,24 +63,17 @@ public class Main
             return;
         }
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        final String[][] stitches = readStitches();
-        switch (nrOfArgs)
-        {
-        case 1:
+
+        final String[][] stitches = readMatrix(getArg(0));
+        if (nrOfArgs == 1)
             new Template(System.in).replaceStitches(stitches).write(out);
-            break;
-        case 2:
+        else
+        {
             // error handling: process arguments before reading from standard input
             final String[][] tuples = readTuples();
             new Template(System.in).replaceBoth(stitches, tuples).write(out);
-            break;
         }
         write(out.toByteArray());
-    }
-
-    private String[][] readStitches() throws IOException
-    {
-        return readMatrix(getArg(0));
     }
 
     private String[][] readTuples() throws IOException
