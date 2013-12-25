@@ -18,7 +18,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -135,6 +137,8 @@ public class Template
 
     private void replace(final String[][] newValues, final String searchPattern)
     {
+        addAppliedMatrixToTextObject(newValues);
+
         for (final Set<Element> elements : tileElements.values())
         {
             for (final Element el : elements)
@@ -153,6 +157,15 @@ public class Template
                 }
             }
         }
+    }
+
+    private void addAppliedMatrixToTextObject(final String[][] newValues)
+    {
+        final XPathFactory f = XPathFactory.instance();
+        final XPathExpression<Element> xpath = f.compile("//*[@inkscape:label='trace']/*", Filters.element(), null, NS_INKSCAPE);
+        List<Element> traceElements = xpath.evaluate(doc);
+        if (!traceElements.isEmpty())
+            traceElements.iterator().next().addContent(Arrays.deepToString(newValues));
     }
 
     public Map<String, Boolean> getEmptyCells()

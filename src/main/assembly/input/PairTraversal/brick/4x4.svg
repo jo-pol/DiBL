@@ -14,7 +14,7 @@
    height="1052.3622"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.2 r9819"
    sodipodi:docname="4x4.svg">
   <title
      id="title4251">4x4 template</title>
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.84"
+     inkscape:zoom="0.75006484"
      inkscape:cx="381.77149"
-     inkscape:cy="52.416083"
+     inkscape:cy="490.19028"
      inkscape:document-units="px"
      inkscape:current-layer="g6889"
      showgrid="true"
@@ -8474,6 +8474,19 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
            style="fill:#000000;fill-opacity:1;stroke:none"
            sodipodi:type="arc" />
       </g>
+      <text
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="50.662289"
+         y="764.38708"
+         id="text4109"
+         sodipodi:linespacing="125%"
+         transform="translate(0,-4.372441e-5)"
+         inkscape:label="trace"><tspan
+           sodipodi:role="line"
+           id="tspan4111"
+           x="50.662289"
+           y="764.38708">trace</tspan></text>
     </g>
     <g
        transform="translate(49.000962,-44.567886)"
