@@ -69,17 +69,17 @@ public class ApiTest
     }
 
     @Test
-    public void flipOldAlongX() throws Exception
+    public void flipDiamondAlongX() throws Exception
     {
         final String[][] input = Matrix.read(openInput(DIAMOND_FOLDER + "4x4/4x4_1.txt"));
         final String[][] flippedTuples = new Matrix<ShortTupleFlipper>(input, new ShortTupleFlipper()).flipNW2SE();
         final Template template = new Template(openInput(DIAMOND_FOLDER + "4x4.svg"));
         template.replaceBoth(new SM(stitches).flipNW2SE(), flippedTuples);
-        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedOldAlongX.svg"));
+        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedDiamondAlongX.png"));
     }
 
     @Test
-    public void flipOldAlongY() throws Exception
+    public void flipDiamondAlongY() throws Exception
     {
         final String[][] input = Matrix.read(openInput(DIAMOND_FOLDER + "4x4/4x4_1.txt"));
         final String[][] flippedTuples = new Matrix<ShortTupleFlipper>(input, new ShortTupleFlipper()).flipNE2SW();
