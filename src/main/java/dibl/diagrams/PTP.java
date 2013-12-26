@@ -32,16 +32,34 @@ public class PTP extends Matrix<LongTupleFlipper>
     @Override
     public String[][] flipLeftRight()
     {
-        // origin super required
-        // 1-2-3- 3-2-1- 3-2-1-
-        // -4-5-6 -6-5-4 -5-4-6
-        // 7-8-9- 9-8-7- 9-8-7-
+        // input | super | output
+        // ========================
+        // 1-2-3- | 3-2-1- | 3-2-1-
+        // -4-5-6 | -6-5-4 | -5-4-6
+        // 7-8-9- | 9-8-7- | 9-8-7-
+        // ==============================
+        // A-B-C-D- | D-C-B-A- | D-C-B-A-
+        // -E-F-G-H | -H-G-F-E | -G-F-E-H
+        // I-J-K-L- | L-K-J-I- | L-K-J-I-
+        // -M-N-O-P | -P-O-N-M | -O-N-M-P
+        // ==============================
         return shiftOddRows(super.flipLeftRight());
     }
 
     @Override
     public String[][] flipBottomUp()
     {
+        // input | super | output
+        // ========================
+        // 1-2-3- | 7-8-9-
+        // -4-5-6 | -4-5-6
+        // 7-8-9- | 1-2-3-
+        // ==============================
+        // A-B-C-D- | M-N-O-P- | M-N-O-P-
+        // -E-F-G-H | -I-J-K-L | -J-K-L-I
+        // I-J-K-L- | E-F-G-H- | E-F-G-H-
+        // -M-N-O-P | -A-B-C-D | -B-C-D-A
+        // ==============================
         String[][] m = super.flipBottomUp();
         if (m[0].length % 2 == 0)
             return shiftOddRows(m);
