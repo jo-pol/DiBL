@@ -36,6 +36,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.jdom2.JDOMException;
 
+import dibl.diagrams.PTP;
 import dibl.diagrams.Template;
 import dibl.math.Matrix;
 import dibl.math.ShortTupleFlipper;
@@ -54,10 +55,8 @@ public class Main
 
     private Main(final String... args) throws ParseException, IOException, JDOMException, TranscoderException
     {
-        options = getOptions();
-        commandLine = new BasicParser().parse(options, args);
-        final int nrOfArgs = commandLine.getArgList().size();
-        if (commandLine.hasOption("help") || nrOfArgs < 1 || nrOfArgs > 2)
+        parseCommandLine(args);
+        if (commandLine.hasOption("help") || !commandLineIsValid())
         {
             showUsage();
             return;
@@ -65,7 +64,7 @@ public class Main
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
         final String[][] stitches = readMatrix(getArg(0));
-        if (nrOfArgs == 1)
+        if (commandLine.getArgList().size() == 1)
             new Template(System.in).replaceStitches(stitches).write(out);
         else
         {
@@ -79,10 +78,16 @@ public class Main
     private String[][] readTuples() throws IOException
     {
         String[][] tuples = readMatrix(getArg(1));
+        // lower case for diamond tiled patterns
         if (commandLine.hasOption("x"))
             tuples = new Matrix<ShortTupleFlipper>(tuples, new ShortTupleFlipper()).flipNW2SE();
         if (commandLine.hasOption("y"))
             tuples = new Matrix<ShortTupleFlipper>(tuples, new ShortTupleFlipper()).flipNE2SW();
+        // upper case for brick/checkerboard tiled patterns
+        if (commandLine.hasOption("X"))
+            tuples = new PTP(tuples).flipBottomUp();
+        if (commandLine.hasOption("Y"))
+            tuples = new PTP(tuples).flipLeftRight();
         return tuples;
     }
 
@@ -128,15 +133,13 @@ public class Main
         if (ext.equals("png"))
         {
             final PNGTranscoder transcoder = new PNGTranscoder();
-            transcoder.addTranscodingHint(PNGTranscoder.KEY_FORCE_TRANSPARENT_WHITE, true);
             transcoder.addTranscodingHint(PNGTranscoder.KEY_BACKGROUND_COLOR, Color.WHITE);
             return transcoder;
         }
         else if (ext.equals("tiff"))
         {
             final TIFFTranscoder transcoder = new TIFFTranscoder();
-            transcoder.addTranscodingHint(TIFFTranscoder.KEY_FORCE_TRANSPARENT_WHITE, true);
-            transcoder.addTranscodingHint(PNGTranscoder.KEY_BACKGROUND_COLOR, Color.WHITE);
+            transcoder.addTranscodingHint(TIFFTranscoder.KEY_BACKGROUND_COLOR, Color.WHITE);
             return transcoder;
         }
         else if (ext.equals("jpg"))
@@ -156,29 +159,64 @@ public class Main
 
     private void showUsage()
     {
-        final String usage = "java -jar DiBL.jar [options] stitches [tuples]";
+        final String jarFileName = new java.io.File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getName();
+        final String usage = "java -jar " + jarFileName + " [options] stitches [tuples]";
         final String header = "Transform a bobbin lace svg template into a variant." + NEW_LINE + "options:";
         final String footer = "Rotate is flip along X + Y." + NEW_LINE //
                 + "The stitches and tuples arguments are either a file or a multiline string." + NEW_LINE //
-                + "A tuples argument makes garbage diagrams of non pair travesal patterns." + NEW_LINE //
-                + "Flipping applied to the wrong type of template cause garbage diagrams.";
+                + "Tuples argument make garbage diagrams of non pair travesal templates.";
         final PrintStream saved = System.out;
         System.setOut(System.err);
         new HelpFormatter().printHelp(usage, header, options, footer);
         System.setOut(saved);
     }
 
-    private static Options getOptions()
+    private void parseCommandLine(final String... args) throws ParseException
     {
         final int loss = 100 - Math.round(JPG_QUALITY * 100);
         final String flipDiamondAlong = "flip tuples for a diamond tiled template along the ";
-        final Options options = new Options();
+        final String flipBrickAlong = "flip tuples for a brick or checkboard tiled template along the ";
+        options = new Options();
         options.addOption("help", false, "print this message");
         options.addOption("x", false, flipDiamondAlong + "x axis");
         options.addOption("y", false, flipDiamondAlong + "y axis");
+        options.addOption("X", false, flipBrickAlong + "x axis");
+        options.addOption("Y", false, flipBrickAlong + "y axis");
         options.addOption("ext", true, "output type: svg, png, jpg, tiff. Default svg.");
         options.addOption("q", true, "jpg quality. Default " + JPG_QUALITY + ", allowing " + loss + "% loss.");
-        return options;
+        commandLine = new BasicParser().parse(options, args);
+    }
+
+    private boolean commandLineIsValid()
+    {
+        final int nrOfArgs = commandLine.getArgList().size();
+        if (nrOfArgs < 1)
+        {
+            System.err.println("need at least a stitches argument (filename or mutliline string)");
+            return false;
+        }
+        if (commandLine.getArgList().size() > 2)
+        {
+            System.err.println("at most two arguments expected");
+            return false;
+        }
+        if (commandLine.hasOption("x") || commandLine.hasOption("y"))
+        {
+            if (commandLine.hasOption("X") || commandLine.hasOption("Y"))
+            {
+                System.err.println("mixed flipping for diamond and brick or checkeboard tiled patterns");
+                return false;
+            }
+        }
+        if (commandLine.hasOption("x") || commandLine.hasOption("y") || commandLine.hasOption("X") || commandLine.hasOption("Y"))
+        {
+            if (nrOfArgs < 2)
+            {
+                System.err.println("need tuples to flip");
+                return false;
+            }
+        }
+        return true;
     }
 
     private String getArg(final int i)
