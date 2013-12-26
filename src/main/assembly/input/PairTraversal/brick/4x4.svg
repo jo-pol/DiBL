@@ -29,7 +29,7 @@
      inkscape:cx="381.77149"
      inkscape:cy="490.19028"
      inkscape:document-units="px"
-     inkscape:current-layer="g6889"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="false"
      inkscape:snap-grids="false"
@@ -8474,19 +8474,6 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
            style="fill:#000000;fill-opacity:1;stroke:none"
            sodipodi:type="arc" />
       </g>
-      <text
-         xml:space="preserve"
-         style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         x="50.662289"
-         y="764.38708"
-         id="text4109"
-         sodipodi:linespacing="125%"
-         transform="translate(0,-4.372441e-5)"
-         inkscape:label="trace"><tspan
-           sodipodi:role="line"
-           id="tspan4111"
-           x="50.662289"
-           y="764.38708">trace</tspan></text>
     </g>
     <g
        transform="translate(49.000962,-44.567886)"
@@ -8520,6 +8507,19 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          d="m 129.48893,1039.9876 -0.60798,-97.46798"
          style="fill:none;stroke:#ff6c00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="50.662289"
+       y="764.38708"
+       id="text4109"
+       sodipodi:linespacing="125%"
+       transform="translate(0,-4.372441e-5)"
+       inkscape:label="trace"><tspan
+         sodipodi:role="line"
+         id="tspan4111"
+         x="50.662289"
+         y="764.38708">trace</tspan></text>
     <g
        transform="matrix(0.47577056,0,0,0.47571728,577.88842,973.2446)"
        id="g287"
@@ -8650,16 +8650,6 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
            style="fill-rule:evenodd" />
       </g>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="252.83774"
-       y="855.36859"
-       id="text3894"
-       sodipodi:linespacing="125%"
-       transform="translate(0,-4.372441e-5)"><tspan
-         sodipodi:role="line"
-         id="tspan3896" /></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
