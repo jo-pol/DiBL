@@ -124,7 +124,7 @@ public class Matrix<F extends Flipper<String>>
         }
         catch (final NullPointerException e)
         {
-            throw new EOFException("while raeding the dimensions of a matrix");
+            throw new EOFException("while reading the dimensions of a matrix");
         }
     }
 
