@@ -14,6 +14,7 @@
 // @formatter:on
 package dibl;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -43,10 +44,28 @@ public class MainTest
         Main.main("-help");
     }
 
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void wrongHelp() throws Exception
     {
         Main.main("help");
+    }
+
+    @Test
+    public void tooManyArgs() throws Exception
+    {
+        Main.main("","","");
+    }
+
+    @Test
+    public void flipWithoutTuples() throws Exception
+    {
+        Main.main("-x","");
+    }
+
+    @Test
+    public void mixedFlips() throws Exception
+    {
+        Main.main("-x","-Y","","");
     }
 
     @Test
@@ -77,31 +96,54 @@ public class MainTest
     }
 
     @Test
-    public void hybridX() throws Exception
+    public void hybridDiamondX() throws Exception
     {
         System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/mainFlippedAlongX.jpg")));
-        Main.main("-x", "-ext", "jpg", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_2.txt");
+        System.setOut(new PrintStream(new FileOutputStream("target/mainDiamondFlippedAlongX.jpg")));
+        Main.main("-x", "-ext", "jpg", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_3.txt");
     }
 
     @Test
-    public void hybridY() throws Exception
+    public void hybridDiamondY() throws Exception
     {
+
         System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/mainFlippedAlongY.tiff")));
-        Main.main("-y", "-ext", "tiff", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_2.txt");
+        System.setOut(new PrintStream(new FileOutputStream("target/mainDiamondFlippedAlongY.tiff")));
+        Main.main("-y", "-ext", "tiff", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_4.txt");
     }
 
     @Test
     public void brick() throws Exception
     {
-        System.setIn(new FileInputStream(BRICK_PATTERNS + "4x4.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/main3.svg")));
-        Main.main(STITCHES, "4;4\n" //
-                + "(-1,1,0,1,-1,0,0,0);(-1,1,0,0,1,-1,0,0);(-1,0,0,1,1,-1,0,0);(1,0,0,0,1,-1,0,-1)\n" //
-                + "(-1,1,0,0,1,-1,0,0);(-1,1,0,0,1,-1,0,0);(-1,1,0,0,1,-1,0,0);(-1,0,0,1,1,-1,0,0)\n" //
-                + "(1,1,0,0,-1,0,0,-1);(1,1,0,0,-1,-1,0,0);(1,1,0,0,-1,-1,0,0);(1,1,0,0,-1,-1,0,0)\n" //
-                + "(-1,1,0,1,-1,0,0,0);(-1,1,0,0,1,0,0,-1);(-1,1,0,0,1,-1,0,0);(1,0,0,0,1,-1,0,-1)\n");
+        new File("target/brick").mkdirs();
+        loop("3x3", 8);
+        loop("4x4", 8/*199*/);// even 2x8 takes about a minute
+    }
+
+    private void loop(final String dimensions, final int n) throws Exception
+    {
+        final String extension = "png";
+        for (int i = 1; i < n; i++)
+        {
+            brick(dimensions, i, "", extension);
+            brick(dimensions, i, "-X", extension);
+            brick(dimensions, i, "-Y", extension);
+        }
+    }
+
+    private void brick(final String dimensions, final int n, final String flip, final String extension) throws Exception
+    {
+//        final String stitches = "4;4\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n";
+        final String stitches = "4;4\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n";
+        System.setIn(new FileInputStream(BRICK_PATTERNS + dimensions + ".svg"));
+        System.setOut(new PrintStream(new FileOutputStream("target/brick/" + dimensions + "_" + n + flip + ".png")));
+        final String pattern = BRICK_PATTERNS + dimensions + "/" + dimensions + "_" + n + ".txt";
+        if (flip.length() == 0)
+            Main.main("-ext", extension, stitches, pattern);
+        else
+            Main.main("-ext", extension, flip, stitches, pattern);
+        System.in.close();
+        System.out.close();
     }
 
     @Before
