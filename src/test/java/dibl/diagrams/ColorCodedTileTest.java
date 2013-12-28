@@ -1,13 +1,13 @@
 package dibl.diagrams;
 
-import static dibl.diagrams.Tile.ColorCodedStitch.*;
-import static dibl.diagrams.Tile.ColorCodedStitch.tc;
+import static dibl.diagrams.ColorCodedTile.Stitch.*;
+import static dibl.diagrams.ColorCodedTile.Stitch.tc;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class TileTest
+public class ColorCodedTileTest
 {
     @Test
     public void verify()
@@ -17,13 +17,13 @@ public class TileTest
                 "<path d=\"M 36,0 C 28,8  18,24 18,36\" " + attributes + " />\n" + //
                 "<path d=\"M 0,18 C 12,18  28,28 36,36\" " + attributes + " />\n" + //
                 "</g>\n";
-        assertThat(new Tile(tc, "(0,1,0,0,1,0,-1,-1)").toString(), is(expected));
+        assertThat(new ColorCodedTile(tc, "(0,1,0,0,1,0,-1,-1)").toString(), is(expected));
     }
 
     @Test
     public void ctc()
     {
-        String string = Tile.generate(ctc);
+        String string = ColorCodedTile.generate(ctc);
         System.out.println(string);
         assertThat(string.split("\n").length, is(69 * 4));
     }
@@ -31,7 +31,7 @@ public class TileTest
     @Test
     public void tcptc()
     {
-        String string = Tile.generate(tcptc);
+        String string = ColorCodedTile.generate(tcptc);
         System.out.println(string);
         assertThat(string.split("\n").length, is(69 * 5));
     }
