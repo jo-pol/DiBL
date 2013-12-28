@@ -1,6 +1,5 @@
 package dibl.diagrams;
 
-import static dibl.diagrams.ColorCodedTile.Stitch.*;
 import static dibl.diagrams.ColorCodedTile.Stitch.tc;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -21,18 +20,13 @@ public class ColorCodedTileTest
     }
 
     @Test
-    public void ctc()
+    public void generate()
     {
-        String string = ColorCodedTile.generate(ctc);
-        System.out.println(string);
-        assertThat(string.split("\n").length, is(69 * 4));
-    }
-
-    @Test
-    public void tcptc()
-    {
-        String string = ColorCodedTile.generate(tcptc);
-        System.out.println(string);
-        assertThat(string.split("\n").length, is(69 * 5));
+        for (ColorCodedTile.Stitch stitch : ColorCodedTile.Stitch.values())
+        {
+            String string = ColorCodedTile.generate(stitch);
+            System.out.println(string);
+            assertThat(string.split("\n").length, is(69 * (stitch.hasPin()?5:4)));
+        }
     }
 }
