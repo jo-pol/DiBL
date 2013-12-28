@@ -1,6 +1,5 @@
 package dibl.diagrams;
 
-import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -27,20 +26,16 @@ public class Tile
         }
     }
 
-    // stripped example
-    //
-    // <g inkscape:label="tctc (0,1,0,0,1,0,-1,-1)">
-    // <path d="M 36,0 C 28,8 18,24 18,36" style="fill:none;stroke:#ff0000" />
-    // <path d="m 0,18 c 12,0 28,10 36,18" style="fill:none;stroke:#ff0000" />
-    // </g>
-    private static final String TILE = "<g inkscape:label=\"{0} {1}\">\n{2}\n{3}{4}\n</g>";
+    private static final String TILE = "<g inkscape:label=\"{0} {1}\">\n{2}\n{3}{4}\n</g>\n";
     private static final String LINE = "<path d=\"M {1} {3} {2}\" style=\"fill:none;stroke:#{0}\"" + //
             " inkscape:connector-curvature=\"0\" sodipodi:nodetypes=\"{4}\" />";
     private static final List<String> IN = Collections.unmodifiableList(Arrays.asList(//
             "36,18 C 24,18", "36,0 C 28,8", "18,0 C 18,12", "0,0 C 8,8", "0,18 C 12,18", "-", "-", "-"));
     private static final List<String> OUT = Collections.unmodifiableList(Arrays.asList(//
             "24,18 36,18", "-", "-", "-", "12,18 0,18", "8,28 0,36", "18,24 18,36", "28,28 36,36"));
-    private static final String PIN = "<path " + //
+    private static final List<String> MIRROR = Collections.unmodifiableList(Arrays.asList(//
+            "12,18", "12,24", "18,24", "24,24", "24,18", "24,12", "18,12", "12,12"));
+    private static final String PIN = "\n<path " + //
             "d='m 390,447.36218 a 5,5 0 1 1 -0.003,-0.16338' " + //
             "sodipodi:cx='385' " + //
             "sodipodi:cy='447.36218' " + //
@@ -87,34 +82,34 @@ public class Tile
         final String line2;
         if (stitch.hasPin())
         {
-            pin = "\n" + PIN;
-            line1 = createLine(IN.get(firstIn()), OUT.get(lastOut()));
-            line2 = createLine(IN.get(lastIn()), OUT.get(firstOut()));
+            pin = PIN;
+            line1 = createLine(firstIn(), lastOut());
+            line2 = createLine(lastIn(), firstOut());
+            // TODO fix straight lines and lines along the same side of the pin
+            // (-1, 1, 1, 0, 0, 0, 0, -1) (1, 1, 0, 0, 0, 0, -1, -1) look like ((
+            // (0, 0, 1, 1, -1, -1, 0, 0) (0, 0, 0, 1, 1, -1, -1, 0) look like ))
         }
         else
         {
             pin = "";
-            line1 = createLine(IN.get(firstIn()), OUT.get(firstOut()));
-            line2 = createLine(IN.get(lastIn()), OUT.get(lastOut()));
+            line1 = createSimpleLine(firstIn(), firstOut());
+            line2 = createSimpleLine(lastIn(), lastOut());
         }
         return MessageFormat.format(TILE, stitch.name(), tuple, line1, line2, pin);
     }
 
-    private String createLine(final String in, final String out)
+    private String createSimpleLine(final int in, final int out)
     {
-        try
-        {
-            new Line2D.Double(createPoint(in.split(" ")[0]), createPoint(out.split(" ")[1]));
-            // TODO rotate line around (18,18), shrink with same center
-        }
-        catch (IllegalArgumentException e)
-        {
-        }
-        if (in.trim().length()==0||out.trim().length()==0||in.equals("-")||out.equals("-"))
-            throw new IllegalStateException(tuple + "[" + firstIn() + ";" + firstOut() + " " + lastIn() + ";" + lastOut() + "]" );
-        final String controlPoint = stitch.hasPin() ? "18,18 18,18 18,18" : "";
-        final String nodeTypes = stitch.hasPin() ? "csc" : "cc";
-        return MessageFormat.format(LINE, stitch.color, in, out, controlPoint, nodeTypes);
+        return MessageFormat.format(LINE, stitch.color, IN.get(in), OUT.get(out), "", "cc");
+    }
+
+    private String createLine(final int in, final int out)
+    {
+        Point2D start = createPoint(MIRROR.get(out));
+        Point2D end = createPoint(MIRROR.get(in));
+        Point2D p = new Point2D.Double((start.getX() + end.getX()) / 2, (start.getY() + end.getY()) / 2);
+        String tangent = MIRROR.get(out) + " " + p.getX() + "," + p.getY() + " " + MIRROR.get(in);
+        return MessageFormat.format(LINE, stitch.color, IN.get(in), OUT.get(out), tangent, "csc");
     }
 
     private Point2D.Double createPoint(final String coordinates)
@@ -155,5 +150,36 @@ public class Tile
             if (tupleList.get(i) < 0)
                 return i % 8;
         return -1;
+    }
+
+    public static String generate(final ColorCodedStitch stitch)
+    {
+        final StringBuffer sb = new StringBuffer();
+        final int max = Integer.parseInt("22222222", 3);
+        for (int i = 0; i <= max; i++)
+        {
+            Tile tile;
+            try
+            {
+                tile = new Tile(stitch, toTuple(Integer.toString(i, 3)));
+            }
+            catch (final IllegalArgumentException e)
+            {
+                continue;
+            }
+            sb.append(tile.toString());
+        }
+        return sb.toString();
+    }
+
+    private static String toTuple(final String s)
+    {
+        final String padded = ("00000000" + s).substring(s.length());
+        final int[] items = new int[8];
+        for (int i = 0; i < 8; i++)
+        {
+            items[i] = Integer.parseInt(padded.substring(i, i + 1)) - 1;
+        }
+        return Arrays.toString(items).replace("[", "(").replace("]", ")");
     }
 }
