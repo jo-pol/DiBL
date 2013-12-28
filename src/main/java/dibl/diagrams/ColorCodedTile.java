@@ -7,15 +7,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Tile
+public class ColorCodedTile
 {
-    enum ColorCodedStitch
+    enum Stitch
     {
         tc("00ff00"), ctc("ff8c00"), tctc("ff0000"), tcptc("00ff00"), ctcpctc("ff8c00"), tctcptctc("ff0000");
 
         private String color;
 
-        ColorCodedStitch(final String color)
+        Stitch(final String color)
         {
             this.color = color;
         }
@@ -49,11 +49,11 @@ public class Tile
             "sodipodi:type='arc' " + //
             "/>";
 
-    private final ColorCodedStitch stitch;
+    private final Stitch stitch;
     private final List<Integer> tupleList = new ArrayList<Integer>();
     private final String tuple;
 
-    public Tile(final ColorCodedStitch stitch, final String tuple)
+    public ColorCodedTile(final Stitch stitch, final String tuple)
     {
         this.stitch = stitch;
         this.tuple = tuple;
@@ -152,16 +152,16 @@ public class Tile
         return -1;
     }
 
-    public static String generate(final ColorCodedStitch stitch)
+    public static String generate(final Stitch stitch)
     {
         final StringBuffer sb = new StringBuffer();
         final int max = Integer.parseInt("22222222", 3);
         for (int i = 0; i <= max; i++)
         {
-            Tile tile;
+            ColorCodedTile tile;
             try
             {
-                tile = new Tile(stitch, toTuple(Integer.toString(i, 3)));
+                tile = new ColorCodedTile(stitch, toTuple(Integer.toString(i, 3)));
             }
             catch (final IllegalArgumentException e)
             {
