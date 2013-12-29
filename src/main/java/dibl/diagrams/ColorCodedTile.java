@@ -180,6 +180,6 @@ public class ColorCodedTile
         {
             items[i] = Integer.parseInt(padded.substring(i, i + 1)) - 1;
         }
-        return Arrays.toString(items).replace("[", "(").replace("]", ")");
+        return Arrays.toString(items).replace("[", "(").replace("]", ")").replaceAll(" ", "");
     }
 }

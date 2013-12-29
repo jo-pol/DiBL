@@ -38,6 +38,7 @@ import org.jdom2.JDOMException;
 
 import dibl.diagrams.PTP;
 import dibl.diagrams.Template;
+import dibl.math.LongTupleFlipper;
 import dibl.math.Matrix;
 import dibl.math.ShortTupleFlipper;
 
@@ -88,6 +89,11 @@ public class Main
             tuples = new PTP(tuples).flipBottomUp();
         if (commandLine.hasOption("Y"))
             tuples = new PTP(tuples).flipLeftRight();
+        // H/V for interleaved (brick/checkerboard) tiled patterns
+        if (commandLine.hasOption("V"))
+            tuples = new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipBottomUp();
+        if (commandLine.hasOption("H"))
+            tuples = new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipLeftRight();
         return tuples;
     }
 
@@ -176,12 +182,15 @@ public class Main
         final int loss = 100 - Math.round(JPG_QUALITY * 100);
         final String flipDiamondAlong = "flip tuples for a diamond tiled template along the ";
         final String flipBrickAlong = "flip tuples for a brick or checkboard tiled template along the ";
+        final String flipInterleavedAlong = "flip tuples for anterleaved template along the ";
         options = new Options();
         options.addOption("help", false, "print this message");
         options.addOption("x", false, flipDiamondAlong + "x axis");
         options.addOption("y", false, flipDiamondAlong + "y axis");
         options.addOption("X", false, flipBrickAlong + "x axis");
         options.addOption("Y", false, flipBrickAlong + "y axis");
+        options.addOption("V", false, flipInterleavedAlong + "x axis");
+        options.addOption("H", false, flipInterleavedAlong + "y axis");
         options.addOption("ext", true, "output type: svg, png, jpg, tiff. Default svg.");
         options.addOption("q", true, "jpg quality. Default " + JPG_QUALITY + ", allowing " + loss + "% loss.");
         commandLine = new BasicParser().parse(options, args);
@@ -200,23 +209,26 @@ public class Main
             System.err.println("at most two arguments expected");
             return false;
         }
-        if (commandLine.hasOption("x") || commandLine.hasOption("y"))
+        if ((hasAnOptionOf("x", "y") && hasAnOptionOf("X", "Y", "V", "H")) //
+                || (hasAnOptionOf("X", "Y") && hasAnOptionOf("x", "y", "V", "H")))
         {
-            if (commandLine.hasOption("X") || commandLine.hasOption("Y"))
-            {
-                System.err.println("mixed flipping for diamond and brick or checkeboard tiled patterns");
-                return false;
-            }
+            System.err.println("mixed types of flip specified");
+            return false;
         }
-        if (commandLine.hasOption("x") || commandLine.hasOption("y") || commandLine.hasOption("X") || commandLine.hasOption("Y"))
+        if (hasAnOptionOf("x", "y","X","Y","H","V") && nrOfArgs < 2)
         {
-            if (nrOfArgs < 2)
-            {
-                System.err.println("need tuples to flip");
-                return false;
-            }
+            System.err.println("need a second argument for tuples to flip");
+            return false;
         }
         return true;
+    }
+
+    private boolean hasAnOptionOf(String... options)
+    {
+        for (String option : options)
+            if (commandLine.hasOption(option))
+                return true;
+        return false;
     }
 
     private String getArg(final int i)

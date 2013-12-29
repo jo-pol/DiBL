@@ -26,6 +26,7 @@ import org.junit.Test;
 
 public class MainTest
 {
+    private static final String INTERLEAVED_PATTERNS = "src/main/assembly/input/PairTraversal/interleaved/";
     private static final String DIAMOND_PATTERNS = "src/main/assembly/input/PairTraversal/diamond/";
     private static final String BRICK_PATTERNS = "src/main/assembly/input/PairTraversal/brick/";
     private static final String STITCHES = "4;4\n" + "tcptc;tc;tcptc;tc\n" + "tc;tcptc;tc;tcptc\n" + "tcptc;tc;tcptc;tc\n" + "tc;tcptc;tc;tcptc\n";
@@ -53,27 +54,29 @@ public class MainTest
     @Test
     public void tooManyArgs() throws Exception
     {
-        Main.main("","","");
+        Main.main("", "", "");
     }
 
     @Test
     public void flipWithoutTuples() throws Exception
     {
-        Main.main("-x","");
+        Main.main("-x", "");
     }
 
     @Test
     public void mixedFlips() throws Exception
     {
-        Main.main("-x","-Y","","");
+        Main.main("-x", "-Y", "");
+        Main.main("-X", "-V", "");
+        Main.main("-H", "-x", "");
     }
 
     @Test
     public void inlineSingleArg() throws Exception
     {
         System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/main1.png")));
-        Main.main("-ext", "png", STITCHES);
+        System.setOut(new PrintStream(new FileOutputStream("target/main1.svg")));
+        Main.main("-ext", "xyz", STITCHES);
     }
 
     @Test
@@ -113,37 +116,55 @@ public class MainTest
     }
 
     @Test
-    public void brick() throws Exception
+    public void interleaved() throws Exception
     {
-        new File("target/brick").mkdirs();
-        loop("3x3", 8);
-        loop("4x4", 8/*199*/);// even 2x8 takes about a minute
-    }
-
-    private void loop(final String dimensions, final int n) throws Exception
-    {
-        final String extension = "png";
-        for (int i = 1; i < n; i++)
+        new File(targetFolder(INTERLEAVED_PATTERNS)).mkdirs();
+        for (final String dimensions : new String[] {"2x4", "4x2", "2x2"})
         {
-            brick(dimensions, i, "", extension);
-            brick(dimensions, i, "-X", extension);
-            brick(dimensions, i, "-Y", extension);
+            for (int i = 1; i < 8; i++)
+            {
+                run(dimensions, i, "", INTERLEAVED_PATTERNS);
+                run(dimensions, i, "-V", INTERLEAVED_PATTERNS);
+                run(dimensions, i, "-H", INTERLEAVED_PATTERNS);
+            }
         }
     }
 
-    private void brick(final String dimensions, final int n, final String flip, final String extension) throws Exception
+    @Test
+    public void brick() throws Exception
     {
-//        final String stitches = "4;4\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n";
+        new File(targetFolder(BRICK_PATTERNS)).mkdirs();
+        for (final String dimensions : new String[] {"3x3", "4x4"})
+        {
+            for (int i = 1; i < 8; i++)
+            {
+                run(dimensions, i, "", BRICK_PATTERNS);
+                run(dimensions, i, "-X", BRICK_PATTERNS);
+                run(dimensions, i, "-Y", BRICK_PATTERNS);
+            }
+        }
+    }
+
+    private void run(final String dimensions, final int n, final String flip, final String folder) throws Exception
+    {
+        final String target = targetFolder(folder);
+        // final String stitches = "4;4\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n" +
+        // "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n";
         final String stitches = "4;4\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n";
-        System.setIn(new FileInputStream(BRICK_PATTERNS + dimensions + ".svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/brick/" + dimensions + "_" + n + flip + ".png")));
-        final String pattern = BRICK_PATTERNS + dimensions + "/" + dimensions + "_" + n + ".txt";
+        System.setIn(new FileInputStream(folder + dimensions + ".svg"));
+        System.setOut(new PrintStream(new FileOutputStream(target + dimensions + "_" + n + flip + ".png")));
+        final String pattern = folder + dimensions + "/" + dimensions + "_" + n + ".txt";
         if (flip.length() == 0)
-            Main.main("-ext", extension, stitches, pattern);
+            Main.main("-ext", "png", stitches, pattern);
         else
-            Main.main("-ext", extension, flip, stitches, pattern);
+            Main.main("-ext", "jpg", flip, stitches, pattern);
         System.in.close();
         System.out.close();
+    }
+
+    private String targetFolder(final String folder)
+    {
+        return "target/" + new File(folder).getName() + "/";
     }
 
     @Before

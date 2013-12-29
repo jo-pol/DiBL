@@ -130,7 +130,7 @@ public class Matrix<F extends Flipper<String>>
 
     public String[][] flipLeftRight()
     {
-        final String[][] ret = new String[cols][rows];
+        final String[][] ret = new String[rows][cols];
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
                 ret[r][cols - 1 - c] = flipper.flipLeftRight(matrix[r][c]);
@@ -139,7 +139,7 @@ public class Matrix<F extends Flipper<String>>
 
     public String[][] flipBottomUp()
     {
-        final String[][] ret = new String[cols][rows];
+        final String[][] ret = new String[rows][cols];
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
                 ret[rows - 1 - r][c] = flipper.flipBottomUp(matrix[r][c]);

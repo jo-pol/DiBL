@@ -97,7 +97,7 @@ public class Template
                 final int c = cellID.toCharArray()[0] - 'A';
                 if (r >= getNrOfRows())
                     nrOfRows = r + 1;
-                if (r >= getNrOfCols())
+                if (c >= getNrOfCols())
                     nrOfCols = c + 1;
             }
         }
