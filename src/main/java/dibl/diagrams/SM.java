@@ -1,8 +1,5 @@
 package dibl.diagrams;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import dibl.math.Matrix;
 import dibl.math.StitchFlipper;
 
@@ -10,15 +7,6 @@ import dibl.math.StitchFlipper;
 public class SM extends Matrix<StitchFlipper>
 {
     private static final StitchFlipper FLIPPER = new StitchFlipper();
-
-    /**
-     * Creates a Stitch Matrix. Convenience constructor for
-     * {@link Matrix#Matrix(InputStream, dibl.math.Flipper)}.
-     */
-    public SM(InputStream input) throws ArrayIndexOutOfBoundsException, IOException
-    {
-        super(input, FLIPPER);
-    }
 
     /**
      * Creates a Stitch Matrix. Convenience constructor for

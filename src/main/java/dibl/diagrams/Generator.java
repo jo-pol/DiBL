@@ -15,22 +15,16 @@
 package dibl.diagrams;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.jdom2.JDOMException;
 
-import dibl.math.Matrix;
-import dibl.math.ShortTupleFlipper;
-
 public class Generator
 {
     public static String CFG = "input/PairTraversal/diamond/";
-    private static final Map<String, Template> templates = new HashMap<String, Template>();
     private static int maxPermutations = 500;
 
     /**
@@ -97,69 +91,6 @@ public class Generator
                 regexp1.append("[" + "0123456789".substring(0, stitches.length) + "]");
         }
         return regexp1;
-    }
-
-    /**
-     * Generates thread diagrams from the specified pair traversal pattern and from its mirrored and
-     * rotated versions.
-     * 
-     * @param primaryPattern
-     * @param folder
-     *        an existing folder where the numbered SVG files are written
-     * @param stitches
-     *        stitches are repeated for all positions in the base tile
-     * @throws IOException
-     * @throws FileNotFoundException
-     *         if the output folder does not exist or the configuration folder has no template with the
-     *         same dimensions as the specified pattern
-     * @throws JDOMException
-     *         in case of trouble with the content of the template
-     */
-    public static void symetricVariants(String[][] tuples, final File folder, final String[] stitches) throws IOException, FileNotFoundException, JDOMException
-    {
-        final int rows = tuples.length;
-        final int cols = tuples[0].length;
-        
-        String[][] stitchMatrix = buildStitchesMatrix(stitches, rows, cols);
-        SM sm = new SM(stitchMatrix);
-        String[][] rotatedStitches = new SM(sm.flipNE2SW()).flipNW2SE();
-        String[][][] stitchVariants = {stitchMatrix, sm.flipNE2SW(), sm.flipNW2SE(), rotatedStitches};
-
-        final ShortTupleFlipper stf = new ShortTupleFlipper();
-        Matrix<ShortTupleFlipper> tm = new Matrix<ShortTupleFlipper>(tuples,stf);
-        String[][] rotatedTuples = new Matrix<ShortTupleFlipper>(tm.flipNE2SW(),stf).flipNW2SE();
-        String[][][] tupleVariants = {tuples, tm.flipNE2SW(), tm.flipNW2SE(), rotatedTuples};
-
-        final Template template = getTemplate(rows + "x" + cols);
-        for (int i=0;i<tupleVariants.length;i++)
-        {
-            template.replaceBoth(stitchVariants[i],tupleVariants[i]);
-            template.write(new FileOutputStream(folder + "/" + i + ".svg"));
-        }
-    }
-
-    private static String[][] buildStitchesMatrix(final String[] args, final int numberOfRows, final int numberOfColumns)
-    {
-        final String[][] stitches = new String[numberOfRows][numberOfColumns];
-        for (int r = 0; r < stitches.length; r++)
-            for (int c = 0; c < stitches[r].length; c++)
-                stitches[r][c] = args[(r * stitches.length + c) % (args.length)];
-        return stitches;
-    }
-
-    /**
-     * clears the cash of previously loaded templates.
-     */
-    public static void resetTemplates()
-    {
-        templates.clear();
-    }
-
-    private static Template getTemplate(final String dimensions) throws IOException, JDOMException, FileNotFoundException
-    {
-        if (!templates.containsKey(dimensions))
-            templates.put(dimensions, new Template(new FileInputStream(CFG + dimensions + ".svg")));
-        return templates.get(dimensions);
     }
 
     private static String pad(final int nrOfCells, final String variation)

@@ -43,12 +43,6 @@ public class Matrix<F extends Flipper<String>>
         this(flipper, matrix);
     }
 
-    /** Convenience constructor for <code>new Matrix<...>(Matrix.read(input),...)</code>. */
-    public Matrix(final InputStream input, final F flipper) throws ArrayIndexOutOfBoundsException, IOException
-    {
-        this(flipper, readMatrix(input));
-    }
-
     private Matrix(final F flipper, final String[][] matrix)
     {
         this.flipper = flipper;
