@@ -34,7 +34,7 @@ public class ColorCodedTile
     private static final List<String> OUT = Collections.unmodifiableList(Arrays.asList(//
             "24,18 36,18", "-", "-", "-", "12,18 0,18", "8,28 0,36", "18,24 18,36", "28,28 36,36"));
     private static final List<String> MIRROR = Collections.unmodifiableList(Arrays.asList(//
-            "12,18", "12,24", "18,24", "24,24", "24,18", "24,12", "18,12", "12,12"));
+            "6,18", "6,30", "18,30", "30,30", "30,18", "30,6", "18,6", "6,6"));
     private static final String PIN = "\n<path " + //
             "d='m 390,447.36218 a 5,5 0 1 1 -0.003,-0.16338' " + //
             "sodipodi:cx='385' " + //
