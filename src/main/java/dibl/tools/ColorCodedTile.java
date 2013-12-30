@@ -49,16 +49,9 @@ public class ColorCodedTile
             "24,18 36,18", "-", "-", "-", "12,18 0,18", "8,28 0,36", "18,24 18,36", "28,28 36,36"));
     private static final List<String> MIRROR = Collections.unmodifiableList(Arrays.asList(//
             "6,18", "6,30", "18,30", "30,30", "30,18", "30,6", "18,6", "6,6"));
-    private static final String PIN = "\n<path " + //
-            "d='m 390,447.36218 a 5,5 0 1 1 -0.003,-0.16338' " + //
-            "sodipodi:cx='385' " + //
-            "sodipodi:cy='447.36218' " + //
-            "sodipodi:end='6.2505032' " + //
-            "transform='matrix(0.22506009,0,0,0.24208942,-68.648135,-90.301651)' " + //
-            "sodipodi:open='true' " + //
-            "sodipodi:start='0' " + //
-            "sodipodi:ry='5' " + //
-            "sodipodi:rx='5' " + //
+    private static final String PIN = "\n<path d='m 20,18 a 2,2 0 1 1 -4,0 2,2 0 1 1 4,0 z' " + //
+            "sodipodi:cx='18' sodipodi:cy='18' " + //
+            "sodipodi:rx='2' sodipodi:ry='2' " + //
             "style='fill:#000000;fill-opacity:1;' " + //
             "sodipodi:type='arc' " + //
             "/>";
