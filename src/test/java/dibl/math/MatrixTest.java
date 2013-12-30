@@ -26,12 +26,8 @@ import dibl.math.Matrix;
 
 public class MatrixTest
 {
-    private static TF transformer=new TF();
-    private static String[][] m = { {"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
-    private static final Matrix<TF> M = new Matrix<TF>(m,transformer);
-    private static String[][] m4 = { {"a", "b", "c", "d"}, {"e", "f", "g", "h"}, {"i", "j", "k", "l"}, {"m", "n", "o", "p"}};
-    private static final Matrix<TF> M4 = new Matrix<TF>(m4,transformer);
-    private static class TF implements Flipper<String>{
+    private static class TF implements Flipper<String>
+    {
         @Override
         public String flipLeftRight(final String o)
         {
@@ -56,6 +52,13 @@ public class MatrixTest
             return o;
         }
     }
+
+    private static TF transformer = new TF();
+    private static String[][] m = { {"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+    private static final Matrix<TF> M = new Matrix<TF>(m, transformer);
+    private static String[][] m4 = { {"a", "b", "c", "d"}, {"e", "f", "g", "h"}, {"i", "j", "k", "l"}, {"m", "n", "o", "p"}};
+    private static final Matrix<TF> M4 = new Matrix<TF>(m4, transformer);
+
     @Test
     public void skewDown()
     {
@@ -73,7 +76,7 @@ public class MatrixTest
     @Test
     public void shift()
     {
-        final String s = Arrays.deepToString(M.shift( 1, 1));
+        final String s = Arrays.deepToString(M.shift(1, 1));
         assertThat(s, is("[[5, 6, 4], [8, 9, 7], [2, 3, 1]]"));
     }
 
@@ -108,7 +111,7 @@ public class MatrixTest
     @Test
     public void rotate180()
     {
-        final String s = Arrays.deepToString(new Matrix<TF>(M.flipBottomUp(),transformer).flipLeftRight());
+        final String s = Arrays.deepToString(new Matrix<TF>(M.flipBottomUp(), transformer).flipLeftRight());
         assertThat(s, is("[[9, 8, 7], [6, 5, 4], [3, 2, 1]]"));
     }
 }
