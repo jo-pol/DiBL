@@ -1,10 +1,12 @@
-package dibl.diagrams;
+package dibl.tools;
 
-import static dibl.diagrams.ColorCodedTile.Stitch.tc;
+import static dibl.tools.ColorCodedTile.Stitch.tc;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import dibl.tools.ColorCodedTile;
 
 public class ColorCodedTileTest
 {

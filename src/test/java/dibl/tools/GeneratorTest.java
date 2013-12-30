@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.diagrams;
+package dibl.tools;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +21,9 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
+
+import dibl.diagrams.Template;
+import dibl.tools.Generator;
 
 public class GeneratorTest
 {

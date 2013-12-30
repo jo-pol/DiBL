@@ -12,7 +12,7 @@
  * available at <http://www.gnu.org/licenses/>.
  */
 // @formatter:on
-package dibl.diagrams;
+package dibl.tools;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.jdom2.JDOMException;
+
+import dibl.diagrams.Template;
 
 public class Generator
 {

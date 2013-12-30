@@ -1,4 +1,4 @@
-package dibl.diagrams;
+package dibl.tools;
 
 import java.awt.geom.Point2D;
 import java.text.MessageFormat;
