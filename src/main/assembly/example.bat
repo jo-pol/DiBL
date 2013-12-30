@@ -1,3 +1,15 @@
+rem ########################################################################################################
+rem # Copyright 2013, J. Pol
+rem #
+rem # This file is part of free software: you can redistribute it and/or modify it under the terms of the
+rem # GNU General Public License as published by the Free Software Foundation.
+rem #
+rem # This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+rem # the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+rem #
+rem # See the GNU General Public License for more details. A copy of the GNU General Public License is
+rem # available at <http://www.gnu.org/licenses/>.
+rem ########################################################################################################
 java -jar dibl-${pom.version}.jar 3;3^
 
 tcptc;tc;tcptc^

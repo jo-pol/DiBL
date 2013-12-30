@@ -3,6 +3,18 @@
 	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<!--
+		* Copyright 2013, J. Pol
+		*
+		* This file is part of free software: you can redistribute it and/or modify it under the terms of the
+		* GNU General Public License as published by the Free Software Foundation.
+		*
+		* This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+		* the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+		*
+		* See the GNU General Public License for more details. A copy of the GNU General Public License is
+		* available at <http://www.gnu.org/licenses/>.
+	-->
 	<id>bin</id>
 	<formats>
 		<format>tar.gz</format>
