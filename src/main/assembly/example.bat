@@ -1,3 +1,4 @@
+@echo off
 rem ########################################################################################################
 rem # Copyright 2013, J. Pol
 rem #
@@ -10,7 +11,8 @@ rem #
 rem # See the GNU General Public License for more details. A copy of the GNU General Public License is
 rem # available at <http://www.gnu.org/licenses/>.
 rem ########################################################################################################
-java -jar dibl-${pom.version}.jar 3;3^
+@echo on
+java -jar dibl-0.1.1-SNAPSHOT.jar 3;3^
 
 tcptc;tc;tcptc^
 
@@ -25,3 +27,4 @@ tcptc;tc;tcptc 3;3^
 (-1,1,1,0,-1,0);(0,0,0,0,0,0);(1,1,0,-1,0,-1)^
 
 < input/PairTraversal/diamond/3x3.svg > output.svg
+pause
