@@ -7,7 +7,7 @@
 	<artifactId>dibl-tools</artifactId>
 	<version>0.1.2-SNAPSHOT</version>
 	<name>DIagrams for Bobbin Lace</name>
-	<description>Turns pair traversal diagrams for bobbin lace into thread diagrams</description>
+	<description>Tools for DiBL</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

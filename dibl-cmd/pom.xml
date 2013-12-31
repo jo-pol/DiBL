@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dibl</groupId>
-	<artifactId>dibl</artifactId>
+	<artifactId>dibl-cmd</artifactId>
 	<version>0.1.2-SNAPSHOT</version>
 	<name>DIagrams for Bobbin Lace</name>
-	<description>Turns pair traversal diagrams for bobbin lace into thread diagrams</description>
+	<description>Turns Templates into Bobbin Lace diagrams.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

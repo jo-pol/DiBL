@@ -27,14 +27,15 @@ import dibl.tools.Generator;
 
 public class GeneratorTest
 {
-    private static final String BRICK_PATTERNS = "src/main/assembly/input/PairTraversal/brick/";
+    private static final String ASSEMBLY = "../dibl-cmd/src/main/assembly/";
+    private static final String BRICK_PATTERNS = ASSEMBLY + "input/PairTraversal/brick/";
     private static String savedCFG;
 
     @BeforeClass
     public static void setup()
     {
         savedCFG = Generator.CFG;
-        Whitebox.setInternalState(Generator.class, "CFG", "src/main/assembly/"+Generator.CFG);
+        Whitebox.setInternalState(Generator.class, "CFG", ASSEMBLY+Generator.CFG);
     }
 
     @AfterClass
@@ -60,7 +61,7 @@ public class GeneratorTest
     {
         final File folder = new File("target/flanders");
         folder.mkdirs();
-        final Template template = new Template(new FileInputStream("src/main/assembly/input/flanders.svg"));
+        final Template template = new Template(new FileInputStream(ASSEMBLY + "input/flanders.svg"));
         Generator.permutations(template, folder, "tc", "ctc", "tctc");
     }
 }
