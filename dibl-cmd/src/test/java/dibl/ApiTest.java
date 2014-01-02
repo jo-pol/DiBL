@@ -31,12 +31,14 @@ import org.junit.Test;
 import dibl.diagrams.PTP;
 import dibl.diagrams.SM;
 import dibl.diagrams.Template;
+import dibl.math.LongTupleFlipper;
 import dibl.math.Matrix;
 import dibl.math.ShortTupleFlipper;
 
 public class ApiTest
 {
     private static final String DIAMOND_FOLDER = "src/main/assembly/input/PairTraversal/diamond/";
+    private static final String INTERLEAVED_FOLDER = "src/main/assembly/input/PairTraversal/interleaved/";
     private static final String BRICK_FOLDER = "src/main/assembly/input/PairTraversal/brick/";
     private static final String OUTPUT_FOLDER = "target/" + ApiTest.class.getSimpleName() + "/";
     private final List<Closeable> closeables = new ArrayList<Closeable>();
@@ -103,28 +105,24 @@ public class ApiTest
     }
 
     @Test
-    public void colorCoded() throws Exception
+    public void colorCoded2x4() throws Exception
     {
-        final String[][] stitches = new String[][] { //
-        {"-tc", "-ctc", "-tctc"}, //
-                {"-tctc", "-tc", "-ctc"}, //
-                {"-tcptc", "-ctcpctc", "-tctcptctc",}};
-        final String[][] tuples = PTP.read(openInput(BRICK_FOLDER + "3x3/3x3_1.txt"));
-        final Template template = new Template(openInput(BRICK_FOLDER + "3x3.svg"));
+        final String[][] tuples = PTP.read(openInput(INTERLEAVED_FOLDER + "2x4/2x4_4.txt"));
+        final Template template = new Template(openInput(INTERLEAVED_FOLDER + "2x4.svg"));
         template.replaceBoth(stitches, tuples);
-        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccNormal.svg"));
+        template.write(openOutput(OUTPUT_FOLDER + "2x4_4ccNormal.svg"));
         template.replaceBoth(//
                 new SM(stitches).flipBottomUp(),//
-                new PTP(tuples).flipBottomUp());
-        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccBottomUp.svg"));
+                new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipBottomUp());
+        template.write(openOutput(OUTPUT_FOLDER + "2x4_4ccBottomUp.svg"));
         template.replaceBoth(//
                 new SM(stitches).flipLeftRight(), //
-                new PTP(tuples).flipLeftRight());
-        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccLeftRight.svg"));
+                new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipLeftRight());
+        template.write(openOutput(OUTPUT_FOLDER + "2x4_4ccLeftRight.svg"));
         template.replaceBoth(//
                 new SM(new SM(stitches).flipBottomUp()).flipLeftRight(),//
-                new PTP(new PTP(tuples).flipBottomUp()).flipLeftRight());
-        template.write(openOutput(OUTPUT_FOLDER + "3x3_1ccRotated.svg"));
+                new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipLeftRight());
+        template.write(openOutput(OUTPUT_FOLDER + "2x4_4ccRotated.svg"));
     }
 
     private FileInputStream openInput(final String file) throws Exception
