@@ -28,7 +28,7 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import dibl.diagrams.PTP;
+import dibl.diagrams.DPTP;
 import dibl.diagrams.SM;
 import dibl.diagrams.Template;
 import dibl.math.LongTupleFlipper;
@@ -78,8 +78,8 @@ public class ApiTest
             template.replaceBoth(stitches, tuples).write(openOutput(OUTPUT_FOLDER + dimensions + i + ".svg"));
             out.println((dimensions + i));
             out.println("  " + Arrays.deepToString(tuples));
-            out.println("X " + Arrays.deepToString(new PTP(tuples).flipBottomUp()));
-            out.println("Y " + Arrays.deepToString(new PTP(tuples).flipLeftRight()));
+            out.println("X " + Arrays.deepToString(new DPTP(tuples).flipBottomUp()));
+            out.println("Y " + Arrays.deepToString(new DPTP(tuples).flipLeftRight()));
         }
         out.close();
     }
@@ -107,7 +107,7 @@ public class ApiTest
     @Test
     public void colorCoded2x4() throws Exception
     {
-        final String[][] tuples = PTP.read(openInput(INTERLEAVED_FOLDER + "2x4/2x4_4.txt"));
+        final String[][] tuples = DPTP.read(openInput(INTERLEAVED_FOLDER + "2x4/2x4_4.txt"));
         final Template template = new Template(openInput(INTERLEAVED_FOLDER + "2x4.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "2x4_4ccNormal.svg"));

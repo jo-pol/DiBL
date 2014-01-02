@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import dibl.diagrams.PTP;
+import dibl.diagrams.DPTP;
 
 public class TupleFlipperTest
 {
@@ -34,7 +34,7 @@ public class TupleFlipperTest
     @Test
     public void compareMatrix()
     {
-        System.out.println(Arrays.deepToString(new PTP(pattern).flipBottomUp()));
+        System.out.println(Arrays.deepToString(new DPTP(pattern).flipBottomUp()));
         System.out.println(Arrays.deepToString(new Matrix<ShortTupleFlipper>(pattern,new ShortTupleFlipper()).flipBottomUp()));
     }
     @Test

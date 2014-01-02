@@ -36,7 +36,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.jdom2.JDOMException;
 
-import dibl.diagrams.PTP;
+import dibl.diagrams.DPTP;
 import dibl.diagrams.Template;
 import dibl.math.LongTupleFlipper;
 import dibl.math.Matrix;
@@ -86,9 +86,9 @@ public class Main
             tuples = new Matrix<ShortTupleFlipper>(tuples, new ShortTupleFlipper()).flipNE2SW();
         // upper case for brick/checkerboard tiled patterns
         if (commandLine.hasOption("X"))
-            tuples = new PTP(tuples).flipBottomUp();
+            tuples = new DPTP(tuples).flipBottomUp();
         if (commandLine.hasOption("Y"))
-            tuples = new PTP(tuples).flipLeftRight();
+            tuples = new DPTP(tuples).flipLeftRight();
         // H/V for interleaved (brick/checkerboard) tiled patterns
         if (commandLine.hasOption("V"))
             tuples = new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipBottomUp();

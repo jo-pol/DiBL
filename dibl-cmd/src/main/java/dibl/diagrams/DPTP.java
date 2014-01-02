@@ -18,16 +18,16 @@ import dibl.math.LongTupleFlipper;
 import dibl.math.Matrix;
 
 /** Matrix implementation for Pair Traversal Patterns with long tuples for interleaved patterns. */
-public class PTP extends Matrix<LongTupleFlipper>
+public class DPTP extends Matrix<LongTupleFlipper>
 {
     private static final LongTupleFlipper FLIPPER = new LongTupleFlipper();
 
 
     /**
-     * Creates a Pair Traversal Pattern. Convenience constructor for
+     * Creates a Pair Traversal Pattern for Diamond patterns with brick tiles. Convenience constructor for
      * {@link Matrix#Matrix(String[][], dibl.math.Flipper).
      */
-    public PTP(String[][] input)
+    public DPTP(String[][] input)
     {
         super(input, FLIPPER);
     }
