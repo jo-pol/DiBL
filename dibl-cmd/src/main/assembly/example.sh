@@ -10,7 +10,7 @@
 # See the GNU General Public License for more details. A copy of the GNU General Public License is
 # available at <http://www.gnu.org/licenses/>.
 ########################################################################################################
-java -jar dibl-${pom.version}.jar \
+java -jar ${project.artifactId}-${project.version}.jar \
 '3;3
 tcptc;tc;tcptc
 tc;tcptc;tc

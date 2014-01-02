@@ -12,7 +12,7 @@ rem # See the GNU General Public License for more details. A copy of the GNU Gen
 rem # available at <http://www.gnu.org/licenses/>.
 rem ########################################################################################################
 @echo on
-java -jar dibl-0.1.1-SNAPSHOT.jar 3;3^
+java -jar ${project.artifactId}-${project.version}.jar 3;3^
 
 tcptc;tc;tcptc^
 
