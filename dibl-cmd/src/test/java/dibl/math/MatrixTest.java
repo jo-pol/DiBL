@@ -114,4 +114,11 @@ public class MatrixTest
         final String s = Arrays.deepToString(new Matrix<TF>(M.flipBottomUp(), transformer).flipLeftRight());
         assertThat(s, is("[[9, 8, 7], [6, 5, 4], [3, 2, 1]]"));
     }
+
+    @Test
+    public void fromBrickToCheckerboard()
+    {
+        final String s = Arrays.deepToString(new Matrix<TF>(m, transformer).fromBrickToCheckerboard());
+        assertThat(s, is("[[1, 2, 3], [4, 5, 6], [7, 8, 9], [3, 1, 2], [6, 4, 5], [9, 7, 8]]"));
+    }
 }

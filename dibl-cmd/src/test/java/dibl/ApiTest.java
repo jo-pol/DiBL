@@ -91,7 +91,7 @@ public class ApiTest
         final String[][] flippedTuples = new Matrix<ShortTupleFlipper>(input, new ShortTupleFlipper()).flipNW2SE();
         final Template template = new Template(openInput(DIAMOND_FOLDER + "4x4.svg"));
         template.replaceBoth(new SM(stitches).flipNW2SE(), flippedTuples);
-        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedDiamondAlongX.png"));
+        template.write(openOutput(OUTPUT_FOLDER + "4x4_1_flippedDiamondAlongX.svg"));
     }
 
     @Test

@@ -116,6 +116,15 @@ public class MainTest
     }
 
     @Test
+    public void rotateBrickInterleaved() throws Exception
+    {
+
+        System.setIn(new FileInputStream(INTERLEAVED_PATTERNS + "2x4.svg"));
+        System.setOut(new PrintStream(new FileOutputStream("target/rotate.png")));
+        Main.main("-H", "-V", "-ext", "png", STITCHES, INTERLEAVED_PATTERNS + "2x4/2x4_4.txt");
+    }
+
+    @Test
     public void interleaved() throws Exception
     {
         new File(targetFolder(INTERLEAVED_PATTERNS)).mkdirs();
@@ -126,6 +135,7 @@ public class MainTest
                 run(dimensions, i, "", INTERLEAVED_PATTERNS);
                 run(dimensions, i, "-V", INTERLEAVED_PATTERNS);
                 run(dimensions, i, "-H", INTERLEAVED_PATTERNS);
+                run(dimensions, i, "-V", INTERLEAVED_PATTERNS);
             }
         }
     }

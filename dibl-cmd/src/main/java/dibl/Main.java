@@ -37,8 +37,8 @@ import org.apache.commons.cli.ParseException;
 import org.jdom2.JDOMException;
 
 import dibl.diagrams.DPTP;
+import dibl.diagrams.IPTP;
 import dibl.diagrams.Template;
-import dibl.math.LongTupleFlipper;
 import dibl.math.Matrix;
 import dibl.math.ShortTupleFlipper;
 
@@ -79,21 +79,28 @@ public class Main
     private String[][] readTuples() throws IOException
     {
         String[][] tuples = readMatrix(getArg(1));
+
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        final
+        String[][] cbTuples = new Matrix(tuples, null).fromBrickToCheckerboard();
+
         // lower case for diamond tiled patterns
         if (commandLine.hasOption("x"))
             tuples = new Matrix<ShortTupleFlipper>(tuples, new ShortTupleFlipper()).flipNW2SE();
         if (commandLine.hasOption("y"))
             tuples = new Matrix<ShortTupleFlipper>(tuples, new ShortTupleFlipper()).flipNE2SW();
-        // upper case for brick/checkerboard tiled patterns
+
+        // upper case for diamond brick/checker-board tiled patterns
         if (commandLine.hasOption("X"))
-            tuples = new DPTP(tuples).flipBottomUp();
+            tuples = new DPTP(cbTuples).flipBottomUp();
         if (commandLine.hasOption("Y"))
-            tuples = new DPTP(tuples).flipLeftRight();
-        // H/V for interleaved (brick/checkerboard) tiled patterns
+            tuples = new DPTP(cbTuples).flipLeftRight();
+
+        // H/V for interleaved (brick/checker-board) tiled patterns
         if (commandLine.hasOption("V"))
-            tuples = new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipBottomUp();
+            tuples = new IPTP(cbTuples).flipBottomUp();
         if (commandLine.hasOption("H"))
-            tuples = new Matrix<LongTupleFlipper>(tuples, new LongTupleFlipper()).flipLeftRight();
+            tuples = new IPTP(cbTuples).flipLeftRight();
         return tuples;
     }
 
@@ -215,7 +222,7 @@ public class Main
             System.err.println("mixed types of flip specified");
             return false;
         }
-        if (hasAnOptionOf("x", "y","X","Y","H","V") && nrOfArgs < 2)
+        if (hasAnOptionOf("x", "y", "X", "Y", "H", "V") && nrOfArgs < 2)
         {
             System.err.println("need a second argument for tuples to flip");
             return false;
@@ -223,9 +230,9 @@ public class Main
         return true;
     }
 
-    private boolean hasAnOptionOf(String... options)
+    private boolean hasAnOptionOf(final String... options)
     {
-        for (String option : options)
+        for (final String option : options)
             if (commandLine.hasOption(option))
                 return true;
         return false;

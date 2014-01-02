@@ -195,6 +195,18 @@ public class Matrix<F extends Flipper<String>>
         return ret;
     }
 
+    public String[][] fromBrickToCheckerboard()
+    {
+        final String[][] ret = new String[rows*2][cols];
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+            {
+                ret[r][c] = matrix[r][c];
+                ret[r+rows][(int)((1.5*cols)+c)%cols] = matrix[r][c];
+            }
+        return ret;
+    }
+
     @Override
     public String toString()
     {
