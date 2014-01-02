@@ -15,24 +15,11 @@
  -->
 <meta http-equiv="ContentType" content="text/html; charset=UTF-8">
 <title>DiBL: Bobbin Lace - Pair Traversal Pattern browser</title>
-<!-- 
-	TODO
-
-	something (for example PHP instructions) should transform the form arguments 
-	into a multi-line command and inject the resulting image into the page
-	
-	pattern=3x3_1&options=XXXX&A1=tc&A2=tcptc&...&D4=tcptc
-	
-	java -jar dibl-cmd-0.1.2.jar -ext png XXXX '4;4
-	tcptc;tc;tcptc;tc
-	tc;tcptc;tc;tcptc
-	tcptc;tc;tcptc;tc
-	tc;tcptc;tc;tcptc' input/PairTraversal/diamond/3x3/3x3.svg < input/PairTraversal/diamond/3x3.svg \
- -->
 <style type="text/css">
 p {
 	padding-left: 1em;
 	padding-right: 1em;
+	padding-top: 0;
 }
 
 table,td {
@@ -43,12 +30,44 @@ table,td,select {
 	margin: 0px;
 	padding: 0px;
 }
+
+td {
+	vertical-align: top;
+}
 </style>
 </head>
 <body>
 	<h1>Bobbin Lace - Pair traversal pattern browser</h1>
+	<h2>
+		<a name="diagonal">Diagonal patterns</a>
+	</h2>
+	<p>
+		to <a href="#interleaved">interleaved</a> patterns
+	</p>
 	<form action="">
+		<!-- 
+			TODO
+		
+			something (for example PHP instructions) should transform the form arguments 
+			into a multi-line command and inject the resulting image into the page
+			
+			pattern=3x3_1&options=XXXX&A1=tc&A2=tcptc&...&D4=tcptc
+			
+			java -jar dibl-cmd-0.1.2.jar -ext png XXXX '4;4
+			tcptc;tc;tcptc;tc
+			tc;tcptc;tc;tcptc
+			tcptc;tc;tcptc;tc
+			tc;tcptc;tc;tcptc' input/PairTraversal/diamond/3x3/3x3.svg < input/PairTraversal/diamond/3x3.svg \
+		 -->
 		<table>
+			<thead>
+				<tr>
+					<td colspan="2">pair traversal pattern</td>
+					<td colspan="7">stitches (<em>pair diagrams not yet
+							imlemented</em>)
+					</td>
+				</tr>
+			</thead>
 			<tbody>
 				<tr>
 					<td rowspan="7"><select size="12" name="pattern">
@@ -271,16 +290,9 @@ table,td,select {
 					</select></td>
 					<td rowspan="7"><p>
 							<input type="radio" name="options" value="" checked="checked">as
-							is
-						</p>
-						<p>
-							<input type="radio" name="options" value="-x" />flip &#10594;
-						</p>
-						<p>
-							<input type="radio" name="options" value="-y" />flip &#10595;
-						</p>
-						<p>
-							<input type="radio" name="options" value="-x -y" />rotate
+							is <br /> <input type="radio" name="options" value="-x" />flip
+							&#10594; <br /> <input type="radio" name="options" value="-y" />flip
+							&#10595; <br /> <input type="radio" name="options" value="-x -y" />rotate
 						</p></td>
 					<td></td>
 					<td></td>
@@ -395,8 +407,337 @@ table,td,select {
 			</tbody>
 		</table>
 	</form>
-	<img alt="diagram"
-		src="http://dibl.googlecode.com/git/src/main/assembly/input/PairTraversal/diamond/3x3.svg">
+	<iframe width="700" height="400" scrolling="yes"
+		src="http://dibl.googlecode.com/git/dibl-cmd/src/main/assembly/input/PairTraversal/diamond/3x3.svg"></iframe>
+	<h2>
+		<a name="interleaved">Interleaved patterns</a>
+	</h2>
+	<p>
+		to <a href="#diagonal">diagonal</a> patterns
+	</p>
+	<form action="">
+		<!-- 
+			TODO
+		
+			something (for example PHP instructions) should transform the form arguments 
+			into a multi-line command and inject the resulting image into the page
+			
+			pattern=3x3_1&options=XXXX&A1=tc&A2=tcptc&...&D4=tcptc
+			
+			java -jar dibl-cmd-0.1.2.jar -ext png XXXX '4;4
+			tcptc;tc;tcptc;tc
+			tc;tcptc;tc;tcptc
+			tcptc;tc;tcptc;tc
+			tc;tcptc;tc;tcptc' input/PairTraversal/interleaved/3x3/3x3.svg < input/PairTraversal/interleaved/3x3.svg \
+		 -->
+		<table>
+			<thead>
+				<tr>
+					<td colspan="2">pair traversal pattern</td>
+					<td colspan="4">stitches (<em>thread diagrams not yet
+							implemented, some stitches are still floppy</em>)
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="5"><select size="12" name="pattern">
+							<option value="2x2_1">2x2_1</option>
+							<option value="2x2_2">2x2_2</option>
+							<option value="2x2_3">2x2_3</option>
+							<option value="2x2_4">2x2_4</option>
+							<option value="2x2_5">2x2_5</option>
+							<option value="2x2_6">2x2_6</option>
+							<option value="2x2_7">2x2_7</option>
+							<option value="2x4_1">2x4_1</option>
+							<option value="2x4_2">2x4_2</option>
+							<option value="2x4_3">2x4_3</option>
+							<option value="2x4_4">2x4_4</option>
+							<option value="2x4_5">2x4_5</option>
+							<option value="2x4_6">2x4_6</option>
+							<option value="2x4_7">2x4_7</option>
+							<option value="2x4_8">2x4_8</option>
+							<option value="2x4_9">2x4_9</option>
+							<option value="2x4_10">2x4_10</option>
+							<option value="2x4_11">2x4_11</option>
+							<option value="2x4_12">2x4_12</option>
+							<option value="2x4_13">2x4_13</option>
+							<option value="2x4_14">2x4_14</option>
+							<option value="2x4_15">2x4_15</option>
+							<option value="2x4_16">2x4_16</option>
+							<option value="2x4_17">2x4_17</option>
+							<option value="2x4_18">2x4_18</option>
+							<option value="2x4_19">2x4_19</option>
+							<option value="2x4_20">2x4_20</option>
+							<option value="2x4_21">2x4_21</option>
+							<option value="2x4_22">2x4_22</option>
+							<option value="2x4_23">2x4_23</option>
+							<option value="2x4_24">2x4_24</option>
+							<option value="2x4_25">2x4_25</option>
+							<option value="2x4_26">2x4_26</option>
+							<option value="2x4_27">2x4_27</option>
+							<option value="2x4_28">2x4_28</option>
+							<option value="2x4_29">2x4_29</option>
+							<option value="2x4_30">2x4_30</option>
+							<option value="2x4_31">2x4_31</option>
+							<option value="2x4_32">2x4_32</option>
+							<option value="2x4_33">2x4_33</option>
+							<option value="2x4_34">2x4_34</option>
+							<option value="2x4_35">2x4_35</option>
+							<option value="2x4_36">2x4_36</option>
+							<option value="2x4_37">2x4_37</option>
+							<option value="2x4_38">2x4_38</option>
+							<option value="2x4_39">2x4_39</option>
+							<option value="2x4_40">2x4_40</option>
+							<option value="2x4_41">2x4_41</option>
+							<option value="2x4_42">2x4_42</option>
+							<option value="2x4_43">2x4_43</option>
+							<option value="2x4_44">2x4_44</option>
+							<option value="2x4_45">2x4_45</option>
+							<option value="2x4_46">2x4_46</option>
+							<option value="4x2_47">4x2_47</option>
+							<option value="4x2_1">4x2_1</option>
+							<option value="4x2_2">4x2_2</option>
+							<option value="4x2_3">4x2_3</option>
+							<option value="4x2_4">4x2_4</option>
+							<option value="4x2_5">4x2_5</option>
+							<option value="4x2_6">4x2_6</option>
+							<option value="4x2_7">4x2_7</option>
+							<option value="4x2_8">4x2_8</option>
+							<option value="4x2_9">4x2_9</option>
+							<option value="4x2_10">4x2_10</option>
+							<option value="4x2_11">4x2_11</option>
+							<option value="4x2_12">4x2_12</option>
+							<option value="4x2_13">4x2_13</option>
+							<option value="4x2_14">4x2_14</option>
+							<option value="4x2_15">4x2_15</option>
+							<option value="4x2_16">4x2_16</option>
+							<option value="4x2_17">4x2_17</option>
+							<option value="4x2_18">4x2_18</option>
+							<option value="4x2_19">4x2_19</option>
+							<option value="4x2_20">4x2_20</option>
+							<option value="4x2_21">4x2_21</option>
+							<option value="4x2_22">4x2_22</option>
+							<option value="4x2_23">4x2_23</option>
+							<option value="4x2_24">4x2_24</option>
+							<option value="4x2_25">4x2_25</option>
+							<option value="4x2_26">4x2_26</option>
+							<option value="4x2_27">4x2_27</option>
+							<option value="4x2_28">4x2_28</option>
+							<option value="4x2_29">4x2_29</option>
+							<option value="4x2_30">4x2_30</option>
+							<option value="4x2_31">4x2_31</option>
+							<option value="4x2_32">4x2_32</option>
+							<option value="4x2_33">4x2_33</option>
+							<option value="4x2_34">4x2_34</option>
+							<option value="4x2_35">4x2_35</option>
+							<option value="4x2_36">4x2_36</option>
+							<option value="4x2_37">4x2_37</option>
+							<option value="4x2_38">4x2_38</option>
+							<option value="4x2_39">4x2_39</option>
+							<option value="4x2_40">4x2_40</option>
+							<option value="4x2_41">4x2_41</option>
+							<option value="4x2_42">4x2_42</option>
+							<option value="4x2_43">4x2_43</option>
+							<option value="4x2_44">4x2_44</option>
+							<option value="4x2_45">4x2_45</option>
+							<option value="4x2_46">4x2_46</option>
+							<option value="4x2_47">4x2_47</option>
+							<option value="4x2_48">4x2_48</option>
+							<option value="4x2_49">4x2_49</option>
+							<option value="4x2_50">4x2_50</option>
+							<option value="4x2_51">4x2_51</option>
+							<option value="4x2_52">4x2_52</option>
+							<option value="4x2_53">4x2_53</option>
+							<option value="4x2_54">4x2_54</option>
+							<option value="4x2_55">4x2_55</option>
+							<option value="4x2_56">4x2_56</option>
+							<option value="4x2_57">4x2_57</option>
+							<option value="4x2_58">4x2_58</option>
+							<option value="4x2_59">4x2_59</option>
+							<option value="4x2_60">4x2_60</option>
+							<option value="4x2_61">4x2_61</option>
+							<option value="4x2_62">4x2_62</option>
+							<option value="4x2_63">4x2_63</option>
+							<option value="4x2_64">4x2_64</option>
+							<option value="4x2_65">4x2_65</option>
+							<option value="4x2_66">4x2_66</option>
+							<option value="4x2_67">4x2_67</option>
+							<option value="4x2_68">4x2_68</option>
+							<option value="4x2_69">4x2_69</option>
+							<option value="4x2_70">4x2_70</option>
+							<option value="4x2_71">4x2_71</option>
+							<option value="4x2_72">4x2_72</option>
+							<option value="4x2_73">4x2_73</option>
+							<option value="4x2_74">4x2_74</option>
+							<option value="4x2_75">4x2_75</option>
+							<option value="4x2_76">4x2_76</option>
+							<option value="4x2_77">4x2_77</option>
+							<option value="4x2_78">4x2_78</option>
+							<option value="4x2_79">4x2_79</option>
+							<option value="4x2_80">4x2_80</option>
+							<option value="4x2_81">4x2_81</option>
+							<option value="4x2_82">4x2_82</option>
+							<option value="4x2_83">4x2_83</option>
+							<option value="4x2_84">4x2_84</option>
+							<option value="4x2_85">4x2_85</option>
+							<option value="4x2_86">4x2_86</option>
+							<option value="4x2_87">4x2_87</option>
+							<option value="4x2_88">4x2_88</option>
+							<option value="4x2_89">4x2_89</option>
+							<option value="4x2_90">4x2_90</option>
+							<option value="4x2_91">4x2_91</option>
+							<option value="4x2_92">4x2_92</option>
+							<option value="4x2_93">4x2_93</option>
+					</select></td>
+					<td rowspan="4"><p>
+							<input type="radio" name="options" value="" checked="checked">as
+							is <br /> <input type="radio" name="options" value="-x" />flip
+							&#10594; <br /> <input type="radio" name="options" value="-y" />flip
+							&#10595; <br /> rotate not yet implemeted
+						</p></td>
+					<td><select size="1" name="A1">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="B1">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="C1">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="D1">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="A2">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="B2">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="C2">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="D2">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="A3">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="B3">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="C3">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="D3">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="A4">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="B4">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="C4">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+					<td><select size="1" name="D4">
+							<option value="tc">tc</option>
+							<option value="ctc">tc</option>
+							<option value="tctc">tc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">tcptc</option>
+							<option value="tctctcptc">tcptc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><p>&nbsp;</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<iframe width="700" height="400" scrolling="yes" src=""></iframe>
 	<p>
 		Powered by: <a href="https://code.google.com/p/dibl/">DiBL</a>
 	</p>
