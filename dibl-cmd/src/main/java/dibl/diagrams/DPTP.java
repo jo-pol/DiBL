@@ -22,10 +22,9 @@ public class DPTP extends Matrix<LongTupleFlipper>
 {
     private static final LongTupleFlipper FLIPPER = new LongTupleFlipper();
 
-
     /**
-     * Creates a Pair Traversal Pattern for Diamond patterns with brick tiles. Convenience constructor for
-     * {@link Matrix#Matrix(String[][], dibl.math.Flipper).
+     * Creates a Pair Traversal Pattern for Diagonal patterns with brick tiles. Convenience constructor
+     * for {@link Matrix#Matrix(String[][], dibl.math.Flipper).
      */
     public DPTP(String[][] input)
     {
@@ -76,7 +75,7 @@ public class DPTP extends Matrix<LongTupleFlipper>
         {
             String saved = m[r][0];
             int cols = m[r].length;
-            for (int c = 1; c < cols; c += 2)
+            for (int c = 1; c < cols; c++)
             {
                 m[r][c - 1] = m[r][c];
             }
