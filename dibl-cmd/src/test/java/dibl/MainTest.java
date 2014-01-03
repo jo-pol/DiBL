@@ -14,14 +14,16 @@
 // @formatter:on
 package dibl;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 public class MainTest
@@ -30,6 +32,7 @@ public class MainTest
     private static final String DIAMOND_PATTERNS = "src/main/assembly/input/PairTraversal/diamond/";
     private static final String BRICK_PATTERNS = "src/main/assembly/input/PairTraversal/brick/";
     private static final String STITCHES = "4;4\n" + "tcptc;tc;tcptc;tc\n" + "tc;tcptc;tc;tcptc\n" + "tcptc;tc;tcptc;tc\n" + "tc;tcptc;tc;tcptc\n";
+    private final List<Closeable> closeables = new ArrayList<Closeable>();
     private PrintStream savedOut;
     private InputStream savedIn;
 
@@ -74,16 +77,14 @@ public class MainTest
     @Test
     public void inlineSingleArg() throws Exception
     {
-        System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/main1.svg")));
+        setStreams(DIAMOND_PATTERNS + "3x3.svg", "target/main1.svg");
         Main.main("-ext", "xyz", STITCHES);
     }
 
     @Test
     public void inlineTwoArgs() throws Exception
     {
-        System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/main2.svg")));
+        setStreams(DIAMOND_PATTERNS + "3x3.svg", "target/main2.svg");
         Main.main(STITCHES, "3\t3\n" //
                 + "(0,1,1,0,-1,-1)\t(1,0,1,0,-1,-1)\t(0,0,1,1,-1,-1)\n" //
                 + "(0,1,1,-1,-1,0)\t(-1,1,0,1,0,-1)\t(0,1,1,0,-1,-1)\n" //
@@ -93,16 +94,14 @@ public class MainTest
     @Test
     public void hybrid() throws Exception
     {
-        System.setIn(new FileInputStream(DIAMOND_PATTERNS + "4x4.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/mainRotated.png")));
+        setStreams(DIAMOND_PATTERNS + "4x4.svg", "target/mainRotated.png");
         Main.main("-x", "-y", "-ext", "png", STITCHES, DIAMOND_PATTERNS + "4x4/4x4_2.txt");
     }
 
     @Test
     public void hybridDiamondX() throws Exception
     {
-        System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/mainDiamondFlippedAlongX.jpg")));
+        setStreams(DIAMOND_PATTERNS + "3x3.svg", "target/mainDiamondFlippedAlongX.jpg");
         Main.main("-x", "-ext", "jpg", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_3.txt");
     }
 
@@ -110,8 +109,7 @@ public class MainTest
     public void hybridDiamondY() throws Exception
     {
 
-        System.setIn(new FileInputStream(DIAMOND_PATTERNS + "3x3.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/mainDiamondFlippedAlongY.tiff")));
+        setStreams(DIAMOND_PATTERNS + "3x3.svg", "target/mainDiamondFlippedAlongY.tiff");
         Main.main("-y", "-ext", "tiff", STITCHES, DIAMOND_PATTERNS + "3x3/3x3_4.txt");
     }
 
@@ -119,23 +117,56 @@ public class MainTest
     public void rotateBrickInterleaved() throws Exception
     {
 
-        System.setIn(new FileInputStream(INTERLEAVED_PATTERNS + "2x4.svg"));
-        System.setOut(new PrintStream(new FileOutputStream("target/rotate.png")));
+        setStreams(INTERLEAVED_PATTERNS + "2x4-pair.svg", "target/rotate.png");
         Main.main("-H", "-V", "-ext", "png", STITCHES, INTERLEAVED_PATTERNS + "2x4/2x4_4.txt");
+    }
+
+    @Test
+    public void flipBrickDiagonal() throws Exception
+    {
+        final String template = BRICK_PATTERNS + "4x4-pair.svg";
+        final String pattern = BRICK_PATTERNS + "4x4/4x4_";
+        for (int i = 1; i <= 4; i++)
+        {
+            setStreams(template, "target/4x4_" + i + "cc.png");
+            Main.main("-ext", "png", STITCHES, pattern + i + ".txt");
+        }
+        setStreams(template, "target/4x4_4ccH.png");
+        Main.main("-X", "-ext", "png", STITCHES, pattern + "4.txt");
+
+        setStreams(template, "target/4x4_4ccV.png");
+        Main.main("-Y", "-ext", "png", STITCHES, pattern + "4.txt");
+
+        setStreams(template, "target/4x4_4ccVH.png");
+        Main.main("-X", "-Y", "-ext", "png", STITCHES, pattern + "4.txt");
     }
 
     @Test
     public void interleaved() throws Exception
     {
-        new File(targetFolder(INTERLEAVED_PATTERNS)).mkdirs();
+        final String targetFolder = "target/" + new File(INTERLEAVED_PATTERNS).getName() + "/";
+        new File(targetFolder).mkdirs();
         for (final String dimensions : new String[] {"2x4", "4x2", "2x2"})
         {
+            final String template = INTERLEAVED_PATTERNS + dimensions + "-pair.svg";
             for (int i = 1; i < 8; i++)
             {
-                run(dimensions, i, "", INTERLEAVED_PATTERNS);
-                run(dimensions, i, "-V", INTERLEAVED_PATTERNS);
-                run(dimensions, i, "-H", INTERLEAVED_PATTERNS);
-                run(dimensions, i, "-V", INTERLEAVED_PATTERNS);
+                final String pattern = INTERLEAVED_PATTERNS + dimensions + "/" + dimensions + "_" + i + ".txt";
+                final String out = targetFolder + dimensions + "_" + i;
+
+                setStreams(template, out + ".png");
+                Main.main("-ext", "png", STITCHES, pattern);
+
+                setStreams(template, out + "-V.jpg");
+                Main.main("-ext", "jpg", "-V", STITCHES, pattern);
+
+                setStreams(template, out + "-H.jpg");
+                Main.main("-ext", "jpg", "-H", STITCHES, pattern);
+
+                setStreams(template, out + "-V.jpg");
+                Main.main("-ext", "jpg", "-V", STITCHES, pattern);
+
+                resetStreams();
             }
         }
     }
@@ -143,50 +174,47 @@ public class MainTest
     @Test
     public void brick() throws Exception
     {
-        new File(targetFolder(BRICK_PATTERNS)).mkdirs();
+        final String targetFolder = "target/" + new File(BRICK_PATTERNS).getName() + "/";
+        new File(targetFolder).mkdirs();
         for (final String dimensions : new String[] {"3x3", "4x4"})
         {
+            final String template = BRICK_PATTERNS + dimensions + ".svg";
             for (int i = 1; i < 8; i++)
             {
-                run(dimensions, i, "", BRICK_PATTERNS);
-                run(dimensions, i, "-X", BRICK_PATTERNS);
-                run(dimensions, i, "-Y", BRICK_PATTERNS);
+                final String pattern = BRICK_PATTERNS + dimensions + "/" + dimensions + "_" + i + ".txt";
+                final String out = targetFolder + dimensions + "_" + i;
+
+                setStreams(template, out + ".png");
+                Main.main("-ext", "png", STITCHES, pattern);
+
+                setStreams(template, out + "-X.jpg");
+                Main.main("-ext", "jpg", "-X", STITCHES, pattern);
+
+                setStreams(template, out + "-Y.jpg");
+                Main.main("-ext", "jpg", "-Y", STITCHES, pattern);
+
+                resetStreams();
             }
         }
     }
 
-    private void run(final String dimensions, final int n, final String flip, final String folder) throws Exception
+    public void setStreams(final String in, final String string) throws Exception
     {
-        final String target = targetFolder(folder);
-        // final String stitches = "4;4\n" + "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n" +
-        // "-tc;-tc;-tc;-tc\n" + "-tc;-tc;-tc;-tc\n";
-        final String stitches = "4;4\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n" + "tcptc;tcptc;tcptc;tcptc\n";
-        System.setIn(new FileInputStream(folder + dimensions + ".svg"));
-        System.setOut(new PrintStream(new FileOutputStream(target + dimensions + "_" + n + flip + ".png")));
-        final String pattern = folder + dimensions + "/" + dimensions + "_" + n + ".txt";
-        if (flip.length() == 0)
-            Main.main("-ext", "png", stitches, pattern);
-        else
-            Main.main("-ext", "jpg", flip, stitches, pattern);
-        System.in.close();
-        System.out.close();
-    }
-
-    private String targetFolder(final String folder)
-    {
-        return "target/" + new File(folder).getName() + "/";
-    }
-
-    @Before
-    public void saveStreams()
-    {
+        final FileInputStream inputStream = new FileInputStream(in);
+        final PrintStream printStream = new PrintStream(new FileOutputStream(string));
         savedIn = System.in;
         savedOut = System.out;
+        System.setIn(inputStream);
+        System.setOut(printStream);
+        closeables.add(inputStream);
+        closeables.add(printStream);
     }
 
     @After
-    public void restoreStreams()
+    public void resetStreams() throws Exception
     {
+        for (final Closeable closable : closeables)
+            closable.close();
         System.setIn(savedIn);
         System.setOut(savedOut);
     }

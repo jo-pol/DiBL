@@ -108,7 +108,7 @@ public class ApiTest
     public void colorCoded2x4() throws Exception
     {
         final String[][] tuples = DPTP.read(openInput(INTERLEAVED_FOLDER + "2x4/2x4_4.txt"));
-        final Template template = new Template(openInput(INTERLEAVED_FOLDER + "2x4.svg"));
+        final Template template = new Template(openInput(INTERLEAVED_FOLDER + "2x4-pair.svg"));
         template.replaceBoth(stitches, tuples);
         template.write(openOutput(OUTPUT_FOLDER + "2x4_4ccNormal.svg"));
         template.replaceBoth(//
