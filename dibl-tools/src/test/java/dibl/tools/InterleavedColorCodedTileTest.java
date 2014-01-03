@@ -22,7 +22,7 @@ import org.junit.Test;
 
 import dibl.tools.ColorCodedTile;
 
-public class ColorCodedTileTest
+public class InterleavedColorCodedTileTest
 {
     @Test
     public void verify()
@@ -32,7 +32,7 @@ public class ColorCodedTileTest
                 "<path d=\"M 36,0 C 28,8  18,24 18,36\" " + attributes + " />\n" + //
                 "<path d=\"M 0,18 C 12,18  28,28 36,36\" " + attributes + " />\n" + //
                 "</g>\n";
-        assertThat(new ColorCodedTile(tc, "(0,1,0,0,1,0,-1,-1)").toString(), is(expected));
+        assertThat(new InterleavedColorCodedTile(tc, "(0,1,0,0,1,0,-1,-1)").toString(), is(expected));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ColorCodedTileTest
     {
         for (ColorCodedTile.Stitch stitch : ColorCodedTile.Stitch.values())
         {
-            String string = ColorCodedTile.generate(stitch);
+            String string = InterleavedColorCodedTile.generate(stitch);
             System.out.println(string);
             assertThat(string.split("\n").length, is(69 * (stitch.hasPin()?5:4)));
         }

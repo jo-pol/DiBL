@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ColorCodedTile
+public abstract class ColorCodedTile
 {
     enum Stitch
     {
@@ -43,10 +43,6 @@ public class ColorCodedTile
     private static final String TILE = "<g inkscape:label=\"{0} {1}\">\n{2}\n{3}{4}\n</g>\n";
     private static final String LINE = "<path d=\"M {1} {3} {2}\" style=\"fill:none;stroke:#{0}\"" + //
             " inkscape:connector-curvature=\"0\" sodipodi:nodetypes=\"{4}\" />";
-    private static final List<String> IN = Collections.unmodifiableList(Arrays.asList(//
-            "36,18 C 24,18", "36,0 C 28,8", "18,0 C 18,12", "0,0 C 8,8", "0,18 C 12,18", "-", "-", "-"));
-    private static final List<String> OUT = Collections.unmodifiableList(Arrays.asList(//
-            "24,18 36,18", "-", "-", "-", "12,18 0,18", "8,28 0,36", "18,24 18,36", "28,28 36,36"));
     private static final List<String> MIRROR = Collections.unmodifiableList(Arrays.asList(//
             "6,18", "6,30", "18,30", "30,30", "30,18", "30,6", "18,6", "6,6"));
     private static final String PIN = "\n<path d='m 20,18 a 2,2 0 1 1 -4,0 2,2 0 1 1 4,0 z' " + //
@@ -107,7 +103,7 @@ public class ColorCodedTile
 
     private String createSimpleLine(final int in, final int out)
     {
-        return MessageFormat.format(LINE, stitch.color, IN.get(in), OUT.get(out), "", "cc");
+        return MessageFormat.format(LINE, stitch.color, getIn(in), getOut(out), "", "cc");
     }
 
     private String createLine(final int in, final int out)
@@ -116,7 +112,7 @@ public class ColorCodedTile
         Point2D end = createPoint(MIRROR.get(in));
         Point2D p = new Point2D.Double((start.getX() + end.getX()) / 2, (start.getY() + end.getY()) / 2);
         String tangent = MIRROR.get(out) + " " + p.getX() + "," + p.getY() + " " + MIRROR.get(in);
-        return MessageFormat.format(LINE, stitch.color, IN.get(in), OUT.get(out), tangent, "csc");
+        return MessageFormat.format(LINE, stitch.color, getIn(in), getOut(out), tangent, "csc");
     }
 
     private Point2D.Double createPoint(final String coordinates)
@@ -159,27 +155,7 @@ public class ColorCodedTile
         return -1;
     }
 
-    public static String generate(final Stitch stitch)
-    {
-        final StringBuffer sb = new StringBuffer();
-        final int max = Integer.parseInt("22222222", 3);
-        for (int i = 0; i <= max; i++)
-        {
-            ColorCodedTile tile;
-            try
-            {
-                tile = new ColorCodedTile(stitch, toTuple(Integer.toString(i, 3)));
-            }
-            catch (final IllegalArgumentException e)
-            {
-                continue;
-            }
-            sb.append(tile.toString());
-        }
-        return sb.toString();
-    }
-
-    private static String toTuple(final String s)
+    protected static String toTuple(final String s)
     {
         final String padded = ("00000000" + s).substring(s.length());
         final int[] items = new int[8];
@@ -189,4 +165,8 @@ public class ColorCodedTile
         }
         return Arrays.toString(items).replace("[", "(").replace("]", ")").replaceAll(" ", "");
     }
+
+    protected abstract String getIn(int i);
+
+    protected abstract String getOut(int i);
 }
