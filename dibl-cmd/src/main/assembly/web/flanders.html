@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- 
+  Copyright 2014, J. Pol
+ 
+  This file is part of free software: you can redistribute it and/or modify it under the terms of the
+  GNU General Public License as published by the Free Software Foundation.
+  
+  This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  
+  See the GNU General Public License for more details. A copy of the GNU General Public License is
+  available at <http://www.gnu.org/licenses/>.
+ -->
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>DiBL: Bobbin Lace - Pair Traversal Pattern browser</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body onload="showFlanders()">
+	<h1>Bobbin Lace - Diagrams for Flanders grounds</h1>
+	<p>
+		Powered by: <a href="https://code.google.com/p/dibl/">DiBL</a>
+	</p>
+	<h2>Commands</h3>
+	<p>
+		<ul>
+			<li>To complete the page a serverside script
+				should be implemented to
+				execute the command and show the result.
+			</li>
+			<li>
+				For now you have to copy-paste the command
+				as shown after configuring the desired diagram.
+			</li>
+			<li>
+				Note that the command line contains a multiline string, 
+				including empty lines for Windows.
+			</li>
+		</ul>
+	</p>
+	<h3>Mac/Unix</h3>
+	<pre id="mu">&nbsp;</pre>
+	<h3>Windows</h3>
+	<pre id="win">&nbsp;</pre>
+
+	<h2>Configure a diagram</h2>
+	<form name="flanders">
+		<table>
+			<tbody>
+				<tr>
+					<td rowspan="4">stitches&nbsp;</td>
+					<td><select size="1" name="A1" onchange="showFlanders()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="A2" onchange="showFlanders()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+					</select></td>
+					<td rowspan="4"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><select size="1" name="A3" onchange="showFlanders()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+					</select></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="B1" onchange="showFlanders()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+					</select></td>
+					<td></td>
+					<td><select size="1" name="B2" onchange="showFlanders()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><select size="1" name="B3" onchange="showFlanders()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>image&nbsp;type&nbsp;</td>
+					<td colspan="4"><select size="1" name="ext" onchange="showFlanders()">
+							<option value="svg">svg</option>
+							<option value="png">png</option>
+							<option value="jpg">jpg</option>
+							<option value="tiff">tiff</option>
+					</select></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<iframe src="../input/flanders.svg"></iframe>
+</body>
+</html>

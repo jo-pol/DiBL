@@ -1,0 +1,39 @@
+/*  Copyright 2014, J. Pol
+#
+# This file is part of free software: you can redistribute it and/or modify it under the terms of the
+# GNU General Public License as published by the Free Software Foundation.
+# 
+# This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+# the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# 
+# See the GNU General Public License for more details. A copy of the GNU General Public License is
+# available at <http://www.gnu.org/licenses/>.
+*/
+p {
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0;
+}
+
+table,td {
+	border: 0px;
+}
+
+table,td,select,input {
+	margin: 0px;
+	padding: 0px;
+}
+
+td {
+	vertical-align: top;
+}
+
+iframe {
+	width: 700px;
+	height: 400px;
+	on-overflow: scroll;
+}
+
+input {
+	width: 400px;
+}
