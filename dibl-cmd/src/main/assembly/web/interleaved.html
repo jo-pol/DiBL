@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- 
+  Copyright 2014, J. Pol
+ 
+  This file is part of free software: you can redistribute it and/or modify it under the terms of the
+  GNU General Public License as published by the Free Software Foundation.
+  
+  This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  
+  See the GNU General Public License for more details. A copy of the GNU General Public License is
+  available at <http://www.gnu.org/licenses/>.
+ -->
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>DiBL: Bobbin Lace - Pair Traversal Pattern browser</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body onload="show()">
+	<h1>Bobbin Lace - Interleaved pair traversal pattern browser</h1>
+	<p>
+		Powered by: <a href="https://code.google.com/p/dibl/">DiBL</a>
+	</p>
+	<p>
+		Based on:
+		<br><a href="http://web.uvic.ca/~vmi/">Veronika Irvine</a>.
+		Broadening the Palette for Bobbin Lace: A Combinatorial Approach. 
+		<br><em><a
+			href="http://www.bridgesmathart.org/">Bridges 2012</a>: Mathematics,
+			Music, Art, Architecture, Culture, pages 191-198. Tessellations
+			Publishing, 2012.</em>
+	</p>
+	<h2>Commands</h2>
+	<p>A serverside script should execute the command to create the configured diagram.
+		For now you have to 
+		<a href="https://code.google.com/p/dibl/wiki/Install">install DiBL</a>
+		and copy-paste the desired command into a .sh respective .bat file to execute.
+	</p>
+
+	<ul>
+		<li>sh (Mac / Unix, the multiline string requires quotes)<pre id="sh">&nbsp;</pre></li>
+		<li>bat (Windows, the multiline string requires empty lines)<pre id="bat">&nbsp;</pre></li>
+	</ul>
+
+	<h2>Configure a diagram</h2>
+	<form name="diagramConfig">
+		<input name="diagramType" type="hidden" value="interleaved"/>
+		<table>
+			<tbody>
+				<tr>
+					<td>pattern&nbsp;</td>
+					<td colspan="4"><select size="1" name="options" onchange="show()">
+							<option value="">no flip/rotation</option>
+							<option value="-x">flip &#10594;</option>
+							<option value="-y">flip &#10595;</option>
+							<option value="-x -y">rotate</option>
+					</select> dimensions: <select size="1" name="dimensions" onchange="show()">
+							<option value="2x2" onclick="setRangeMax(7);">2x2</option>
+							<option value="2x4" onclick="setRangeMax(47);">2x4</option>
+							<option value="4x2" onclick="setRangeMax(93);">4x2</option>
+					</select> 
+						nr: <span id="nr" onclick="alert('hello')">1</span> 
+						<input type="range" name="pattern" min="1" max="7" value="1"
+						onchange="showRangeValue();show()"
+						onkeyup="showRangeValue();show()" />
+						max: <span id="max">7</span>
+						<br>Once the slider is selected, you can use the arrow keys for the next/previous pattern.
+					</td>
+				</tr>
+				<tr>
+					<td>diagram&nbsp;type&nbsp;</td>
+					<td colspan="4"><select size="1" name="diagram" onchange="show()">
+							<!--option value="">thread</option-->
+							<option value="-pair">pair <em>(some stitches still sloppy)</em></option>
+					</select> thread diagrams not yet implemented.</td>
+				</tr>
+				<tr>
+					<td>image&nbsp;type&nbsp;</td>
+					<td colspan="4"><select size="1" name="ext" onchange="show()">
+							<option value="svg">svg</option>
+							<option value="png">png</option>
+							<option value="jpg">jpg</option>
+							<option value="tiff">tiff</option>
+					</select> See <a href="https://code.google.com/p/dibl/wiki/EditDiagrams">edit hints</a>
+						for svg images.
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="4">stitches&nbsp;</td>
+					<td class="narrow"><select size="1" name="A1" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td class="narrow"><select size="1" name="B1" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td class="narrow"><select size="1" name="C1" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="D1" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="A2" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="B2" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="C2" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="D2" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="A3" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="B3" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="C3" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="D3" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><select size="1" name="A4" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="B4" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="C4" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+					<td><select size="1" name="D4" onchange="show()">
+							<option value="tc">tc</option>
+							<option value="ctc">ctc</option>
+							<option value="tctc">tctc</option>
+							<option value="tcptc">tcptc</option>
+							<option value="ctcpctc">ctcpctc</option>
+							<option value="tctctcptc">tctcptctc</option>
+					</select></td>
+				</tr>
+				<tr><td></td>
+					<td colspan="4">Depending on the chosen pattern dimensions, 
+						the last rows and columns are ignored.</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<iframe></iframe>
+</body>
+</html>

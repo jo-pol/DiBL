@@ -9,10 +9,11 @@
 # See the GNU General Public License for more details. A copy of the GNU General Public License is
 # available at <http://www.gnu.org/licenses/>.
 */
+
 p {
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-top: 0;
+	padding-top: 0px;
 }
 
 table,td {
@@ -28,12 +29,19 @@ td {
 	vertical-align: top;
 }
 
+td.narrow {
+	width: 1px;
+}
+
 iframe {
 	width: 700px;
 	height: 400px;
-	on-overflow: scroll;
+}
+
+img {
+	border-style:inset;
 }
 
 input {
-	width: 400px;
+	width: 200px;
 }

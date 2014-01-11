@@ -9,58 +9,108 @@
 // See the GNU General Public License for more details. A copy of the GNU General Public License is
 // available at <http://www.gnu.org/licenses/>.
 
-function diagonalDimensions(max) {
+function setRangeMax(max) {
 
-	f = document.getElementById('diagonalPattern');
-	f.max = max;
+	f = document.diagramConfig.pattern;
 	f.value = 1;
-	document.getElementById('diagonalNr').innerHTML = 1;
-}
-
-function diagonalRange(value) {
-
-	document.getElementById('diagonalNr').innerHTML = value;
-}
-
-function interleavedDimensions(max) {
-
-	f = document.getElementById('interleavedPattern');
 	f.max = max;
-	f.value = 1;
-	document.getElementById('interleavedNr').innerHTML = 1;
+	document.getElementById('nr').innerHTML = 1;
+	document.getElementById('max').innerHTML = max;
 }
 
-function interleavedRange(value) {
+function showRangeValue() {
 
-	document.getElementById('interleavedNr').innerHTML = value;
+	document.getElementById('nr').innerHTML = document.diagramConfig.pattern.value;
 }
 
 function showFlanders() {
 
 	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
 
-	document.getElementById('mu').innerHTML
+	document.getElementById('sh').innerHTML
 	= "java -jar dibl-cmd-0.1.2.jar -ext "
-	+ document.flanders.ext.value + " '3;2\n"
-	+ document.flanders.A1.value + ";"
-	+ document.flanders.B1.value + "\n"
-	+ document.flanders.A2.value + ";"
-	+ document.flanders.B2.value + "\n"
-	+ document.flanders.A3.value + ";"
-	+ document.flanders.B3.value + "'"
+	+ document.diagramConfig.ext.value + " '3;2\n"
+	+ document.diagramConfig.A1.value + ";"
+	+ document.diagramConfig.B1.value + "\n"
+	+ document.diagramConfig.A2.value + ";"
+	+ document.diagramConfig.B2.value + "\n"
+	+ document.diagramConfig.A3.value + ";"
+	+ document.diagramConfig.B3.value + "'"
 	+ " < input/flanders.svg"
-	+ " > output." + document.flanders.ext.value
+	+ " > output." + document.diagramConfig.ext.value
 	;
 
-	document.getElementById('win').innerHTML
-	= "java -jar dibl-cmd-0.1.2.jar 3;2^\r\n\r\n"
-	+ document.flanders.A1.value + ";"
-	+ document.flanders.B1.value + "^\r\n\r\n"
-	+ document.flanders.A2.value + ";"
-	+ document.flanders.B2.value + "^\r\n\r\n"
-	+ document.flanders.A3.value + ";"
-	+ document.flanders.B3.value
+	document.getElementById('bat').innerHTML
+	= "java -jar dibl-cmd-0.1.2.jar -ext "
+	+ document.diagramConfig.ext.value + " 3;2^\r\n\r\n"
+	+ document.diagramConfig.A1.value + ";"
+	+ document.diagramConfig.B1.value + "^\r\n\r\n"
+	+ document.diagramConfig.A2.value + ";"
+	+ document.diagramConfig.B2.value + "^\r\n\r\n"
+	+ document.diagramConfig.A3.value + ";"
+	+ document.diagramConfig.B3.value
 	+ " < input/flanders.svg"
-	+ " > output." + document.flanders.ext.value
+	+ " > diagram." + document.diagramConfig.ext.value
+	;
+}
+
+function show() {
+
+	// for bash on Windows:
+	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
+
+	cmd = "java -jar dibl-cmd-0.1.2.jar "
+	+ document.diagramConfig.options.value
+	+ " -ext " + document.diagramConfig.ext.value
+	;
+	io = " < input/PairTraversal/" 
+	+ document.diagramConfig.diagramType.value + "/" 
+	+ document.diagramConfig.dimensions.value
+	+ document.diagramConfig.diagram.value + ".svg > diagram."
+	+ document.diagramConfig.ext.value
+	;
+	pattern = " input/PairTraversal/"
+	+ document.diagramConfig.diagramType.value + "/"
+	+ document.diagramConfig.dimensions.value + "/"
+	+ document.diagramConfig.dimensions.value + "_"
+	+ document.diagramConfig.pattern.value + ".txt"
+	;
+	r1 
+	= document.diagramConfig.A1.value + ";"
+	+ document.diagramConfig.B1.value + ";"
+	+ document.diagramConfig.C1.value + ";"
+	+ document.diagramConfig.D1.value
+	;
+	r2
+	= document.diagramConfig.A2.value + ";"
+	+ document.diagramConfig.B2.value + ";"
+	+ document.diagramConfig.C2.value + ";"
+	+ document.diagramConfig.D2.value
+	;
+	r3
+	= document.diagramConfig.A3.value + ";"
+	+ document.diagramConfig.B3.value + ";"
+	+ document.diagramConfig.C3.value + ";"
+	+ document.diagramConfig.D3.value
+	;
+	r4
+	= document.diagramConfig.A4.value + ";"
+	+ document.diagramConfig.B4.value + ";"
+	+ document.diagramConfig.C4.value + ";"
+	+ document.diagramConfig.D4.value
+	;
+	document.getElementById('sh').innerHTML
+	= cmd + " '4;4\n"
+	+ r1 + "\n"
+	+ r2 + "\n"
+	+ r3 + "\n"
+	+ r4 + "'" + pattern + io
+	;
+	document.getElementById('bat').innerHTML
+	= cmd + " 4;4^\r\n\r\n"
+	+ r1 + "^\r\n\r\n"
+	+ r2 + "^\r\n\r\n"
+	+ r3 + "^\r\n\r\n"
+	+ r4 + pattern + io
 	;
 }

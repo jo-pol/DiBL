@@ -14,49 +14,39 @@
   available at <http://www.gnu.org/licenses/>.
  -->
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<title>DiBL: Bobbin Lace - Pair Traversal Pattern browser</title>
+<title>DiBL: Bobbin Lace - Thread diagram browser for Flanders grounds</title>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <script type="text/javascript" src="script.js"></script>
 </head>
 <body onload="showFlanders()">
-	<h1>Bobbin Lace - Diagrams for Flanders grounds</h1>
+	<h1>Bobbin Lace - Thread diagram browser for Flanders grounds</h1>
 	<p>
 		Powered by: <a href="https://code.google.com/p/dibl/">DiBL</a>
 	</p>
-	<h2>Commands</h3>
-	<p>
-		<ul>
-			<li>To complete the page a serverside script
-				should be implemented to
-				execute the command and show the result.
-			</li>
-			<li>
-				For now you have to copy-paste the command
-				as shown after configuring the desired diagram.
-			</li>
-			<li>
-				Note that the command line contains a multiline string, 
-				including empty lines for Windows.
-			</li>
-		</ul>
+	<h2>Commands</h2>
+	<p>A serverside script should execute the command to create the configured diagram.
+		For now you have to 
+		<a href="https://code.google.com/p/dibl/wiki/Install">install DiBL</a>
+		and copy-paste the desired command into a .sh respective .bat file to execute.
 	</p>
-	<h3>Mac/Unix</h3>
-	<pre id="mu">&nbsp;</pre>
-	<h3>Windows</h3>
-	<pre id="win">&nbsp;</pre>
+
+	<ul>
+		<li>sh (Mac / Unix, the multiline string requires quotes)<pre id="sh">&nbsp;</pre></li>
+		<li>bat (Windows, the multiline string requires empty lines)<pre id="bat">&nbsp;</pre></li>
+	</ul>
 
 	<h2>Configure a diagram</h2>
-	<form name="flanders">
+	<form name="diagramConfig">
 		<table>
 			<tbody>
 				<tr>
 					<td rowspan="4">stitches&nbsp;</td>
-					<td><select size="1" name="A1" onchange="showFlanders()">
+					<td class="narrow"><select size="1" name="A1" onchange="showFlanders()">
 							<option value="tc">tc</option>
 							<option value="ctc">ctc</option>
 							<option value="tctc">tctc</option>
 					</select></td>
-					<td></td>
+					<td class="narrow"></td>
 					<td><select size="1" name="A2" onchange="showFlanders()">
 							<option value="tc">tc</option>
 							<option value="ctc">ctc</option>
@@ -101,11 +91,13 @@
 							<option value="png">png</option>
 							<option value="jpg">jpg</option>
 							<option value="tiff">tiff</option>
-					</select></td>
+					</select> See <a href="https://code.google.com/p/dibl/wiki/EditDiagrams">edit hints</a>
+						for svg images.
+					</td>
 				</tr>
 			</tbody>
 		</table>
 	</form>
-	<iframe src="../input/flanders.svg"></iframe>
+	<img src="../input/flanders.svg"/>
 </body>
 </html>
