@@ -28,30 +28,29 @@ function showFlanders() {
 	// add to .bashrc on Windows something like:
 	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
 
+	var io = "< input/flanders.svg > diagram." 
+	+ document.diagramConfig.ext.value
+	;
+	var command = "java -jar dibl-cmd-0.1.2.jar -ext "
+	+ document.diagramConfig.ext.value
+	;
 	document.getElementById('sh').innerHTML
-	= "java -jar dibl-cmd-0.1.2.jar -ext "
-	+ document.diagramConfig.ext.value + " '3;2\n"
+	= command + " '3;2\n"
 	+ document.diagramConfig.A1.value + ";"
 	+ document.diagramConfig.B1.value + "\n"
 	+ document.diagramConfig.A2.value + ";"
 	+ document.diagramConfig.B2.value + "\n"
 	+ document.diagramConfig.A3.value + ";"
-	+ document.diagramConfig.B3.value + "'"
-	+ " < input/flanders.svg"
-	+ " > output." + document.diagramConfig.ext.value
+	+ document.diagramConfig.B3.value + "' " + io
 	;
-
 	document.getElementById('bat').innerHTML
-	= "java -jar dibl-cmd-0.1.2.jar -ext "
-	+ document.diagramConfig.ext.value + " 3;2^\r\n\r\n"
+	= command + " 3;2^\r\n\r\n"
 	+ document.diagramConfig.A1.value + ";"
 	+ document.diagramConfig.B1.value + "^\r\n\r\n"
 	+ document.diagramConfig.A2.value + ";"
 	+ document.diagramConfig.B2.value + "^\r\n\r\n"
 	+ document.diagramConfig.A3.value + ";"
-	+ document.diagramConfig.B3.value
-	+ " < input/flanders.svg"
-	+ " > diagram." + document.diagramConfig.ext.value
+	+ document.diagramConfig.B3.value + " " + io
 	;
 }
 
@@ -60,41 +59,41 @@ function showPairTraversal() {
 	// add to .bashrc on Windows something like:
 	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
 
-	command = "java -jar dibl-cmd-0.1.2.jar "
-	+ document.diagramConfig.options.value
-	+ " -ext " + document.diagramConfig.ext.value
+	var command = "java -jar dibl-cmd-0.1.2.jar "
+	+ document.diagramConfig.options.value + " -ext " 
+	+ document.diagramConfig.ext.value
 	;
-	templatePath = " input/PairTraversal/"
+	var templatePath = " input/PairTraversal/"
 	+ document.diagramConfig.traversalType.value + "/"
 	+ document.diagramConfig.dimensions.value
 	;
-	io = " <" + templatePath 
+	var io = " <" + templatePath 
 	+ document.diagramConfig.diagramType.value  + ".svg > diagram."
 	+ document.diagramConfig.ext.value
 	;
-	pattern = templatePath + "/"
+	var pattern = templatePath + "/"
 	+ document.diagramConfig.dimensions.value + "_"
 	+ document.diagramConfig.pattern.value + ".txt"
 	;
-	r1 
+	var r1 
 	= document.diagramConfig.A1.value + ";"
 	+ document.diagramConfig.B1.value + ";"
 	+ document.diagramConfig.C1.value + ";"
 	+ document.diagramConfig.D1.value
 	;
-	r2
+	var r2
 	= document.diagramConfig.A2.value + ";"
 	+ document.diagramConfig.B2.value + ";"
 	+ document.diagramConfig.C2.value + ";"
 	+ document.diagramConfig.D2.value
 	;
-	r3
+	var r3
 	= document.diagramConfig.A3.value + ";"
 	+ document.diagramConfig.B3.value + ";"
 	+ document.diagramConfig.C3.value + ";"
 	+ document.diagramConfig.D3.value
 	;
-	r4
+	var r4
 	= document.diagramConfig.A4.value + ";"
 	+ document.diagramConfig.B4.value + ";"
 	+ document.diagramConfig.C4.value + ";"
