@@ -25,6 +25,7 @@ function showRangeValue() {
 
 function showFlanders() {
 
+	// add to .bashrc on Windows something like:
 	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
 
 	document.getElementById('sh').innerHTML
@@ -54,24 +55,24 @@ function showFlanders() {
 	;
 }
 
-function show() {
+function showPairTraversal() {
 
-	// for bash on Windows:
+	// add to .bashrc on Windows something like:
 	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
 
-	cmd = "java -jar dibl-cmd-0.1.2.jar "
+	command = "java -jar dibl-cmd-0.1.2.jar "
 	+ document.diagramConfig.options.value
 	+ " -ext " + document.diagramConfig.ext.value
 	;
-	io = " < input/PairTraversal/" 
-	+ document.diagramConfig.diagramType.value + "/" 
+	templatePath = " input/PairTraversal/"
+	+ document.diagramConfig.traversalType.value + "/"
 	+ document.diagramConfig.dimensions.value
-	+ document.diagramConfig.diagram.value + ".svg > diagram."
+	;
+	io = " <" + templatePath 
+	+ document.diagramConfig.diagramType.value  + ".svg > diagram."
 	+ document.diagramConfig.ext.value
 	;
-	pattern = " input/PairTraversal/"
-	+ document.diagramConfig.diagramType.value + "/"
-	+ document.diagramConfig.dimensions.value + "/"
+	pattern = templatePath + "/"
 	+ document.diagramConfig.dimensions.value + "_"
 	+ document.diagramConfig.pattern.value + ".txt"
 	;
@@ -100,14 +101,14 @@ function show() {
 	+ document.diagramConfig.D4.value
 	;
 	document.getElementById('sh').innerHTML
-	= cmd + " '4;4\n"
+	= command + " '4;4\n"
 	+ r1 + "\n"
 	+ r2 + "\n"
 	+ r3 + "\n"
 	+ r4 + "'" + pattern + io
 	;
 	document.getElementById('bat').innerHTML
-	= cmd + " 4;4^\r\n\r\n"
+	= command + " 4;4^\r\n\r\n"
 	+ r1 + "^\r\n\r\n"
 	+ r2 + "^\r\n\r\n"
 	+ r3 + "^\r\n\r\n"
