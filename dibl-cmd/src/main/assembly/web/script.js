@@ -9,6 +9,17 @@
 // See the GNU General Public License for more details. A copy of the GNU General Public License is
 // available at <http://www.gnu.org/licenses/>.
 
+function diagramTypeChanged (){
+
+	var newDiagramType = document.diagramConfig.diagramType.value;
+	var newDisplayValue = newDiagramType == '-pair'? 'block' : 'none';
+
+	var elements = document.getElementsByClassName('pair');
+	for (var i=0 ; i<elements.length ; i++ ) {
+		elements[i].style.display = newDisplayValue;
+	}
+}
+
 function setRangeMax(max) {
 
 	f = document.diagramConfig.pattern;
