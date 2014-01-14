@@ -45,16 +45,15 @@
 							<option value="-x">flip &#10594;</option>
 							<option value="-y">flip &#10595;</option>
 							<option value="-x -y">rotate</option>
-					</select> dimensions: <select size="1" name="dimensions" onchange="showPairTraversal()">
-							<option value="2x2" onclick="setRangeMax(7);">2x2</option>
-							<option value="2x4" onclick="setRangeMax(47);">2x4</option>
-							<option value="4x2" onclick="setRangeMax(93);">4x2</option>
+					</select> dimensions: <select size="1" name="dimensions" onchange="showPairTraversal();setRangeMax();">
+							<option value="2x2">2x2 (max nr: 7)</option>
+							<option value="2x4">2x4 (max nr: 47)</option>
+							<option value="4x2">4x2 (max nr: 93)</option>
 					</select> 
 						nr: <span id="nr" onclick="alert('hello')">1</span> 
 						<input type="range" name="pattern" min="1" max="7" value="1"
 						onchange="showRangeValue();showPairTraversal()"
 						onkeyup="showRangeValue();showPairTraversal()" />
-						max: <span id="max">7</span>
 						<br>Once the slider is selected, you can use the arrow keys for the next/previous pattern.
 					</td>
 				</tr>

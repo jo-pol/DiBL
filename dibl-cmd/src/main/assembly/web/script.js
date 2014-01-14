@@ -20,13 +20,14 @@ function diagramTypeChanged (){
 	}
 }
 
-function setRangeMax(max) {
+function setRangeMax() {
 
+	d = document.diagramConfig.dimensions;
+	iHTML = d.options[d.selectedIndex].innerHTML;
 	f = document.diagramConfig.pattern;
 	f.value = 1;
-	f.max = max;
+	f.max = parseInt(iHTML.split(":")[1]);
 	document.getElementById('nr').innerHTML = 1;
-	document.getElementById('max').innerHTML = max;
 }
 
 function showRangeValue() {
