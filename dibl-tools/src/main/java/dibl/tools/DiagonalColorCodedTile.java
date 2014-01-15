@@ -30,6 +30,11 @@ public class DiagonalColorCodedTile extends ColorCodedTile
         super(stitch, tuple);
     }
 
+    public DiagonalColorCodedTile newInstance(final Stitch stitch, final String tuple)
+    {
+        return DiagonalColorCodedTile(stitch, tuple);
+    }
+
     public String getIn(int i)
     {
         return IN.get(i);
@@ -38,25 +43,5 @@ public class DiagonalColorCodedTile extends ColorCodedTile
     public String getOut(int i)
     {
         return OUT.get(i);
-    }
-
-    public static String generate(final Stitch stitch)
-    {
-        final StringBuffer sb = new StringBuffer();
-        final int max = Integer.parseInt("22222222", 3);
-        for (int i = 0; i <= max; i++)
-        {
-            ColorCodedTile tile;
-            try
-            {
-                tile = new DiagonalColorCodedTile(stitch, toTuple(Integer.toString(i, 3)));
-            }
-            catch (final IllegalArgumentException e)
-            {
-                continue;
-            }
-            sb.append(tile.toString());
-        }
-        return sb.toString();
     }
 }

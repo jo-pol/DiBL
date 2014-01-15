@@ -166,6 +166,28 @@ public abstract class ColorCodedTile
         return Arrays.toString(items).replace("[", "(").replace("]", ")").replaceAll(" ", "");
     }
 
+    public static String generate(final Stitch stitch)
+    {
+        final StringBuffer sb = new StringBuffer();
+        final int max = Integer.parseInt("22222222", 3);
+        for (int i = 0; i <= max; i++)
+        {
+            ColorCodedTile tile;
+            try
+            {
+                tile = new DiagonalColorCodedTile(stitch, toTuple(Integer.toString(i, 3)));
+            }
+            catch (final IllegalArgumentException e)
+            {
+                continue;
+            }
+            sb.append(tile.toString());
+        }
+        return sb.toString();
+    }
+
+    protected abstract newInstance(final Stitch stitch, final String tuple);
+
     protected abstract String getIn(int i);
 
     protected abstract String getOut(int i);
