@@ -9,6 +9,10 @@
 // See the GNU General Public License for more details. A copy of the GNU General Public License is
 // available at <http://www.gnu.org/licenses/>.
 
+var command = "java -jar dibl-cmd-${project.version}.jar -ext "
++ document.diagramConfig.ext.value
+;
+
 function diagramTypeChanged (){
 
 	var newDiagramType = document.diagramConfig.diagramType.value;
@@ -43,9 +47,6 @@ function showFlanders() {
 	var io = "< input/flanders.svg > diagram." 
 	+ document.diagramConfig.ext.value
 	;
-	var command = "java -jar dibl-cmd-0.1.2.jar -ext "
-	+ document.diagramConfig.ext.value
-	;
 	document.getElementById('sh').innerHTML
 	= command + " '3;2\n"
 	+ document.diagramConfig.A1.value + ";"
@@ -71,10 +72,6 @@ function showPairTraversal() {
 	// add to .bashrc on Windows something like:
 	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
 
-	var command = "java -jar dibl-cmd-0.1.2.jar "
-	+ document.diagramConfig.options.value + " -ext " 
-	+ document.diagramConfig.ext.value
-	;
 	var templatePath = " input/PairTraversal/"
 	+ document.diagramConfig.traversalType.value + "/"
 	+ document.diagramConfig.dimensions.value
@@ -112,14 +109,14 @@ function showPairTraversal() {
 	+ document.diagramConfig.D4.value
 	;
 	document.getElementById('sh').innerHTML
-	= command + " '4;4\n"
+	= command + document.diagramConfig.options.value + " '4;4\n"
 	+ r1 + "\n"
 	+ r2 + "\n"
 	+ r3 + "\n"
 	+ r4 + "'" + pattern + io
 	;
 	document.getElementById('bat').innerHTML
-	= command + " 4;4^\r\n\r\n"
+	= command + document.diagramConfig.options.value + " 4;4^\r\n\r\n"
 	+ r1 + "^\r\n\r\n"
 	+ r2 + "^\r\n\r\n"
 	+ r3 + "^\r\n\r\n"
