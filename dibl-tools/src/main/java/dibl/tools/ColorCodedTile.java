@@ -1,6 +1,6 @@
 // @formatter:off
 /*
- * Copyright 2013, J. Pol
+ * Copyright 2014, J. Pol
  *
  * This file is part of free software: you can redistribute it and/or modify it under the terms of the
  * GNU General Public License as published by the Free Software Foundation.
@@ -40,8 +40,8 @@ public abstract class ColorCodedTile
         }
     }
 
-    private static final String TILE = "<g inkscape:label=\"{0} {1}\">\n{2}\n{3}{4}\n</g>\n";
-    private static final String LINE = "<path d=\"M {1} {3} {2}\" style=\"fill:none;stroke:#{0}\"" + //
+    static final String TILE = "<g inkscape:label=\"{0} {1}\">\n{2}\n{3}{4}\n</g>\n";
+    static final String LINE = "<path d=\"M {1} {3} {2}\" style=\"fill:none;stroke:#{0}\"" + //
             " inkscape:connector-curvature=\"0\" sodipodi:nodetypes=\"{4}\" />";
     private static final List<String> MIRROR = Collections.unmodifiableList(Arrays.asList(//
             "6,18", "6,30", "18,30", "30,30", "30,18", "30,6", "18,6", "6,6"));
