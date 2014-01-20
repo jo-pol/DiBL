@@ -52,9 +52,9 @@ public abstract class ColorCodedTile
             "sodipodi:type='arc' " + //
             "/>";
 
-    private final Stitch stitch;
+    final Stitch stitch;
+    final String tuple;
     private final List<Integer> tupleList = new ArrayList<Integer>();
-    private final String tuple;
 
     public ColorCodedTile(final Stitch stitch, final String tuple)
     {
@@ -108,10 +108,10 @@ public abstract class ColorCodedTile
 
     private String createLine(final int in, final int out)
     {
-        Point2D start = createPoint(MIRROR.get(out));
-        Point2D end = createPoint(MIRROR.get(in));
-        Point2D p = new Point2D.Double((start.getX() + end.getX()) / 2, (start.getY() + end.getY()) / 2);
-        String tangent = MIRROR.get(out) + " " + p.getX() + "," + p.getY() + " " + MIRROR.get(in);
+        final Point2D start = createPoint(MIRROR.get(out));
+        final Point2D end = createPoint(MIRROR.get(in));
+        final Point2D p = new Point2D.Double((start.getX() + end.getX()) / 2, (start.getY() + end.getY()) / 2);
+        final String tangent = MIRROR.get(out) + " " + p.getX() + "," + p.getY() + " " + MIRROR.get(in);
         return MessageFormat.format(LINE, stitch.color, getIn(in), getOut(out), tangent, "csc");
     }
 
@@ -123,7 +123,7 @@ public abstract class ColorCodedTile
         return new Point2D.Double(x, y);
     }
 
-    private int firstIn()
+    int firstIn()
     {
         for (int i = 0; i < 5; i++)
             if (tupleList.get(i) > 0)
@@ -131,7 +131,7 @@ public abstract class ColorCodedTile
         return -1;
     }
 
-    private int lastIn()
+    int lastIn()
     {
         for (int i = firstIn() + 1; i < 5; i++)
             if (tupleList.get(i) > 0)
@@ -139,7 +139,7 @@ public abstract class ColorCodedTile
         return -1;
     }
 
-    private int firstOut()
+    int firstOut()
     {
         for (int i = 4; i < 9; i++)
             if (tupleList.get(i) < 0)
@@ -147,7 +147,7 @@ public abstract class ColorCodedTile
         return -1;
     }
 
-    private int lastOut()
+    int lastOut()
     {
         for (int i = firstOut() + 1; i < 9; i++)
             if (tupleList.get(i) < 0)
@@ -165,28 +165,6 @@ public abstract class ColorCodedTile
         }
         return Arrays.toString(items).replace("[", "(").replace("]", ")").replaceAll(" ", "");
     }
-
-    public static String generate(final Stitch stitch)
-    {
-        final StringBuffer sb = new StringBuffer();
-        final int max = Integer.parseInt("22222222", 3);
-        for (int i = 0; i <= max; i++)
-        {
-            ColorCodedTile tile;
-            try
-            {
-                tile = new DiagonalColorCodedTile(stitch, toTuple(Integer.toString(i, 3)));
-            }
-            catch (final IllegalArgumentException e)
-            {
-                continue;
-            }
-            sb.append(tile.toString());
-        }
-        return sb.toString();
-    }
-
-    protected abstract newInstance(final Stitch stitch, final String tuple);
 
     protected abstract String getIn(int i);
 
