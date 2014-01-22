@@ -21,6 +21,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A tile containing a single color coded stitch. 
+ * A sketch for the nodes of the lines to draw:
+ * <img src="ColorCodedCoordinates.svg">
+ * Controlpoints for the end nodes are on the black star.
+ * Lines may have an additional point to guide it arround the pin. 
+ * control points for this additinal node are on the green quadrant.
+ */
 public abstract class ColorCodedTile
 {
     enum Stitch
