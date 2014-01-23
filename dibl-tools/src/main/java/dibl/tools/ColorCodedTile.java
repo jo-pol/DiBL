@@ -22,12 +22,16 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A tile containing a single color coded stitch. 
- * A sketch for the nodes of the lines to draw:
+ * A tile containing a single color coded stitch. A color coded stitch consist of two lines starting at
+ * the upper half of a tile, ending at the bottom half of the tile. End points of the lines are at the
+ * corners of the tile or in the center of the edges. Control points for the end nodes are on a
+ * four-pointed star inside the tile. Lines may have an additional smooth node to guide it around the
+ * pin. Control points for this additional node are on a quadrant slightly larger than the star. The
+ * rules for the additional node are too simple and lead to straight lines through the pin and
+ * occasionally both lines along the same side of the pin.<br>
+ * A sketch for the nodes of the lines to draw:<br>
+ * <br>
  * <img src="ColorCodedCoordinates.svg">
- * Controlpoints for the end nodes are on the black star.
- * Lines may have an additional point to guide it arround the pin. 
- * control points for this additinal node are on the green quadrant.
  */
 public abstract class ColorCodedTile
 {
