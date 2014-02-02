@@ -27,8 +27,8 @@ public class ThreadTile
     // right -> left = counter clockwise
     private static final String[] INR = {"21,4 C 12,4", "24,-19 C 14,-12", "-16,3 C -10,4", "-16,-3 C -10,-4", "-19,-24 C -11,-16", "-", "-", "-"};
     private static final String[] INL = {"21,-4 C 12,4", "19,-24 C 11,-16", "-16,-3 C -10,-4", "-24,-19 C -14, -12", "-21,4 C -12,4", "-", "-", "-"};
-    private static final String[] OUTR = {"6,3 C 15,3", "-", "-", "-", "-6,3 -15,-3", "-11,4 -17,12", "4,-4 16,-3","5,9 12,17"};
-    private static final String[] OUTL = {"-6,-3 C 15,-3", "-", "-", "-", "-6,-3 -15,3", "-5,9 -12,17", "4,4 16,3", "11,4 17,12"};
+    private static final String[] OUTR = {"6,3 15,3", "-", "-", "-", "-6,3 -15,-3", "-11,4 -17,12", "4,-4 16,-3","5,9 12,17"};
+    private static final String[] OUTL = {"-6,-3 15,-3", "-", "-", "-", "-6,-3 -15,3", "-5,9 -12,17", "4,4 16,3", "11,4 17,12"};
     private static final String BLACK = "000000"
 
     final Stitch stitch;
