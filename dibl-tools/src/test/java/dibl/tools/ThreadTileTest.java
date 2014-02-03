@@ -14,30 +14,27 @@
 // @formatter:on
 package dibl.tools;
 
-import static dibl.tools.Stitch.tc;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+
 import org.junit.Test;
 
-public class StitchTileTest
+public class ThreadTileTest
 {
     @Test
     public void generate() throws IOException
     {
-        final OutputStream os = new FileOutputStream ("target/threadTiles.svg");
-        os.open();
-        os.write(SvgDoc.HEAD);
+        final OutputStream os = new FileOutputStream("target/threadTiles.svg");
+        os.write(SvgDoc.HEAD.getBytes());
         for (final Stitch s : Stitch.values())
         {
             for (final Tuple t : Tuple.list())
             {
-                os.write(new StitchTile(s, t.toString()).getBytes());
+                os.write(new ThreadTile(s, t.toString()).toString().getBytes());
             }
         }
-        os.write(SvgDoc.TAIL);
+        os.write(SvgDoc.TAIL.getBytes());
         os.close();
     }
 }

@@ -29,7 +29,7 @@ public class ThreadTile
     private static final String[] INL = {"21,-4 C 12,4", "19,-24 C 11,-16", "-16,-3 C -10,-4", "-24,-19 C -14, -12", "-21,4 C -12,4", "-", "-", "-"};
     private static final String[] OUTR = {"6,3 15,3", "-", "-", "-", "-6,3 -15,-3", "-11,4 -17,12", "4,-4 16,-3","5,9 12,17"};
     private static final String[] OUTL = {"-6,-3 15,-3", "-", "-", "-", "-6,-3 -15,3", "-5,9 -12,17", "4,4 16,3", "11,4 17,12"};
-    private static final String BLACK = "000000"
+    private static final String BLACK = "000000";
 
     final Stitch stitch;
     final Tuple tuple;
@@ -42,10 +42,10 @@ public class ThreadTile
 
     public String toString()
     {
-        final String line1 = new Line(BLACK, INL[tuple.firstIn()], OUTL[tuple.lastOut()]).toString();
-        final String line2 = new Line(BLACK, INR[tuple.firstIn()], OUTR[tuple.lastOut()]).toString();
-        final String line3 = new Line(BLACK, INL[tuple.lastIn()], OUTL[tuple.firstOut()]).toString();
-        final String line4 = new Line(BLACK, INR[tuple.lastIn()], OUTR[tuple.firstOut()]).toString();
+        final String line1 = new Line(BLACK, INL[tuple.firstIn()], OUTR[tuple.lastOut()]).toString();
+        final String line2 = new Line(BLACK, INR[tuple.firstIn()], OUTL[tuple.lastOut()]).toString();
+        final String line3 = new Line(BLACK, INL[tuple.lastIn()], OUTR[tuple.firstOut()]).toString();
+        final String line4 = new Line(BLACK, INR[tuple.lastIn()], OUTL[tuple.firstOut()]).toString();
         /** TODO apply {@link Stitch#sectionsLeft} */
         return new Tile(stitch, tuple, line1, line2, line3, line4).toString();
     }

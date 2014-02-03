@@ -41,9 +41,9 @@ public enum Stitch
     Stitch(final String color)
     {
         this.color = color;
-        segmentsLeft = name().replaceALL("[^lt]","").length;
-        segmentsRight = name().replaceALL("[^rt]","").length;
-        segmentsCenter = name().replaceALL("[^c]","").length;
+        segmentsLeft = name().replaceAll("[^lt]","").length();
+        segmentsRight = name().replaceAll("[^rt]","").length();
+        segmentsCenter = name().replaceAll("[^c]","").length();
     }
 
     boolean hasPin()
