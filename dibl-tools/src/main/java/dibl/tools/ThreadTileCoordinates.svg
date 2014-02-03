@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="automated.svg">
+   sodipodi:docname="ThreadTileCoordinates.svg">
   <defs
      id="defs4">
     <marker
@@ -64,9 +64,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.5348932"
+     inkscape:zoom="6.4164325"
      inkscape:cx="42.651651"
-     inkscape:cy="1001.5616"
+     inkscape:cy="1014.4956"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -76,11 +76,11 @@
      inkscape:object-nodes="false"
      inkscape:snap-global="true"
      inkscape:snap-center="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="972"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-width="674"
+     inkscape:window-height="603"
+     inkscape:window-x="8"
+     inkscape:window-y="10"
+     inkscape:window-maximized="0"
      inkscape:snap-nodes="true"
      inkscape:object-paths="false">
     <inkscape:grid
@@ -102,7 +102,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -406,17 +406,6 @@
          id="tspan4225"
          sodipodi:role="line">-6,3</tspan></text>
     <text
-       xml:space="preserve"
-       style="font-size:1.6354593px;font-style:normal;font-weight:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="39.82531"
-       y="34.328224"
-       id="text4227"
-       sodipodi:linespacing="0%"><tspan
-         sodipodi:role="line"
-         id="tspan4229"
-         x="39.82531"
-         y="34.328224">-6,-3</tspan></text>
-    <text
        sodipodi:linespacing="0%"
        id="text4231"
        y="34.328224"
@@ -426,7 +415,7 @@
          y="34.328224"
          x="39.82531"
          id="tspan4233"
-         sodipodi:role="line">-6,-3</tspan></text>
+         sodipodi:role="line">6,-3</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:1.6354593px;font-style:normal;font-weight:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#00a100;fill-opacity:1;stroke:none;font-family:Sans"
