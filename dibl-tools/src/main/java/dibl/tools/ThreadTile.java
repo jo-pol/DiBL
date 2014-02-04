@@ -15,8 +15,8 @@
 package dibl.tools;
 
 /**
- * A tile containing a thread diagram of stitch. A stitch consist of two pairs of lines starting at
- * the upper half of a tile, ending at the bottom half of the tile. End points of the lines are around the
+ * A tile containing a thread diagram of stitch. A stitch consist of two pairs of lines starting at the
+ * upper half of a tile, ending at the bottom half of the tile. End points of the lines are around the
  * corners of the tile or around the center of the edges.<br>
  * A sketch for the nodes of the primary lines to draw:<br>
  * <br>
@@ -25,7 +25,7 @@ package dibl.tools;
 public class ThreadTile
 {
     private static final String[] INR = {"21,4 C 12,4", "24,-19 C 14,-12", "-16,3 C -10,4", "-19,-24 C -11,-16", "-21,-4 C -12,-4", "-", "-", "-"};
-    private static final String[] OUTR = {"6,-3 15,-3", "-", "-", "-", "-6,3 -15,3", "-5,9 -12,17", "4,4 16,3","11,4 17,12"};
+    private static final String[] OUTR = {"6,-3 15,-3", "-", "-", "-", "-6,3 -15,3", "-5,9 -12,17", "4,4 16,3", "11,4 17,12"};
     private static final String[] INL = {"21,-4 C 12,-4", "19,-24 C 11,-16", "-16,-3 C -10,-4", "-24,-19 C -14, -12", "-21,4 C -12,4", "-", "-", "-"};
     private static final String[] OUTL = {"6,3 15,3", "-", "-", "-", "-6,-3 -15,3", "-11,4 -17,12", "4,-4 16,-3", "5,9 12,17"};
     private static final String BLACK = "000000";
@@ -41,10 +41,10 @@ public class ThreadTile
 
     public String toString()
     {
-        final String line1 = new Line(BLACK, INL[tuple.firstIn()], OUTR[tuple.lastOut()]).toString();
-        final String line2 = new Line(BLACK, INR[tuple.firstIn()], OUTL[tuple.lastOut()]).toString();
-        final String line3 = new Line(BLACK, INL[tuple.lastIn()], OUTR[tuple.firstOut()]).toString();
-        final String line4 = new Line(BLACK, INR[tuple.lastIn()], OUTL[tuple.firstOut()]).toString();
+        final String line1 = new Line(BLACK, INL[tuple.firstIn()], OUTL[tuple.firstOut()]).toString();
+        final String line2 = new Line("FF0000", INR[tuple.firstIn()], OUTR[tuple.firstOut()]).toString();
+        final String line3 = new Line("00FF00", INL[tuple.lastIn()], OUTL[tuple.lastOut()]).toString();
+        final String line4 = new Line("0000FF", INR[tuple.lastIn()], OUTR[tuple.lastOut()]).toString();
         /** TODO apply {@link Stitch#sectionsLeft} */
         return new Tile(stitch, tuple, line1, line2, line3, line4).toString();
     }
