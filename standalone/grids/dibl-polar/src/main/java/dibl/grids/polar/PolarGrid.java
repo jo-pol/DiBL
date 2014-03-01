@@ -1,12 +1,17 @@
+// @formatter:off
 /*
- * PolarGridModel.java Copyright 2005-2007 by J. Pol This file is part free software: you can
- * redistribute it and/or modify it under the terms of the GNU General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or (at your option) any later version. Th
- * is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details. You should have received a copy of the GNU General Public License along with
- * BobbinWork. If not, see <http://www.gnu.org/licenses/>.
+ * Copyright 2014, J. Pol
+ *
+ * This file is part of free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation.
+ *
+ * This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * See the GNU General Public License for more details. A copy of the GNU General Public License is
+ * available at <http://www.gnu.org/licenses/>.
  */
+// @formatter:on
 
 package dibl.grids.polar;
 
@@ -14,59 +19,57 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.MessageFormat;
 
-/**
- * @author J. Pol
- */
 public class PolarGrid
 {
-    private static final String HEAD = "" + //
-            "<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n" + //
-            "<svg\n" + //
-            "   xmlns:dc='http://purl.org/dc/elements/1.1/'\n" + //
-            "   xmlns:cc='http://creativecommons.org/ns#'\n" + //
-            "   xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'\n" + //
-            "   xmlns:svg='http://www.w3.org/2000/svg'\n" + //
-            "   xmlns='http://www.w3.org/2000/svg'\n" + //
-            "   xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd'\n" + //
-            "   xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'\n" + //
-            "   id='svg2'\n" + //
-            "   version='1.1'>\n" + //
-            "  <g\n" + //
-            "     inkscape:label='Layer 1'\n" + //
-            "     inkscape:groupmode='layer'\n" + //
-            "     id='layer1'>\n";
-    private static final String FORMAT="<svg:circle" + //
-    		" cx=\"{0}\" cy=\"{1}\"" + //
-    		" sodipodi:cx=\"{0}\" sodipodi:cy=\"{1}\"" + //
-    		" r=\"0.2\" sodipodi:rx=\"0.2\" sodipodi:ry=\"0.2\"" + //
-    		" style=\"fill:#999999\"/>";
-    private static final String TAIL = "  </g>\n</svg>\n";
+    private static final String DOT = "\t<svg:circle" + //
+            " cx=\"{0}\" cy=\"{1}\"" + //
+            " sodipodi:cx=\"{0}\" sodipodi:cy=\"{1}\"" + //
+            " r=\"{3}\" sodipodi:rx=\"{3}\" sodipodi:ry=\"{3}\"" + //
+            " style=\"fill:{2}\"/>";
 
-    private static final int MIN_ANGLE = 10;
-    private static final int MAX_ANGLE = 80;
-    private static final int MIN_REPEATS = 2;
-    private static final int MAX_REPEATS = 200; // otherwise out of memory
-    private static final int MIN_DOTS_PER_REPEAT = 2;
-    private static final int MAX_DOTS_PER_REPEAT = 200; // otherwise out of memory
-    private static final double MIN_DIAMETER = 0.4D;
-    private static final double SCALE_MM = 2 * 1.7716536D; // mm on paper
+    private final int angleOnFootside;
+    private final int dotsPerCircle;
+    private final double minDiameter;
+    private final double maxDiameter;
+    private final String fillColor;
+    private final double dotSize;
 
     /**
-     * Dots are placed on alternating positions per circle. Drawing lines through the dots gives a figure
-     * like below:
+     * @param angleOnFootside
+     *        min 10 max 80 degrees. Dots are placed on alternating positions per circle. Drawing lines
+     *        through the dots gives a figure like below:
      * 
-     * <pre>
-     * ________
-     *  \ /\ /
-     * __V__V__
+     *        <pre>
+     *         ________
+     *          \ /\ /
+     *         __V__V__
      * </pre>
      * 
-     * The angle between the outside of the V and the inner circle is given.
+     *        The angle between the outside of the V and the inner circle is given.
+     * @param dotsPerCircle
+     * @param diameter
+     *        measured in mm.
+     * @param minDiameter
+     *        measured in mm. Circles of dots are generated in groups until the circles get too small.
+     * @param fillColor
      */
-    int angleOnFootside = 45; // degrees
-    int dotsPerCircle = 200;
-    double minDiameter = 50;
-    double maxDiameter = 75;
+    public PolarGrid(final int angleOnFootside, final int dotsPerCircle, final double diameter, final double minDiameter, final String fillColor, final double dotSize)
+    {
+        this.dotSize = dotSize;
+        if (angleOnFootside < 10 || angleOnFootside > 80)
+            throw new IllegalArgumentException("angle must be between 10 an 80, got " + angleOnFootside);
+        if (dotsPerCircle < 4)
+            throw new IllegalArgumentException("at least 4 dots, got " + dotsPerCircle);
+        if (minDiameter >= diameter)
+            throw new IllegalArgumentException("min > max diameter");
+        if (minDiameter <= 0 || diameter <= 0 || dotSize <= 0)
+            throw new IllegalArgumentException("diameters and dotSize must be positive");
+        this.angleOnFootside = angleOnFootside;
+        this.dotsPerCircle = dotsPerCircle;
+        this.minDiameter = minDiameter;
+        this.maxDiameter = diameter;
+        this.fillColor = fillColor;
+    }
 
     /**
      * Gets the distance between circles of dots.
@@ -82,27 +85,28 @@ public class PolarGrid
         return x * Math.tan(Math.toRadians(this.angleOnFootside));
     }
 
-    public void printDoc(PrintWriter pw) throws FileNotFoundException
+    public void print(final PrintWriter pw) throws FileNotFoundException
     {
-        pw.print(HEAD);
         double aRadians = Math.toRadians(360D / dotsPerCircle);
-        double diameter = minDiameter;
+        double diameter = maxDiameter;
         int circleNr = 0; // on even circles the dots are shifted half a distance
         aRadians = Math.toRadians(360D / dotsPerCircle);
         do
         {
+            final double distance = this.getDistance(diameter, dotsPerCircle);
+            pw.println(String.format("<svg:g inkscape:label='%.1f mm per dot, diameter: %f mm'> ", distance, diameter));
             // create the dots on one circle
             for (int dotNr = 0; dotNr < dotsPerCircle; dotNr++)
             {
                 final double a = (dotNr + ((circleNr % 2) * 0.5D)) * aRadians;
-                double x = (diameter / 2D) * Math.cos(a);
-                double y = (diameter / 2D) * Math.sin(a);
-                pw.println(MessageFormat.format(FORMAT, x * SCALE_MM,y * SCALE_MM));
+                final double x = (diameter / 2D) * Math.cos(a);
+                final double y = (diameter / 2D) * Math.sin(a);
+                pw.println(MessageFormat.format(DOT, x, y, fillColor, dotSize));
             }
+            pw.println("</svg:g>");
             // increment
-            diameter += this.getDistance(diameter, dotsPerCircle);
+            diameter -= distance;
             circleNr++;
-        } while (diameter < maxDiameter);
-        pw.print(TAIL);
+        } while (diameter > minDiameter);
     }
 }
