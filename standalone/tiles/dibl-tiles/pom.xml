@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dibl</groupId>
-	<artifactId>dibl-cmd</artifactId>
+	<artifactId>dibl-tiles</artifactId>
 	<version>0.1.3-SNAPSHOT</version>
 	<name>DIagrams for Bobbin Lace</name>
 	<description>Turns Templates into Bobbin Lace diagrams.</description>
