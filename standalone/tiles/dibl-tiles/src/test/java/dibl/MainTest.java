@@ -215,7 +215,9 @@ public class MainTest
     {
         for (final Closeable closable : closeables)
             closable.close();
-        System.setIn(savedIn);
-        System.setOut(savedOut);
+        if (savedIn != null)
+            System.setIn(savedIn);
+        if (savedOut != null)
+            System.setOut(savedOut);
     }
 }
