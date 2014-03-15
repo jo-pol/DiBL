@@ -71,42 +71,34 @@ public class PolarGrid
         this.fillColor = fillColor;
     }
 
-    /**
-     * Gets the distance between circles of dots.
-     * 
-     * @param diameter
-     *        can be incremented with the result to get subsequent circles for dots
-     * @result half the distance between two dots on a circle
-     */
-    private double getDistance(final double diameter, final int dotsPerCircle)
-    {
-
-        final double x = (diameter * Math.PI) / (double) dotsPerCircle;
-        return x * Math.tan(Math.toRadians(this.angleOnFootside));
-    }
-
     public void print(final PrintWriter pw) throws FileNotFoundException
     {
         double aRadians = Math.toRadians(360D / dotsPerCircle);
         double diameter = maxDiameter;
         int circleNr = 0; // on even circles the dots are shifted half a distance
         aRadians = Math.toRadians(360D / dotsPerCircle);
+        double tan = Math.tan(Math.toRadians(this.angleOnFootside));
         do
         {
-            final double distance = this.getDistance(diameter, dotsPerCircle);
+            final double distance = tan * (diameter * Math.PI / (double) dotsPerCircle);
             pw.println(String.format("<svg:g inkscape:label='%.1f mm per dot, diameter: %f mm'> ", distance, diameter));
             // create the dots on one circle
-            for (int dotNr = 0; dotNr < dotsPerCircle; dotNr++)
-            {
-                final double a = (dotNr + ((circleNr % 2) * 0.5D)) * aRadians;
-                final double x = (diameter / 2D) * Math.cos(a);
-                final double y = (diameter / 2D) * Math.sin(a);
-                pw.println(MessageFormat.format(DOT, x, y, fillColor, dotSize));
-            }
+            extracted(pw, aRadians, diameter, circleNr);
             pw.println("</svg:g>");
             // increment
             diameter -= distance;
             circleNr++;
         } while (diameter > minDiameter);
+    }
+
+    private void extracted(final PrintWriter pw, double aRadians, double diameter, int circleNr)
+    {
+        for (int dotNr = 0; dotNr < dotsPerCircle; dotNr++)
+        {
+            final double a = (dotNr + ((circleNr % 2) * 0.5D)) * aRadians;
+            final double x = (diameter / 2D) * Math.cos(a);
+            final double y = (diameter / 2D) * Math.sin(a);
+            pw.println(MessageFormat.format(DOT, x, y, fillColor, dotSize));
+        }
     }
 }
