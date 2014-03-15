@@ -6,7 +6,7 @@
 	<groupId>dibl</groupId>
 	<artifactId>dibl-polar</artifactId>
 	<version>0.1.3-SNAPSHOT</version>
-	<name>DIagrams for Bobbin Lace</name>
+	<name>DiBL java/SVG based prototype for polar grids</name>
 	<description>Generates a polar with distances stretching in both directions.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
