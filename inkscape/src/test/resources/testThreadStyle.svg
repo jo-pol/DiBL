@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
-   id="svg2"
-   version="1.1"
+   sodipodi:docname="testThreadStyle.svg"
    inkscape:version="0.48.2 r9819"
-   sodipodi:docname="New document 1">
+   version="1.1"
+   id="svg2"
+   height="1052.3622047"
+   width="744.09448819">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -54,9 +54,10 @@
      id="layer1">
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 65.714286,312.36218 c 48.571424,57.14286 102.857144,22.85715 100.000004,-20 -2.85715,-42.85714 -2.85715,-60 -2.85715,-60"
-       id="path2985"
-       inkscape:connector-curvature="0" />
+       d="M 385.71429,226.6479 C 340.00001,149.50505 388.57143,18.076468 471.42857,118.07647"
+       id="path2991"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#eb1919;stroke-width:8.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="M 231.42857,255.21933 C 328.57143,346.6479 417.14286,266.6479 385.71429,226.6479"
@@ -70,10 +71,9 @@
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 385.71429,226.6479 C 340.00001,149.50505 388.57143,18.076468 471.42857,118.07647"
-       id="path2991"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc" />
+       d="m 65.714286,312.36218 c 48.571424,57.14286 102.857144,22.85715 100.000004,-20 -2.85715,-42.85714 -2.85715,-60 -2.85715,-60"
+       id="path2985"
+       inkscape:connector-curvature="0" />
     <path
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
