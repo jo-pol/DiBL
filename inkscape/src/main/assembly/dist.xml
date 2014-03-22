@@ -24,6 +24,7 @@
 		<fileSet>
 			<directory>${project.basedir}/src/main/assembly/dist</directory>
 			<outputDirectory>/</outputDirectory>
+			<filtered>true</filtered>
 			<includes>
 				<include></include>
 				<include>*.inx</include>
