@@ -26,6 +26,7 @@
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include></include>
+				<include>input/**/*</include>
 				<include>*.inx</include>
 				<include>*.py</include>
 				<include>*.txt</include>
