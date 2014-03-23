@@ -29,7 +29,7 @@
      inkscape:cx="308.44729"
      inkscape:cy="59.226666"
      inkscape:document-units="px"
-     inkscape:current-layer="g4512"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="true"
      inkscape:snap-grids="false"
@@ -6651,11 +6651,13 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
       </g>
     </g>
     <g
-       transform="matrix(0.47577056,0,0,0.47571728,563.25615,961.18541)"
+       transform="matrix(0.47577056,0,0,0.47571728,558.25615,961.18541)"
        id="g287"
        inkscape:export-filename="/mnt/hgfs/Bov/Documents/Work/2007/cc/identity/srr buttons/big/by-sa.png"
        inkscape:export-xdpi="300.23013"
-       inkscape:export-ydpi="300.23013">
+       inkscape:export-ydpi="300.23013"
+       inkscape:transform-center-x="-11.285152"
+       inkscape:transform-center-y="-10.053709">
       <path
          inkscape:connector-curvature="0"
          id="path3817_2_"
