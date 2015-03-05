@@ -7,7 +7,7 @@
  */
 body {
 	font: 62.5%/1.5 Georgia, serif;
-	margin: 10em 0 0;
+	margin: 1em 1em;
 }
 
 h2 {
@@ -24,7 +24,7 @@ p {
 	margin-top: 6em;
 	margin-bottom: 1em;
 	padding-left: 3em;
-	height: 22em;
+	height: 23.5em;
 }
 
 .tab_block {
@@ -49,6 +49,14 @@ p {
 
 .tab_block:nth-child(2) h2 {
 	left: 15.6em;
+}
+
+.tab_block:nth-child(3) h2 {
+	left: 23.9em;
+}
+
+.tab_block:nth-child(4) h2 {
+	left: 32.2em;
 }
 
 .tab_block h2 a {
@@ -97,7 +105,7 @@ p {
 	height: auto;
 	overflow: visible;
 	visibilty: visible;
-	width: 80em;
+	width: 82.7em;
 }
 
 .tab_block:target,.tab_block:target h2 {
@@ -136,7 +144,7 @@ p {
 	padding: 1em 2em;
 	height: auto;
 	visibilty: visible;
-	width: 80em;
+	width: 82.7em;
 }
 
 .tab_block:target ~ .tab_block div {

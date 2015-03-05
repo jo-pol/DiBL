@@ -16,6 +16,13 @@ p {
 	padding-top: 0px;
 }
 
+form {
+	width:50em
+}
+img {
+	background-color: #FFF;
+}
+
 table,td {
 	border: 0px;
 }
