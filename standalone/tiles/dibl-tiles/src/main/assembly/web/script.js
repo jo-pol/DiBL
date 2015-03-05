@@ -10,7 +10,7 @@
 // available at <http://www.gnu.org/licenses/>.
 
 var command = "java -jar dibl-cmd-${project.version}.jar -ext "
-+ document.diagramConfig.ext.value
++ document.flandersConfig.ext.value
 ;
 
 function diagramTypeChanged (){
@@ -45,25 +45,25 @@ function showFlanders() {
 	// export PATH=$PATH:/C/Program\ Files/Java/jre6/bin
 
 	var io = "< input/flanders.svg > diagram." 
-	+ document.diagramConfig.ext.value
+	+ document.flandersConfig.ext.value
 	;
 	document.getElementById('sh').innerHTML
 	= command + " '3;2\n"
-	+ document.diagramConfig.A1.value + ";"
-	+ document.diagramConfig.B1.value + "\n"
-	+ document.diagramConfig.A2.value + ";"
-	+ document.diagramConfig.B2.value + "\n"
-	+ document.diagramConfig.A3.value + ";"
-	+ document.diagramConfig.B3.value + "' " + io
+	+ document.flandersConfig.A1.value + ";"
+	+ document.flandersConfig.B1.value + "\n"
+	+ document.flandersConfig.A2.value + ";"
+	+ document.flandersConfig.B2.value + "\n"
+	+ document.flandersConfig.A3.value + ";"
+	+ document.flandersConfig.B3.value + "' " + io
 	;
 	document.getElementById('bat').innerHTML
 	= command + " 3;2^\r\n\r\n"
-	+ document.diagramConfig.A1.value + ";"
-	+ document.diagramConfig.B1.value + "^\r\n\r\n"
-	+ document.diagramConfig.A2.value + ";"
-	+ document.diagramConfig.B2.value + "^\r\n\r\n"
-	+ document.diagramConfig.A3.value + ";"
-	+ document.diagramConfig.B3.value + " " + io
+	+ document.flandersConfig.A1.value + ";"
+	+ document.flandersConfig.B1.value + "^\r\n\r\n"
+	+ document.flandersConfig.A2.value + ";"
+	+ document.flandersConfig.B2.value + "^\r\n\r\n"
+	+ document.flandersConfig.A3.value + ";"
+	+ document.flandersConfig.B3.value + " " + io
 	;
 }
 
