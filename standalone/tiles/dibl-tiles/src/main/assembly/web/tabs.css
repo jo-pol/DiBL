@@ -14,8 +14,8 @@ h2 {
 	font-size: 2em;
 }
 
-p {
-	font-size: 1.6em;
+p, form {
+	font-size: 150%;
 }
 
 .tabs {
@@ -24,7 +24,7 @@ p {
 	margin-top: 6em;
 	margin-bottom: 1em;
 	padding-left: 3em;
-	height: 23.5em;
+	height: 26em;
 }
 
 .tab_block {
@@ -102,7 +102,7 @@ p {
 	border-radius: 0 0 5px 5px;
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	padding: 1em 2em;
-	height: auto;
+	height: 27em;
 	overflow: visible;
 	visibilty: visible;
 	width: 82.7em;
@@ -142,7 +142,7 @@ p {
 	border-radius: 0 0 5px 5px;
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	padding: 1em 2em;
-	height: auto;
+	height: 27em;
 	visibilty: visible;
 	width: 82.7em;
 }
