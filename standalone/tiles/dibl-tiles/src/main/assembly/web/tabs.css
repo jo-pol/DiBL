@@ -1,6 +1,7 @@
 /**
  * CSS3 tabbed interface
- * 	- based on http://www.sitepoint.com/css3-tabs-using-target-selector/
+ *  - from http://dabblet.com/gist/1892497 (added tabs, adjusted sizes)
+ * 	- in turn based on http://www.sitepoint.com/css3-tabs-using-target-selector/
  * 	- 1st tab is LAST in markup:
  * 		- so it can be styled as active on page load
  *		- use combination of :target and ~ to override when another tab is clicked
