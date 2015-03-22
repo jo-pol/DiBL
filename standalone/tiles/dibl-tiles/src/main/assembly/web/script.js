@@ -11,16 +11,19 @@
 
 var command = "java -jar dibl-cmd-${project.version}.jar -ext ";
 
-function diagramTypeChanged (cfg){
+function init(){
+	diagramTypeChanged(document.diagonalConfig);
+	showFlanders()
+}
+
+function diagramTypeChanged(cfg){
 
 	showPairTraversal(cfg);
 
-	var newDiagramType = cfg.diagramType.value;
-	var newDisplayValue = newDiagramType == '-pair'? 'block' : 'none';
-
+	var newDisplayValue = cfg.diagramType.value != '-pair';
 	var elements = document.getElementsByClassName('pair');
 	for (var i=0 ; i<elements.length ; i++ ) {
-		elements[i].style.display = newDisplayValue;
+		elements[i].disabled = newDisplayValue;
 	}
 }
 

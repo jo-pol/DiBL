@@ -11,7 +11,7 @@
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
-<body onload="showFlanders()">
+<body onload="init()">
 <h1>Bobbin lace working diagrams from tiled SVG templates</h1>
 	<article class="tabs">
 		<section id="tab2" class="tab_block">
@@ -35,7 +35,8 @@
 									onchange="setRangeMax(document.diagonalConfig)">
 										<option value="3x3">3x3 (max nr: 7)</option>
 										<option value="4x4">4x4 (max nr: 740)</option>
-								</select> nr: <input type="number" name="pattern" min="1" max="7" value="1"
+								</select> nr: <input
+									type="number" name="pattern" min="1" max="7" value="1"
 									onchange="showPairTraversal(document.diagonalConfig)"
 									onkeyup="showPairTraversal(document.diagonalConfig)" />
 								</td>
@@ -233,6 +234,7 @@
 								<td colspan="8">Depending on the chosen pattern dimensions,
 									the last rows and columns are ignored.</td>
 							</tr>
+							<tr><td><a href="../input/PairTraversal/brick/4x4.svg">sample</a></td></tr>
 						</tbody>
 					</table>
 				</form>
@@ -546,6 +548,7 @@
 										<option value="tiff">tiff</option>
 								</select></td>
 							</tr>
+							<tr><td><a href="../input/flanders.svg">sample</a></td></tr>
 						</tbody>
 					</table>
 				</form>
@@ -556,13 +559,10 @@
 		<div id="commands">
 			<p>
 				A submit button to generate the configured diagram is not yet implemented.
-				You can view a sample for tab 
-				<a href="../input/flanders.svg">1</a> or
-				<a href="../input/PairTraversal/brick/4x4.svg">2</a>
-				or <a
+				For now you have to <a
 					href="https://github.com/jo-pol/DiBL/wiki/Install-Template-Generators">install
-					DiBL</a> and copy-paste the configured command into a
-				<code>.sh</code> or <code>.bat</code> file to generate any configured version.
+					DiBL</a> and copy-paste the command shown below into a
+				<code>.sh</code> or <code>.bat</code> file to generate the configured version.
 				See the <a
 					href="https://github.com/jo-pol/DiBL/wiki/Edit-Diagrams">hints</a>
 				to edit SVG results, for example to vary thread width and color.
