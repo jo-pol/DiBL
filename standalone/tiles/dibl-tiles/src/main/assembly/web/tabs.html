@@ -11,14 +11,15 @@
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
-<body>
+<body onload="showFlanders()">
+<h1>Bobbin lace working diagrams from tiled SVG templates</h1>
 	<article class="tabs">
 		<section id="tab2" class="tab_block">
 			<h2>
 				<a href="#tab2">2. <img src="diagonal.png" alt="Diagonal"></a>
 			</h2>
 			<div>
-				<form name="diagramConfig">
+				<form name="diagonalConfig">
 					<input name="traversalType" type="hidden" value="brick" />
 					<table>
 						<tbody>
@@ -31,7 +32,7 @@
 										<option value="-y">flip &#10595;</option>
 										<option value="-x -y">rotate</option>
 								</select> dimensions: <select size="1" name="dimensions"
-									onchange="showPairTraversal();setRangeMax(this)">
+									onchange="showPairTraversal();setRangeMax()">
 										<option value="3x3">3x3 (max nr: 8)</option>
 										<option value="4x4">4x4 (max nr: 222)</option>
 								</select> nr: <span id="nr" onclick="alert('hello')">1</span> <input
@@ -236,8 +237,6 @@
 							</tr>
 						</tbody>
 					</table>
-					<input type="submit" value="submit" target="diagramImage"
-						onclick="document.getElementById('commands').className='show';return false;">
 				</form>
 			</div>
 		</section>
@@ -246,7 +245,7 @@
 				<a href="#tab3">3. <img src="interleaved.png" alt="Interleaved"></a>
 			</h2>
 			<div>
-				<form name="diagramConfig">
+				<form name="interleavedConfig">
 					<input name="traversalType" type="hidden" value="interleaved" />
 					<table>
 						<tbody>
@@ -277,7 +276,7 @@
 										<!--option value="">thread</option-->
 										<option value="-pair">pair <em>(some stitches
 												still sloppy)</em></option>
-								</select>\	</td>
+								</select></td>
 							</tr>
 							<tr>
 								<td>image&nbsp;type&nbsp;</td>
@@ -449,8 +448,6 @@
 							</tr>
 						</tbody>
 					</table>
-					<input type="submit" value="submit" target="diagramImage"
-						onclick="document.getElementById('commands').className='show';return false;">
 				</form>
 			</div>
 		</section>
@@ -555,22 +552,22 @@
 							</tr>
 						</tbody>
 					</table>
-					<input type="submit" value="submit" target="diagramImage"
-						onclick="document.getElementById('commands').className='show';return false;">
 				</form>
 			</div>
 		</section>
 	</article>
 	<article>
-		<div id="commands" class="hide">
+		<div id="commands">
 			<p>
-				A submit button is not yet implemented. For now you have to <a
+				A submit button to generate the configured diagram is not yet implemented.
+				You can view a <a href="../input/PairTraversal/brick/4x4.svg">sample</a>
+				or <a
 					href="https://github.com/jo-pol/DiBL/wiki/Install-Template-Generators">install
 					DiBL</a> and copy-paste the configured command into a
-				<code>.sh</code>
-				or
-				<code>.bat</code>
-				file to execute.
+				<code>.sh</code> or <code>.bat</code> file to execute.
+				See the <a
+					href="https://github.com/jo-pol/DiBL/wiki/Edit-Diagrams">hints</a>
+				to edit SVG results, for example to vary thread width and color.
 			</p>
 			<ul>
 				<li>sh (Mac / Unix, the multiline string requires quotes)<pre
@@ -579,13 +576,6 @@
 						id="bat">&nbsp;</pre></li>
 			</ul>
 		</div>
-		<h1>Generated bobbin lace working diagram</h1>
-		<p>
-			Use one of the three forms above for another. See the <a
-				href="https://github.com/jo-pol/DiBL/wiki/Edit-Diagrams">hints</a>
-			to edit SVG results, for example to vary thread width and color.
-		</p>
-		<iframe name="diagramImage" src="../input/PairTraversal/brick/4x4.svg"></iframe>
 	</article>
 
 </body>
