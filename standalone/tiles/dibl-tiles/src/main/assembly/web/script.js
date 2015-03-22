@@ -13,6 +13,8 @@ var command = "java -jar dibl-cmd-${project.version}.jar -ext ";
 
 function diagramTypeChanged (cfg){
 
+	showPairTraversal(cfg);
+
 	var newDiagramType = cfg.diagramType.value;
 	var newDisplayValue = newDiagramType == '-pair'? 'block' : 'none';
 
@@ -28,12 +30,8 @@ function setRangeMax(cfg) {
 	iHTML = dim.options[dim.selectedIndex].innerHTML;
 	cfg.pattern.value = 1;
 	cfg.pattern.max = parseInt(iHTML.split(":")[1]);
-	document.getElementById('nr').innerHTML = 1;
-}
 
-function showRangeValue() {
-
-	document.getElementById('nr').innerHTML = document.diagramConfig.pattern.value;
+	showPairTraversal(cfg);
 }
 
 function showFlanders() {
