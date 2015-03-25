@@ -10,6 +10,13 @@
 # available at <http://www.gnu.org/licenses/>.
 */
 
+.tab2hide, .tab3hide {
+	display:none;
+}
+.tab2show, .tab3show  {
+	display:inline;
+}
+
 p {
 	padding-left: 1em;
 	padding-right: 1em;
