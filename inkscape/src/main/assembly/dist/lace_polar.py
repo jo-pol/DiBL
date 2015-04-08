@@ -61,63 +61,52 @@ class PolarGrid(inkex.Effect):
 
 	def dot(self, x, y, group):
 		"""
-		Draw a circle of radius 'options.dotSize' and origin at (x, y)
+		Draw a circle with origin at (x, y) in the group
 		"""
-		s = simplestyle.formatStyle({'fill': self.dotFill})
-		scale = 7.08677  # tested with a dot of 2 mm at 160 mm with a 5000% scale
-		attribs = {'style':s, 'cx':str(x * scale), 'cy':str(y * scale), 'r':str(self.options.dotSize * 1.775)}
-		
-		# insert path object into te group
+		attribs = {'style':self.dotStyle, 'cx':str(x * self.scale), 'cy':str(y * self.scale), 'r':self.dotR}
 		inkex.etree.SubElement(group, inkex.addNS('circle', 'svg'), attribs)
 
-	def group(self, diameter, distance):
+	def group(self, diameter, superGroup):
 		"""
-		Create a labeled group for the dots on a circle of the grid
+		Create a group labeled with the diameter
 		"""
-		f = "{0} mm per dot, diameter: {1} mm"
-		s = f.format(distance, diameter)
-		attribs = {inkex.addNS('label', 'inkscape'):s}
-		
-		# insert group object into current layer and remeber it
-		return inkex.etree.SubElement(self.current_layer, inkex.addNS('g', 'svg'), attribs)
+		label = 'diameter: {0:.2f} mm'.format(diameter)
+		attribs = {inkex.addNS('label', 'inkscape'):label}
+		return inkex.etree.SubElement(superGroup, inkex.addNS('g', 'svg'), attribs)
 
 	def dots(self, diameter, circleNr, group):
 		"""
 		Draw dots on a grid circle
 		"""
 		offset = (circleNr % 2) * 0.5
-		aRadians = radians(360.0 / self.options.dotsPerCircle)
 		for dotNr in range (0, self.options.dotsPerCircle):
-			a = (dotNr + offset) * aRadians
+			a = (dotNr + offset) * self.alpha
 			x = (diameter / 2) * cos(a)
 			y = (diameter / 2) * sin(a)
 			self.dot(x, y, group)
 
-	def unsignedLong(self, signedLongString):
-		longColor = long(signedLongString)
-		if longColor < 0:
-			longColor = longColor & 0xFFFFFFFF
-		return longColor
-
-	def getColorString(self, longColor):
+	def getColorString(self):
 		"""
 		Convert numeric color value to hex string using formula A*256^0 + B*256^1 + G*256^2 + R*256^3
 		From: http://www.hoboes.com/Mimsy/hacks/parsing-and-setting-colors-inkscape-extensions/
 		"""
-		longColor = self.unsignedLong(longColor)
+		longColor = long(self.options.dotFill)
+		if longColor < 0:
+			longColor = longColor & 0xFFFFFFFF
 		hexColor = hex(longColor)[2:-3]
 		hexColor = hexColor.rjust(6, '0')
 		return '#' + hexColor.upper()
 
 	def iterate(self, diameter, circleNr):
 		"""
-		Create a group with a ring of dots, the distance between the dots is the distance to the next ring
+		Create a group with a ring of dots.
+		Returns half of the arc length between the dots
+		which becomes the distance to the next ring.
 		"""
-		distance = self.tan * diameter * pi / self.options.dotsPerCircle
-		group = self.group(diameter, distance)
+		group = self.group(diameter, self.current_layer)
 		self.dots(diameter, circleNr, group)
 		self.generatedCircles.append(group)
-		return distance
+		return diameter * self.change
 
 	def generate(self):
 		"""
@@ -157,8 +146,12 @@ class PolarGrid(inkex.Effect):
 		Effect behaviour.
 		Overrides base class' method and draws something.
 		"""
-		self.tan = tan(radians(self.options.angleOnFootside))
-		self.dotFill = self.getColorString(self.options.dotFill)
+		self.dotStyle = simplestyle.formatStyle({'fill': self.getColorString()})
+		self.scale = (90/25.4) # 90 DPI / mm
+		self.dotR = str(self.options.dotSize * (self.scale/2))
+		self.change = tan(radians(self.options.angleOnFootside)) * pi / self.options.dotsPerCircle
+		self.alpha = radians(360.0 / self.options.dotsPerCircle)
+
 		self.generatedCircles = []
 		self.generate()
 
