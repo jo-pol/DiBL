@@ -14,13 +14,18 @@
 // @formatter:on
 package dibl.grids.polar;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
+import org.junit.After;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class PolarGridTest
 {
+    private static final String TEST_OUTPUT = "target/test-output/";
     private static final String HEAD = "" + //
             "<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n" + //
             "<svg\n" + //
@@ -38,15 +43,131 @@ public class PolarGridTest
             "     inkscape:groupmode='layer'\n" + //
             "     id='layer1'>\n";
     private static final String TAIL = "  </g>\n</svg>\n";
+    private PrintWriter pw;
 
-    @Test
-    public void printDefault() throws Exception
+    private class PolarGridImproved extends PolarGrid
     {
-        final PrintWriter pw = new PrintWriter(new FileOutputStream("target/grid.svg"));
+
+        public PolarGridImproved(int angleOnFootside, int dotsPerCircle, double diameter, double minDiameter, String fillColor, double dotSize)
+        {
+            super(angleOnFootside, dotsPerCircle, diameter, minDiameter, fillColor, dotSize);
+        }
+
+        @Override
+        double delta(double diameter, int angleOnFootside, double dotsPerCircle)
+        {
+            double angle = Math.toRadians(angleOnFootside);
+            double alpha = Math.toRadians(360D / dotsPerCircle);
+            double correction = alpha / (360.0 / angleOnFootside);
+            return Math.tan(angle - correction) * (diameter * Math.PI / dotsPerCircle);
+        }
+    }
+
+    private class PolarGridMoreImproved extends PolarGridImproved
+    {
+
+        public PolarGridMoreImproved(int angleOnFootside, int dotsPerCircle, double diameter, double minDiameter, String fillColor, double dotSize)
+        {
+            super(angleOnFootside, dotsPerCircle, diameter, minDiameter, fillColor, dotSize);
+        }
+
+        @Override
+        double delta(double diameter, int angleOnFootside, double dotsPerCircle)
+        {
+            return super.delta(diameter, angleOnFootside, dotsPerCircle) / (45 / angleOnFootside);
+        }
+    }
+
+    @BeforeClass
+    public static void createFolder()
+    {
+        new File(TEST_OUTPUT).mkdirs();
+    }
+
+    private void openPrintwriter() throws FileNotFoundException
+    {
+        final StackTraceElement caller = new Exception().getStackTrace()[1];
+        pw = new PrintWriter(new FileOutputStream(TEST_OUTPUT + caller.getMethodName() + ".svg"));
         pw.print(HEAD);
-        new PolarGrid(45,180,160,100,"#FF9999",0.2).print(pw);
-        new PolarGrid(60,120,103.026774,50,"#99FF99",0.2).print(pw);
+    }
+
+    @After
+    public void closePrintWriter()
+    {
         pw.print(TAIL);
         pw.close();
+    }
+
+    @Test
+    public void concentric() throws Exception
+    {
+        openPrintwriter();
+        new PolarGrid(45, 180, 160, 100, "#FF9999", 1.0).print(pw);
+        new PolarGrid(60, 120, 103.026774, 50, "#99FF99", 1.0).print(pw);
+    }
+
+    @Test
+    public void original45() throws Exception
+    {
+        openPrintwriter();
+        new PolarGrid(45, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGrid(45, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+    }
+
+    @Test
+    public void improved45() throws Exception
+    {
+        openPrintwriter();
+        new PolarGridImproved(45, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGridImproved(45, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+    }
+
+    @Test
+    public void original30() throws Exception
+    {
+        openPrintwriter();
+        new PolarGrid(30, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGrid(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+    }
+
+    @Test
+    public void improved30() throws Exception
+    {
+        openPrintwriter();
+        new PolarGridImproved(30, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGridImproved(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+    }
+
+    @Test
+    public void moreImproved30() throws Exception
+    {
+        openPrintwriter();
+        new PolarGridMoreImproved(30, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGridMoreImproved(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+    }
+
+    @Test
+    public void original60() throws Exception
+    {
+        openPrintwriter();
+        new PolarGrid(60, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGrid(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+    }
+
+    @Test
+    public void improved60() throws Exception
+    {
+        openPrintwriter();
+        new PolarGridImproved(60, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGridImproved(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+    }
+
+    @Test
+    public void moreImproved60() throws Exception
+    {
+        openPrintwriter();
+        // seems to reduce delta to zero, but why?
+        new PolarGridMoreImproved(60, 180, 640, 400, "#000000", 1.0).print(pw);
+        new PolarGridMoreImproved(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 }
