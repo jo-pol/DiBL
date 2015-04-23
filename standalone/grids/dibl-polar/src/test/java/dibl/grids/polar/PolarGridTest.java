@@ -63,7 +63,7 @@ public class PolarGridTest
         }
     }
 
-    private class PolarGridMoreImproved extends PolarGridImproved
+    private class PolarGridMoreImproved extends PolarGrid
     {
 
         public PolarGridMoreImproved(int angleOnFootside, int dotsPerCircle, double diameter, double minDiameter, String fillColor, double dotSize)
@@ -74,7 +74,10 @@ public class PolarGridTest
         @Override
         double delta(double diameter, int angleOnFootside, double dotsPerCircle)
         {
-            return super.delta(diameter, angleOnFootside, dotsPerCircle) / (45 / angleOnFootside);
+            double angle = Math.toRadians(angleOnFootside);
+            double alpha = Math.toRadians(360D / dotsPerCircle);
+            double correction = (alpha / (360.0 / angleOnFootside)) / (45.0 / angleOnFootside);
+            return Math.tan(angle - correction) * (diameter * Math.PI / dotsPerCircle);
         }
     }
 
@@ -166,7 +169,6 @@ public class PolarGridTest
     public void moreImproved60() throws Exception
     {
         openPrintwriter();
-        // seems to reduce delta to zero, but why?
         new PolarGridMoreImproved(60, 180, 640, 400, "#000000", 1.0).print(pw);
         new PolarGridMoreImproved(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
     }
