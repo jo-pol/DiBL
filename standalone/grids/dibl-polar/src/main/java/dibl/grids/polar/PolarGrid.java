@@ -91,6 +91,7 @@ public class PolarGrid
 
     double delta(double diameter, int angleOnFootside, double dotsPerCircle)
     {
+        // for 45 degrees: delta equals half of the arc length between two dots on a circle
         double angle = Math.toRadians(angleOnFootside);
         return Math.tan(angle) * (diameter * Math.PI / dotsPerCircle);
     }
