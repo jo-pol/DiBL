@@ -13,7 +13,7 @@ public class MatchingPolarGrid extends PolarGrid
     {
         double angle = Math.toRadians(angleOnFootside);
         double correction = Math.PI / (4 * dotsPerCircle);
-        angle -= correction * (Math.tan(angle*0.95));
-        return Math.tan(angle) * (diameter * Math.PI / dotsPerCircle);
+        correction *= (Math.tan(angle*0.93));
+        return Math.tan(angle-correction) * (diameter * Math.PI / dotsPerCircle);
     }
 }
