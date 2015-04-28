@@ -1,9 +1,9 @@
 package dibl.grids.polar;
 
-public class PolarGridInscribedPolygon extends PolarGrid
+public class AlternativePolarGrid extends PolarGrid
 {
 
-    public PolarGridInscribedPolygon(int angleOnFootside, int dotsPerCircle, double diameter, double minDiameter, String fillColor, double dotSize)
+    public AlternativePolarGrid(int angleOnFootside, int dotsPerCircle, double diameter, double minDiameter, String fillColor, double dotSize)
     {
         super(angleOnFootside, dotsPerCircle, diameter, minDiameter, fillColor, dotSize);
     }

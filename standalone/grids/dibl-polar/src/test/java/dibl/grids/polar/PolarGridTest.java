@@ -74,14 +74,6 @@ public class PolarGridTest
     }
 
     @Test
-    public void improved3060() throws Exception
-    {
-        openPrintwriter();
-        new PolarGridImproved(30, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridImproved(60, 180, 640, 400, "#FFFF00", 1.0).print(pw);
-    }
-
-    @Test
     public void original6030() throws Exception
     {
         openPrintwriter();
@@ -90,19 +82,11 @@ public class PolarGridTest
     }
 
     @Test
-    public void improved6030() throws Exception
+    public void matching6030() throws Exception
     {
         openPrintwriter();
-        new PolarGridImproved(60, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridImproved(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
-    }
-
-    @Test
-    public void moreImproved6030() throws Exception
-    {
-        openPrintwriter();
-        new PolarGridMoreImproved(60, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridMoreImproved(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+        new MatchingPolarGrid(60, 180, 640, 400, "#000000", 1.0).print(pw);
+        new MatchingPolarGrid(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 
     @Test
@@ -112,21 +96,23 @@ public class PolarGridTest
         new PolarGrid(45, 180, 640, 400, "#000000", 1.0).print(pw);
         new PolarGrid(45, 90, 640, 400, "#FFFF00", 1.0).print(pw);
     }
-
+    
     @Test
-    public void improved45() throws Exception
+    public void matching45() throws Exception
     {
         openPrintwriter();
-        new PolarGridImproved(45, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridImproved(45, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+        new MatchingPolarGrid(45, 180, 640, 400, "#000000", 1.0).print(pw);
+        new MatchingPolarGrid(45, 90, 640, 400, "#00FF00", 1.0).print(pw);
+        new MatchingPolarGrid(45, 180*2/3, 640, 400, "#FF0000", 1.0).print(pw);
+        new MatchingPolarGrid(45, 45, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 
     @Test
-    public void inscribedPolygon45() throws Exception
+    public void alternative45() throws Exception
     {
         openPrintwriter();
-        new PolarGridInscribedPolygon(45, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridInscribedPolygon(45, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+        new AlternativePolarGrid(45, 180, 640, 400, "#000000", 1.0).print(pw);
+        new AlternativePolarGrid(45, 90, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 
     @Test
@@ -138,27 +124,21 @@ public class PolarGridTest
     }
 
     @Test
-    public void improved30() throws Exception
+    public void alternative30() throws Exception
     {
         openPrintwriter();
-        new PolarGridImproved(30, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridImproved(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+        new AlternativePolarGrid(30, 180, 640, 400, "#000000", 1.0).print(pw);
+        new AlternativePolarGrid(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 
     @Test
-    public void inscribedPolygon30() throws Exception
+    public void matching30() throws Exception
     {
         openPrintwriter();
-        new PolarGridInscribedPolygon(30, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridInscribedPolygon(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
-    }
-
-    @Test
-    public void moreImproved30() throws Exception
-    {
-        openPrintwriter();
-        new PolarGridMoreImproved(30, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridMoreImproved(30, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+        new MatchingPolarGrid(30, 180, 640, 400, "#000000", 1.0).print(pw);
+        new MatchingPolarGrid(30, 90, 640, 400, "#00FF00", 1.0).print(pw);
+        new MatchingPolarGrid(30, 180*2/3, 640, 400, "#FF0000", 1.0).print(pw);
+        new MatchingPolarGrid(30, 45, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 
     @Test
@@ -170,26 +150,20 @@ public class PolarGridTest
     }
 
     @Test
-    public void improved60() throws Exception
+    public void matching60() throws Exception
     {
         openPrintwriter();
-        new PolarGridImproved(60, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridImproved(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+        new MatchingPolarGrid(60, 180, 640, 400, "#000000", 1.0).print(pw);
+        new MatchingPolarGrid(60, 90, 640, 400, "#00FF00", 1.0).print(pw);
+        new MatchingPolarGrid(60, 180*2/3, 640, 400, "#FF0000", 1.0).print(pw);
+        new MatchingPolarGrid(60, 45, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 
     @Test
-    public void moreImproved60() throws Exception
+    public void alternative60() throws Exception
     {
         openPrintwriter();
-        new PolarGridMoreImproved(60, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridMoreImproved(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
-    }
-
-    @Test
-    public void inscribedPolygon60() throws Exception
-    {
-        openPrintwriter();
-        new PolarGridInscribedPolygon(60, 180, 640, 400, "#000000", 1.0).print(pw);
-        new PolarGridInscribedPolygon(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
+        new AlternativePolarGrid(60, 180, 640, 400, "#000000", 1.0).print(pw);
+        new AlternativePolarGrid(60, 90, 640, 400, "#FFFF00", 1.0).print(pw);
     }
 }
