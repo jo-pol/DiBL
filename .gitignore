@@ -1,6 +1,22 @@
-/target
-.classpath
-.project
-.settings
-.DS_Store
+target/
 /.pydevproject
+project/
+
+#### Mac
+.DS_Store
+
+#### Eclipse
+.project
+.classpath
+.settings/
+
+
+#### IntelliJ 
+.idea
+*.iml
+
+#### Scala
+.cache
+.tmpBin/
+.worksheet/
+*.sc
