@@ -14,6 +14,7 @@ package dibl
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see http://www.gnu.org/licenses/.package dibl
 
+import org.scalajs.dom
 import org.scalajs.dom.html
 import scalajs.js.annotation.JSExport
 import scalatags.JsDom.all._
@@ -22,13 +23,14 @@ case class Settings(q: String) {
 
   /** DPI / mm see https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL */
   private val scale = 96 / 25.4
+
   /** parse uri query: "key1=value1&key2=value2&..." */
   // TODO convert to Map[String, String] to extract the values, don't bother duplicates
   private val m: Array[List[String]] = for {s <- q.split("&")} yield s.split("=").toList
 
   def outerDiameter = 170.0 * scale
 
-  def innerDiameter = 120.0 * scale
+  def innerDiameter = 100.0 * scale
 
   /** angle in radians between two dots on a ring and the nearest dot on the next ring */
   def angle = Math.toRadians(30)
@@ -43,13 +45,18 @@ case class Settings(q: String) {
 }
 
 case class Point(radius: Double, dotNr: Int, ringNr: Int, s: Settings) {
+
   // plus 1 to keep dots on the edge completely on the canvas
   // plus radius to show the full circle, not just the south-east quart
+
   def x = radius * Math.cos(a) + s.outerDiameter / 2 + 1
+
+  def y = radius * Math.sin(a) + s.outerDiameter / 2 + 1
 
   private def a = (dotNr + (ringNr % 2) * 0.5) * s.alpha
 
-  def y = radius * Math.sin(a) + s.outerDiameter / 2 + 1
+  /** distance between two dots along the circle */
+  def arcLength = Math.PI * radius / s.dotsPerRing
 }
 
 @JSExport
@@ -74,7 +81,8 @@ object PolarGrid {
       target.appendChild(gridCanvas)
       gridCanvas.height = size
       gridCanvas.width = size
-      gridCanvas.getContext("2d")
+      gridCanvas.getContext("2d").asInstanceOf[dom.CanvasRenderingContext2D]
+
     }
     def plotDot(point: Point) = {
       canvasContext.beginPath()
@@ -83,7 +91,7 @@ object PolarGrid {
     }
     def plotCircle(point: Point) = {
       canvasContext.beginPath()
-      canvasContext.arc(point.x, point.y, 3, 0, 2 * Math.PI, false)
+      canvasContext.arc(point.x, point.y, point.arcLength / 2, 0, 2 * Math.PI, false)
       canvasContext.stroke()
     }
     def plotRingOfDots(radius: Double, ringNr: Int) = {
