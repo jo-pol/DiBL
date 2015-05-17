@@ -18,60 +18,91 @@ import org.scalajs.dom.html
 import scalajs.js.annotation.JSExport
 import scalatags.JsDom.all._
 
+case class Settings(q: String) {
+
+  /** DPI / mm see https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL */
+  private val scale = 96 / 25.4
+  /** parse uri query: "key1=value1&key2=value2&..." */
+  // TODO convert to Map[String, String] to extract the values, don't bother duplicates
+  private val m: Array[List[String]] = for {s <- q.split("&")} yield s.split("=").toList
+
+  def outerDiameter = 170.0 * scale
+
+  def innerDiameter = 120.0 * scale
+
+  /** angle in radians between two dots on a ring and the nearest dot on the next ring */
+  def angle = Math.toRadians(30)
+
+  /** zero: skip this dot, one: normal dot, two: circle */
+  def pattern = "1,1210,1,01,1,1012,1,01".split(",")
+
+  /** angle in radians of a pie formed by the centre of the grid and two consecutive dots on a ring */
+  def alpha = Math.toRadians(360.0 / dotsPerRing.toDouble)
+
+  def dotsPerRing = 120
+}
+
+case class Point(radius: Double, dotNr: Int, ringNr: Int, s: Settings) {
+  // plus 1 to keep dots on the edge completely on the canvas
+  // plus radius to show the full circle, not just the south-east quart
+  def x = radius * Math.cos(a) + s.outerDiameter / 2 + 1
+
+  private def a = (dotNr + (ringNr % 2) * 0.5) * s.alpha
+
+  def y = radius * Math.sin(a) + s.outerDiameter / 2 + 1
+}
+
 @JSExport
 object PolarGrid {
   @JSExport
   def main(target: html.Div): Unit = {
 
-    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
-    val scale = 96 / 25.4 // DPI / mm
+    val s = Settings(target.ownerDocument.documentURI.toString.replaceAll("^[^?]+.", ""))
 
-    // parse uri query: "key1=value1&key2=value2&..."
-    val params = target.ownerDocument.documentURI.toString.replaceAll("^[^?]+.", "")
-    val m: Array[List[String]] = for {s <- params.split("&")} yield s.split("=").toList
-    //TODO convert to Map[String, String] to extract the next values, don't bother duplicates
-    val outerDiameter = 150.0 * scale
-    val innerDiameter = 100.0 * scale
-    val dotsPerCircle = 150
-    val angle = 30
-
-    val alpha = Math.toRadians(360.0 / dotsPerCircle.toDouble)
+    /** the radius changes each step with about half the arc length between two dots in case of an angle of 45 degrees */
     val change = {
-      val beta = Math.toRadians(angle)
-      val correction = Math.tan(beta * 0.93) * Math.PI / (4 * dotsPerCircle)
-      Math.tan(beta - correction) * Math.PI / dotsPerCircle
+      /** see https://github.com/jo-pol/DiBL/pull/5/files#diff-326bb6c119212f45e228f5e0516187e3R19 */
+      val correction = Math.tan(s.angle * 0.93) * Math.PI / (4 * s.dotsPerRing)
+      Math.tan(s.angle - correction) * Math.PI / s.dotsPerRing
     }
     val canvasContext = {
-      val size = Math.round(outerDiameter + 2.0).toInt
+      val size = Math.round(s.outerDiameter + 2.0).toInt
       val gridCanvas = canvas().render
       while (target.hasChildNodes())
         target.removeChild(target.children.item(0))
-      target.appendChild(p(params.replaceAll("&", " ")).render)
+      target.appendChild(p(s.q.replaceAll("&", " ")).render)
       target.appendChild(gridCanvas)
       gridCanvas.height = size
       gridCanvas.width = size
       gridCanvas.getContext("2d")
     }
-    def plotDot(x: Double, y: Double) = {
+    def plotDot(point: Point) = {
       canvasContext.beginPath()
-      canvasContext.arc(x, y, 1, 0, 2 * Math.PI, false)
+      canvasContext.arc(point.x, point.y, 1, 0, 2 * Math.PI, false)
       canvasContext.fill()
     }
-    def plotCircle(radius: Double, offset: Double) = {
-      for (i <- 0 until dotsPerCircle) {
-        val a = (i.toDouble + offset) * alpha
-        val x = radius * Math.cos(a)
-        val y = radius * Math.sin(a)
-        plotDot(x + outerDiameter / 2 + 1, y + outerDiameter / 2 + 1)
+    def plotCircle(point: Point) = {
+      canvasContext.beginPath()
+      canvasContext.arc(point.x, point.y, 3, 0, 2 * Math.PI, false)
+      canvasContext.stroke()
+    }
+    def plotRingOfDots(radius: Double, ringNr: Int) = {
+      for (dotNr <- 0 until s.dotsPerRing) {
+        val row = ringNr % s.pattern.length
+        val option = s.pattern(row)(dotNr % s.pattern(row).length)
+        val point = Point(radius, dotNr, ringNr, s)
+        if (option == '1')
+          plotDot(point)
+        else if (option == '2')
+          plotCircle(point)
       }
     }
-
-    var diameter = outerDiameter
-    var offset = 0.5
-    while (diameter > innerDiameter) {
-      plotCircle(diameter / 2, offset)
+    var diameter = s.outerDiameter
+    var circleNr = 0
+    while (diameter > s.innerDiameter) {
+      plotRingOfDots(diameter / 2, circleNr)
       diameter -= diameter * change
-      offset = Math.abs(offset - 0.5)
+      circleNr += 1
     }
   }
 }
