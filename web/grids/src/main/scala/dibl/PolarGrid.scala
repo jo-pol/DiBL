@@ -27,8 +27,8 @@ object PolarGrid {
     val scale = 96 / 25.4 // DPI / mm
 
     // parse uri query: "key1=value1&key2=value2&..."
-    val q = target.ownerDocument.documentURI.toString.replaceAll("^[^?]+.", "")
-    val m: Array[List[String]] = for {s <- q.split("&")} yield s.split("=").toList
+    val params = target.ownerDocument.documentURI.toString.replaceAll("^[^?]+.", "")
+    val m: Array[List[String]] = for {s <- params.split("&")} yield s.split("=").toList
     //TODO convert to Map[String, String] to extract the next values, don't bother duplicates
     val outerDiameter = 150.0 * scale
     val innerDiameter = 100.0 * scale
@@ -44,7 +44,9 @@ object PolarGrid {
     val canvasContext = {
       val size = Math.round(outerDiameter + 2.0).toInt
       val gridCanvas = canvas().render
-      target.appendChild(p(q.replaceAll("&", " ")).render)
+      while (target.hasChildNodes())
+        target.removeChild(target.children.item(0))
+      target.appendChild(p(params.replaceAll("&", " ")).render)
       target.appendChild(gridCanvas)
       gridCanvas.height = size
       gridCanvas.width = size
