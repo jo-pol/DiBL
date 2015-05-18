@@ -14,6 +14,8 @@ package dibl
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see http://www.gnu.org/licenses/.package dibl
 
+import org.scalajs.dom.Node
+
 import scalatags.JsDom.all._
 
 case class Settings(q: String) {
@@ -39,31 +41,33 @@ case class Settings(q: String) {
   /** Angle in radians of a pie formed by the centre of the grid and two consecutive dots on a ring. */
   val alpha: Double = Math.toRadians(360.0 / dotsPerRing.toDouble)
 
+  /** The length of the arc between two dots on the outer ring of the grid. */
   val maxArc: Double = Point(outerRadius, 0, 0, this).arcLength
 
+  /** The size required to accommodate the grid. */
   val canvasSize = Math.round(outerRadius * 2 + maxArc).toInt
 
+  /** parse uri query: "key1=value1&key2=value2&..." */
+  // TODO convert to Map[String, String] to compute the now hard coded values, don't care about duplicates
+  private val m: Array[(String, String)] = for {s <- q.split("&")} yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
+
+  /** zero: skip this dot, one: normal dot, two: circle */
   def plotType(point: Point): Char = {
     val row = point.ringNr % dotPattern.length
     val col = point.dotNr % dotPattern(row).length
     dotPattern(row)(col)
   }
 
-  /** zero: skip this dot, one: normal dot, two: circle */
   private def dotPattern = "1210,1,01,1,1012,1,01,1".split(",")
 
-  /** They query string and/or error/warning messages in case of invalid values */
-  def toNode = q match {
+  /** The query string and/or error/warning messages */
+  def toNode: Node = q match {
     case null => p("Please specify a query. Example: " + usage).render
-    case qs => p(qs).render
+    case qs => div(p(qs), p(s"${m.deep.mkString("[", ", ", "]")}")).render
   }
 
   private def usage = "?outerRadius=170&innerRadius=100&angle=30&dotsPerRing=120&pattern=1,1210,1,01,1,1012,1,01"
 
   /** DPI / mm; see https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL */
   private def scale = 96 / 25.4
-
-  /** parse uri query: "key1=value1&key2=value2&..." */
-  // TODO convert to Map[String, String] to compute the now hard coded values, don't care about duplicates
-  private def m: Array[List[String]] = for {s <- q.split("&")} yield s.split("=").toList
 }
