@@ -48,8 +48,9 @@ case class Settings(q: String) {
   val canvasSize = Math.round(outerRadius * 2 + maxArc).toInt
 
   /** parse uri query: "key1=value1&key2=value2&..." */
-  // TODO convert to Map[String, String] to compute the now hard coded values, don't care about duplicates
-  private val m: Array[(String, String)] = for {s <- q.split("&")} yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
+  // TODO use m2 to compute the now hard coded values
+  private val m1: Array[(String, String)] = for {s <- q.split("&")} yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
+  private val m2: Map[String, Array[String]] = m1.groupBy(_._1).map { case (k, v) => (k, v.map(_._2)) }
 
   /** zero: skip this dot, one: normal dot, two: circle */
   def plotType(point: Point): Char = {
@@ -60,10 +61,10 @@ case class Settings(q: String) {
 
   private def dotPattern = "1210,1,01,1,1012,1,01,1".split(",")
 
-  /** The query string and/or error/warning messages */
+  /** The query string and/or error/warning/log messages */
   def toNode: Node = q match {
     case null => p("Please specify a query. Example: " + usage).render
-    case qs => div(p(qs), p(s"${m.deep.mkString("[", ", ", "]")}")).render
+    case qs => div(p(s"${m1.deep.mkString("[", ", ", "]")}"),p(qs)).render
   }
 
   private def usage = "?outerRadius=170&innerRadius=100&angle=30&dotsPerRing=120&pattern=1,1210,1,01,1,1012,1,01"
