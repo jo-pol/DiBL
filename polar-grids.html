@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+  Copyright 2014, J. Pol
+ 
+  This file is part of free software: you can redistribute it and/or modify it under the terms of the
+  GNU General Public License as published by the Free Software Foundation.
+  
+  This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  
+  See the GNU General Public License for more details. A copy of the GNU General Public License is
+  available at <http://www.gnu.org/licenses/>.
+ -->
+    <title>DiBL polar grid</title>
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+      @media print { .noprint, ul {display: none;}}
+    </style>
+</head>
+<body>
+<div class="noprint">
+    <h1>Bobbin lace and other grid examples</h1>
+
+    <p>
+        The examples with B-numbers match "<span lang="de">Viele Gute Gr&uuml;nde</span>" by Ulrike L&ouml;hr. She specifies the angles relative to the top
+        of a patch of lace, while this application applies the angle to the footside of the doily edging. So we have to subtract Ulrike's angles from 90
+        degrees.
+    </p>
+    <ul>
+        <li>
+            <a href="?">default</a>
+        </li>
+        <li>Torchon, Flanders:
+            <a href="?angle=45#B1">B1</a>
+            any angle between about 15-75 degrees is possible
+        </li>
+        <li>Small snowflakes:
+            <a href="?dotPattern=1,0&angle=49#B2">B2</a>
+            other angles result in other width/height ratios of the rectangles
+        </li>
+        <li>Binche/Duchesse:
+            <a href="?dotPattern=1,10,1,01&angle=63#B3">B3</a>,
+            <a href="?dotPattern=011,101,211,101,011,121&angle=63#B4">B4-B6</a>,
+            <a href="?dotPattern=1,1210,1,1012&angle=63#B7">B7</a>
+        </li>
+        <li>Rotated hexagons:
+            with <a href="?dotPattern=1,10,1,01&angle=30">triangles</a>,
+            with <a href="?dotPattern=1,002,1,1,020,1&angle=30">circles</a>
+            with
+            <a href="?angle=30&dotPattern=1,1210,1,01,1,1012,1,01">triangles and circles</a>
+        </li>
+    </ul>
+</div>
+<div>
+    <h1 class="noprint">Parameters</h1>
+
+    <p class="noprint">Applied values (may show some rounding fluctuations) and specified parameters.</p>
+
+    <div id="container"><p>Please allow the javascipt to download and execute, or try one of the links above.</p></div>
+
+    <script type="text/javascript" src="polar-grids.js"></script>
+    <script>dibl.PolarGrid().main(document.getElementById('container'))</script>
+</div>
+<div class="noprint">
+    <h1>Source code</h1>
+
+    <p>For those who want to collaborate: 
+        <a href="https://github.com/jo-pol/DiBL/tree/master/web/grids/src/main/scala/dibl">script</a>, 
+        <a href="">web-page</a>
+    </p>
+
+    <h1>Help information</h1>
+
+    <p>A web form to assemble the uri-query is not yet implemented. So you have to assemble the tail of the address manually in your browser.
+        None of the parameters is mandatory and the order of the parameters is not relevant. A default is applied for missing or invalid values.
+        You can start with one of the linked examples, and subsequently add/change the parameters.
+        The <code>#B..</code> parts of the addresses are not significant, they serve as a reminder but must be last.
+    </p>
+
+    <h2>Parameters innerDiameter, outerDiameter</h2>
+
+    <p>The unit for the diameters is mm when printed at 100%. The size on screen might vary from monitor to monitor.
+        The actual inner value might be larger.
+    </p>
+
+    <h2>Parameter Angle</h2>
+
+    <p>The unit for angle is degrees.
+    </p>
+
+    <h2>Parameter dotsPerRing</h2>
+
+    <p>A dotPattern may introduce repeat factors. The desired pattern of lace may also introduce repeat factors. The number of dots should be a multitude of
+        the repeat factor(s) to prevent irregularities where the end of the grid or piece of lace meets the the start. The start of the grid is the horizontal
+        axis on the right side.
+    </p>
+
+    <h2>Parameter dotPattern</h2>
+
+    <p>The dotPattern defines whether and how dots are plotted. Each sequence of digits applies to one ring of dots.
+        A one means plot as a normal dot, a two means plot as a circle, any other digit (or character) means skip the dot.
+        Each sequence of digits introduces a repeat factor equal to the length of the sequence.
+    </p>
+</div>
+</body>
+</html>
