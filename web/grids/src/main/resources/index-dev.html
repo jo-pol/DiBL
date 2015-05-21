@@ -3,13 +3,10 @@
 <head>
     <title>DiBL polar grid</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body>
-    <div id="container"></div>
     <script type="text/javascript" src="../dibl-grids-fastopt.js"></script>
     <script type="text/javascript" src="/workbench.js"></script>
-    <script>
-        dibl.PolarGrid().main(document.getElementById('container'))
-    </script>
+</head>
+<body onload="dibl.PolarGrid().main(document.getElementById('container'))">
+    <div id="container"></div>
 </body>
 </html>

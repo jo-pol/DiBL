@@ -19,27 +19,29 @@ import java.net.URI
 import org.scalajs.dom
 import org.scalajs.dom.html
 import scalajs.js.annotation.JSExport
-import scalatags.JsDom.all.canvas
+import scalatags.JsDom.all.{canvas}
 
 @JSExport
 object PolarGrid {
   @JSExport
   def main(target: html.Div): Unit = {
 
-    val s = Settings(new URI(target.ownerDocument.documentURI).getQuery)
+    val s = Settings(new URI(target.ownerDocument.documentURI).getQuery match {
+      case null => ""
+      case s => s
+    })
     val canvasContext = {
       while (target.hasChildNodes())
         target.removeChild(target.children.item(0))
       val gridCanvas = canvas().render
-      target.appendChild(s.toNode)
       target.appendChild(gridCanvas)
       gridCanvas.height = s.canvasSize
       gridCanvas.width = s.canvasSize
       gridCanvas.getContext("2d").asInstanceOf[dom.CanvasRenderingContext2D]
     }
-    def plotArc(p: Point, radius: Double) = {
+    def plotArc(p: Point, dotRadius: Double) = {
       canvasContext.beginPath()
-      canvasContext.arc(p.x, p.y, radius, 0, 2 * Math.PI, anticlockwise = false)
+      canvasContext.arc(p.x, p.y, dotRadius, 0, 2 * Math.PI, anticlockwise = false)
       canvasContext
     }
     def plotRingOfDots(radius: Double, ringNr: Int) = {
@@ -56,11 +58,11 @@ object PolarGrid {
       Math.tan(s.angle - correction) * Math.PI / s.dotsPerRing
     }
     var radius = s.outerRadius
-    var circleNr = 0
-    while (radius > s.innerRadius) {
-      plotRingOfDots(radius, circleNr)
+    var ringNr = 0
+    while (radius > s.innerRadius && radius * change > 2 && Point(radius, 0, ringNr, s).arcLength > 2) {
+      plotRingOfDots(radius, ringNr)
       radius -= radius * change
-      circleNr += 1
+      ringNr += 1
     }
   }
 }

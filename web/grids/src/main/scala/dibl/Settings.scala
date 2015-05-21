@@ -14,29 +14,35 @@ package dibl
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see http://www.gnu.org/licenses/.package dibl
 
-import org.scalajs.dom.Node
-
-import scalatags.JsDom.all._
+import scala.util.Try
 
 case class Settings(uriQuery: String) {
 
-  /** The radius of the outer ring of dots converted from mm to pixels.
-    *
-    * The actually generated diameter will be an exact value.
-    */
-  val outerRadius: Double = getArg("outerRadius", "170").toInt / 2 * scale
+  /** DPI / mm; see https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL */
+  private val scale = 96 / 25.4
 
-  /** The radius of the inner ring of dots converted from mm to pixels.
-    *
-    * The actually generated diameter may be slightly larger, depending an angle and number of dots.
-    * */
-  val innerRadius: Double = getArg("innerRadius", "100").toInt / 2 * scale
+  private val queryMap: Map[String, Array[String]] = (
+    for {s <- uriQuery.split("&")}
+      yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
+    ).groupBy(_._1).map { case (k, v) => (k, v.map(_._2)) }
+
+  /** The radius of the outer ring of dots converted from mm to pixels. */
+  val outerDiameter: Double = getPosIntArg("outerDiameter", 170)
+
+  /** The radius of the outer ring of dots converted from mm to pixels. */
+  val outerRadius: Double = outerDiameter / 2 * scale
+
+  /** The radius of the inner ring of dots converted from mm to pixels. */
+  val innerDiameter: Double = Math.min(outerDiameter * 0.95, getPosIntArg("innerDiameter", 100))
+
+  /** The radius of the inner ring of dots converted from mm to pixels. */
+  val innerRadius: Double = innerDiameter / 2 * scale
 
   /** number of dots per ring */
-  val dotsPerRing: Int = getArg("dotsPerRing", "120").toInt
+  val dotsPerRing: Int = getPosIntArg("dotsPerRing", (outerRadius / 3).toInt)
 
   /** Angle in radians between two consecutive dots on a ring and the nearest dot on the next ring. */
-  val angle: Double = Math.toRadians(getArg("angle", "30").toInt)
+  val angle: Double = Math.toRadians(getPosIntArg("angle", 30))
 
   /** Angle in radians of a pie formed by the centre of the grid and two consecutive dots on a ring. */
   val alpha: Double = Math.toRadians(360.0 / dotsPerRing.toDouble)
@@ -47,7 +53,7 @@ case class Settings(uriQuery: String) {
   /** The size required to accommodate the grid. */
   val canvasSize = Math.round(outerRadius * 2 + maxArc).toInt
 
-  private val dotPattern = getArg("dotPattern", "1").split("[,; ]")
+  val dotPattern = getArg("dotPattern", "1").split("[,; ]")
   // TODO what is the subtle difference with the next?
   //private val dotPattern: Array[String] = (queryMap.getOrElse("dotPattern", Array("1")))(0).split(",; ")
 
@@ -58,34 +64,20 @@ case class Settings(uriQuery: String) {
     dotPattern(row)(col)
   }
 
-  /** The query string and/or error/warning/log messages */
-  def toNode: Node = uriQuery match {
-    case null => p("Please specify a query. Example: " + usage).render // FIXME
-    case qs => div(
-      p(s"outerRadius: ${outerRadius*2/scale}"),
-      p(s"innerRadius: ${innerRadius*2/scale}"),
-      p(s"dotsPerRing: ${dotsPerRing.toString}"),
-      p(s"angle: ${Math.toDegrees(angle)}"),
-      p(s"dotPattern: ${dotPattern.deep.mkString("[", ", ", "]")}"),
-      p(s"?${uriQuery}")
-    ).render
+  private def getPosIntArg(key: String, default: Int): Int = {
+    val value = Try(getArg(key, default.toString).toInt) toOption match {
+      case Some(i: Int) => i
+      case _ => default
+    }
+    if (value < 0) 0 - value else if (value == 0) default else value
   }
 
   /** parses uri query: "key1=value1&key2=value2&..." */
   private def getArg(key: String, default: String) = {
-    // TODO how to prevent re-evaluation?
-    // private values at a higher scope-level get reorganized after when needed when reformatting code by InteliJ
-    val m1: Array[(String, String)] = for {s <- uriQuery.split("&")} yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
-    val queryMap: Map[String, Array[String]] = m1.groupBy(_._1).map { case (k, v) => (k, v.map(_._2)) }
 
     queryMap.get(key) match {
-      case None => default
       case Some(a: Array[String]) => a(0)
+      case _ => default
     }
   }
-
-  private def usage = "?outerRadius=170&innerRadius=100&angle=30&dotsPerRing=120&pattern=1,1210,1,01,1,1012,1,01"
-
-  /** DPI / mm; see https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL */
-  private def scale = 96 / 25.4
 }
