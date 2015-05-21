@@ -16,30 +16,76 @@
     <title>DiBL polar grid</title>
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <style>
-      @media print { .noprint, ul {display: none;}}
-    </style>
+<style>
+form p         { margin-top:0; }
+form           { display:inline-block; float:right; }
+fieldset       { display:inline-block;            padding: 0; margin:0; border:0; }
+form label     { display:inline-block; width:7em;                       vertical-align:top; }
+fieldset label { display:inline-block; width:8em; padding: 0; margin:0;}
+input          {                       width: 4em; }
+#dotPattern    {                       width:18em; }
+.button {
+    margin:2px 2px 0 0;
+    background-color:#eeeeee;
+    border:outset;
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:80%;
+    line-height:100%;
+    text-decoration:none;
+    font-weight:normal;
+    color:#333333;
+    cursor:pointer;
+    padding:3px;
+}
+</style>
 </head>
 <body>
-<div class="noprint">
-    <h1>Bobbin lace and other grid examples</h1>
+  <h1>Polar Grids for Bobbin Lace</h1>
 
-    <p>
-        The examples with B-numbers match "<span lang="de">Viele Gute Gr&uuml;nde</span>" by Ulrike L&ouml;hr. She specifies the angles relative to the top
-        of a patch of lace, while this application applies the angle to the footside of the doily edging. So we have to subtract Ulrike's angles from 90
-        degrees.
-    </p>
-    <ul>
+  <form action="" target="_blank">
+	 <p>Try one of the linked examples or fill in the the form.</p>
+      <label for="diameters">Diameters (mm) </label>
+      <fieldset id="diameters">
+          <label for="outerDiameter">outside </label><input id="outerDiameter" name="outerDiameter" type="number" required min="20" autofocus>
+          <br/>
+          <label for="innerDiameter">inside </label><input id="innerDiameter" name="innerDiameter" type="number" required min="10">
+      </fieldset><br/>
+      <label for="density">Dots per ring </label>
+      <fieldset id="density">
+          <label for="dotsPerRing"></label><input id="dotsPerRing" name="dotsPerRing" type="number" required min="12">
+      </fieldset><br/>
+      <label for="style">Style </label>
+      <fieldset id="style">
+          <label for="angle">angle (degrees) </label><input id="angle" name="angle" type="number" required min="10" max="80" value="45">
+          <br/>
+          <label for="angle">pattern of dots </label><input id="dotPattern" name="dotPattern" list="dotPatterns" value="1" pattern="[012]+(,[012]+)*">
+      </fieldset><br/>
+      <datalist id="dotPatterns">
+          <option value="011,101,211,101,011,121"></option>
+          <option value="1,1210,1,1012"></option>
+      </datalist>
+      <br/>
+      <button class="button" type="submit">draw</button>
+      <a class="button" href="#help">help</a>
+  </form>
+  <div>
+      <p>
+        The examples with B-numbers match "<span lang="de">Viele Gute Gr&uuml;nde</span>" by Ulrike L&ouml;hr.
+      </p>
+      <ul>
         <li>
             <a href="?">default</a>
         </li>
-        <li>Torchon, Flanders:
+        <li>Basic Torchon / Flanders:
             <a href="?angle=45#B1">B1</a>
-            any angle between about 15-75 degrees is possible
+        </li>
+        <li>Torchon:
+            <a href="?dotPattern=1,0,10,0&angle=45#Vierge">Vierge</a>,
+            <a href="?dotPattern=1,0&angle=45#Slavic">Slavic Vierge</a>,
+            <a href="?dotPattern=1,10,1,01&angle=45#Honeycomb">Honeycomb</a>
         </li>
         <li>Small snowflakes:
             <a href="?dotPattern=1,0&angle=49#B2">B2</a>
-            other angles result in other width/height ratios of the rectangles
         </li>
         <li>Binche/Duchesse:
             <a href="?dotPattern=1,10,1,01&angle=63#B3">B3</a>,
@@ -48,61 +94,56 @@
         </li>
         <li>Rotated hexagons:
             with <a href="?dotPattern=1,10,1,01&angle=30">triangles</a>,
-            with <a href="?dotPattern=1,002,1,1,020,1&angle=30">circles</a>
+            with <a href="?dotPattern=1,002,1,1,020,1&angle=30">circles</a>,
             with
             <a href="?angle=30&dotPattern=1,1210,1,01,1,1012,1,01">triangles and circles</a>
         </li>
-    </ul>
-</div>
+      </ul>
+    </div>
 <div>
-    <h1 class="noprint">Parameters</h1>
-
-    <p class="noprint">Applied values (may show some rounding fluctuations) and specified parameters.</p>
-
     <div id="container"><p>Please allow the javascipt to download and execute, or try one of the links above.</p></div>
-
     <script type="text/javascript" src="polar-grids.js"></script>
     <script>dibl.PolarGrid().main(document.getElementById('container'))</script>
 </div>
-<div class="noprint">
-    <h1>Source code</h1>
+<div>
+    <a name="help"/><h1>Hints and explanations</h1>
 
-    <p>For those who want to collaborate: 
-        <a href="https://github.com/jo-pol/DiBL/tree/master/web/grids/src/main/scala/dibl">script</a>, 
-        <a href="https://github.com/jo-pol/DiBL/blob/gh-pages/polar-grids.html">web-page</a>
-        See also <a href="https://lihaoyi.github.io/hands-on-scala-js/#GettingStarted">Hands-on Scala.js</a>
+    <p>Source code: <a href="https://github.com/jo-pol/DiBL/tree/master/web/grids/src/main/scala/dibl">script</a>, 
+        <a href="https://github.com/jo-pol/DiBL/blob/gh-pages/polar-grids.html">page</a>,
+        see also <a href="https://lihaoyi.github.io/hands-on-scala-js/#GettingStarted">Hands-on Scala.js</a>
     </p>
 
-    <h1>Help information</h1>
+    <h2>Print preview</h2>
 
-    <p>A web form to assemble the uri-query is not yet implemented. So you have to assemble the tail of the address manually in your browser.
-        None of the parameters is mandatory and the order of the parameters is not relevant. A default is applied for missing or invalid values.
-        You can start with one of the linked examples, and subsequently add/change the parameters.
-        The <code>#B..</code> parts of the addresses are not significant, they serve as a reminder but must be last.
+    <p>Use the print preview function of your browser to select the page with the grid.
+        Print with landscape orientation to get the full URL. Thus you get the information to reproduce the grid on the sheet.
     </p>
 
-    <h2>Parameters innerDiameter, outerDiameter</h2>
+    <h2>Angles / Examples</h2>
 
-    <p>The unit for the diameters is mm when printed at 100%. The size on screen might vary from monitor to monitor.
+    <p>Ulrike L&ouml;hr specifies the angles relative to the top of a patch of lace, while this application applies the angle to the footside of the doily edging.
+        So we have to subtract Ulrike's angles from 90 degrees.
+    </p>
+
+
+    <h2>Diameters</h2>
+
+    <p>The unit for the diameters is mm when printed at 100% or DPI.
+        The size on screen might vary from monitor to monitor.
         The actual inner value might be larger.
     </p>
 
-    <h2>Parameter Angle</h2>
-
-    <p>The unit for angle is degrees.
-    </p>
-
-    <h2>Parameter dotsPerRing</h2>
+    <h2>Dots per ring</h2>
 
     <p>A dotPattern may introduce repeat factors. The desired pattern of lace may also introduce repeat factors. The number of dots should be a multitude of
         the repeat factor(s) to prevent irregularities where the end of the grid or piece of lace meets the the start. The start of the grid is the horizontal
         axis on the right side.
     </p>
 
-    <h2>Parameter dotPattern</h2>
+    <h2>Pattern of dots</h2>
 
-    <p>The dotPattern defines whether and how dots are plotted. Each sequence of digits applies to one ring of dots.
-        A one means plot as a normal dot, a two means plot as a circle, any other digit (or character) means skip the dot.
+    <p>The pattern defines whether and how dots are plotted. Each sequence of digits applies to one ring of dots.
+        A  zero means skip the dot, a one means plot as a normal dot, a two means plot as a circle.
         Each sequence of digits introduces a repeat factor equal to the length of the sequence.
     </p>
 </div>
