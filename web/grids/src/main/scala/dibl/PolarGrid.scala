@@ -64,5 +64,9 @@ object PolarGrid {
       radius -= radius * change
       ringNr += 1
     }
+    for ((k,v) <- s.queryMap)
+      try{
+        target.ownerDocument.getElementById(k).setAttribute("value",v(0))
+      }catch {case _: Throwable => }
   }
 }

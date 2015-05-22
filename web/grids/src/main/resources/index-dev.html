@@ -7,6 +7,28 @@
     <script type="text/javascript" src="/workbench.js"></script>
 </head>
 <body onload="dibl.PolarGrid().main(document.getElementById('container'))">
+<form action="">
+    <label for="diameters">Diameters (mm) </label>
+    <fieldset id="diameters">
+        <label for="outerDiameter">outside </label><input id="outerDiameter" name="outerDiameter" type="number"  min="20" autofocus>
+        <label for="innerDiameter">inside </label><input id="innerDiameter" name="innerDiameter" type="number"  min="10">
+    </fieldset>
+    <label for="density">Dots per ring </label>
+    <fieldset id="density">
+        <label for="dotsPerRing"></label><input id="dotsPerRing" name="dotsPerRing" type="number"  min="12">
+    </fieldset>
+    <label for="style">Style </label>
+    <fieldset id="style">
+        <label for="angle">Angle (degrees) </label><input id="angle" name="angle" type="number"  min="10" max="80" value="45">
+        <label for="angle">Pattern of dots </label><input id="dotPattern" name="dotPattern" list="dotPatterns" value="1" pattern="[012]+(,[012]+)*">
+    </fieldset>
+    <datalist id="dotPatterns">
+        <option value="011,101,211,101,011,121"></option>
+        <option value="1,1210,1,1012"></option>
+    </datalist>
+    <br/>
+    <button class="button" type="submit">draw</button>
+</form>
     <div id="container"></div>
 </body>
 </html>

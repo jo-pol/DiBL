@@ -21,10 +21,12 @@ case class Settings(uriQuery: String) {
   /** DPI / mm; see https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL */
   private val scale = 96 / 25.4
 
-  private val queryMap: Map[String, Array[String]] = (
-    for {s <- uriQuery.split("&")}
+  /** parse uri query: "key1=value1&key2=value2&..." */
+  val queryMap: Map[String, Array[String]] = {
+    val m: Array[(String, String)] = for {s <- uriQuery.split("&")}
       yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
-    ).groupBy(_._1).map { case (k, v) => (k, v.map(_._2)) }
+    m.groupBy(_._1).map { case (k, v) => (k, v.map(_._2)) }
+  }
 
   /** The radius of the outer ring of dots converted from mm to pixels. */
   val outerDiameter: Double = getPosIntArg("outerDiameter", 170)
@@ -72,7 +74,6 @@ case class Settings(uriQuery: String) {
     if (value < 0) 0 - value else if (value == 0) default else value
   }
 
-  /** parses uri query: "key1=value1&key2=value2&..." */
   private def getArg(key: String, default: String) = {
 
     queryMap.get(key) match {
