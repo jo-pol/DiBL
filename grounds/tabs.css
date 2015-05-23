@@ -1,0 +1,163 @@
+/**
+ * CSS3 tabbed interface
+ *  - from http://dabblet.com/gist/1892497 (added tabs, adjusted sizes)
+ * 	- in turn based on http://www.sitepoint.com/css3-tabs-using-target-selector/
+ * 	- 1st tab is LAST in markup:
+ * 		- so it can be styled as active on page load
+ *		- use combination of :target and ~ to override when another tab is clicked
+ */
+body {
+	font: 62.5%/1.5 Georgia, serif;
+	margin: 1em 1em;
+}
+
+h1, h2 {
+	font-size: 2em;
+}
+
+p, form, li {
+	font-size: 150%;
+}
+
+.tabs {
+	display: block;
+	margin: 0 auto;
+	margin-top: 6em;
+	margin-bottom: 1em;
+	padding-left: 3em;
+	height: 23em;
+}
+
+.tab_block {
+	position: absolute;
+}
+
+.tab_block h2 {
+	background-color: #DDD;
+	border-radius: 5px 5px 0 0;
+	line-height: 2em;
+	left: -1em;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: -2.7em;
+	width: 8em;
+}
+
+.tab_block:first-child h2 {
+	left: 7.3em;
+}
+
+.tab_block:nth-child(2) h2 {
+	left: 15.6em;
+}
+
+.tab_block:nth-child(3) h2 {
+	left: 23.9em;
+}
+
+.tab_block:nth-child(4) h2 {
+	left: 32.2em;
+}
+
+.tab_block h2 a {
+	color: #000;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.tab_block div {
+	box-sizing: border-box;
+	margin: -5.4em 0 0 -2.1em;
+	height: 0;
+	overflow: hidden;
+	visibilty: hidden;
+	width: 0;
+}
+/* last in HTML markup, but visually shown first */
+.tab_block:last-child {
+	background: #FFF;
+}
+
+.tab_block:last-child h2 {
+	background: #FFF;
+	border: 1px solid #DDD;
+	border-bottom-color: #FFF;
+	box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+	left: -1.05em;
+}
+
+.tab_block:last-child h2:after {
+	border-bottom: 4px solid #FFF;
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+}
+
+.tab_block:last-child div {
+	border: 1px solid #DDD;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+	padding: 1em 2em;
+	height: 24em;
+	overflow: visible;
+	visibilty: visible;
+	width: 82.7em;
+}
+
+.tab_block:target,.tab_block:target h2 {
+	background-color: #FFF;
+}
+
+.tab_block:target h2 {
+	border: 1px solid #DDD;
+	border-bottom-color: #FFF;
+	box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.tab_block:target h2:after {
+	border-bottom: 4px solid #FFF;
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+}
+
+.tab_block:target ~ .tab_block:last-child h2 {
+	background: #DDD;
+	border: 0;
+	box-shadow: none;
+	left: -1em;
+}
+
+.tab_block:target ~ .tab_block:last-child h2:after {
+	border-bottom: 0;
+}
+
+.tab_block:target div {
+	border: 1px solid #DDD;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+	padding: 1em 2em;
+	height: 24em;
+	visibilty: visible;
+	width: 82.7em;
+}
+
+.tab_block:target ~ .tab_block div {
+	border: 0;
+	box-shadow: none;
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+	visibilty: hidden;
+	width: 0;
+}
+
+.tab_block h2 {
+	transition: all 500ms ease;
+}
