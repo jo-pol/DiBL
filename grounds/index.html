@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
-<title>Bobbin lace working diagrams from tiled SVG templates</title>
+<title>DiBL - Bobbin lace working diagrams for grounds</title>
 <script type="text/javascript" src="script.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="style.css">
 <link rel="stylesheet" type="text/css" media="all" href="tabs.css">
@@ -11,11 +11,11 @@
 <![endif]-->
 </head>
 <body onload="init()">
-<h1>Bobbin lace working diagrams from tiled SVG templates</h1>
+<h1>Bobbin lace working diagrams: select stitches for a computer generated ground</h1>
 	<article class="tabs">
 		<section id="tab2" class="tab_block">
 			<h2>
-				<a href="#tab2">2. <img src="index_files/diagonal.png" alt="Diagonal"></a>
+				<a href="#tab2">2. <img src="diagonal.png" alt="Diagonal"></a>
 			</h2>
 			<div>
 				<form name="diagonalConfig">
@@ -213,7 +213,7 @@
 		</section>
 		<section id="tab3" class="tab_block">
 			<h2>
-				<a href="#tab3">3. <img src="index_files/interleaved.png" alt="Interleaved"></a>
+				<a href="#tab3">3. <img src="interleaved.png" alt="Interleaved"></a>
 			</h2>
 			<div>
 				<form name="interleavedConfig">
@@ -429,7 +429,7 @@
 		</section>
 		<section id="tab1" class="tab_block">
 			<h2>
-				<a href="#tab1">1. <img src="index_files/flanders.png" alt="Flanders"></a>
+				<a href="#tab1">1. <img src="flanders.png" alt="Flanders"></a>
 			</h2>
 			<div>
 				<form name="flandersConfig">
@@ -499,17 +499,19 @@
 	<article>
 		<p>
 				A submit button to generate the configured diagram is not yet implemented.
-				For now you have to follow the procedure below.
-				See the <a href="https://github.com/jo-pol/DiBL/wiki/Edit-Diagrams">user guide</a>
-				to edit SVG results, for example to vary thread width and color.
+				For now you have to install DiBL and copy/paste the configured commands
+				in <code>.sh</code> or <code>.bat</code> files to execute.
 		</p>
 		<ul>
 			<li>Find the latest <a href="https://github.com/jo-pol/DiBL/releases">tiles release</a></li>
 			<li>Download and unpack the zip (Windows) or tar.gz (roughly 10% smaller but Mac/Unix only).</li>
-			<li>Go to the unzipped folder. For example: <code>my documents\dibl-cmd-0.1.2-bin\dibl-cmd-0.1.2</code></li>
-			<li>Copy-paste the command shown below into a <code>.sh</code> or <code>.bat</code></li>
-			<li>Execute the created file, you may have to give the file execution rights.</li>
+			<li>Put the <code>.sh</code> or <code>.bat</code> in the unzipped folder.
+				For example: <code>my documents\dibl-cmd-0.1.2-bin\dibl-cmd-0.1.2</code></li>
 		</ul>
+		<p>
+				See the <a href="https://github.com/jo-pol/DiBL/wiki/Edit-Diagrams">user guide</a>
+				to edit SVG results, for example to vary thread width and color.
+		</p>
 		<div id="commands">
 			<h2>Command files</h2>
 			<ul>
