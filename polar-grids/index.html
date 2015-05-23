@@ -23,21 +23,21 @@
 
   <h1>Polar Grids for Bobbin Lace</h1>
 
-  <form action="" target="_blank">
+  <form action="">
 	 <p>Try one of the linked examples or fill in the the form.</p>
       <label for="diameters">Diameters (mm) </label>
       <fieldset id="diameters">
-          <label for="outerDiameter">outside </label><input id="outerDiameter" name="outerDiameter" type="number" required min="20" autofocus>
+          <label for="outerDiameter">outside </label><input id="outerDiameter" name="outerDiameter" type="number" min="20" autofocus>
           <br/>
-          <label for="innerDiameter">inside </label><input id="innerDiameter" name="innerDiameter" type="number" required min="10">
+          <label for="innerDiameter">inside </label><input id="innerDiameter" name="innerDiameter" type="number" min="10">
       </fieldset><br/>
       <label for="density">Dots per ring </label>
       <fieldset id="density">
-          <label for="dotsPerRing"></label><input id="dotsPerRing" name="dotsPerRing" type="number" required min="12">
+          <label for="dotsPerRing"></label><input id="dotsPerRing" name="dotsPerRing" type="number" min="12">
       </fieldset><br/>
       <label for="style">Style </label>
       <fieldset id="style">
-          <label for="angle">angle (degrees) </label><input id="angle" name="angle" type="number" required min="10" max="80" value="45">
+          <label for="angle">angle (degrees) </label><input id="angle" name="angle" type="number" min="10" max="80" value="45">
           <br/>
           <label for="angle">pattern of dots </label><input id="dotPattern" name="dotPattern" list="dotPatterns" value="1" pattern="[012]+(,[012]+)*">
       </fieldset><br/>
@@ -61,32 +61,37 @@
             <a href="?angle=45#B1">B1</a>
         </li>
         <li>Torchon:
-            <a href="?dotPattern=1,0,10,0&angle=45#Vierge">Vierge</a>,
-            <a href="?dotPattern=1,0&angle=45#Slavic">Slavic Vierge</a>,
-            <a href="?dotPattern=1,10,1,01&angle=45#Honeycomb">Honeycomb</a>
+            <a href="?dotPattern=1,0,10,0&angle=45&dotsPerRing=120#Vierge">Vierge</a>,
+            <a href="?dotPattern=1,0&angle=45&dotsPerRing=120#Slavic">Slavic Vierge</a>,
+            <a href="?dotPattern=1,10,1,01&angle=45&dotsPerRing=120#Honeycomb">Honeycomb</a>,
+			spiders with 
+			<a href="?dotPattern=100,101,011,010,011,101&angle=45&dotsPerRing=120#8">8</a>,
+			<a href="?dotPattern=1001,1010,0110,0101,0110,1010,1001,0001&angle=45&dotsPerRing=120#8">12</a>,
+			<a href="?dotPattern=10001,10010,01010,01100,00100,01100,01010,10010,10001,00001&angle=45&dotsPerRing=120#8">16</a>
+			legs
         </li>
         <li>Small snowflakes:
             <a href="?dotPattern=1,0&angle=49#B2">B2</a>
         </li>
         <li>Binche/Duchesse:
-            <a href="?dotPattern=1,10,1,01&angle=63#B3">B3</a>,
-            <a href="?dotPattern=011,101,211,101,011,121&angle=63#B4">B4-B6</a>,
-            <a href="?dotPattern=1,1210,1,1012&angle=63#B7">B7</a>
+            <a href="?dotPattern=1,10,1,01&angle=63&dotsPerRing=120#B3">B3</a>,
+            <a href="?dotPattern=011,101,211,101,011,121&angle=63&dotsPerRing=120#B4">B4-B6</a>,
+            <a href="?dotPattern=1,1210,1,1012&angle=63&dotsPerRing=120#B7">B7</a>
         </li>
         <li>Rotated hexagons:
-            with <a href="?dotPattern=1,10,1,01&angle=30">triangles</a>,
-            with <a href="?dotPattern=1,002,1,1,020,1&angle=30">circles</a>,
+            with <a href="?dotPattern=1,10,1,01&angle=30&dotsPerRing=120">triangles</a>,
+            with <a href="?dotPattern=1,002,1,1,020,1&angle=30&dotsPerRing=120">circles</a>,
             with
-            <a href="?angle=30&dotPattern=1,1210,1,01,1,1012,1,01">triangles and circles</a>
+            <a href="?angle=30&dotPattern=1,1210,1,01,1,1012,1,01&dotsPerRing=120">triangles and circles</a>
         </li>
       </ul>
     </div>
-    <div id="container"><p>Please allow the javascipt to download and execute, or try one of the links above.</p></div>
+    <div id="container"><p>Please allow the javascript to download and execute, or try one of the links above.</p></div>
   <div>
     <a name="help"/><h1>Hints and explanations</h1>
 
     <p>Source code: <a href="https://github.com/jo-pol/DiBL/tree/master/web/grids/src/main/scala/dibl">script</a>, 
-        <a href="https://github.com/jo-pol/DiBL/blob/gh-pages/polar-grids.html">page</a>,
+        <a href="https://github.com/jo-pol/DiBL/blob/gh-pages/polar-grids/">page</a>,
         see also <a href="https://lihaoyi.github.io/hands-on-scala-js/#GettingStarted">Hands-on Scala.js</a>
     </p>
 
