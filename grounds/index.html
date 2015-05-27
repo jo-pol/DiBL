@@ -506,7 +506,7 @@
 			<li>Find the latest <a href="https://github.com/jo-pol/DiBL/releases">tiles release</a></li>
 			<li>Download and unpack the zip (Windows) or tar.gz (roughly 10% smaller but Mac/Unix only).</li>
 			<li>Put the <code>.sh</code> or <code>.bat</code> in the unzipped folder.
-				For example: <code>my documents\dibl-cmd-0.1.2-bin\dibl-cmd-0.1.2</code></li>
+				For example: <code>my documents\dibl-tiles-0.1.3-bin\dibl-tiles-0.1.3</code></li>
 		</ul>
 		<p>
 			To analyse the flow of threads: trace the threads on paper, or use the 
@@ -516,11 +516,11 @@
 		<div id="commands">
 			<h2>Command files</h2>
 			<ul>
-				<li>sh (Mac / Unix, note that the multiline string requires quotes)<pre id="sh">java -jar dibl-cmd-${project.version}.jar -ext svg '3;2
+				<li>sh (Mac / Unix, note that the multi-line string requires quotes)<pre id="sh">java -jar dibl-tiles-0.1.3.jar -ext svg '3;2
 tc;tc
 tc;tc
 tc;tc' &lt; input/flanders.svg &gt; diagram.svg</pre></li>
-				<li>bat (Windows, note that the multiline string requires empty lines)<pre id="bat">java -jar dibl-cmd-${project.version}.jar -ext svg 3;2^
+				<li>bat (Windows, note that the multi-line string requires empty lines)<pre id="bat">java -jar dibl-tiles-0.1.3.jar -ext svg 3;2^
 
 tc;tc^
 

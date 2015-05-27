@@ -8,7 +8,7 @@
 // 
 // See the GNU General Public License for more details. A copy of the GNU General Public License is
 // available at <http://www.gnu.org/licenses/>.
-var command = 'java -jar dibl-cmd-${project.version}.jar -ext ';
+var command = 'java -jar dibl-tiles-0.1.3.jar -ext ';
 function init() {
   diagramTypeChanged(document.tab2form);
   showFlanders()
