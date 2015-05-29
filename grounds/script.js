@@ -85,7 +85,7 @@ function showFlanders() {
   + cfg.A2.value + ';'
   + cfg.B2.value + '^\r\n\r\n'
   + cfg.A3.value + ';'
-  + cfg.B3.value + ' ' + io
+  + cfg.B3.value + ' ' + io + '\r\nPAUSE'
   ;
 }
 function showPairTraversal() {
