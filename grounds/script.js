@@ -140,6 +140,6 @@ function showPairTraversal() {
   + r1 + '^\r\n\r\n'
   + r2 + '^\r\n\r\n'
   + r3 + '^\r\n\r\n'
-  + r4 + pattern + io
+  + r4 + pattern + io + '\r\nPAUSE'
   ;
 }
