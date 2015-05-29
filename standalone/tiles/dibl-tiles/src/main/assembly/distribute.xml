@@ -37,8 +37,6 @@
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>input/**/*</include>
-				<include>web/*.html</include>
-				<include>web/*.css</include>
 			</includes>
 		</fileSet>
 		<fileSet>
@@ -46,7 +44,6 @@
 			<outputDirectory>/</outputDirectory>
 			<filtered>true</filtered>
 			<includes>
-				<include>web/*.js</include>
 				<include>*.txt</include>
 			</includes>
 		</fileSet>
