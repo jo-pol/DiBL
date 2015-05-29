@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DiBL - Bobbin Lace ground variations</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" src="brick-3x3.js"></script>
+    <script type="text/javascript" src="brick-4x4.js"></script>
+    <script type="text/javascript" src="diagonal-3x3.js"></script>
+    <script type="text/javascript" src="diagonal-4x4.js"></script>
+    <script type="text/javascript" src="interleaved-2x2.js"></script>
+    <script type="text/javascript" src="interleaved-2x4.js"></script>
+    <script type="text/javascript" src="interleaved-4x2.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script>
+		document.getElementById("demo").innerHTML += " " + brick_3x3.length;
+		document.getElementById("demo").innerHTML += " " + brick_4x4.length;
+		document.getElementById("demo").innerHTML += " " + diagonal_3x3.length;
+		document.getElementById("demo").innerHTML += " " + diagonal_4x4.length;
+		document.getElementById("demo").innerHTML += " " + interleaved_2x2.length;
+		document.getElementById("demo").innerHTML += " " + interleaved_2x4.length;
+		document.getElementById("demo").innerHTML += " " + interleaved_4x2.length;
+	</script>
+</body>
+</html>
