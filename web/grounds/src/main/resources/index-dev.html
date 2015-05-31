@@ -10,17 +10,29 @@
     <script type="text/javascript" src="interleaved-2x2.js"></script>
     <script type="text/javascript" src="interleaved-2x4.js"></script>
     <script type="text/javascript" src="interleaved-4x2.js"></script>
+    <script type="text/javascript">
+		var matrices = {
+			"brick_3x3":brick_3x3, 
+			"brick_4x4":brick_4x4, 
+			"diagonal_3x3":diagonal_3x3, 
+			"diagonal_4x4":diagonal_4x4, 
+			"interleaved_2x2":interleaved_2x2, 
+			"interleaved_2x4":interleaved_2x4, 
+			"interleaved_4x2":interleaved_4x2 
+			"flanders":[[[-1,0,1,0,1,0,-1,0],[0,1,1,0,0,0,-1,-1]],[[-1,1,0,1,-1,0,0,0],[0,0,1,1,-1,-1,0]],[[1,0,0,0,1,-1,0,-1],[1,0,1,0,-1,0,-1,0]]]
+	
+		};
+	</script>
 </head>
 <body>
 	<div id="demo"></div>
+	<a href="?traversalType=brick&options=-x+-y&dimensions=4x4&pattern=1&diagramType=&ext=svg&A1=tc&B1=tc&C1=tc&D1=tc&A2=tc&B2=tc&C2=tc&D2=tc&A3=tc&B3=tc&C3=tc&D3=tc&A4=tc&B4=tc&C4=tc&D4=tc">rotated diagonal</a>
+	<a href="?traversalType=interleaved&options=-x+-y&dimensions=4x2&pattern=1&diagramType=-pair&ext=svg&A1=tc&B1=tc&C1=tc&D1=tc&A2=tc&B2=tc&C2=tc&D2=tc&A3=tc&B3=tc&C3=tc&D3=tc&A4=tc&B4=tc&C4=tc&D4=tc">rotated interleaved</a>
+	<a href="?template=flanders.svg&ext=svg&A1=tc (-1,0,1,0,1,0,-1,0)&A2=tc (-1,1,0,1,-1,0,0,0)&A3=tc (1,0,0,0,1,-1,0,-1)&B1=tc (0,1,1,0,0,0,-1,-1)&B2=tc (0,0,1,1,-1,-1,0)&B3=tc (1,0,1,0,-1,0,-1,0)">flanders</a>
 	<script>
 		document.getElementById("demo").innerHTML += " " + brick_3x3.length;
-		document.getElementById("demo").innerHTML += " " + brick_4x4.length;
-		document.getElementById("demo").innerHTML += " " + diagonal_3x3.length;
-		document.getElementById("demo").innerHTML += " " + diagonal_4x4.length;
-		document.getElementById("demo").innerHTML += " " + interleaved_2x2.length;
-		document.getElementById("demo").innerHTML += " " + interleaved_2x4.length;
-		document.getElementById("demo").innerHTML += " " + interleaved_4x2.length;
+		document.getElementById("demo").innerHTML += " " + matrices.brick_3x3.length;
+		dibl.PolarGrid().main(document,matrices);
 	</script>
 </body>
 </html>
