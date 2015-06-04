@@ -20,21 +20,12 @@ case class Settings(uriQuery: String) {
 
   /** parse uri query: "key1=value1&key2=value2&..." */
   val queryMap: Map[String, Array[String]] = {
-    val m: Array[(String, String)] = for {s <- uriQuery.split("&")}
+    val m: Array[(String, String)] = for {s <- uriQuery.replaceAll("[^?]+?", "").split("&")}
       yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
-    m.groupBy(_._1).map { case (k, v) => (k, v.map(_._2)) }
+    m.groupBy(_._1).map { case (k, v) => (k, v.map(_._2))}
   }
 
-  val template: String = getArg("template","flanders.svg")
-  
-  val stitches: Map[String, String] = {
-    val m: Array[(String, String)] = 
-	  for {s <-Array("A1,A2,A3,A4,B1,B2,B3,B4,C1,C2,C3,C4,D1,D2,D3,D4").split("&")}
-	    yield (s,getArg(s,"tc"))
-    m.groupBy(_._1).map { case (k, v) => (k, v.map(_._2)(0)) }
-  }	
-  
-  private def getArg(key: String, default: String) = {
+  def getArg(key: String, default: String) = {
 
     queryMap.get(key) match {
       case Some(a: Array[String]) => a(0)

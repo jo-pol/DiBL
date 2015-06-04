@@ -1,6 +1,5 @@
 target/
 /.pydevproject
-project/
 
 #### Mac
 .DS_Store

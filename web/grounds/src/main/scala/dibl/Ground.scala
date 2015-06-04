@@ -16,26 +16,53 @@ package dibl
 
 import java.net.URI
 
-import org.scalajs.dom
-import org.scalajs.dom.raw.Document
-import org.scalajs.dom.html
+import org.scalajs.dom.html._
+import org.scalajs.dom.html.Document
+import scala.collection.mutable
 import scalajs.js.annotation.JSExport
+import scala.xml.PrettyPrinter
 
 @JSExport
 object Ground {
+  type Tuple = String
+  type Matrix = Array[Array[String]]
+  type Matrices = Array[Matrix]
+  type MatrixMap = mutable.HashMap[String, Matrices]
+
   @JSExport
-  def main(document: Document, matricesOfTuples: Map[Array[Array[Array[Array[]]]]]): Unit = {
+  def main(document: Document, matricesOfTuples: MatrixMap): Unit = {
 
-    val s = Settings(new URI(document.documentURI).getQuery match {
-      case null => ""
-      case s => s
-    })
-	
-	val svg = Ajax.get(s.template)
-	
-	"//g[@inkscape:label='base tile']/use[@inkscape:label]"
-	val cells = ... foreach yield {node => (node.attribute('inkscape:label') -> node) } 
+    val s = Settings (document.documentURI)
+    val template: String = s.getArg("template","flanders.svg")
+    val pattern: Int = s.getArg("pattern","0").toInt
+    val matrixKey: String = template.replace("-thread","").replace("-pair","").replace(".svg","")
+    val matrix: Matrix = matricesOfTuples.get(matrixKey)(pattern)
 
-	"//g[@inkscape:label='pile']/g[@inkscape:label]"
-	val stitches = ... foreach yield {node => (node.attribute('inkscape:label') -> node.attribute('id')) } 
+    //Ajax.get(template)
+    val svg = new PrettyPrinter(160, 2).format(
+      <svg>
+        <g>
+          <g inkscape:label="base tile">
+            <use inkscape:label="A1" xlink:href="#u1"></use>
+            <use inkscape:label="A2" xlink:href="#u2"></use>
+          </g>
+          <g inkscape:label="pile">
+            <g id="u1" inkscape:label="tc (0,1,1,0,-1,-1)"></g>
+            <g id="u2" inkscape:label="tc (0,1,1,0,-1,-1)"></g>
+          </g>
+        </g>
+      </svg>
+    )
+
+    val xpathStitches = "//g[@inkscape:label='pile']/g[@inkscape:label]"
+    val stitches =...foreach yield
+    { node => (node.attribute("inkscape:label") -> node.attribute("id")) }
+
+    val xpathCells = "//g[@inkscape:label='base tile']/use[@inkscape:label]"
+    val cells =...foreach yield
+    { node => (node.attribute("inkscape:label") -> node) }
+    ...
+
+    document.write(svg)
+  }
 }
