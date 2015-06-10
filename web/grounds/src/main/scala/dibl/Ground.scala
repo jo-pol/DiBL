@@ -16,11 +16,10 @@ package dibl
 
 import java.net.URI
 
-import org.scalajs.dom.html._
+import org.scalajs.dom
 import org.scalajs.dom.html.Document
+import scala.scalajs.js.annotation.JSExport
 import scala.collection.mutable
-import scalajs.js.annotation.JSExport
-import scala.xml.PrettyPrinter
 
 @JSExport
 object Ground {
@@ -29,40 +28,32 @@ object Ground {
   type Matrices = Array[Matrix]
   type MatrixMap = mutable.HashMap[String, Matrices]
 
+  val xpathStitches = "//g[@inkscape:label='pile']/g[@inkscape:label]"
+  val xpathCells = "//g[@inkscape:label='base tile']/use[@inkscape:label]"
+
   @JSExport
-  def main(document: Document, matricesOfTuples: MatrixMap): Unit = {
-
+  def main(document: Document): Unit = {
+    document.getElementById("demo").innerHTML += " it's me "
     val s = Settings (document.documentURI)
-    val template: String = s.getArg("template","flanders.svg")
+    val template: String = s.getArg("template","diagonal-3x3-thread")
     val pattern: Int = s.getArg("pattern","0").toInt
-    val matrixKey: String = template.replace("-thread","").replace("-pair","").replace(".svg","")
-    val matrix: Matrix = matricesOfTuples.get(matrixKey)(pattern)
+    val matrixKey: String = template.replace("-thread","").replace("-pair","")
+    //val matrix: Matrix = matricesOfTuples.get(matrixKey).get(pattern)
 
-    //Ajax.get(template)
-    val svg = new PrettyPrinter(160, 2).format(
-      <svg>
-        <g>
-          <g inkscape:label="base tile">
-            <use inkscape:label="A1" xlink:href="#u1"></use>
-            <use inkscape:label="A2" xlink:href="#u2"></use>
-          </g>
-          <g inkscape:label="pile">
-            <g id="u1" inkscape:label="tc (0,1,1,0,-1,-1)"></g>
-            <g id="u2" inkscape:label="tc (0,1,1,0,-1,-1)"></g>
-          </g>
-        </g>
-      </svg>
-    )
-
-    val xpathStitches = "//g[@inkscape:label='pile']/g[@inkscape:label]"
-    val stitches =...foreach yield
-    { node => (node.attribute("inkscape:label") -> node.attribute("id")) }
-
-    val xpathCells = "//g[@inkscape:label='base tile']/use[@inkscape:label]"
-    val cells =...foreach yield
-    { node => (node.attribute("inkscape:label") -> node) }
-    ...
-
-    document.write(svg)
+    val xhr = new dom.XMLHttpRequest()
+    xhr.open("GET", s"http://jo-pol.github.io/DiBL/grounds/templates/${template}.svg")
+    xhr.onload = (e: dom.Event) => {
+        if (xhr.status == 200) {
+          document.write( replaceStitches(xhr.responseText, s) )
+        }
+    }
+    xhr.send()
+  }
+  def replaceStitches(svg:String, s: Settings): String = {
+      //val stitches =...foreach yield
+      //{ node => (node.attribute("inkscape:label") -> node.attribute("id")) }
+      //val cells =...foreach yield
+      //{ node => (node.attribute("inkscape:label") -> node) }
+      svg
   }
 }
