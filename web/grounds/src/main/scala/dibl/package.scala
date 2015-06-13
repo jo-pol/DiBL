@@ -18,7 +18,12 @@ import scala.collection.immutable.HashMap
 
 package object dibl {
 
-  /** See <a href="https://github.com/jo-pol/DiBL/wiki/Input-Files">matrices and tuples</a> */
+  /** Collections of matrices defining a two-in two-out directed graph.
+    *
+    * Each collection matches one or two SVG documents: templates for thread and/or pair diagrams.
+    * A tuple in a matrix specifies the orientation of the four 'legs' of a stitch, e.g. like: |<, >|, ><, _V_
+    * See <a href="https://github.com/jo-pol/DiBL/wiki/Input-Files">matrices and tuples</a>
+    * */
   val matrixMap = {
     val R = Array // row
     val M = Array // matrix

@@ -27,6 +27,7 @@ case class Settings(uri: String) {
     m.groupBy(_._1).map { case (k, v) => (k, v.map(_._2).head)}
   }
 
+  /** The base name (no path, no extension) of an SVG document */
   val template: String = Try(queryMap("pattern")).getOrElse( "diagonal-3x3-thread")
 
   // TODO flip matrices: https://github.com/jo-pol/DiBL/tree/master/standalone/tiles/dibl-tiles/src/main/java/dibl/math
@@ -35,7 +36,7 @@ case class Settings(uri: String) {
   /** A map of use element labels ("A1"-"C3" for a 3x3 matrix) in the group labeled "base tile"
     * to group element labels (e.g. "tc (0,1,1,0,-1,-1)") in the group labeled "pile".
     *
-    * The permutations of "tc" imply twist/cross actions made with the four threads.
+    * The permutations of "tc" imply the twist/cross actions made with four threads.
     * The tuple specifies the orientation of the four 'legs' of a stitch, e.g. like: |<, >|, ><, _V_
     * See also <a href="https://github.com/jo-pol/DiBL/wiki/Input-Files">matrices and tuples</a>.
     * */
