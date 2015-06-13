@@ -19,7 +19,6 @@ package dibl
 import org.scalajs.dom
 import org.scalajs.dom.html.Document
 
-import scala.collection.immutable.HashMap
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -27,20 +26,19 @@ object Ground {
 
   @JSExport
   def main(document: Document): Unit = {
+
     val s = Settings(document.documentURI)
     document.getElementById("message").innerHTML += s" $s loading diagram... "
+    val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
 
-    // TODO perhaps replace with https://lihaoyi.github.io/hands-on-scala-js/#dom.extensions
-    val xhr = new dom.XMLHttpRequest()
-    xhr.open("GET", s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg")
-    xhr.onload = (e: dom.Event) => {
-      if (xhr.status == 200) {
-        document.getElementById("message").innerHTML += " replacing stitches... "
-        //document.write(replaceStitches(xhr.responseText, s.stitches))
-        // TODO stop the busy icon of the browser
-      }
+    import dom.ext._
+    import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
+
+    Ajax.get(templateUrl).onSuccess{ case xhr =>
+      document.getElementById("message").innerHTML += " replacing stitches... "
+      document.write(replaceStitches(xhr.responseText, s.stitches))
+      // TODO stop the busy icon of the browser
     }
-    xhr.send()
   }
 
   /** Replaces stitches in an SVG template.
@@ -59,7 +57,7 @@ object Ground {
     *    </g>
     * }}}
     * For each cell (A1-..) in the base tile, look up the new label in the pile.
-    * This results in an ID. This ID becomes the new values of the href attribute in the base tile. 
+    * This results in an ID. This ID becomes the new value of the href attribute in the base tile.
     */
   def replaceStitches(svg:String, newLabels: Map[String,String]): String = {
 
