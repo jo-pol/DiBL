@@ -18,8 +18,10 @@ package dibl
 
 import org.scalajs.dom
 import org.scalajs.dom.html.Document
+import org.scalajs.dom.raw._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits
 import scala.scalajs.js.annotation.JSExport
+import scala.util.Try
 
 @JSExport
 object Ground {
@@ -28,15 +30,18 @@ object Ground {
   def main(document: Document): Unit = {
 
     val s = Settings(document.documentURI)
-    document.getElementById("message").innerHTML += s" $s loading diagram... "
-    val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
+    val msg: Element = document.getElementById("message")
+    msg.innerHTML += s" $s loading diagram... "
 
     import dom.ext._
     import Implicits.runNow
 
+    val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
     Ajax.get(templateUrl).onSuccess{ case xhr =>
-      document.getElementById("message").innerHTML += " replacing stitches... "
-      document.write(replaceStitches(xhr.responseText, s.stitches))
+      msg.innerHTML += " replacing stitches... "
+      document.write(xhr.responseText)
+      document.write(s"${document.documentURI} === $s === ")
+      replaceStitches(document, s.stitches)
       // TODO stop the busy icon of the browser
     }
   }
@@ -59,21 +64,27 @@ object Ground {
     * For each cell (A1-..) in the base tile, look up the new label in the pile.
     * This results in an ID. This ID becomes the new value of the href attribute in the base tile.
     */
-  def replaceStitches(svg:String, newLabels: Map[String,String]): String = {
+  def replaceStitches(doc:Document, newLabels: Map[String,String]) = {
 
-    // TODO fix linking errors or use something else than:
-    // libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
-    // val x = <g inkscape:label="base tile"></g>
-    // scala.xml.XML.loadString(svg)
+    //doc.write (s"$newLabels ==== ")
 
-    // TODO elaborate pseudo code
-    // val stitches Map[String,String] =
-    // (for {node <- ..."//g[@inkscape:label='pile']/g[@inkscape:label]"...}
-    //   yield { (node.attribute("inkscape:label") -> node.attribute("id")) }
-    // ).toArray.toMap
-    // for {node <- ..."//g[@inkscape:label='base tile']/use[@inkscape:label]"...}
-    //   newLabel = newLabels.get(node.attribute("inkscape:label"))
-    //   node.attribute("xlink:href") = "#" + stitches.get(newLabel)
-    svg
+    val stitches: Map[String, String] = (for {
+      node <- doc.getNodesByTag("g")
+      if node.parentNode.inkscapeLabelOrElse("") == "pile"
+    } yield {
+        (node.inkscapeLabelOrElse("LLL"), node.idOrElse("IIII"))
+      }).toMap
+    //doc.write (s"$stitches ==== ")
+    for {
+      node <- doc.getNodesByTag("use")
+      if node.parentNode.inkscapeLabelOrElse("") == "base tile"
+    } {
+      val key = node.inkscapeLabelOrElse("KKK")
+      val newLabel = newLabels.getOrElse(key, "LLL")
+      val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}" // FIXME
+      val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
+      //doc.write (s"[$key $newLabel ${href.value} $newHref] ")
+      href.value = newHref
+    }
   }
 }
