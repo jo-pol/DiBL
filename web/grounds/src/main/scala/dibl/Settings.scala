@@ -27,7 +27,7 @@ case class Settings(uri: String) {
   }
 
   /** The base name (no path, no extension) of an SVG document */
-  val template: String = Try(queryMap("pattern")).getOrElse( "diagonal-3x3-thread")
+  val template: String = Try(queryMap("template")).getOrElse( "diagonal-3x3-thread")
 
   // TODO flip matrices: https://github.com/jo-pol/DiBL/tree/master/standalone/tiles/dibl-tiles/src/main/java/dibl/math
   // see also http://stackoverflow.com/questions/10456918/scala-matrix-library-to-calculate-large-fibonacci-numbers
@@ -43,10 +43,12 @@ case class Settings(uri: String) {
 
     val tupleMatrix: Array[Array[String]] = {
       val matrixStyle: String = template.replace("-thread", "").replace("-pair", "")
-      val pattern: Int = Try(queryMap("pattern").head.toInt).getOrElse(0)
       val fallBack = Array(Array("", ""), Array("", ""))
-      Try(
-        dibl.matrixMap.get(matrixStyle).get(pattern)
+      Try({
+        val matrices = dibl.matrixMap.get(matrixStyle)
+        val pattern: Int = Try(queryMap("pattern").toInt).getOrElse(0)
+        matrices.get(math.max(0,math.min(pattern,matrices.size)))
+      }
       ).getOrElse(fallBack)
     }
     /** extracts N,M from "xxx-NxM-yyy", 2<=N<=4, 2<=M<=4 */
