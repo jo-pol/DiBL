@@ -21,7 +21,7 @@ import scala.util.Try
 case class Settings(uri: String) {
 
   private val queryMap: Map[String, String] = {
-    (for {s <- uri.replaceAll("[^?]+?", "").split("&")}
+    (for {s <- uri.replaceAll("[^?]+[?]", "").split("&")}
       yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
     ).toMap
   }
@@ -60,10 +60,10 @@ case class Settings(uri: String) {
       c <- 0 until dimensions(1)
     } yield {
       val key = s"${"ABCDE".substring(c, c+1)}${r+1}"
-      val stitch = Try(queryMap(s"$c$r")).getOrElse("tc")
+      val stitch = queryMap.getOrElse(key,"tc")
       val tuple = tupleMatrix(r)(c)
       (key, s"$stitch ($tuple)")
     }).toArray.toMap
   }
-  override def toString: String = s"TEMPLATE: $template STITCHES: ${stitches.keySet.toArray.deep.toString()}  $stitches"
+  override def toString: String = s"$queryMap TEMPLATE: $template STITCHES: $stitches"
 }

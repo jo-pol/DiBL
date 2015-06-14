@@ -40,7 +40,7 @@ object Ground {
     Ajax.get(templateUrl).onSuccess{ case xhr =>
       msg.innerHTML += " replacing stitches... "
       document.write(xhr.responseText)
-      document.write(s"${document.documentURI} === $s === ")
+      //document.write(s"${document.documentURI} $s ")
       replaceStitches(document, s.stitches)
       // TODO stop the busy icon of the browser
     }
@@ -81,7 +81,7 @@ object Ground {
     } {
       val key = node.inkscapeLabelOrElse("KKK")
       val newLabel = newLabels.getOrElse(key, "LLL")
-      val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}" // FIXME
+      val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
       val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
       //doc.write (s"[$key $newLabel ${href.value} $newHref] ")
       href.value = newHref
