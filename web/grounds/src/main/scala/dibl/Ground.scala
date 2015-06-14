@@ -18,7 +18,7 @@ package dibl
 
 import org.scalajs.dom
 import org.scalajs.dom.html.Document
-
+import scala.scalajs.concurrent.JSExecutionContext.Implicits
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -32,7 +32,7 @@ object Ground {
     val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
 
     import dom.ext._
-    import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
+    import Implicits.runNow
 
     Ajax.get(templateUrl).onSuccess{ case xhr =>
       document.getElementById("message").innerHTML += " replacing stitches... "
@@ -61,17 +61,17 @@ object Ground {
     */
   def replaceStitches(svg:String, newLabels: Map[String,String]): String = {
 
-    val xpathStitches = "//g[@inkscape:label='pile']/g[@inkscape:label]"
-    val xpathCells = "//g[@inkscape:label='base tile']/use[@inkscape:label]"
-
     // TODO fix linking errors or use something else than:
     // libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
-
+    // val x = <g inkscape:label="base tile"></g>
     // scala.xml.XML.loadString(svg)
 
-    // val stitches =...foreach yield
-    // { node => (node.attribute("inkscape:label") -> node.attribute("id")) }
-    // for each cell:
+    // TODO elaborate pseudo code
+    // val stitches Map[String,String] =
+    // (for {node <- ..."//g[@inkscape:label='pile']/g[@inkscape:label]"...}
+    //   yield { (node.attribute("inkscape:label") -> node.attribute("id")) }
+    // ).toArray.toMap
+    // for {node <- ..."//g[@inkscape:label='base tile']/use[@inkscape:label]"...}
     //   newLabel = newLabels.get(node.attribute("inkscape:label"))
     //   node.attribute("xlink:href") = "#" + stitches.get(newLabel)
     svg

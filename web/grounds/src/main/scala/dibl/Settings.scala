@@ -15,16 +15,15 @@
 */
 package dibl
 
-import scala.collection.immutable.HashMap
 import scala.util.Try
 
 /** interprets uri query: "key1=value1&key2=value2&..." */
 case class Settings(uri: String) {
 
   private val queryMap: Map[String, String] = {
-    val m: Array[(String, String)] = for {s <- uri.replaceAll("[^?]+?", "").split("&")}
+    (for {s <- uri.replaceAll("[^?]+?", "").split("&")}
       yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
-    m.groupBy(_._1).map { case (k, v) => (k, v.map(_._2).head)}
+    ).toMap
   }
 
   /** The base name (no path, no extension) of an SVG document */
@@ -45,11 +44,15 @@ case class Settings(uri: String) {
     val tupleMatrix: Array[Array[String]] = {
       val matrixStyle: String = template.replace("-thread", "").replace("-pair", "")
       val pattern: Int = Try(queryMap("pattern").head.toInt).getOrElse(0)
-      Try(dibl.matrixMap.get(matrixStyle).get(pattern)).getOrElse(Array(Array("", ""), Array("", "")))
+      val fallBack = Array(Array("", ""), Array("", ""))
+      Try(
+        dibl.matrixMap.get(matrixStyle).get(pattern)
+      ).getOrElse(fallBack)
     }
     /** extracts N,M from "xxx-NxM-yyy", 2<=N<=4, 2<=M<=4 */
     val dimensions: Array[Int] = Try(
-      for {s <- template.split("-")(1).split("x")} yield math.min(4,math.max(2,s.toInt))
+      for {s <- template.split("-")(1).split("x")}
+        yield math.min(4,math.max(2,s.toInt))
     ).getOrElse(Array(2,2))
 
     (for {
@@ -57,11 +60,10 @@ case class Settings(uri: String) {
       c <- 0 until dimensions(1)
     } yield {
       val key = s"${"ABCDE".substring(c, c+1)}${r+1}"
-      val stitch = Try(queryMap(s"$c$r")).getOrElse( "tc")
+      val stitch = Try(queryMap(s"$c$r")).getOrElse("tc")
       val tuple = tupleMatrix(r)(c)
       (key, s"$stitch ($tuple)")
-    }).toArray.groupBy(_._1).map { case (k, v) => (k,v.map(_._2).head)}
-    // TODO extract groupBy...
+    }).toArray.toMap
   }
   override def toString: String = s"TEMPLATE: $template STITCHES: ${stitches.keySet.toArray.deep.toString()}  $stitches"
 }
