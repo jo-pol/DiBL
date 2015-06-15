@@ -43,6 +43,7 @@ object Ground {
       //document.write(s"${document.documentURI} $s ")
       replaceStitches(document, s.stitches)
       // TODO stop the busy icon of the browser
+      // return / xhr.abort don't fix it
     }
   }
 
