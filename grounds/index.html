@@ -18,39 +18,22 @@
 				<a href="#tab2">2. <img src="diagonal.png" alt="Diagonal"></a>
 			</h2>
 			<div>
-				<form name="diagonalConfig">
-					<input name="traversalType" value="brick" type="hidden">
+				<form name="diagonalConfig" action="index-dev.html" target="diagram_frame">
 					<table>
 						<tbody>
 							<tr>
 								<td>pattern&nbsp;</td>
-								<td colspan="8"><select size="1" name="options" onchange="showPairTraversal()">
-										<option selected="selected" value="">no flip/rotation</option>
-										<option value="-x">flip ⥢</option>
-										<option value="-y">flip ⥣</option>
-										<option value="-x -y">rotate</option>
-								</select> dimensions: <select size="1" name="dimensions" onchange="setRangeMax()">
-										<option value="3x3">3x3 (max nr: 7)</option>
-										<option value="4x4" selected="selected">4x4 (max nr: 740)</option>
-								</select> nr: <input name="pattern" min="1" max="7" value="1" onchange="showPairTraversal()" onkeyup="showPairTraversal()" type="number">
+								<td colspan="8">
+                                    <select size="1" name="template" onchange="diagramTypeChanged();">
+                                            <option selected="selected" value="diagonal-3x3-thread">3x3 thread, tc/tcptc only (max nr: 7)</option>
+                                            <option selected="selected" value="diagonal-4x4-thread">4x4 thread, tc/tcptc only (max nr: 208)</option>
+                                            <option selected="selected" value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
+                                            <option selected="selected" value="brick-3x3-thread">brick 3x3 thread, tc/tcptc only  (max nr: 7)</option>
+                                            <option selected="selected" value="brick-4x4-pair">brick 4x4 pair(max nr: 124)</option>
+                                            <option selected="selected" value="brick-4x4-thread">brick 4x4 thread, tc/tcptc only (max nr: 221)</option>
+                                    </select>
+                                    </select> nr: <input name="pattern" min="0" max="221" value="0" onchange="showPairTraversal()" onkeyup="showPairTraversal()" type="number">
 								</td>
-							</tr>
-							<tr>
-								<td>diagram&nbsp;type&nbsp;</td>
-								<td colspan="8"><select size="1" name="diagramType" onchange="diagramTypeChanged();">
-										<option selected="selected" value="">thread (only: tc / tcptc)</option>
-										<option value="-pair">pair (some stitches still
-											sloppy)</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td>image&nbsp;type&nbsp;</td>
-								<td colspan="8"><select size="1" name="ext" onchange="showPairTraversal()">
-										<option selected="selected" value="svg">svg</option>
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="tiff">tiff</option>
-								</select></td>
 							</tr>
 							<tr>
 								<td rowspan="4">stitches&nbsp;</td>
@@ -205,9 +188,10 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 							</tr>
-							<tr><td><a href="https://cdn.rawgit.com/jo-pol/DiBL/master/standalone/tiles/dibl-tiles/src/main/assembly/input/PairTraversal/brick/4x4.svg">sample</a></td></tr>
 						</tbody>
 					</table>
+                    <input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
+                    <input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
@@ -216,40 +200,19 @@
 				<a href="#tab3">3. <img src="interleaved.png" alt="Interleaved"></a>
 			</h2>
 			<div>
-				<form name="interleavedConfig">
-					<input name="traversalType" value="interleaved" type="hidden">
+				<form name="interleavedConfig" action="index-dev.html" target="diagram_frame">
 					<table>
 						<tbody>
 							<tr>
-								<td>pattern&nbsp;</td>
-								<td colspan="4"><select size="1" name="options" onchange="showPairTraversal()">
-										<option selected="selected" value="">no flip/rotation</option>
-										<option value="-x">flip ⥢</option>
-										<option value="-y">flip ⥣</option>
-										<option value="-x -y">rotate</option>
-								</select> dimensions: <select size="1" name="dimensions" onchange="setRangeMax();">
-										<option value="2x2">2x2 (max nr: 7)</option>
-										<option value="2x4">2x4 (max nr: 47)</option>
-										<option value="4x2" selected="selected">4x2 (max nr: 93)</option>
-								</select> nr: <input name="pattern" min="1" max="7" value="1" onchange="showPairTraversal()" onkeyup="showPairTraversal()" type="number">
-								</td>
-							</tr>
-							<tr>
 								<td>diagram&nbsp;type&nbsp;</td>
-								<td colspan="4"><select size="1" name="diagramType" onchange="showPairTraversal()">
-										<!--option value="">thread</option-->
-										<option selected="selected" value="-pair">pair (some stitches
-												still sloppy)</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td>image&nbsp;type&nbsp;</td>
-								<td colspan="4"><select size="1" name="ext" onchange="showPairTraversal()">
-										<option selected="selected" value="svg">svg</option>
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="tiff">tiff</option>
-								</select></td>
+								<td colspan="4">
+                                    <select size="1" name="template" onchange="showPairTraversal()">
+                                            <option selected="selected" value="interleaved-2x2-pair">2x2 pair (max nr: 6)</option>
+                                            <option selected="selected" value="interleaved-2x4-pair">2x4 pair (max nr: 46)</option>
+                                            <option selected="selected" value="interleaved-4x2-pair">4x2 pair (max nr: 92)</option>
+                                    </select>
+                                    </select> nr: <input name="pattern" min="0" max="92" value="1" onchange="showPairTraversal()" onkeyup="showPairTraversal()" type="number">
+                                </td>
 							</tr>
 							<tr>
 								<td rowspan="4">stitches&nbsp;</td>
@@ -390,6 +353,8 @@
 							</tr>
 						</tbody>
 					</table>
+                    <input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
+                    <input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
@@ -412,13 +377,12 @@
 			<div>
 				<article>
 					<p>
-						Powered by: <a href="https://github.com/jo-pol/DiBL/wiki/">DiBL</a>
+						<a href="https://github.com/jo-pol/DiBL/tree/gh-pages/grounds">Source files</a>,
+						<a href="https://github.com/jo-pol/DiBL/tree/master/web/grounds/src/main/scala/dibl">scripts</a>,
+						tab layout from: <a href="http://dabblet.com/gist/1892497">dabblet.com</a>
 					</p>
 					<p>
-						Tabs from: <a href="http://dabblet.com/gist/1892497">dabblet.com</a>
-					</p>
-					<p>
-						Tab 2+3 based on: <br> <a href="http://web.uvic.ca/%7Evmi/">Veronika
+						Choice of diagram nr on tab 2+3 based on: <br> <a href="http://web.uvic.ca/%7Evmi/">Veronika
 							Irvine</a>. Broadening the Palette for Bobbin Lace: A Combinatorial
 						Approach. <br> <em><a href="http://www.bridgesmathart.org/">Bridges 2012</a>:
 							Mathematics, Music, Art, Architecture, Culture, pages 191-198.
@@ -432,24 +396,11 @@
 				<a href="#tab1">1. <img src="flanders.png" alt="Flanders"></a>
 			</h2>
 			<div>
-				<form name="flandersConfig">
+				<form name="flandersConfig" action="index-dev.html" target="diagram_frame">
+                    <input name="pattern" value="0" type="hidden">
+                    <input name="template" value="flanders-2x3-thread" type="hidden">
 					<table>
 						<tbody>
-							<tr>
-								<td>diagram&nbsp;type&nbsp;</td>
-								<td colspan="8"><select size="1" name="diagramType">
-										<option selected="selected" value="">thread</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td>image&nbsp;type&nbsp;</td>
-								<td colspan="4"><select size="1" name="ext" onchange="showFlanders()">
-										<option selected="selected" value="svg">svg</option>
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="tiff">tiff</option>
-								</select></td>
-							</tr>
 							<tr>
 								<td rowspan="4">stitches&nbsp;</td>
 								<td class="narrow"><select size="1" name="A1" onchange="showFlanders()">
@@ -495,51 +446,14 @@
 										<option value="tctc">tctc</option>
 								</select></td>
 							</tr>
-							<tr><td><a href="https://cdn.rawgit.com/jo-pol/DiBL/master/standalone/tiles/dibl-tiles/src/main/assembly/input/flanders.svg">sample</a></td></tr>
 						</tbody>
 					</table>
+                    <input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
+                    <input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
 	</article>
-	<article>
-		<p>
-				A submit button to generate the configured diagram is not yet implemented.
-				For now you have to:
-		</p>
-		<ul>
-			<li>Download and unpack 
-				<a href="https://github.com/jo-pol/DiBL/releases/download/tiles-0.1.3/dibl-tiles-0.1.3b-bin.zip">bin.zip</a>
-				(Windows) or 
-				<a href="https://github.com/jo-pol/DiBL/releases/download/tiles-0.1.3/dibl-tiles-0.1.3-bin.tar.gz">bin.tar.gz</a>
-				(Mac/Unix).
-			</li>
-			<li>Put the generated command in a <code>.sh</code> or <code>.bat</code> file in the unzipped folder.
-				For example in: <code>my documents\dibl-tiles-0.1.3-bin\dibl-tiles-0.1.3</code></li>
-			<li>Execute the saved command file and open the generated <code>diagram.svg</code> in your browser or whatever.</code></li>
-		</ul>
-		<p>
-			To analyse the flow of threads: trace the threads on paper, or use the 
-			<a href="https://github.com/jo-pol/DiBL/wiki/Thread-style">thread style</a> plug-in for InkScape.
-
-		</p>
-		<div id="commands">
-			<h2>Command files</h2>
-			<ul>
-				<li>sh (Mac / Unix, note that the multi-line string requires quotes)<pre id="sh">java -jar dibl-tiles-0.1.3.jar -ext svg '3;2
-tc;tc
-tc;tc
-tc;tc' &lt; input/flanders.svg &gt; diagram.svg</pre></li>
-				<li>bat (Windows, note that the multi-line string requires empty lines)<pre id="bat">java -jar dibl-tiles-0.1.3.jar -ext svg 3;2^
-
-tc;tc^
-
-tc;tc^
-
-tc;tc &lt; input/flanders.svg &gt; diagram.svg
-PAUSE</pre></li>
-			</ul>
-		</div>
-	</article>
+    <iframe name="diagram_frame" src="index-dev.html"/>
 </body>
 </html>

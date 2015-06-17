@@ -24,7 +24,7 @@ function diagramTypeChanged() {
 }
 function setRangeMax() {
   var cfg = getForm();
-  var dim = cfg.dimensions;
+  var dim = cfg.template;
   var iHTML = dim.options[dim.selectedIndex].innerHTML;
   cfg.pattern.value = 1;
   cfg.pattern.max = parseInt(iHTML.split(':') [1]);

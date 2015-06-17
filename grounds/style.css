@@ -45,15 +45,16 @@ td.narrow {
 }
 
 iframe {
-	width: 700px;
-	height: 400px;
+    margin-left: 1em;
+	width: 820px;
+	height: 500px;
 }
 
 img {
 	border-style:inset;
 }
 
-input {
+td input {
 	width: 3em;
 }
 
