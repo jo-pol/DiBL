@@ -39,6 +39,7 @@ object Ground {
     val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
     Ajax.get(templateUrl).onSuccess{ case xhr =>
       msg.innerHTML += " replacing stitches... "
+      // TODO try: window.openWindow(relativeUrl,"bobbin-lace-diagram")
       document.write(xhr.responseText)
       //document.write(s"${document.documentURI} $s ")
       replaceStitches(document, s.stitches)
