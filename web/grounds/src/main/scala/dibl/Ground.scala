@@ -41,7 +41,7 @@ object Ground {
       msg.innerHTML += " replacing stitches... "
       // TODO try: window.openWindow(relativeUrl,"bobbin-lace-diagram")
       document.write(xhr.responseText)
-      //document.write(s"${document.documentURI} $s ")
+      document.write(s"${document.documentURI} $s ")
       replaceStitches(document, s.stitches)
       // TODO stop the busy icon of the browser
       // return / xhr.abort don't fix it
