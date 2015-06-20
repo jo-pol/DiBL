@@ -29,10 +29,10 @@
                                             <option selected="selected" value="diagonal-4x4-thread">4x4 thread, tc/tcptc only (max nr: 208)</option>
                                             <option selected="selected" value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
                                             <option selected="selected" value="brick-3x3-thread">brick 3x3 thread, tc/tcptc only  (max nr: 7)</option>
-                                            <option selected="selected" value="brick-4x4-pair">brick 4x4 pair(max nr: 124)</option>
+                                            <option selected="selected" value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
                                             <option selected="selected" value="brick-4x4-thread">brick 4x4 thread, tc/tcptc only (max nr: 221)</option>
                                     </select>
-                                    </select> nr: <input name="pattern" min="0" max="221" value="0"" onkeyup="showPairTraversal()" type="number">
+                                    <br>nr: <input name="pattern" min="0" max="221" value="0"" onkeyup="showPairTraversal()" type="number"/>
 								</td>
 							</tr>
 							<tr>
@@ -204,14 +204,14 @@
 					<table>
 						<tbody>
 							<tr>
-								<td>diagram&nbsp;type&nbsp;</td>
+								<td>pattern&nbsp;</td>
 								<td colspan="4">
                                     <select size="1" name="template" onchange="templateChanged(this);">
                                             <option selected="selected" value="interleaved-2x2-pair">2x2 pair (max nr: 6)</option>
                                             <option selected="selected" value="interleaved-2x4-pair">2x4 pair (max nr: 46)</option>
                                             <option selected="selected" value="interleaved-4x2-pair">4x2 pair (max nr: 92)</option>
                                     </select>
-                                    </select> nr: <input name="pattern" min="0" max="92" value="1"" onkeyup="showPairTraversal()" type="number">
+                                    <br>nr: <input name="pattern" min="0" max="92" value="1"" onkeyup="showPairTraversal()" type="number"/>
                                 </td>
 							</tr>
 							<tr>
@@ -454,6 +454,6 @@
 			</div>
 		</section>
 	</article>
-    <iframe name="diagram_frame" src="index-dev.html?template=brick-4x4-thread&pattern=0&A1=tc&B1=tc&C1=tc&D1=tc&A2=tc&B2=tc&C2=tc&D2=tc&A3=tc&B3=tc&C3=tc&D3=tc&A4=tc&B4=tc&C4=tc&D4=tc"/>
+    <iframe name="diagram_frame" src="execuse.html"/>
 </body>
 </html>
