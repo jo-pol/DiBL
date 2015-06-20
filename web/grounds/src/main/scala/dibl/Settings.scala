@@ -42,29 +42,25 @@ case class Settings(uri: String) {
     * */
   val stitches: Map[String, String] = {
 
-    val tupleMatrix: Array[Array[String]] = {
-      val matrixStyle: String = template.replace("-thread", "").replace("-pair", "")
-      val fallBack = Array(Array("", ""), Array("", ""))
-      Try({
-        val matrices: Option[Array[Array[Array[String]]]] = Matrices.matrixMap.get(matrixStyle)
-        val pattern: Int = Try(queryMap("pattern").toInt).getOrElse(0)
-        matrices.get(pattern)
-      }
-      ).getOrElse(fallBack)
+    val tupleMatrix: M = {
+      val fallBack = Array(M(R("","","",""),R("","","",""),R("","","",""),R("","","","")))
+      val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
+      val matrices: Array[M] = Matrices.matrixMap.getOrElse(matrixKey, fallBack)
+      val pattern: Int = Try(queryMap("pattern").toInt).getOrElse(0)
+      Try(matrices(pattern)).getOrElse(matrices(0))
     }
-    /** extracts N,M from "xxx-NxM-yyy", 2<=N<=4, 2<=M<=4 */
-    val dimensions: Array[Int] = Try(
-      for {s <- template.split("-")(1).split("x")}
-        yield math.min(4,math.max(2,s.toInt))
-    ).getOrElse(Array(2,2))
+    /** extracts P,Q from "aaa-PxQ-bbb", 2<=P<=4, 2<=Q<=4 */
+    val dimensions: Array[Int] = 
+      for {s <- Try(template.split("-")(1)).getOrElse("2x2").split("x")}
+        yield Try(s.toInt).getOrElse(2)
 
     (for {
-      r <- 0 until dimensions(0)
-      c <- 0 until dimensions(1)
+      r <- 0 until math.min(4,Try(dimensions(0)).getOrElse(2))
+      c <- 0 until math.min(4,Try(dimensions(1)).getOrElse(2))
     } yield {
-      val key = s"${"ABCDE".substring(c, c+1)}${r+1}"
-      val stitch = queryMap.getOrElse(key,"tc")
-      val tuple = tupleMatrix(r)(c)
+      val key: String = s"${"ABCDE".substring(c, c+1)}${r+1}"
+      val stitch: String = queryMap.getOrElse(key,"tc")
+      val tuple: String = Try(tupleMatrix(r)(c)).getOrElse("")
       (key, s"$stitch ($tuple)")
     }).toArray.toMap
   }

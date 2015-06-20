@@ -20,7 +20,13 @@ import scala.util.Try
 
 package object dibl {
 
-  implicit class DocumentExtension(val left: org.scalajs.dom.raw.Document) {
+    // as in http://stackoverflow.com/questions/15783837/beginner-scala-type-alias-in-scala-2-10
+    type R = Array[String]
+    def R(xs: String*) = Array(xs: _*)
+    type M = Array[R]
+    def M(xs: R*) = Array(xs: _*) 
+    
+    implicit class DocumentExtension(val left: org.scalajs.dom.raw.Document) {
 
     def getNodesByTag(tag: String): Array[org.scalajs.dom.raw.Node] = {
       val list = left.getElementsByTagName(tag)
