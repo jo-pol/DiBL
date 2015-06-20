@@ -29,19 +29,19 @@ object Ground {
   @JSExport
   def main(document: Document): Unit = {
 
-    val s = Settings(document.documentURI)
     val msg: Element = document.getElementById("message")
-    msg.innerHTML += s" $s loading diagram... "
+    msg.innerHTML += s"<br>Analysing arguments: ${document.documentURI}"
+    val s = Settings(document.documentURI)
+    val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
+    msg.innerHTML += s"<br><br>$s<br><br>loading $templateUrl "
 
     import dom.ext._
     import Implicits.runNow
 
-    val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
     Ajax.get(templateUrl).onSuccess{ case xhr =>
       msg.innerHTML += " replacing stitches... "
       // TODO try: window.openWindow(relativeUrl,"bobbin-lace-diagram")
       document.write(xhr.responseText)
-      document.write(s"${document.documentURI} $s ")
       replaceStitches(document, s.stitches)
       // TODO stop the busy icon of the browser
       // return / xhr.abort don't fix it
@@ -68,7 +68,7 @@ object Ground {
     */
   def replaceStitches(doc:Document, newLabels: Map[String,String]) = {
 
-    //doc.write (s"$newLabels ==== ")
+    //doc.write (s"<br><br>${doc.documentURI}<br><br>$newLabels")
 
     val stitches: Map[String, String] = (for {
       node <- doc.getNodesByTag("g")
@@ -76,7 +76,7 @@ object Ground {
     } yield {
         (node.inkscapeLabelOrElse("LLL"), node.idOrElse("IIII"))
       }).toMap
-    //doc.write (s"$stitches ==== ")
+    //doc.write (s"<br><br>$stitches<br> ")
     for {
       node <- doc.getNodesByTag("use")
       if node.parentNode.inkscapeLabelOrElse("") == "base tile"
@@ -85,7 +85,7 @@ object Ground {
       val newLabel = newLabels.getOrElse(key, "LLL")
       val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
       val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
-      //doc.write (s"[$key $newLabel ${href.value} $newHref] ")
+      //doc.write (s"<br>[$key $newLabel ${href.value} $newHref] ")
       href.value = newHref
     }
   }
