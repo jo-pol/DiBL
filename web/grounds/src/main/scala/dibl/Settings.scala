@@ -43,11 +43,13 @@ case class Settings(uri: String) {
   val stitches: Map[String, String] = {
 
     val tupleMatrix: M = {
-      val fallBack = Array(M(R("","","",""),R("","","",""),R("","","",""),R("","","","")))
+      val fallBack = M(R("","","",""),R("","","",""),R("","","",""),R("","","",""))
       val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
-      val matrices: Array[M] = Matrices.matrixMap.getOrElse(matrixKey, fallBack)
       val pattern: Int = Try(queryMap("pattern").toInt).getOrElse(0)
-      matrices(math.min(matrices.length-1,math.max(0,pattern)))
+      val matrices: Array[M] = Matrices.getOrElse(matrixKey, Array(fallBack))
+      if (pattern <0 || pattern > matrices.length)
+        fallBack
+      else matrices(pattern)
     }
     /** extract P,Q from "aaa-PxQ-bbb", 2<=P<=4, 2<=Q<=4 */
     val dimensions: Array[Int] = 

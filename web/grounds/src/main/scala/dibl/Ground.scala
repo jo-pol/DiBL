@@ -16,35 +16,32 @@ package dibl
  along with this program. If not, see http://www.gnu.org/licenses/.package dibl
 */
 
-import org.scalajs.dom
 import org.scalajs.dom.html.Document
 import org.scalajs.dom.raw._
-import scala.scalajs.concurrent.JSExecutionContext.Implicits
 import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
 
 @JSExport
 object Ground {
 
+  val debug = false
+
   @JSExport
   def main(document: Document): Unit = {
 
     val msg: Element = document.getElementById("message")
-    msg.innerHTML += s"<br>Analysing arguments: ${document.documentURI}"
+    msg.innerHTML += s"<br><br>Analysing arguments: ${document.documentURI}"
     val s = Settings(document.documentURI)
     val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
     msg.innerHTML += s"<br><br>$s<br><br>loading $templateUrl "
 
-    import dom.ext._
-    import Implicits.runNow
+    import org.scalajs.dom.ext._
+    import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
 
     Ajax.get(templateUrl).onSuccess{ case xhr =>
-      msg.innerHTML += " replacing stitches... "
-      // TODO try: window.openWindow(relativeUrl,"bobbin-lace-diagram")
       document.write(xhr.responseText)
       replaceStitches(document, s.stitches)
-      // TODO stop the busy icon of the browser
-      // return / xhr.abort don't fix it
+      document.close()
     }
   }
 
@@ -66,26 +63,26 @@ object Ground {
     * For each cell (A1-..) in the base tile, look up the new label in the pile.
     * This results in an ID. This ID becomes the new value of the href attribute in the base tile.
     */
-  def replaceStitches(doc:Document, newLabels: Map[String,String]) = {
+  def replaceStitches(document:Document, newLabels: Map[String,String]) = {
 
-    //doc.write (s"<br><br>${doc.documentURI}<br><br>$newLabels")
+    if (debug) document.write (s"<br><br>${document.documentURI}<br><br>$newLabels")
 
     val stitches: Map[String, String] = (for {
-      node <- doc.getNodesByTag("g")
+      node <- document.getNodesByTag("g")
       if node.parentNode.inkscapeLabelOrElse("") == "pile"
     } yield {
         (node.inkscapeLabelOrElse("LLL"), node.idOrElse("IIII"))
       }).toMap
-    //doc.write (s"<br><br>$stitches<br> ")
+    if (debug) document.write (s"<br><br>$stitches<br> ")
     for {
-      node <- doc.getNodesByTag("use")
+      node <- document.getNodesByTag("use")
       if node.parentNode.inkscapeLabelOrElse("") == "base tile"
     } {
       val key = node.inkscapeLabelOrElse("KKK")
       val newLabel = newLabels.getOrElse(key, "LLL")
       val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
       val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
-      //doc.write (s"<br>[$key $newLabel ${href.value} $newHref] ")
+      if (debug) document.write (s"<br>[$key $newLabel ${href.value} $newHref] ")
       href.value = newHref
     }
   }
