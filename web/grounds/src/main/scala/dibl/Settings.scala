@@ -49,14 +49,18 @@ case class Settings(uri: String) {
       val pattern: Int = Try(queryMap("pattern").toInt).getOrElse(0)
       matrices(math.min(matrices.length-1,math.max(0,pattern)))
     }
-    /** extracts P,Q from "aaa-PxQ-bbb", 2<=P<=4, 2<=Q<=4 */
+    /** extract P,Q from "aaa-PxQ-bbb", 2<=P<=4, 2<=Q<=4 */
     val dimensions: Array[Int] = 
-      for {s <- Try(template.split("-")(1)).getOrElse("2x2").split("x")}
-        yield Try(s.toInt).getOrElse(2)
+      for {s <- {
+        val strings1 = template.split("-")
+        val strings2 = if (strings1.length<2) Array("2","2") else strings1(1).split("x")
+        if (strings2.length<2) Array("2","2") else strings2
+      }} 
+        yield math.min(4,math.max(2,Try(s.toInt).getOrElse(2)))
 
     (for {
-      r <- 0 until math.min(4,Try(dimensions(0)).getOrElse(2))
-      c <- 0 until math.min(4,Try(dimensions(1)).getOrElse(2))
+      r <- 0 until dimensions(0)
+      c <- 0 until dimensions(1)
     } yield {
       val key: String = s"${"ABCDE".substring(c, c+1)}${r+1}"
       val stitch: String = queryMap.getOrElse(key,"tc")
