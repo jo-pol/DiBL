@@ -47,7 +47,7 @@ case class Settings(uri: String) {
       val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
       val matrices: Array[M] = Matrices.matrixMap.getOrElse(matrixKey, fallBack)
       val pattern: Int = Try(queryMap("pattern").toInt).getOrElse(0)
-      Try(matrices(pattern)).getOrElse(matrices(0))
+      matrices(math.min(matrices.length-1,math.max(0,pattern)))
     }
     /** extracts P,Q from "aaa-PxQ-bbb", 2<=P<=4, 2<=Q<=4 */
     val dimensions: Array[Int] = 
