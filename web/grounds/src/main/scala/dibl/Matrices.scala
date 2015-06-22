@@ -15,8 +15,11 @@ object Matrices {
     "diagonal-4x4" -> Diagonal_4x4.matrices,
     "brick-4x4" -> Brick_4x4.matrices)
     
-  def getOrElse(key: String, default: Array[M]):Array[M] = {
-    Matrices.matrixMap.getOrElse(key, default)
+  def getOrElse(key: String, index: Int, default: M):M = {
+    val ms: Array[M] = matrixMap.getOrElse(key, Array(default))
+    if (index <0 || index > ms.length)
+      default
+    else ms(index)
   }
 }
 private object diagonal_3x3 { val matrices: Array[M] = Array (

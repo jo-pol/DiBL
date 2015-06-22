@@ -45,11 +45,8 @@ case class Settings(uri: String) {
     val tupleMatrix: M = {
       val fallBack = M(R("","","",""),R("","","",""),R("","","",""),R("","","",""))
       val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
-      val pattern: Int = Try(queryMap("pattern").toInt).getOrElse(0)
-      val matrices: Array[M] = Matrices.getOrElse(matrixKey, Array(fallBack))
-      if (pattern <0 || pattern > matrices.length)
-        fallBack
-      else matrices(pattern)
+      val pattern: Int = Try(queryMap.getOrElse("pattern","0").toInt).getOrElse(-1)
+      Matrices.getOrElse(matrixKey, pattern, fallBack)
     }
     /** extract P,Q from "aaa-PxQ-bbb", 2<=P<=4, 2<=Q<=4 */
     val dimensions: Array[Int] = 

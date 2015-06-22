@@ -79,8 +79,9 @@ object Ground {
       val newLabel = newLabels.getOrElse(key, "LLL")
       val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
       val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
-      if (debug) document.write (s"<br>[$key $newLabel ${href.value} $newHref] ")
-      href.value = newHref
+      if (debug) document.write (s"<br>[$key -> $newLabel - ${href.value} -> $newHref] ")
+      if (!newHref.equals("#NNN"))
+        href.value = newHref
     }
   }
 
