@@ -1125,23 +1125,27 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5928807"
-     inkscape:cx="422.68979"
-     inkscape:cy="341.16002"
+     inkscape:zoom="1.2305635"
+     inkscape:cx="214.18716"
+     inkscape:cy="659.19464"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="972"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:current-layer="g3214"
+     showgrid="true"
+     inkscape:window-width="1272"
+     inkscape:window-height="561"
+     inkscape:window-x="-3"
+     inkscape:window-y="37"
+     inkscape:window-maximized="0"
      inkscape:object-nodes="false"
      inkscape:snap-smooth-nodes="false"
      inkscape:snap-global="false"
      inkscape:snap-grids="false"
      inkscape:snap-to-guides="false"
-     inkscape:snap-nodes="false" />
+     inkscape:snap-nodes="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4373" />
+  </sodipodi:namedview>
   <metadata
      id="metadata4650">
     <rdf:RDF>
@@ -1187,7 +1191,7 @@
        inkscape:export-ydpi="20.406563">
       <g
          id="g3552"
-         transform="matrix(0.92084265,-0.38993437,0.38993437,0.92084265,-207.07585,236.63846)"
+         transform="matrix(0.96513541,-0.2617511,0.2617511,0.96513541,-136.65752,163.72382)"
          inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\logo-big.png"
          inkscape:export-xdpi="70.5"
          inkscape:export-ydpi="70.5">
@@ -1201,8 +1205,8 @@
         <path
            sodipodi:nodetypes="cccc"
            inkscape:connector-curvature="0"
-           d="m 398.30815,676.09914 c 95.10013,2.7889 123.86482,7.66617 218.1116,6.87418 M 502.79994,580.18103 c 0,58.94409 -0.62447,151.85183 0.44724,217.76204"
-           style="fill:none;stroke:#ca2f2a;stroke-width:55.81806868;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 398.99568,686.97271 c 75.40994,0.23018 156.75378,4.32086 216.53101,4.14548 M 504.62757,580.35288 c 0,58.94409 0.26642,150.78297 1.33813,216.69318"
+           style="fill:none;stroke:#ca2f2a;stroke-width:64.40546417;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            id="path3189"
            inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\logo-big.png"
            inkscape:export-xdpi="70"
@@ -1210,7 +1214,7 @@
         <path
            sodipodi:nodetypes="cccccccccccccccccsccc"
            inkscape:connector-curvature="0"
-           d="m 498.50254,653.53252 c -28.35039,0.37534 -69.55051,2.20875 -100.53374,2.20875 m 83.8626,-22.40828 c -10e-6,-21.36596 -1.98885,-38.75879 -1.98882,-53.66595 m 11.78424,159.24142 c -12.36871,-12.55091 -13.54784,-44.07033 -13.8531,-62.66265 m -22.64923,22.42781 c -14.39977,0.30886 -41.30099,0.48276 -58.63469,0.8581 m 129.80616,-23.70708 c -0.39952,-30.96699 -3.25756,-48.48142 -3.13668,-95.88165 m 41.56281,108.81119 c -17.19522,11.68589 -38.18122,14.29015 -65.59487,14.29015 m -19.13366,94.98778 c 1.97812,-30.34201 45.9308,-50.21761 44.1398,-74.48395 m 2.54716,74.24251 c 0,-13.56204 -3.90276,-19.21186 -10.86776,-26.89805 m 101.22309,-66.38976 c -9.43735,-0.81498 -28.23635,-7.62575 -34.9906,-19.45711 -9.90154,-17.34451 -22.94744,-29.24894 -36.3909,-26.12486 m 70.37365,-0.14806 c -8.09695,-0.007 -18.7216,3.02874 -22.12169,7.86675"
+           d="m 506.10148,656.33211 c -28.35039,0.37534 -77.40608,-0.10239 -108.38931,-0.10239 m 75.22737,-23.64687 c -1e-5,-21.36596 0.009,-37.97876 0.009,-52.88592 m 23.20748,158.32005 C 483.78715,725.46607 471.53777,694.03442 471.23251,675.4421 m -13.82768,43.07875 c -14.39977,0.30886 -42.41296,-1.18503 -59.74666,-0.80969 m 137.83881,-43.44494 c -0.39952,-30.96699 0.0769,-47.06945 0.19773,-94.46968 m 22.00497,108.78529 c -17.19522,11.68589 -32.27158,15.50559 -54.57133,21.43938 m -30.38199,88.8744 c 1.97812,-30.34201 64.31433,-53.72637 62.52333,-77.99271 m -1.34197,76.02433 c -0.008,-10.84627 -7.71837,-19.99247 -14.68337,-27.67866 m 95.92326,-45.74077 c -9.43735,-0.81498 -26.36811,-26.63066 -33.12236,-38.46202 -9.90154,-17.34451 -10.54593,-26.89426 -25.78422,-26.49636 m 60.34395,1.06485 c -8.09695,-0.007 -16.99257,3.3696 -22.20042,7.29685"
            style="fill:none;stroke:#000000;stroke-width:19.32164001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4404)"
            id="path4158"
            inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\path4158.png"
@@ -1219,7 +1223,7 @@
       </g>
       <g
          style="filter:url(#filter4244)"
-         transform="translate(-672.96884,286.41233)"
+         transform="translate(-653.95834,317.19123)"
          id="g4166"
          inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\logo-big.png"
          inkscape:export-xdpi="70.5"
@@ -1234,17 +1238,17 @@
         <path
            sodipodi:nodetypes="cccc"
            inkscape:connector-curvature="0"
-           d="m 1014.0408,136.0519 c 113.2057,1.13188 121.3389,1.2458 121.1034,116.81646 m -6.4304,-217.557262 c 0,101.812522 -4.4118,115.188632 -114.7981,219.144572"
-           style="fill:none;stroke:#268a24;stroke-width:55.81806865;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 1013.1355,146.91504 c 113.2057,1.13188 112.2863,-9.61734 112.0508,105.95332 M 1122.377,35.311098 c 0,101.812522 1.925,115.188632 -108.4613,219.144572"
+           style="fill:none;stroke:#268a24;stroke-width:64.40546417;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            id="path3189-5"
            inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\logo-big.png"
            inkscape:export-xdpi="70"
            inkscape:export-ydpi="70" />
         <path
-           sodipodi:nodetypes="cccccccsccccccsc"
+           sodipodi:nodetypes="cccccccccccccc"
            id="path4170"
            style="fill:none;stroke:#000000;stroke-width:19.32164001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4424)"
-           d="m 1113.5277,135.75453 c -22.0327,-11.64231 -55.2717,-20.61812 -99.4999,-21.23509 m 88.038,-12.22547 c 4.382,-20.94328 4.5243,-50.829022 4.0392,-67.16701 m -103.9261,205.7407 c 24.0147,-26.81541 70.7637,-56.84167 87.0895,-93.6532 m -60.8357,125.20935 c 11.2607,-8.89728 24.4291,-22.66636 35.3684,-35.04644 6.7039,-7.58686 22.5643,-33.63492 13.6818,-42.06976 m -19.851,-31.35376 c -8.5213,-9.49949 -34.5201,-8.79957 -44.307,-8.62816 m 101.1255,98.09375 c -1.4595,-107.2043 39.483,-100.55035 34.8994,-217.76287 m 8.9389,219.64825 c 0.5304,-15.81529 1.5755,-28.47043 0.8181,-45.68822 -0.6378,-14.49895 -3.628,-34.24469 -11.1052,-37.98998"
+           d="m 1110.8119,134.84927 c -22.0327,-11.64231 -52.5559,-20.61812 -96.7841,-21.23509 m 75.3643,-13.13073 c 0.761,-16.416975 0.9033,-48.113241 0.4182,-64.451229 M 994.03154,235.43609 c 29.44626,-26.81541 61.71106,-48.69431 80.75266,-88.22163 m -41.8252,129.73566 c 21.0506,-17.15898 28.1486,-36.54239 18.2713,-66.25306 m -21.6614,-31.35376 c -6.7108,-4.97318 -8.2677,-4.27326 -18.0546,-4.10185 m 83.0203,77.27273 c -3.27,-90.00433 61.2094,-80.6346 60.2468,-218.668133 m 2.6021,218.742993 c -0.2815,-46.98668 2.4838,-73.42884 -7.5711,-90.01504"
            inkscape:connector-curvature="0"
            inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\path4170.png"
            inkscape:export-xdpi="70"
@@ -1254,7 +1258,8 @@
          id="g3567"
          inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\logo-big.png"
          inkscape:export-xdpi="70.5"
-         inkscape:export-ydpi="70.5">
+         inkscape:export-ydpi="70.5"
+         transform="translate(19.010496,30.778898)">
         <g
            id="g4172"
            transform="translate(-672.96884,286.41233)"
@@ -1268,8 +1273,8 @@
              style="fill:#bf7fca;fill-opacity:1;stroke:none" />
           <path
              id="path3189-2"
-             style="fill:none;stroke:#8711bb;stroke-width:55.81806865;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             d="M 913.26525,469.62096 C 910.21574,403.7127 969.01861,294.64685 1013.9157,254.45567 m -112.13663,-0.24766 c 0,99.86604 9.34553,130.26086 112.72473,130.26086"
+             style="fill:none;stroke:#8711bb;stroke-width:64.40546417;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="m 906.92842,468.7157 c -3.04951,-65.90826 62.09019,-174.06885 106.98728,-214.26003 m -107.61032,-0.24766 c 0,99.86604 5.72448,109.43984 109.10372,109.43984"
              inkscape:connector-curvature="0"
              sodipodi:nodetypes="cccc"
              inkscape:export-filename="C:\Users\Falkink\Documents\GitHub\DiBL.gh-pages\logo-big.png"
@@ -1277,10 +1282,10 @@
              inkscape:export-ydpi="70" />
           <path
              inkscape:connector-curvature="0"
-             d="m 921.86109,356.3765 c -13.30452,20.54864 -17.65961,35.23222 -21.95911,51.5695 -4.8643,18.48337 -8.77749,35.58845 -9.23006,62.33373 m 3.36501,-114.7812 c -6.39049,-4.62344 -11.81104,-27.59711 -14.77359,-44.10319 -3.62691,-20.20759 -4.5104,-43.28449 -4.84505,-58.08748 m 140.05091,154.65821 c -17.04478,1.06691 -31.44555,-0.13884 -44.5101,-2.92263 -16.30637,-3.47455 -27.03744,-10.03605 -40.46343,-16.44811 m 12.03129,34.90553 c -2.60272,9.71349 -7.40813,33.23008 -7.52495,46.13475 m 13.81472,-123.18349 c -8.35523,-5.12751 -16.65481,-26.30716 -20.38515,-40.04381 -5.59921,-20.6186 -4.68309,-38.0094 -4.89126,-53.31454 m 79.46148,-12.34134 c -9.33496,10.89445 -20.80085,22.85313 -29.11008,33.0873 -18.48988,22.77329 -19.4025,26.80121 -24.35266,29.82356 m 81.82654,-33.92103 c -23.1355,24.88842 -51.25576,59.55358 -73.04748,104.08017 m 57.29758,-7.53724 c -7.0433,0.0883 -24.28612,-2.65026 -28.52992,-3.64207"
+             d="m 930.00844,325.59761 c -13.30452,20.54864 -34.85958,56.95849 -39.15908,73.29577 -4.8643,18.48337 -7.87223,45.54633 -8.3248,72.29161 m 8.79658,-118.40225 c -6.39049,-4.62344 -16.33735,-28.50236 -19.2999,-45.00844 -3.62691,-20.20759 -2.69987,-38.75819 -3.03452,-53.56118 m 146.38778,142.88981 c -32.83231,2.28983 -71.50378,-5.46083 -93.12092,-14.84443 m 26.51548,31.28449 c -3.50798,13.33453 -10.12392,43.18795 -10.24074,56.09262 M 960.4904,328.34688 c -8.35523,-5.12751 -19.3706,-16.34927 -23.10094,-30.08592 -5.59921,-20.6186 -6.49361,-29.86205 -6.70178,-45.16719 m 64.97728,-19.58343 c -9.33496,10.89445 -14.22336,16.65926 -23.6785,25.84521 -8.532,8.2891 -13.97093,18.65385 -18.92109,21.6762 m 80.01603,-5.85792 c -23.1355,24.88842 -61.21366,62.26937 -73.95276,98.6486 m 56.39236,-32.88457 c -7.0433,0.0883 -12.5178,0.0655 -16.76155,-0.92628"
              style="fill:none;stroke:#000000;stroke-width:19.32164001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4444)"
              id="path4176"
-             sodipodi:nodetypes="csccsccsccccsccsccccc" />
+             sodipodi:nodetypes="csccsccccccsccsccccc" />
         </g>
       </g>
     </g>
