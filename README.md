@@ -1,4 +1,4 @@
-<img src="https://cdn.rawgit.com/wiki/jo-pol/DiBL/images/logo-big.png" align="right">
+<img src="http://jo-pol.github.io/DiBL/logo-big.png" align="right">
 [Demo's](http://jo-pol.github.io/DiBL/)
 
 The code has a [GPL-v3](http://www.gnu.org/licenses/gpl.html) license, 
