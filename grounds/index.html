@@ -10,7 +10,7 @@
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
-<body>
+<body onload="templateChanged(document.getElementById('init'))">
 <h1>Bobbin lace working diagrams: select stitches for a computer generated ground</h1>
 	<article class="tabs">
 		<section id="tab2" class="tab_block">
@@ -24,15 +24,15 @@
 							<tr>
 								<td>pattern&nbsp;</td>
 								<td colspan="8">
-                                    <select size="1" name="template" onchange="templateChanged(this);">
-                                            <option selected="selected" value="diagonal-3x3-thread">3x3 thread, tc/tcptc only (max nr: 6)</option>
-                                            <option selected="selected" value="diagonal-4x4-thread">4x4 thread, tc/tcptc only (max nr: 208)</option>
-                                            <option selected="selected" value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
-                                            <option selected="selected" value="brick-3x3-thread">brick 3x3 thread, tc/tcptc only  (max nr: 7)</option>
-                                            <option selected="selected" value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
-                                            <option selected="selected" value="brick-4x4-thread">brick 4x4 thread, tc/tcptc only (max nr: 221)</option>
-                                    </select>
-                                    <br>nr: <input name="pattern" min="0" max="221" value="0"" onkeyup="showPairTraversal()" type="number"/>
+									<select size="1" name="template" onchange="templateChanged(this);" id="init">
+											<option selected="selected" value="diagonal-3x3-thread">3x3 thread, tc/tcptc only (max nr: 6)</option>
+											<option selected="selected" value="diagonal-4x4-thread">4x4 thread, tc/tcptc only (max nr: 208)</option>
+											<option selected="selected" value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
+											<option selected="selected" value="brick-3x3-thread">brick 3x3 thread, tc/tcptc only  (max nr: 7)</option>
+											<option selected="selected" value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
+											<option selected="selected" value="brick-4x4-thread">brick 4x4 thread, tc/tcptc only (max nr: 221)</option>
+									</select>
+									<br>nr: <input name="pattern" min="0" max="221" value="0"" onkeyup="showPairTraversal()" type="number"/>
 								</td>
 							</tr>
 							<tr>
@@ -190,8 +190,8 @@
 							</tr>
 						</tbody>
 					</table>
-                    <input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
-                    <input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
+					<input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
+					<input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
@@ -206,13 +206,13 @@
 							<tr>
 								<td>pattern&nbsp;</td>
 								<td colspan="4">
-                                    <select size="1" name="template" onchange="templateChanged(this);">
-                                            <option selected="selected" value="interleaved-2x2-pair">2x2 pair (max nr: 6)</option>
-                                            <option selected="selected" value="interleaved-2x4-pair">2x4 pair (max nr: 56)</option>
-                                            <option selected="selected" value="interleaved-4x2-pair">4x2 pair (max nr: 92)</option>
-                                    </select>
-                                    <br>nr: <input name="pattern" min="0" max="92" value="1"" onkeyup="showPairTraversal()" type="number"/>
-                                </td>
+									<select size="1" name="template" onchange="templateChanged(this);">
+											<option selected="selected" value="interleaved-2x2-pair">2x2 pair (max nr: 6)</option>
+											<option selected="selected" value="interleaved-2x4-pair">2x4 pair (max nr: 56)</option>
+											<option selected="selected" value="interleaved-4x2-pair">4x2 pair (max nr: 92)</option>
+									</select>
+									<br>nr: <input name="pattern" min="0" max="92" value="1"" onkeyup="showPairTraversal()" type="number"/>
+								</td>
 							</tr>
 							<tr>
 								<td rowspan="4">stitches&nbsp;</td>
@@ -353,8 +353,8 @@
 							</tr>
 						</tbody>
 					</table>
-                    <input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
-                    <input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
+					<input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
+					<input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
@@ -397,8 +397,8 @@
 			</h2>
 			<div>
 				<form name="flandersConfig" action="index-dev.html" target="diagram_frame">
-                    <input name="pattern" value="0" type="hidden">
-                    <input name="template" value="flanders-3x2-thread" type="hidden">
+					<input name="pattern" value="0" type="hidden">
+					<input name="template" value="flanders-3x2-thread" type="hidden">
 					<table>
 						<tbody>
 							<tr>
@@ -448,12 +448,12 @@
 							</tr>
 						</tbody>
 					</table>
-                    <input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
-                    <input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
+					<input type="submit" value="Show in other tab/window" onclick="this.form.target='diagram_tab';return true;">
+					<input type="submit" value="Show below" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
 	</article>
-    <iframe name="diagram_frame" src="execuse.html"/>
+	<iframe name="diagram_frame" src="execuse.html"/>
 </body>
 </html>

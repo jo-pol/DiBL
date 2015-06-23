@@ -15,7 +15,7 @@ function templateChanged(formField) {
   var tab = location.hash.substring(1);
   var cols = formField.value.split('-') [1].split('x') [0];
   var rows = formField.value.split('-') [1].split('x') [1];
-  cleanup(tab, 'hide', 'hide');
+  cleanup("", 'hide', 'hide');
   cleanup(tab, 'show', 'show');
   for (var i = 0; i < 4; i++) {
     var colClass = tab + 'col' + ((i * 1) + 1);
@@ -28,6 +28,12 @@ function templateChanged(formField) {
       c.className += ' ' + tab + (j < cols ? 'show' : 'hide');
       r.className += ' ' + tab + (j < rows ? 'show' : 'hide');
     }
+  }
+  if (tab == "tab2" && cfg.template.value.lastIndexOf("-thread")>0) {
+      var stitchElements = document.getElementsByClassName("pair");
+      for (i = stitchElements.length; i > 0; ) {
+        stitchElements[--i].className += ' hide';
+      }
   }
   cleanup(tab, 'hide', 'show');
 }
