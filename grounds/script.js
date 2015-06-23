@@ -16,6 +16,7 @@ function templateChanged(formField) {
   var cols = formField.value.split('-') [1].split('x') [0];
   var rows = formField.value.split('-') [1].split('x') [1];
   cleanup("", 'hide', 'hide');
+  cleanup(tab, 'hide', 'hide');
   cleanup(tab, 'show', 'show');
   for (var i = 0; i < 4; i++) {
     var colClass = tab + 'col' + ((i * 1) + 1);
