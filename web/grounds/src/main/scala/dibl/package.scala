@@ -25,22 +25,4 @@ package object dibl {
     def R(xs: String*) = Array(xs: _*)
     type M = Array[R]
     def M(xs: R*) = Array(xs: _*) 
-    
-    implicit class DocumentExtension(val left: org.scalajs.dom.raw.Document) {
-
-    def getNodesByTag(tag: String): Array[org.scalajs.dom.raw.Node] = {
-      val list = left.getElementsByTagName(tag)
-      (for {i <- 0 until list.length} yield {
-        list.item(i)
-      }).toArray
-    }
-  }
-
-  implicit class NodeExtension(val left: org.scalajs.dom.raw.Node) {
-
-    def inkscapeLabelOrElse(default: String): String =
-      Try(left.attributes.getNamedItem("inkscape:label").value).getOrElse(default)
-    def idOrElse(default: String): String =
-      Try(left.attributes.getNamedItem("id").value).getOrElse(default)
-  }
 }

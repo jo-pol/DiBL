@@ -60,7 +60,7 @@ object Ground {
     *      ...
     *    </g>
     * }}}
-    * For each cell (A1-..) in the base tile, look up the new label in the pile.
+    * For each cell (A1-..) in the base tile, look up the newLabel in the pile.
     * This results in an ID. This ID becomes the new value of the href attribute in the base tile.
     */
   def replaceStitches(document:Document, newLabels: Map[String,String]) = {
@@ -85,5 +85,23 @@ object Ground {
       if (debug) document.write (s"<br>[$key $newLabel ${href.value} $newHref] ")
       href.value = newHref
     }
+  }
+
+  implicit class DocumentExtension(val left: Document) {
+
+    def getNodesByTag(tag: String): Array[Node] = {
+      val list = left.getElementsByTagName(tag)
+      (for {i <- 0 until list.length} yield {
+        list.item(i)
+      }).toArray
+    }
+  }
+
+  implicit class NodeExtension(val left: Node) {
+
+    def inkscapeLabelOrElse(default: String): String =
+      Try(left.attributes.getNamedItem("inkscape:label").value).getOrElse(default)
+    def idOrElse(default: String): String =
+      Try(left.attributes.getNamedItem("id").value).getOrElse(default)
   }
 }
