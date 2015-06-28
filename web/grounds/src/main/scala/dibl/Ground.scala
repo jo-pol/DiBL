@@ -67,17 +67,14 @@ object Ground {
 
     if (debug) document.write (s"<br><br>${document.documentURI}<br><br>$newLabels")
 
-    val stitches: Map[String, String] = (for {
-      node <- document.getNodesByTag("g")
-      if node.parentNode.inkscapeLabelOrElse("") == "pile"
-    } yield {
+    val stitches: Map[String, String] = 
+      (for { node <- document.getNodes(tag="g", parentLabel="pile") } yield {
         (node.inkscapeLabelOrElse("LLL"), node.idOrElse("IIII"))
       }).toMap
-    if (debug) document.write (s"<br><br>$stitches<br> ")
-    for {
-      node <- document.getNodesByTag("use")
-      if node.parentNode.inkscapeLabelOrElse("") == "base tile"
-    } {
+
+    if (debug) document.write (s"<br><br>STITCHES = $stitches<br> ")
+
+    for { node <- document.getNodes(tag="use", parentLabel="base tile") } {
       val key = node.inkscapeLabelOrElse("KKK")
       val newLabel = newLabels.getOrElse(key, "LLL")
       val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
@@ -89,9 +86,11 @@ object Ground {
 
   implicit class DocumentExtension(val left: Document) {
 
-    def getNodesByTag(tag: String): Array[Node] = {
+    def getNodes(tag: String, parentLabel: String): Array[Node] = {
       val list = left.getElementsByTagName(tag)
-      (for {i <- 0 until list.length} yield {
+      (for { i <- 0 until list.length
+             if list.item(i).parentNode.inkscapeLabelOrElse("") == parentLabel
+           } yield {
         list.item(i)
       }).toArray
     }
@@ -101,6 +100,7 @@ object Ground {
 
     def inkscapeLabelOrElse(default: String): String =
       Try(left.attributes.getNamedItem("inkscape:label").value).getOrElse(default)
+
     def idOrElse(default: String): String =
       Try(left.attributes.getNamedItem("id").value).getOrElse(default)
   }
