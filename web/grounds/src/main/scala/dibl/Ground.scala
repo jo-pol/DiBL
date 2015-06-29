@@ -23,37 +23,33 @@ import scala.util.Try
 @JSExport
 object Ground {
 
-  val debug = true
+  val debug = false
 
   @JSExport
-  def main(htmlDoc: org.scalajs.dom.html.Document): Unit = {
+  def main(window: Window): Unit = {
 
-    val msg: Element = htmlDoc.getElementById("message")
-    if (debug) {
-      Console.println(s"<br><br>Analysing arguments: ${htmlDoc.documentURI}")
-      Console.flush()
-    }
-    val s = Settings(htmlDoc.documentURI)
+    val htmlDoc = window.document
+    implicit val console = window.console
+    if (debug) console.info("")//s"Analysing arguments: ${htmlDoc.documentURI}") // IE?
+    val s = Settings("")//htmlDoc.documentURI) // document.URL or window.search for IE?
+    if (debug) console.info(s.toString)
     val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
-    msg.innerHTML += s"$s<br><br>loading $templateUrl "
+    htmlDoc.getElementById("message").innerHTML += s"$s<br><br>loading $templateUrl "
 
     import org.scalajs.dom.ext._
     import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
 
     Ajax.get(templateUrl).onSuccess{ case xhr =>
 
-      try {
-        // firefox enables download of pur SVG via inspect element
-        val rawDoc: Document = new DOMParser().parseFromString(xhr.responseText, "image/svg+xml")
-        replaceStitches(rawDoc, s.stitches)
-        htmlDoc.body.outerHTML = rawDoc.documentElement.outerHTML
-      }catch {
-        case e: Exception =>
-          // fallback for safari does not work this way
-          htmlDoc.write(xhr.responseText)
-          replaceStitches(htmlDoc, s.stitches)
-          htmlDoc.close()
-      }
+      // firefox/chrome enable download-workaround of pure SVG via inspect element
+      val svgDoc: Document = new DOMParser().parseFromString(xhr.responseText, "image/svg+xml")
+      replaceStitches(svgDoc, s.stitches)
+      htmlDoc.body.outerHTML = svgDoc.documentElement.outerHTML
+
+      // TODO fallback for safari:
+      //htmlDoc.write(xhr.responseText)
+      //replaceStitches(htmlDoc, s.stitches)
+      //htmlDoc.close()
     }
   }
 
@@ -75,23 +71,23 @@ object Ground {
     * For each cell (A1-..) in the base tile, look up the newLabel in the pile.
     * This results in an ID. This ID becomes the new value of the href attribute in the base tile.
     */
-  def replaceStitches(document:Document, newLabels: Map[String,String]) = {
+  def replaceStitches(document:Document, newLabels: Map[String,String])(implicit console: Console) = {
 
-    if (debug) Console.println(s"<br><br>${document.documentURI}<br><br>$newLabels")
+    if (debug) console.info(s"NEW_LABLES = $newLabels")
 
     val stitches: Map[String, String] = 
       (for { node <- document.getNodes(tag="g", parentLabel="pile") } yield {
         (node.inkscapeLabelOrElse("LLL"), node.idOrElse("IIII"))
       }).toMap
 
-    if (debug) Console.println(s"<br><br>STITCHES = $stitches<br> ")
+    if (debug) console.info(s"STITCHES = $stitches<br> ")
 
     for { node <- document.getNodes(tag="use", parentLabel="base tile") } {
       val key = node.inkscapeLabelOrElse("KKK")
       val newLabel = newLabels.getOrElse(key, "LLL")
       val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
       val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
-      if (debug) Console.println(s"<br>[$key -> $newLabel - ${href.value} -> $newHref] ")
+      if (debug) console.info(s"[$key -> $newLabel - ${href.value} -> $newHref] ")
       if (!newHref.equals("#NNN"))
         href.value = newHref
     }
