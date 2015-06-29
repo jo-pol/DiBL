@@ -16,7 +16,6 @@ package dibl
  along with this program. If not, see http://www.gnu.org/licenses/.package dibl
 */
 
-import org.scalajs.dom.html.Document
 import org.scalajs.dom.raw._
 import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
@@ -24,24 +23,37 @@ import scala.util.Try
 @JSExport
 object Ground {
 
-  val debug = false
+  val debug = true
 
   @JSExport
-  def main(document: Document): Unit = {
+  def main(htmlDoc: org.scalajs.dom.html.Document): Unit = {
 
-    val msg: Element = document.getElementById("message")
-    msg.innerHTML += s"<br><br>Analysing arguments: ${document.documentURI}"
-    val s = Settings(document.documentURI)
+    val msg: Element = htmlDoc.getElementById("message")
+    if (debug) {
+      Console.println(s"<br><br>Analysing arguments: ${htmlDoc.documentURI}")
+      Console.flush()
+    }
+    val s = Settings(htmlDoc.documentURI)
     val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
-    msg.innerHTML += s"<br><br>$s<br><br>loading $templateUrl "
+    msg.innerHTML += s"$s<br><br>loading $templateUrl "
 
     import org.scalajs.dom.ext._
     import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
 
     Ajax.get(templateUrl).onSuccess{ case xhr =>
-      document.write(xhr.responseText)
-      replaceStitches(document, s.stitches)
-      document.close()
+
+      try {
+        // firefox enables download of pur SVG via inspect element
+        val rawDoc: Document = new DOMParser().parseFromString(xhr.responseText, "image/svg+xml")
+        replaceStitches(rawDoc, s.stitches)
+        htmlDoc.body.outerHTML = rawDoc.documentElement.outerHTML
+      }catch {
+        case e: Exception =>
+          // fallback for safari does not work this way
+          htmlDoc.write(xhr.responseText)
+          replaceStitches(htmlDoc, s.stitches)
+          htmlDoc.close()
+      }
     }
   }
 
@@ -65,21 +77,21 @@ object Ground {
     */
   def replaceStitches(document:Document, newLabels: Map[String,String]) = {
 
-    if (debug) document.write (s"<br><br>${document.documentURI}<br><br>$newLabels")
+    if (debug) Console.println(s"<br><br>${document.documentURI}<br><br>$newLabels")
 
     val stitches: Map[String, String] = 
       (for { node <- document.getNodes(tag="g", parentLabel="pile") } yield {
         (node.inkscapeLabelOrElse("LLL"), node.idOrElse("IIII"))
       }).toMap
 
-    if (debug) document.write (s"<br><br>STITCHES = $stitches<br> ")
+    if (debug) Console.println(s"<br><br>STITCHES = $stitches<br> ")
 
     for { node <- document.getNodes(tag="use", parentLabel="base tile") } {
       val key = node.inkscapeLabelOrElse("KKK")
       val newLabel = newLabels.getOrElse(key, "LLL")
       val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
       val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
-      if (debug) document.write (s"<br>[$key -> $newLabel - ${href.value} -> $newHref] ")
+      if (debug) Console.println(s"<br>[$key -> $newLabel - ${href.value} -> $newHref] ")
       if (!newHref.equals("#NNN"))
         href.value = newHref
     }
@@ -87,13 +99,13 @@ object Ground {
 
   implicit class DocumentExtension(val left: Document) {
 
-    def getNodes(tag: String, parentLabel: String): Array[Node] = {
+    def getNodes(tag: String, parentLabel: String): IndexedSeq[Node] = {
       val list = left.getElementsByTagName(tag)
-      (for { i <- 0 until list.length
-             if list.item(i).parentNode.inkscapeLabelOrElse("") == parentLabel
-           } yield {
+      for {i <- 0 until list.length
+           if list.item(i).parentNode.inkscapeLabelOrElse("") == parentLabel
+      } yield {
         list.item(i)
-      }).toArray
+      }
     }
   }
 
