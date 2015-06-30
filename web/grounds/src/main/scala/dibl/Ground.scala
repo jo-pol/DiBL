@@ -28,28 +28,32 @@ object Ground {
   @JSExport
   def main(window: Window): Unit = {
 
-    val htmlDoc = window.document
     implicit val console = window.console
-    if (debug) console.info("")//s"Analysing arguments: ${htmlDoc.documentURI}") // IE?
-    val s = Settings("")//htmlDoc.documentURI) // document.URL or window.search for IE?
+    val htmlDoc = window.document 
+    val uri = htmlDoc.documentURI // trouble for IE
+    
+    if (debug) console.info(s"Analysing arguments: $uri")
+    val s = Settings(uri)
     if (debug) console.info(s.toString)
-    val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
+    val templateUrl: String = s"templates/${s.template}.svg"
     htmlDoc.getElementById("message").innerHTML += s"$s<br><br>loading $templateUrl "
 
     import org.scalajs.dom.ext._
     import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
-
     Ajax.get(templateUrl).onSuccess{ case xhr =>
 
-      // firefox/chrome enable download-workaround of pure SVG via inspect element
-      val svgDoc: Document = new DOMParser().parseFromString(xhr.responseText, "image/svg+xml")
+      val svgDoc = new DOMParser().parseFromString(xhr.responseText, "image/svg+xml")
       replaceStitches(svgDoc, s.stitches)
-      htmlDoc.body.outerHTML = svgDoc.documentElement.outerHTML
-
-      // TODO fallback for safari:
-      //htmlDoc.write(xhr.responseText)
-      //replaceStitches(htmlDoc, s.stitches)
-      //htmlDoc.close()
+      try {
+        // firefox/chrome now can save the generated diagram
+        htmlDoc.body.outerHTML = svgDoc.documentElement.outerHTML
+      } catch {
+        case e: Throwable =>
+          // fallback for safari, which only can save the original template
+          htmlDoc.write(xhr.responseText)
+          replaceStitches(htmlDoc, s.stitches)
+          htmlDoc.close()
+      }
     }
   }
 
