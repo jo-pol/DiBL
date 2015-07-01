@@ -26,36 +26,42 @@ object Ground {
   val debug = false
 
   @JSExport
-  def main(window: Window): Unit = {
+  def main(window: Window, uri: String): Unit = {
 
     implicit val console = window.console
     val htmlDoc = window.document 
-    val uri = htmlDoc.documentURI // trouble for IE
     
     if (debug) console.info(s"Analysing arguments: $uri")
-    val s = Settings(uri)
+    implicit val s = Settings(uri)
     if (debug) console.info(s.toString)
     val templateUrl: String = s"templates/${s.template}.svg"
     htmlDoc.getElementById("message").innerHTML += s"$s<br><br>loading $templateUrl "
 
     import org.scalajs.dom.ext._
     import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
-    Ajax.get(templateUrl).onSuccess{ case xhr =>
+    Ajax.get(templateUrl).onSuccess{ 
+      case xhr => generateDiagram (xhr.responseText, htmlDoc)
+    }
+  }
+  
+  def generateDiagram (svgString: String, htmlDoc: org.scalajs.dom.html.Document)(implicit console: Console, s: Settings) = {
 
-      val svgDoc = new DOMParser().parseFromString(xhr.responseText, "image/svg+xml")
+      val svgDoc = new DOMParser().parseFromString(svgString, "image/svg+xml")
       replaceStitches(svgDoc, s.stitches)
       try {
-        // firefox/chrome now can save the generated diagram
+        // this way FF/Chrome can save the generated diagram
         htmlDoc.body.outerHTML = svgDoc.documentElement.outerHTML
       } catch {
         case e: Throwable =>
-          // fallback for safari, which only can save the original template
-          htmlDoc.write(xhr.responseText)
-          replaceStitches(htmlDoc, s.stitches)
+          // fall back for safari/IE, they only can save the original template
+          // how to turn outerHTML into a string? alternatives?
+          htmlDoc.write(svgString)
+          // IE now throws "access denied" when trying to log:
+          replaceStitches(htmlDoc, s.stitches) 
           htmlDoc.close()
       }
-    }
   }
+  
 
   /** Replaces stitches in an SVG template.
     *

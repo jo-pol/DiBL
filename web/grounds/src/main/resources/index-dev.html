@@ -7,6 +7,11 @@
     <div id="message">loading script, please wait... </div>
     <script type="text/javascript" src="../dibl-ground-fastopt.js"></script>
     <script type="text/javascript" src="/workbench.js"></script>
-    <script type="text/javascript">dibl.Ground().main(window);</script>
+    <script type="text/javascript">
+        if (document.documentURI != undefined)
+            dibl.Ground().main(window, ""+document.documentURI);
+        else // of course: IE does it in a different way:
+            dibl.Ground().main(window, ""+window.location.search);
+    </script>
 </body>
 </html>
