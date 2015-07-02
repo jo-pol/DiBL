@@ -11,7 +11,6 @@
 function templateChanged(formField) {
   var cfg = formField.form;
   cfg.pattern.value = 0;
-  cfg.pattern.max = parseInt(formField.value.innerHTML.split(':') [1]);
   var tab = location.hash.substring(1);
   var cols = formField.value.split('-') [1].split('x') [0];
   var rows = formField.value.split('-') [1].split('x') [1];
@@ -37,6 +36,9 @@ function templateChanged(formField) {
       }
   }
   cleanup(tab, 'hide', 'show');
+  
+  // the next fails with IE
+  cfg.pattern.max = parseInt(formField.selectedOptions[0].innerHTML.split(':') [1]);
 }
 function cleanup(tab, classToSearch, classToRemove)
 {
