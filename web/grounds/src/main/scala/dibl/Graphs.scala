@@ -1,11 +1,34 @@
+/*
+ Copyright 2015 Jo Pol
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see http://www.gnu.org/licenses/.package dibl
+*/
+
 package dibl
 
 import scala.collection.immutable.HashMap
 
-object Matrices {
+/** Based on:
+  *
+  * Veronika Irvine. Broadening the Palette for Bobbin Lace: A Combinatorial Approach. Bridges 2012:
+  * Mathematics, Music, Art, Architecture, Culture, pages 191-198. Tessellations Publishing, 2012.
+  *
+  * http://web.uvic.ca/~vmi/papers/bridges2012.html
+  */
+object Graphs {
   private val matrixMap = HashMap(
-    "flanders-3x2" -> Array(M(R("-1,0,1,0,1,0,-1,0", "0,1,1,0,0,0,-1,-1"), 
-                              R("1,0,1,0,-1,0,-1,0", "0,0,1,1,-1,-1,0"), 
+    "flanders-3x2" -> Array(M(R("-1,0,1,0,1,0,-1,0", "0,1,1,0,0,0,-1,-1"),
+                              R("1,0,1,0,-1,0,-1,0", "0,0,1,1,-1,-1,0"),
                               R("1,0,0,0,1,-1,0,-1", "-1,1,0,1,-1,0,0,0"))),
     "diagonal-3x3" -> diagonal_3x3.matrices,
     "brick-3x3" -> brick_3x3.matrices,
@@ -14,12 +37,17 @@ object Matrices {
     "interleaved-4x2" -> Interleaved_4x2.matrices,
     "diagonal-4x4" -> Diagonal_4x4.matrices,
     "brick-4x4" -> Brick_4x4.matrices)
-    
-  def getOrElse(key: String, index: Int, default: M):M = {
-    val ms: Array[M] = matrixMap.getOrElse(key, Array(default))
-    if (index <0 || index > ms.length)
-      default
-    else ms(index)
+
+  def get(template: String, pattern: Int, fallBack: M): M = {
+
+    // TODO flip matrix: https://github.com/jo-pol/DiBL/tree/master/standalone/tiles/dibl-tiles/src/main/java/dibl/math
+    // see also http://stackoverflow.com/questions/10456918/scala-matrix-library-to-calculate-large-fibonacci-numbers
+
+    val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
+    val ms: Array[M] = matrixMap.getOrElse(matrixKey, Array(fallBack))
+    if (pattern <0 || pattern > ms.length)
+      fallBack
+    else ms(pattern)
   }
 }
 private object diagonal_3x3 { val matrices: Array[M] = Array (

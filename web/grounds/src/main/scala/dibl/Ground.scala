@@ -1,5 +1,3 @@
-package dibl
-
 /*
  Copyright 2015 Jo Pol
  This program is free software: you can redistribute it and/or modify
@@ -16,6 +14,8 @@ package dibl
  along with this program. If not, see http://www.gnu.org/licenses/.package dibl
 */
 
+package dibl
+
 import org.scalajs.dom.raw._
 import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
@@ -29,10 +29,10 @@ object Ground {
   def main(window: Window, uri: String): Unit = {
 
     implicit val console = window.console
-    val htmlDoc = window.document 
-    
+    val htmlDoc: HTMLDocument = window.document
+
     if (debug) console.info(s"Analysing arguments: $uri")
-    implicit val s = Settings(uri)
+    implicit val s:Settings = Settings.parseUri(uri)
     if (debug) console.info(s.toString)
     val templateUrl: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
     htmlDoc.getElementById("message").innerHTML += s"$s<br><br>loading $templateUrl "

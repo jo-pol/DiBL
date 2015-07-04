@@ -14,9 +14,7 @@ Copyright 2015 Jo Pol
  along with this program. If not, see http://www.gnu.org/licenses/.package dibl
   */
 
-import scala.collection.immutable.HashMap
-import language.postfixOps
-import scala.util.Try
+import scala.language.postfixOps
 
 package object dibl {
 
