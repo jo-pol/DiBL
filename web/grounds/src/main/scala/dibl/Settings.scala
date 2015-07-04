@@ -39,7 +39,7 @@ object Settings {
     val queryMap: Map[String, String] = (for {s <- uri.replaceAll("[^?]+[?]", "").split("&")}
         yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
         ).toMap
-    val template: String = Try(queryMap("template")).getOrElse("diagonal-3x3-thread")
+    val template: String = queryMap.getOrElse("template","diagonal-3x3-thread")
     val pattern: Int = Try(queryMap.getOrElse("pattern", "0").toInt).getOrElse(-1)
     val fallBack = M(R("", "", "", ""), R("", "", "", ""), R("", "", "", ""), R("", "", "", ""))
     val graph: M = Graphs.get(template, pattern, fallBack)

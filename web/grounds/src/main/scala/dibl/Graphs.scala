@@ -44,10 +44,10 @@ object Graphs {
     // see also http://stackoverflow.com/questions/10456918/scala-matrix-library-to-calculate-large-fibonacci-numbers
 
     val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
-    val ms: Array[M] = matrixMap.getOrElse(matrixKey, Array(fallBack))
-    if (pattern <0 || pattern > ms.length)
+    val matrices: Array[M] = matrixMap.getOrElse(matrixKey, Array(fallBack))
+    if (pattern <0 || pattern > matrices.length)
       fallBack
-    else ms(pattern)
+    else matrices(pattern)
   }
 }
 private object diagonal_3x3 { val matrices: Array[M] = Array (
