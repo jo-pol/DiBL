@@ -18,18 +18,15 @@ package dibl
 
 import org.scalajs.dom.raw.{Node, Attr, Console, Document}
 
+import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
 
-/** @param newLabels content of this map by example:
-  *                  "A1" -> "tc (-1,0,1,0,1,0,-1,0)",
-  *                  "A2" -> "tc (1,0,1,0,-1,0,-1,0)",
-  *                  "A3" -> "tctc (1,0,0,0,1,-1,0,-1)",
-  *                  "B1" -> "tc (0,1,1,0,0,0,-1,-1)",
-  *                  "B2" -> "tc (0,0,1,1,-1,-1,0)",
-  *                  "B3" -> "tctc (-1,1,0,1,-1,0,0,0)"
-  *                  See also [[Settings.stitches]]
-  */
-class DiagramGenerator(newLabels: Map[String, String])(implicit console: Console, debug: Boolean) {
+@JSExport
+class DiagramGenerator(s: Settings)(implicit console: Console, debug: Boolean) {
+
+  @JSExport
+  val templateURI: String = s"http://jo-pol.github.io/DiBL/grounds/templates/${s.template}.svg"
+
 
   /** Replaces stitches in an SVG template.
     *
@@ -50,9 +47,10 @@ class DiagramGenerator(newLabels: Map[String, String])(implicit console: Console
     *                 </g>
     *                 }
     */
-  def apply(document: Document) = {
+  @JSExport
+  def apply(document: Document): Unit = {
 
-    if (debug) console.info(s"NEW_LABLES = $newLabels")
+    if (debug) console.info(s"NEW_LABLES = ${s.stitches}")
 
     val stitches: Map[String, String] =
       (for { node <- document.getNodes(tag="g", parentLabel="pile") } yield {
@@ -63,7 +61,7 @@ class DiagramGenerator(newLabels: Map[String, String])(implicit console: Console
 
     for { node <- document.getNodes(tag="use", parentLabel="base tile") } {
       val key = node.inkscapeLabelOrElse("KKK")
-      val newLabel = newLabels.getOrElse(key, "LLL")
+      val newLabel = s.stitches.getOrElse(key, "LLL")
       val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
       val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
       if (debug) console.info(s"[$key -> $newLabel - ${href.value} -> $newHref] ")
