@@ -18,12 +18,11 @@ package dibl
 
 import org.scalajs.dom.raw._
 import scala.scalajs.js.annotation.JSExport
-import scala.util.Try
 
 @JSExport
 object Ground {
 
-  val debug = false
+  implicit val debug = false
 
   @JSExport
   def main(window: Window, uri: String): Unit = {
@@ -38,91 +37,31 @@ object Ground {
     htmlDoc.getElementById("message").innerHTML += s"$s<br><br>loading $templateUrl "
 
     import org.scalajs.dom.ext._
+
     import scala.scalajs.concurrent.JSExecutionContext.Implicits.runNow
-    Ajax.get(templateUrl).onSuccess{ 
+    Ajax.get(templateUrl).onSuccess{
       case xhr => generateDiagram (xhr.responseText, htmlDoc)
     }
   }
-  
+
   def generateDiagram (svgString: String, htmlDoc: org.scalajs.dom.html.Document)(implicit console: Console, s: Settings) = {
 
+      val diagramGenerator = new DiagramGenerator(s.stitches)
       val svgDoc = new DOMParser().parseFromString(svgString, "image/svg+xml")
-      if (scala.scalajs.js.isUndefined(svgDoc.documentElement) 
-       || scala.scalajs.js.isUndefined(svgDoc.documentElement.outerHTML)
-       || scala.scalajs.js.isUndefined(htmlDoc.body)
-       || scala.scalajs.js.isUndefined(htmlDoc.body.innerHTML) ) 
-      {
-          // fall back for safari/IE, they only can save the original template
-          htmlDoc.write(svgString)
-          // IE now throws "access denied" when trying to log:
-          replaceStitches(htmlDoc, s.stitches) 
-          htmlDoc.close()
-      } else {
+      if ( !scala.scalajs.js.isUndefined(svgDoc.documentElement)
+        && !scala.scalajs.js.isUndefined(svgDoc.documentElement.outerHTML)
+        && !scala.scalajs.js.isUndefined(htmlDoc.body)
+        && !scala.scalajs.js.isUndefined(htmlDoc.body.innerHTML)) {
         // FF/Chrome can save the generated diagram
-        replaceStitches(svgDoc, s.stitches)
+        diagramGenerator.apply(svgDoc)
         htmlDoc.body.innerHTML = svgDoc.documentElement.outerHTML
+      } else {
+        // fall back for safari/IE,  they only can save the original template
+        htmlDoc.write(svgString)
+        // IE now throws "access denied" when trying to log:
+        diagramGenerator.apply(htmlDoc)
+        htmlDoc.close()
       }
   }
-  
 
-  /** Replaces stitches in an SVG template.
-    *
-    * An extract of a template:
-    * {{{
-    *    <g inkscape:label="base tile">
-    *      <use inkscape:label="A1" xlink:href="#g123"></use>
-    *      <use inkscape:label="A2" xlink:href="#g456"></use>
-    *      ...
-    *    </g>
-    *    <g inkscape:label="pile">
-    *      <g id="g123" inkscape:label="tc (0,1,1,0,-1,-1)">...</g>
-    *      <g id="g456" inkscape:label="tc (1,0,1,0,-1,-1)">...</g>
-    *      ...
-    *    </g>
-    * }}}
-    * For each cell (A1-..) in the base tile, look up the newLabel in the pile.
-    * This results in an ID. This ID becomes the new value of the href attribute in the base tile.
-    */
-  def replaceStitches(document:Document, newLabels: Map[String,String])(implicit console: Console) = {
-
-    if (debug) console.info(s"NEW_LABLES = $newLabels")
-
-    val stitches: Map[String, String] = 
-      (for { node <- document.getNodes(tag="g", parentLabel="pile") } yield {
-        (node.inkscapeLabelOrElse("LLL"), node.idOrElse("IIII"))
-      }).toMap
-
-    if (debug) console.info(s"STITCHES = $stitches<br> ")
-
-    for { node <- document.getNodes(tag="use", parentLabel="base tile") } {
-      val key = node.inkscapeLabelOrElse("KKK")
-      val newLabel = newLabels.getOrElse(key, "LLL")
-      val newHref =  s"#${stitches.getOrElse(newLabel,"NNN")}"
-      val href = Try(node.attributes.getNamedItem("xlink:href")).getOrElse(new Attr())
-      if (debug) console.info(s"[$key -> $newLabel - ${href.value} -> $newHref] ")
-      if (!newHref.equals("#NNN"))
-        href.value = newHref
-    }
-  }
-
-  implicit class DocumentExtension(val left: Document) {
-
-    def getNodes(tag: String, parentLabel: String): IndexedSeq[Node] = {
-      val list = left.getElementsByTagName(tag)
-      for {i <- 0 until list.length
-           if list.item(i).parentNode.inkscapeLabelOrElse("") == parentLabel
-      } yield {
-        list.item(i)
-      }
-    }
-  }
-
-  implicit class NodeExtension(val left: Node) {
-
-    def inkscapeLabelOrElse(default: String): String =
-      Try(left.attributes.getNamedItem("inkscape:label").value).getOrElse(default)
-
-    def idOrElse(default: String): String =
-      Try(left.attributes.getNamedItem("id").value).getOrElse(default)
-  }
 }

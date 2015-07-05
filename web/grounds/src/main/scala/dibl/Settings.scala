@@ -18,11 +18,11 @@ package dibl
 import scala.util.Try
 
 /**
- * @param template  The base name (no path, no extension) of an SVG document
- * @param stitches  A map of use element labels ("A1"-"C3" for a 3x3 matrix) in the group labeled "base tile"
- *                  to group element labels (e.g. "tc (0,1,1,0,-1,-1)") in the group labeled "pile".
+ * @param template  The base name (no path, no extension) of an SVG document.
+ * @param stitches  A map of use-element-labels ("A1"-"C3" for a 3x3 matrix) in the group labeled "base tile"
+ *                  to group-element-labels (e.g. "tc (0,1,1,0,-1,-1)") in the group labeled "pile".
  *
- *                  The permutations of "tc" imply the twist/cross actions composing a stitch.
+ *                  The permutations of "tcp" imply the twist/cross/pin actions composing a stitch.
  *                  A stitch is made with four threads at the nodes of a two-in two-out directed graph.
  *                  The tuple specifies the orientation of the four 'legs' of a stitch, e.g. like: |<, >|, ><, _V_
  *                  See also <a href="https://github.com/jo-pol/DiBL/wiki/Input-Files">matrices and tuples</a>.
@@ -33,7 +33,7 @@ case class Settings(template: String, stitches: Map[String, String]) {
 
 object Settings {
 
-  /** interprets uri query: "key1=value1&key2=value2&..." */
+  /** Interprets the query part of a URI: "key1=value1&key2=value2&..." */
   def parseUri(uri: String): Settings = {
 
     val queryMap: Map[String, String] = (for {s <- uri.replaceAll("[^?]+[?]", "").split("&")}
@@ -45,13 +45,12 @@ object Settings {
     val graph: M = Graphs.get(template, pattern, fallBack)
 
     new Settings(template, (for {
-      r <- graph(0)(0).indices
+      r <- graph.indices
       c <- graph(0).indices
     } yield {
         val key: String = s"${"ABCD".substring(c, c + 1)}${r + 1}"
         val stitch: String = queryMap.getOrElse(key, "tc")
-        val tuple: String = graph(r)(c)
-        (key, s"$stitch ($tuple)")
+        (key, s"$stitch (${graph(r)(c)})")
       }).toArray.toMap)
   }
 }
