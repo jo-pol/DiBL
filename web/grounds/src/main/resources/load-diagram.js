@@ -13,19 +13,12 @@ xmlhttp.onreadystatechange = function() {
        if(xmlhttp.status != 200)
            content.innerHTML  += generator.templateURI + ' status: ' + xmlhttp.status;
        else {
-           var svgDoc = new DOMParser().parseFromString(xmlhttp.responseText, "image/svg+xml");
+           // surrounding with <html><body> not required for FF/Chrome and mime-type text/svg+xsml
+           var svgDoc = new DOMParser().parseFromString("<html><body>"+xmlhttp.responseText+"</body></html>", "text/html");
            generator.apply(svgDoc);
-           if (svgDoc.documentElement.outerHTML != undefined) {
-                // FF/Chrome
-                content.innerHTML  = svgDoc.documentElement.outerHTML;
-           } else {
-               // safari/IE: fallback, a saved page will be an unmodified template
-               document.write(xmlhttp.responseText)
-               generator.apply(document) // IE now throws "access denied" when trying to log
-               document.close()
-           }
+           content.innerHTML  = svgDoc.documentElement.innerHTML;
        }
-}
+    }
 }
 xmlhttp.open("GET", generator.templateURI, true);
 content.innerHTML  += "loading diagram... "
