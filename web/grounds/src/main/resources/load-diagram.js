@@ -1,4 +1,4 @@
-var xmlhttp = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 var content = document.getElementById("message");
 var generator;
 if (document.documentURI != undefined)
@@ -6,20 +6,25 @@ if (document.documentURI != undefined)
 else // IE:
     generator = dibl.Ground().main(window.console, ""+window.location.search);
 
-//http://stackoverflow.com/questions/8567114/how-to-make-an-ajax-call-without-jquery
-xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
-       content.innerHTML  += "configuring diagram... ";
-       if(xmlhttp.status != 200)
-           content.innerHTML  += generator.templateURI + ' status: ' + xmlhttp.status;
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE ) {
+       if(xhr.status != 200)
+           content.innerHTML  += generator.templateURI + ' status: ' + xhr.status;
        else {
-           // surrounding with <html><body> not required for FF/Chrome and mime-type text/svg+xsml
-           var svgDoc = new DOMParser().parseFromString("<html><body>"+xmlhttp.responseText+"</body></html>", "text/html");
+           // adding/stripping <html><body> required for IE/Safari, it hardly hurts FF/Chrome
+           var svgDocString = "<html><body>"+xhr.responseText+"</body></html>"
+           var svgDoc = new DOMParser().parseFromString(svgDocString, "text/html");
            generator.apply(svgDoc);
-           content.innerHTML  = svgDoc.documentElement.innerHTML;
+           var newSvgDocString = svgDoc.getElementsByTagName("body")[0].innerHTML
+           content.innerHTML  = "<p>To save the diagram as an SVG file for InkScape, Illustrator or whatever:<br/> "
+                + "Firefox, Chrome, Safari: right-click, save link as;<br/> Internet explorer: right-click, save image as</p>"
+                + "<a href='data:application/octet-stream,"+encodeURIComponent(newSvgDocString)+"' download='diagram.svg'>"
+                + newSvgDocString
+                + "</a>";
+           // TODO omit link for IE but how to test for not supporting data-uri as href?
        }
     }
 }
-xmlhttp.open("GET", generator.templateURI, true);
+xhr.open("GET", generator.templateURI, true);
+xhr.send();
 content.innerHTML  += "loading diagram... "
-xmlhttp.send();
