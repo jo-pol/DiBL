@@ -6,11 +6,6 @@
 <body>
     <div id="message">loading script, please wait... </div>
     <script type="text/javascript" src="dibl-ground-opt.js"></script>
-    <script type="text/javascript">
-        if (document.documentURI != undefined)
-            dibl.Ground().main(window, ""+document.documentURI);
-        else // of course: IE does it in a different way:
-            dibl.Ground().main(window, ""+window.location.search);
-    </script>
+    <script type="text/javascript" src="load-diagram.js"></script>
 </body>
 </html>
