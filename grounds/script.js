@@ -1,3 +1,4 @@
+<!-- saved from url=(0014)about:internet -->
 //  Copyright 2014, J. Pol
 //
 // This file is part of free software: you can redistribute it and/or modify it under the terms of the
@@ -37,8 +38,10 @@ function templateChanged(formField) {
   }
   cleanup(tab, 'hide', 'show');
   
-  // the next fails with IE
-  cfg.pattern.max = parseInt(formField.selectedOptions[0].innerHTML.split(':') [1]);
+  if (formField.selectedOptions != undefined)
+    cfg.pattern.max = parseInt(formField.selectedOptions[0].innerHTML.split(':') [1]);
+  else // IE
+    cfg.pattern.max = parseInt(formField[formField.selectedIndex].innerHTML.split(':') [1]);
 }
 function cleanup(tab, classToSearch, classToRemove)
 {
