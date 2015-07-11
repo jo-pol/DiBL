@@ -17,11 +17,14 @@ xhr.onreadystatechange = function() {
            generator.apply(svgDoc);
            var newSvgDocString = svgDoc.getElementsByTagName("body")[0].innerHTML
            content.innerHTML  = "<p>To save the diagram as an SVG file for InkScape, Illustrator or whatever:<br/> "
-                + "Firefox, Chrome, Safari: right-click, save link as;<br/> Internet explorer: right-click, save image as</p>"
+                + "Internet explorer: right-click, select: save <em>image</em> as;<br/>"
+                + "Chrome, Firefox: right-click, select: save <em>link</em> as;<br/>"
+                + "Safari: right-click on the <em>margin</em> of the diagram, select: save <em>link</em> as."
+                + "</p>"
                 + "<a href='data:application/octet-stream,"+encodeURIComponent(newSvgDocString)+"' download='diagram.svg'>"
                 + newSvgDocString
                 + "</a>";
-           // TODO omit link for IE but how to test for not supporting data-uri as href?
+           // TODO omit link for IE but how to test for support of "save image as"?
        }
     }
 }
