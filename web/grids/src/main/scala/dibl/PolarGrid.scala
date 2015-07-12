@@ -24,12 +24,9 @@ import scalatags.JsDom.all.{canvas}
 @JSExport
 object PolarGrid {
   @JSExport
-  def main(target: html.Div): Unit = {
+  def main(target: html.Div, uri: String): Unit = {
 
-    val s = Settings(new URI(target.ownerDocument.documentURI).getQuery match {
-      case null => ""
-      case s => s
-    })
+    val s = Settings(uri)
     val canvasContext = {
       while (target.hasChildNodes())
         target.removeChild(target.children.item(0))

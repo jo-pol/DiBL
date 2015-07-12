@@ -16,14 +16,14 @@ package dibl
 
 import scala.util.Try
 
-case class Settings(uriQuery: String) {
+case class Settings(uri: String) {
 
   /** DPI / mm; see https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL */
   private val scale = 96 / 25.4
 
   /** parse uri query: "key1=value1&key2=value2&..." */
   val queryMap: Map[String, Array[String]] = {
-    val m: Array[(String, String)] = for {s <- uriQuery.split("&")}
+    val m: Array[(String, String)] = for {s <- uri.replaceAll("[^?]+[?]", "").split("&")}
       yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
     m.groupBy(_._1).map { case (k, v) => (k, v.map(_._2)) }
   }

@@ -5,8 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script type="text/javascript" src="../dibl-grids-fastopt.js"></script>
     <script type="text/javascript" src="/workbench.js"></script>
+    <script>
+    function load() {
+        var container = document.getElementById('container')
+        if (document.documentURI == undefined) // IE
+            dibl.PolarGrid().main(container, ""+document.documentURI);
+        else // Chrome, Firefox, safari:
+            dibl.PolarGrid().main(container, ""+window.location.search);
+    }
+    </script>
 </head>
-<body onload="dibl.PolarGrid().main(document.getElementById('container'))">
+<body onload="load()">
 <form action="">
     <label for="diameters">Diameters (mm) </label>
     <fieldset id="diameters">
