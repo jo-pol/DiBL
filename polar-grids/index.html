@@ -22,7 +22,7 @@
     function load() {
         var container = document.getElementById('container')
         if (document.documentURI == undefined) // IE
-            dibl.PolarGrid().main(container, ""+window.location.search);
+            dibl.PolarGrid().main(container, decodeURIComponent(""+window.location.search));
         else // Chrome, Firefox, safari:
             dibl.PolarGrid().main(container, ""+document.documentURI);
     }
