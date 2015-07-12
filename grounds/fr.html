@@ -18,42 +18,26 @@
 				<a href="#tab2">2. <img src="diagonal.png" alt="Diagonal"></a>
 			</h2>
 			<div>
-				<form name="diagonalConfig">
-					<input name="traversalType" value="brick" type="hidden">
+				<form name="diagonalConfig" action="index-dev.html" target="diagram_frame">
 					<table>
 						<tbody>
 							<tr>
 								<td>Modèle&nbsp;</td>
-								<td colspan="8"><select size="1" name="options" onchange="showPairTraversal()">
-										<option selected="selected" value="">Pas de basculement / rotation</option>
-										<option value="-x">Basculer &mdash;</option>
-										<option value="-y">Basculer |</option>
-										<option value="-x -y">Rotatation</option>
-								</select>Dimensions: <select size="1" name="dimensions" onchange="setRangeMax()">
-										<option value="3x3">3x3 (Nb max : 8)</option>
-										<option value="4x4" selected="selected">4x4 (Nb max : 740)</option>
-								</select> Nb: <input name="pattern" min="1" max="7" value="1" onchange="showPairTraversal()" onkeyup="showPairTraversal()" type="number">
+								<td colspan="8">
+									<select size="1" name="template" onchange="templateChanged(this);" id="init">
+											<option value="diagonal-3x3-thread">3x3 thread (Nb max : 6)</option>
+											<option value="diagonal-4x4-thread">4x4 thread (Nb max : 208)</option>
+											<option value="brick-3x3-pair">brick 3x3 pair (Nb max : 7)</option>
+											<option value="brick-3x3-thread">brick 3x3 thread (Nb max : 7)</option>
+											<option value="brick-4x4-pair">brick 4x4 pair(Nb max : 221)</option>
+											<option selected="selected" value="brick-4x4-thread">brick 4x4 thread (Nb max : 221)</option>
+									</select>
+									<br>nr: <input name="pattern" min="0" max="221" value="0" onkeyup="showPairTraversal()" type="number"/>
 								</td>
 							</tr>
 							<tr>
-								<td>Type&nbsp;de&nbsp;diagramme</td>
-								<td colspan="8"><select size="1" name="diagramType" onchange="diagramTypeChanged();">
-										<option selected="selected" value="">Fils (seulement : tc / tcptc)</option>
-										<option value="-pair">Paire (quelques points sont toujours négligés)</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td>Type&nbsp;d'image</td>
-								<td colspan="8"><select size="1" name="ext" onchange="showPairTraversal()">
-										<option selected="selected" value="svg">svg</option>
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="tiff">tiff</option>
-								</select></td>
-							</tr>
-							<tr>
 								<td rowspan="4">Points&nbsp;</td>
-								<td class="narrow"><select size="1" name="A1" class="tab2row1 tab2col1" onchange="showPairTraversal()">
+								<td class="narrow"><select size="1" name="A1" class="tab2row1 tab2col1">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -62,7 +46,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td class="narrow"></td>
-								<td class="narrow"><select size="1" name="B1" class="tab2row1 tab2col2" onchange="showPairTraversal()">
+								<td class="narrow"><select size="1" name="B1" class="tab2row1 tab2col2">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -71,7 +55,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td class="narrow"></td>
-								<td class="narrow"><select size="1" name="C1" class="tab2row1 tab2col3" onchange="showPairTraversal()">
+								<td class="narrow"><select size="1" name="C1" class="tab2row1 tab2col3">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -80,7 +64,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td class="narrow"></td>
-								<td class="narrow"><select size="1" name="D1" class="tab2row1 tab2col4" onchange="showPairTraversal()">
+								<td class="narrow"><select size="1" name="D1" class="tab2row1 tab2col4">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -92,7 +76,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><select size="1" name="A2" class="tab2row2 tab2col1" onchange="showPairTraversal()">
+								<td><select size="1" name="A2" class="tab2row2 tab2col1">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -101,7 +85,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="B2" class="tab2row2 tab2col2" onchange="showPairTraversal()">
+								<td><select size="1" name="B2" class="tab2row2 tab2col2">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -110,7 +94,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="C2" class="tab2row2 tab2col3" onchange="showPairTraversal()">
+								<td><select size="1" name="C2" class="tab2row2 tab2col3">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -119,7 +103,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="D2" class="tab2row2 tab2col4" onchange="showPairTraversal()">
+								<td><select size="1" name="D2" class="tab2row2 tab2col4">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -129,7 +113,7 @@
 								</select></td>
 							</tr>
 							<tr>
-								<td><select size="1" name="A3" class="tab2row3 tab2col1" onchange="showPairTraversal()">
+								<td><select size="1" name="A3" class="tab2row3 tab2col1">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -138,7 +122,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="B3" class="tab2row3 tab2col2" onchange="showPairTraversal()">
+								<td><select size="1" name="B3" class="tab2row3 tab2col2">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -147,7 +131,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="C3" class="tab2row3 tab2col3" onchange="showPairTraversal()">
+								<td><select size="1" name="C3" class="tab2row3 tab2col3">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -156,7 +140,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="D3" class="tab2row3 tab2col4" onchange="showPairTraversal()">
+								<td><select size="1" name="D3" class="tab2row3 tab2col4">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -168,7 +152,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><select size="1" name="A4" class="tab2row4 tab2col1" onchange="showPairTraversal()">
+								<td><select size="1" name="A4" class="tab2row4 tab2col1">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -177,7 +161,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="B4" class="tab2row4 tab2col2" onchange="showPairTraversal()">
+								<td><select size="1" name="B4" class="tab2row4 tab2col2">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -186,7 +170,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="C4" class="tab2row4 tab2col3" onchange="showPairTraversal()">
+								<td><select size="1" name="C4" class="tab2row4 tab2col3">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -195,7 +179,7 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="D4" class="tab2row4 tab2col4" onchange="showPairTraversal()">
+								<td><select size="1" name="D4" class="tab2row4 tab2col4">
 										<option selected="selected" value="tc">tc</option>
 										<option class="pair" value="ctc">ctc</option>
 										<option class="pair" value="tctc">tctc</option>
@@ -204,9 +188,9 @@
 										<option class="pair" value="tctctcptc">tctcptctc</option>
 								</select></td>
 							</tr>
-							<tr><td><a href="https://cdn.rawgit.com/jo-pol/DiBL/master/standalone/tiles/dibl-tiles/src/main/assembly/input/PairTraversal/brick/4x4.svg">Exemple</a></td></tr>
 						</tbody>
 					</table>
+					<input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
@@ -215,43 +199,23 @@
 				<a href="#tab3">3. <img src="interleaved.png" alt="Entrelacées"></a>
 			</h2>
 			<div>
-				<form name="interleavedConfig">
-					<input name="traversalType" value="interleaved" type="hidden">
+				<form name="interleavedConfig" action="index-dev.html" target="diagram_frame">
 					<table>
 						<tbody>
 							<tr>
 								<td>Modèle&nbsp;</td>
-								<td colspan="4"><select size="1" name="options" onchange="showPairTraversal()">
-										<option selected="selected" value="">Pas de basculement / rotation</option>
-										<option value="-x">Basculer &mdash;</option>
-										<option value="-y">Basculer |</option>
-										<option value="-x -y">Rotation</option>
-								</select> Dimensions: <select size="1" name="dimensions" onchange="setRangeMax();">
-										<option value="2x2">2x2 (Nb max : 7)</option>
-										<option value="2x4">2x4 (Nb max : 47)</option>
-										<option value="4x2" selected="selected">4x2 (Nb max: 93)</option>
-								</select> Nb: <input name="pattern" min="1" max="7" value="1" onchange="showPairTraversal()" onkeyup="showPairTraversal()" type="number">
+								<td colspan="4">
+									<select size="1" name="template" onchange="templateChanged(this);">
+											<option value="interleaved-2x2-pair">2x2 pair (Nb max : 6)</option>
+											<option value="interleaved-2x4-pair">2x4 pair (Nb max : 56)</option>
+											<option selected="selected" value="interleaved-4x2-pair">4x2 pair (Nb max : 92)</option>
+									</select>
+									<br>Nb: <input name="pattern" min="0" max="92" value="1" onkeyup="showPairTraversal()" type="number"/>
 								</td>
 							</tr>
 							<tr>
-								<td>Type&nbsp;de&nbsp;diagramme</td>
-								<td colspan="4"><select size="1" name="diagramType" onchange="showPairTraversal()">
-										<!--option value="">thread</option-->
-										<option selected="selected" value="-pair">Paire (quelques points sont toujours négligés)</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td>Type&nbsp;d'image</td>
-								<td colspan="4"><select size="1" name="ext" onchange="showPairTraversal()">
-										<option selected="selected" value="svg">svg</option>
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="tiff">tiff</option>
-								</select></td>
-							</tr>
-							<tr>
 								<td rowspan="4">Points&nbsp;</td>
-								<td class="narrow"><select size="1" name="A1" class="tab3row1 tab3col1" onchange="showPairTraversal()">
+								<td class="narrow"><select size="1" name="A1" class="tab3row1 tab3col1">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -259,7 +223,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td class="narrow"><select size="1" name="B1" class="tab3row1 tab3col2" onchange="showPairTraversal()">
+								<td class="narrow"><select size="1" name="B1" class="tab3row1 tab3col2">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -267,7 +231,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td class="narrow"><select size="1" name="C1" class="tab3row1 tab3col3 tab3hide" onchange="showPairTraversal()">
+								<td class="narrow"><select size="1" name="C1" class="tab3row1 tab3col3 tab3hide">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -275,41 +239,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td><select size="1" name="D1" class="tab3row1 tab3col4 tab3hide" onchange="showPairTraversal()">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td><select size="1" name="A2" class="tab3row2 tab3col1" onchange="showPairTraversal()">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="B2" class="tab3row2 tab3col2" onchange="showPairTraversal()">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="C2" class="tab3row2 tab3col3 tab3hide" onchange="showPairTraversal()">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="D2" class="tab3row2 tab3col4 tab3hide" onchange="showPairTraversal()">
+								<td><select size="1" name="D1" class="tab3row1 tab3col4 tab3hide">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -319,7 +249,7 @@
 								</select></td>
 							</tr>
 							<tr>
-								<td><select size="1" name="A3" class="tab3row3 tab3col1" onchange="showPairTraversal()">
+								<td><select size="1" name="A2" class="tab3row2 tab3col1">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -327,7 +257,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td><select size="1" name="B3" class="tab3row3 tab3col2" onchange="showPairTraversal()">
+								<td><select size="1" name="B2" class="tab3row2 tab3col2">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -335,7 +265,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td><select size="1" name="C3" class="tab3row3 tab3col3 tab3hide" onchange="showPairTraversal()">
+								<td><select size="1" name="C2" class="tab3row2 tab3col3 tab3hide">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -343,7 +273,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td><select size="1" name="D3" class="tab3row3 tab3col4 tab3hide" onchange="showPairTraversal()">
+								<td><select size="1" name="D2" class="tab3row2 tab3col4 tab3hide">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -353,7 +283,7 @@
 								</select></td>
 							</tr>
 							<tr>
-								<td><select size="1" name="A4" class="tab3row4 tab3col1" onchange="showPairTraversal()">
+								<td><select size="1" name="A3" class="tab3row3 tab3col1">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -361,7 +291,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td><select size="1" name="B4" class="tab3row4 tab3col2" onchange="showPairTraversal()">
+								<td><select size="1" name="B3" class="tab3row3 tab3col2">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -369,7 +299,7 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td><select size="1" name="C4" class="tab3row4 tab3col3 tab3hide" onchange="showPairTraversal()">
+								<td><select size="1" name="C3" class="tab3row3 tab3col3 tab3hide">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -377,7 +307,41 @@
 										<option value="ctcpctc">ctcpctc</option>
 										<option value="tctctcptc">tctcptctc</option>
 								</select></td>
-								<td><select size="1" name="D4" class="tab3row4 tab3col4 tab3hide" onchange="showPairTraversal()">
+								<td><select size="1" name="D3" class="tab3row3 tab3col4 tab3hide">
+										<option selected="selected" value="tc">tc</option>
+										<option value="ctc">ctc</option>
+										<option value="tctc">tctc</option>
+										<option value="tcptc">tcptc</option>
+										<option value="ctcpctc">ctcpctc</option>
+										<option value="tctctcptc">tctcptctc</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td><select size="1" name="A4" class="tab3row4 tab3col1">
+										<option selected="selected" value="tc">tc</option>
+										<option value="ctc">ctc</option>
+										<option value="tctc">tctc</option>
+										<option value="tcptc">tcptc</option>
+										<option value="ctcpctc">ctcpctc</option>
+										<option value="tctctcptc">tctcptctc</option>
+								</select></td>
+								<td><select size="1" name="B4" class="tab3row4 tab3col2">
+										<option selected="selected" value="tc">tc</option>
+										<option value="ctc">ctc</option>
+										<option value="tctc">tctc</option>
+										<option value="tcptc">tcptc</option>
+										<option value="ctcpctc">ctcpctc</option>
+										<option value="tctctcptc">tctcptctc</option>
+								</select></td>
+								<td><select size="1" name="C4" class="tab3row4 tab3col3 tab3hide">
+										<option selected="selected" value="tc">tc</option>
+										<option value="ctc">ctc</option>
+										<option value="tctc">tctc</option>
+										<option value="tcptc">tcptc</option>
+										<option value="ctcpctc">ctcpctc</option>
+										<option value="tctctcptc">tctcptctc</option>
+								</select></td>
+								<td><select size="1" name="D4" class="tab3row4 tab3col4 tab3hide">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -388,6 +352,7 @@
 							</tr>
 						</tbody>
 					</table>
+					<input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
@@ -435,18 +400,28 @@
 				<a href="#tab1">1. <img src="flanders.png" alt="Flandres"></a>
 			</h2>
 			<div>
-				<form name="flandersConfig">
+				<form name="flandersConfig" action="index-dev.html" target="diagram_frame">
+					<input name="pattern" value="0" type="hidden">
 					<table>
 						<tbody>
 							<tr>
+								<td>pattern&nbsp;</td>
+								<td colspan="8">
+									<select size="1" name="template" onchange="templateChanged(this);">
+											<option selected="selected" value="flanders-3x2-thread">thread</option>
+											<option value="flanders-3x2-pair">pair</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
 								<td rowspan="4">Points&nbsp;</td>
-								<td class="narrow"><select size="1" name="A1" onchange="showFlanders()">
+								<td class="narrow"><select size="1" name="A1">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
 								</select></td>
 								<td class="narrow"></td>
-								<td><select size="1" name="A2" onchange="showFlanders()">
+								<td><select size="1" name="A2">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -455,7 +430,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><select size="1" name="A3" onchange="showFlanders()">
+								<td><select size="1" name="A3">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -463,13 +438,13 @@
 								<td></td>
 							</tr>
 							<tr>
-								<td><select size="1" name="B1" onchange="showFlanders()">
+								<td><select size="1" name="B1">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
 								</select></td>
 								<td></td>
-								<td><select size="1" name="B2" onchange="showFlanders()">
+								<td><select size="1" name="B2">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
@@ -477,59 +452,19 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><select size="1" name="B3" onchange="showFlanders()">
+								<td><select size="1" name="B3">
 										<option selected="selected" value="tc">tc</option>
 										<option value="ctc">ctc</option>
 										<option value="tctc">tctc</option>
 								</select></td>
 							</tr>
-							<tr>
-								<td>Type&nbsp;d'image</td>
-								<td colspan="4"><select size="1" name="ext" onchange="showFlanders()">
-										<option selected="selected" value="svg">svg</option>
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="tiff">tiff</option>
-								</select></td>
-							</tr>
-							<tr><td><a href="https://cdn.rawgit.com/jo-pol/DiBL/master/standalone/tiles/dibl-tiles/src/main/assembly/input/flanders.svg">Exemple</a></td></tr>
 						</tbody>
 					</table>
+					<input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
 				</form>
 			</div>
 		</section>
 	</article>
-	<article>
-		<p>
-				Un bouton de soumission n'est pas encore implémenté.
-                Pour le moment, vous devez installer DiBL et copier/coller la commande configurée dans un fichier
-                <code>.sh</code> ou <code>.bat</code> pour l'exécuter.
-		</p>
-		<ul>
-			<li>Trouver les dernières occurrences de <a href="https://github.com/jo-pol/DiBL/releases">"tiles"</a></li>
-			<li>Téléchargez et décompacter le zip (Windows) ou tar.gz (environ 10% plus petit sous Mac/Linux seulement).</li>
-			<li>Déposez les fichiers <code>.sh</code> ou <code>.bat</code> dans le dossier décompressé.
-				Par exemple: <code>mes documents\dibl-cmd-0.1.2-bin\dibl-cmd-0.1.2</code></li>
-		</ul>
-		<p>Voyez les <a href="https://github.com/jo-pol/DiBL/wiki/Edit-Diagrams">conseils d'édition</a> pour des images svg,
-			par exemple, pour varier la largeur ou la couleur du fil.
-		</p>
-		<div id="commands">
-			<h2>Command files</h2>
-			<ul>
-				<li>sh (Mac / Unix, la phrase multiligne nécessite des apostrophes)<pre id="sh">java -jar dibl-cmd-${project.version}.jar -ext svg '3;2
-tc;tc
-tc;tc
-tc;tc' &lt; input/flanders.svg &gt; diagram.svg</pre></li>
-				<li>bat (Windows, la phrase multiligne nécessite des lignes vides)<pre id="bat">java -jar dibl-cmd-${project.version}.jar -ext svg 3;2^
-
-tc;tc^
-
-tc;tc^
-
-tc;tc &lt; input/flanders.svg &gt; diagram.svg</pre></li>
-			</ul>
-		</div>
-	</article>
+	<iframe name="diagram_frame" src="execuse.html"/>
 </body>
 </html>
