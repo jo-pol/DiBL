@@ -15,6 +15,7 @@
 */
 package dibl
 
+import org.scalajs.dom.raw.Console
 import scala.util.Try
 
 /**
@@ -34,14 +35,16 @@ case class Settings(template: String, stitches: Map[String, String]) {
 object Settings {
 
   /** Interprets the query part of a URI: "key1=value1&key2=value2&..." */
-  def parseUri(uri: String): Settings = {
+  def parseUri(uri: String)(implicit console: Console, debug: Boolean): Settings = {
 
-    val queryMap: Map[String, String] = (for {s <- uri.replaceAll("[^?]+[?]", "").split("&")}
+    val queryMap: Map[String, String] = (for {s <- uri.replaceAll("^[^?]+[?]", "").replace("?", "").split("&")}
         yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
         ).toMap
     val template: String = queryMap.getOrElse("template","diagonal-3x3-thread")
     val pattern: Int = Try(queryMap.getOrElse("pattern", "0").toInt).getOrElse(-1)
     val fallBack = M(R("", "", "", ""), R("", "", "", ""), R("", "", "", ""), R("", "", "", ""))
+    if (debug) console.info(s"$template $uri ${queryMap.toArray.deep.toString}")
+
     val graph: M = Graphs.get(template, pattern, fallBack)
 
     new Settings(template, (for {
