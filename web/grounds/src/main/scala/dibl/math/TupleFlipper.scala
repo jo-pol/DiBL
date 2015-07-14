@@ -14,8 +14,10 @@ package dibl.math
  *
  * A tuple for a pair traversal diagram has two positive numbers for connections from nodes 0-4 to node
  * X, and two negative numbers for connections from node X to nodes 4-0. Remaining nodes are zero. <br>
- * As an example a long and and short tuple for an X: (0,1,0,1,0,-1,0,-1) (0,1,1,0,-1,-1) <br>
- * A + can only be expressed as a long tuple: (1,0,1,0,-1,0,-1,0)
+ * As an example a long and and short tuple for an X: (0,1,0,1,0,-1,0,-1) (0,1,1,0,-1,-1);
+ * orientation is always top down <br>
+ * A + can only be expressed as a long tuple, either oriented left to right (1,0,1,0,-1,0,-1,0),
+ * or rigth to left (-1,0,1,0,1,0,-1,0)
  */
 object TupleFlipper extends Flipper[String] {
 
