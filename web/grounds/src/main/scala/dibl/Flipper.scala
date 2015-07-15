@@ -1,4 +1,4 @@
-package dibl.math
+package dibl
 
 trait Flipper[O] {
   def flipLeftRight(o: O): O
