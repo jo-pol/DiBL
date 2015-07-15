@@ -40,14 +40,11 @@ object Graphs {
 
   def get(template: String, pattern: Int, fallBack: M): M = {
 
-    // TODO flip matrix: https://github.com/jo-pol/DiBL/tree/master/standalone/tiles/dibl-tiles/src/main/java/dibl/math
-    // see also http://stackoverflow.com/questions/10456918/scala-matrix-library-to-calculate-large-fibonacci-numbers
-
     val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
     val matrices: Array[M] = matrixMap.getOrElse(matrixKey, Array(fallBack))
     if (pattern <0 || pattern > matrices.length)
       fallBack
-    else matrices(pattern)
+    else matrices(pattern) // TODO See the not yet tested object MatrixFlipper
   }
 }
 private object diagonal_3x3 { val matrices: Array[M] = Array (
