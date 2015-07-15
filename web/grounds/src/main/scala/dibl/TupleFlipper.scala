@@ -1,10 +1,11 @@
 package dibl
 
+import dibl.TupleFlipper.flipper
+
 /**
  * Tuples define how nodes in a graph/diagram are connected. The schema's below show the numbered nodes
- * of the tuples wrapped counter clock wise around the central X-node. The methods accept as input both
- * the long version on the left, as the short version on the right. In both cases a long version is
- * returned.
+ * of the tuples wrapped counter clock wise around the central X-node.
+ * The long tuple version on the left, the short on the right.
  *
  * <pre>
  * 3 2 1    2 - 1
@@ -21,8 +22,6 @@ package dibl
  */
 abstract class TupleFlipper extends Flipper[String] {
 
-  val flipper = new MatrixFlipper(tef)
-
   def flipBottomUp(value: String): String = toTuple(flipper.flipBottomUp(toMatrix(value)))
 
   def flipLeftRight(value: String): String = toTuple(flipper.flipLeftRight(toMatrix(value)))
@@ -33,32 +32,36 @@ abstract class TupleFlipper extends Flipper[String] {
   /** Flips actually along the Y axis to match the flip of a skewed matrix. */
   def flipNE2SW(value: String): String = toTuple(flipper.flipLeftRight(toMatrix(value)))
 
-  protected def toMatrix(value: String): Array[Array[String]];
-  protected def toTuple(m: Array[Array[String]]): String;
+  protected def toMatrix(value: String): M;
+  protected def toTuple(m: M): String;
 }
 
-/** TupleElementFlipper */
-private object tef extends Flipper[String] {
+private object TupleFlipper {
+
+  /** Flips tuples represented as matrices */
+  private val flipper = new MatrixFlipper(new Flipper[String] {
+    /** Change the sign of a tuple element */
     def flipBottomUp(value: String): String = (-value.trim.toInt).toString()
     def flipLeftRight(value: String): String = value
     def flipNW2SE(value: String): String = throw new UnsupportedOperationException
     def flipNE2SW(value: String): String = throw new UnsupportedOperationException
+  })
 }
 
 object LongTupleFlipper extends TupleFlipper {
 
-  override def toMatrix(value: String): Array[Array[String]] = {
+  override def toMatrix(value: String): M = {
     val s: Array[String] = value.replaceAll("[()]", "").split(",")
-    Array[Array[String]](Array(s(3), s(2), s(1)), Array(s(4), "0", s(0)), Array(s(5), s(6), s(7)))
+    M(Array(s(3), s(2), s(1)), Array(s(4), "0", s(0)), Array(s(5), s(6), s(7)))
   }
-  override def toTuple(m: Array[Array[String]]) = s"${m(1)(2)},${m(0)(2)},${m(0)(1)},${m(0)(0)},${m(1)(0)},${m(2)(0)},${m(2)(1)},${m(2)(2)}"
+  override def toTuple(m: M) = s"${m(1)(2)},${m(0)(2)},${m(0)(1)},${m(0)(0)},${m(1)(0)},${m(2)(0)},${m(2)(1)},${m(2)(2)}"
 }
 
 object ShortTupleFlipper extends TupleFlipper {
 
-  override def toMatrix(value: String): Array[Array[String]] = {
+  override def toMatrix(value: String): M = {
     val s: Array[String] = value.replaceAll("[()]", "").split(",")
-    Array[Array[String]](Array(s(2), "0", s(1)), Array(s(3), "0", s(0)), Array(s(4), "0", s(5)))
+    M(Array(s(2), "0", s(1)), Array(s(3), "0", s(0)), Array(s(4), "0", s(5)))
   }
-  override def toTuple(m: Array[Array[String]]) = s"${m(1)(2)},${m(0)(2)},${m(0)(0)},${m(1)(0)},${m(2)(0)},${m(2)(2)}"
+  override def toTuple(m: M) = s"${m(1)(2)},${m(0)(2)},${m(0)(0)},${m(1)(0)},${m(2)(0)},${m(2)(2)}"
 }

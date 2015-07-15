@@ -1,9 +1,9 @@
 package dibl
 
 /** @param flipper object that flips matrix elements */
-class MatrixFlipper(flipper: Flipper[String]) extends Flipper[Array[Array[String]]] {
+class MatrixFlipper(flipper: Flipper[String]) extends Flipper[M] {
 
-  def flipLeftRight(matrix: Array[Array[String]]): Array[Array[String]] = {
+  def flipLeftRight(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
     val result = Array.ofDim[String](2, 2)
@@ -15,7 +15,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[Array[Array[String
     result
   }
 
-  def flipBottomUp(matrix: Array[Array[String]]): Array[Array[String]] = {
+  def flipBottomUp(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
     val result = Array.ofDim[String](2, 2)
@@ -27,7 +27,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[Array[Array[String
     result
   }
 
-  def flipNE2SW(matrix: Array[Array[String]]): Array[Array[String]] = {
+  def flipNE2SW(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
     val result = Array.ofDim[String](2, 2)
@@ -39,7 +39,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[Array[Array[String
     result
   }
 
-  def flipNW2SE(matrix: Array[Array[String]]): Array[Array[String]] = {
+  def flipNW2SE(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
     val result = Array.ofDim[String](2, 2)
@@ -51,7 +51,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[Array[Array[String
     result
   }
 
-  def fromBrickToCheckerboard(matrix: Array[Array[String]]): Array[Array[String]] = {
+  def fromBrickToCheckerboard(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
     val result = Array.ofDim[String](2, 2)
@@ -65,15 +65,15 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[Array[Array[String
   }
 }
 
-object matrixFlippers {
-    def flipDiamond(instruction: String, matrix: Array[Array[String]]) = {
+object MatrixFlipper {
+    def flipDiamond(instruction: String, matrix: M) = {
         instruction match {
         case "x" => diamonds.flipNW2SE(matrix)
         case "y" => diamonds.flipNE2SW(matrix)
         case "r" => diamonds.flipNE2SW(diamonds.flipNW2SE(matrix))
         }
     }
-    def flipInterleaved(instruction: String, brickMatrix: Array[Array[String]]) = {
+    def flipInterleaved(instruction: String, brickMatrix: M) = {
         val matrix = interleaved.fromBrickToCheckerboard(brickMatrix)
         instruction match {
         case "x" => interleaved.flipLeftRight(matrix)
@@ -81,7 +81,7 @@ object matrixFlippers {
         case "r" => interleaved.flipBottomUp(interleaved.flipLeftRight(matrix))
         }
     }
-    def flipBrick(instruction: String, brickMatrix: Array[Array[String]]) = {
+    def flipBrick(instruction: String, brickMatrix: M) = {
         val matrix = bricks.fromBrickToCheckerboard(brickMatrix)
         instruction match {
         case "x" => bricks.flipLeftRight(matrix)
@@ -104,7 +104,7 @@ object matrixFlippers {
         // I-J-K-L- | L-K-J-I- | L-K-J-I-
         // -M-N-O-P | -P-O-N-M | -O-N-M-P
         // ==============================
-        override def flipLeftRight(matrix: Array[Array[String]]) = shiftOddRows(super.flipLeftRight(matrix))
+        override def flipLeftRight(matrix: M) = shiftOddRows(super.flipLeftRight(matrix))
 
         // input | super | output
         // ========================
@@ -117,8 +117,8 @@ object matrixFlippers {
         // I-J-K-L- | E-F-G-H- | E-F-G-H-
         // -M-N-O-P | -A-B-C-D | -B-C-D-A
         // ==============================
-        override def flipBottomUp(matrix: Array[Array[String]]) = shiftOddRows(super.flipBottomUp(matrix))
+        override def flipBottomUp(matrix: M) = shiftOddRows(super.flipBottomUp(matrix))
 
-        private def shiftOddRows(matrix: Array[Array[String]]) = matrix // TODO port from java
+        private def shiftOddRows(matrix: M) = matrix // TODO port from java
     }
 }
