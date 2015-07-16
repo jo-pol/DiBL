@@ -117,8 +117,22 @@ object MatrixFlipper {
         // I-J-K-L- | E-F-G-H- | E-F-G-H-
         // -M-N-O-P | -A-B-C-D | -B-C-D-A
         // ==============================
-        override def flipBottomUp(matrix: M) = shiftOddRows(super.flipBottomUp(matrix))
+        override def flipBottomUp(matrix: M) = {
 
-        private def shiftOddRows(matrix: M) = matrix // TODO port from java
+          shiftOddRows(super.flipBottomUp(matrix))
+          if (matrix(0).length % 2 == 0)
+            shiftOddRows(matrix)
+          else matrix
+        }
+
+      private def shiftOddRows(matrix: M) = {
+
+        val result = matrix.map(_.clone())
+        val cols = matrix(0).length
+        for (r <- 1 to matrix.length by 2) {
+          result(r) = matrix(r).slice(1, cols - 1) ++ matrix(0)
+        }
+        result
+      }
     }
 }

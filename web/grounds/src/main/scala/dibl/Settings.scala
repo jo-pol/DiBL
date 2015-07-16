@@ -16,6 +16,7 @@
 package dibl
 
 import org.scalajs.dom.raw.Console
+import scala.collection.immutable.IndexedSeq
 import scala.util.Try
 
 /**
@@ -29,7 +30,7 @@ import scala.util.Try
  *                  See also <a href="https://github.com/jo-pol/DiBL/wiki/Input-Files">matrices and tuples</a>.
  */
 case class Settings(template: String, stitches: Map[String, String]) {
-  override def toString: String = s"TEMPLATE: $template STITCHES: $stitches"
+  override def toString = s"TEMPLATE: $template STITCHES: $stitches"
 }
 
 object Settings {
@@ -43,17 +44,22 @@ object Settings {
     val template: String = queryMap.getOrElse("template","diagonal-3x3-thread")
     val pattern: Int = Try(queryMap.getOrElse("pattern", "0").toInt).getOrElse(-1)
     val fallBack = M(R("", "", "", ""), R("", "", "", ""), R("", "", "", ""), R("", "", "", ""))
-    if (debug) console.info(s"$template $uri ${queryMap.toArray.deep.toString}")
+    if (debug) console.info(s"$template $uri ${queryMap.toArray.deep.toString()}")
 
     val graph: M = Graphs.get(template, pattern, fallBack)
+    // TODO See the not yet tested object MatrixFlipper
 
-    new Settings(template, (for {
+    val tuples: IndexedSeq[(String, String)] = for {
       r <- graph.indices
       c <- graph(0).indices
     } yield {
         val key: String = s"${"ABCD".substring(c, c + 1)}${r + 1}"
         val stitch: String = queryMap.getOrElse(key, "tc")
         (key, s"$stitch (${graph(r)(c)})")
-      }).toArray.toMap)
+      }
+    new Settings(template, tuples.toArray.toMap)
+    {
+      override def toString = s"${super.toString} FROM: $uri"
+    }
   }
 }

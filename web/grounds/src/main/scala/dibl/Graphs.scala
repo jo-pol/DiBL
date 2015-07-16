@@ -44,7 +44,7 @@ object Graphs {
     val matrices: Array[M] = matrixMap.getOrElse(matrixKey, Array(fallBack))
     if (pattern <0 || pattern > matrices.length)
       fallBack
-    else matrices(pattern) // TODO See the not yet tested object MatrixFlipper
+    else matrices(pattern).clone()
   }
 }
 private object diagonal_3x3 { val matrices: Array[M] = Array (
