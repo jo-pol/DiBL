@@ -23,10 +23,6 @@ p {
 	padding-top: 0px;
 }
 
-form {
-	width:50em
-}
-
 table,td {
 	border: 0px;
 }
@@ -47,9 +43,7 @@ td.narrow {
 iframe {
     margin-left: 1em;
 	width: 820px;
-	height: 400px; 
-    /* not too high so everything fits on a desktop screen
-    and the tabs don't scroll out of sight */
+	height: 1000px; 
 }
 
 img {
@@ -66,9 +60,4 @@ td input {
 
 .hide {
 	display:none;
-}
-
-img {
-	vertical-align: text-top;
-	border: 0px;
 }

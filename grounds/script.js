@@ -30,12 +30,6 @@ function templateChanged(formField) {
       r.className += ' ' + tab + (j < rows ? 'show' : 'hide');
     }
   }
-  if (tab == "tab2" && cfg.template.value.lastIndexOf("-thread")>0) {
-      var stitchElements = document.getElementsByClassName("pair");
-      for (i = stitchElements.length; i > 0; ) {
-        stitchElements[--i].className += ' hide';
-      }
-  }
   cleanup(tab, 'hide', 'show');
   
   if (formField.selectedOptions != undefined)
