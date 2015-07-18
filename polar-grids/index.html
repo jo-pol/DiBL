@@ -37,9 +37,11 @@
       <fieldset id="style">
 		  select an example with one of the links
           <br/>
-          <label for="angle">angle (degrees) </label><input id="angle" name="angle" type="number" min="10" max="80" value="45">
+          <label for="angle">angle (degrees) </label>
+          <input id="angle" name="angle" type="number" min="10" max="80" value="45">
           <br/>
-          <label for="angle">pattern of dots </label><input id="dotPattern" name="dotPattern" list="dotPatterns" value="1" pattern="[012]+(,[012]+)*">
+          <label for="angle">pattern of dots <a href="https://github.com/jo-pol/DiBL/wiki/About-polar-grids#Pattern-of-dots">(?)</a></label>
+          <input id="dotPattern" name="dotPattern" list="dotPatterns" value="1" pattern="[012]+(,[012]+)*">
       </fieldset>
       <datalist id="dotPatterns">
           <option value="011,101,211,101,011,121"></option>
@@ -59,7 +61,7 @@
       </fieldset>
 	  <br/>
       <button class="button" type="submit">draw</button>
-      <a class="button" href="https://github.com/jo-pol/DiBL/wiki/About-polar-grids">help</a>
+      <a href="https://github.com/jo-pol/DiBL/wiki/About-polar-grids">help</a>
   </form>
   <div>
       <p>
@@ -69,32 +71,31 @@
       </p>
       <ul>
         <li>Basic Torchon / Flanders:
-            <a href="?angle=45#B1">B1</a>
+            <a href="?angle=45&outerDiameter=170&innerDiameter=100&dotsPerRing=120&link=B1">B1</a>
         </li>
         <li>Torchon:
-            <a href="?dotPattern=1,0,1011,0,1,0,1110,0&angle=45&dotsPerRing=120#Vierge">Vierge</a>,
-            <a href="?dotPattern=11101112,0,10111211,0,11121110,0,12111011,0&angle=45&dotsPerRing=120#3104">3104</a>,
-            <a href="?dotPattern=111001011121,0,001011121111,0,011121111001,0,121111001011,0&angle=45&dotsPerRing=120#3104">3104</a>;
-            <a href="?dotPattern=1,10,1,01&angle=45&dotsPerRing=120#Honeycomb">Honeycomb</a>;
+            <a href="?dotPattern=1,0,1011,0,1,0,1110,0&angle=45&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=Vierge">Vierge</a>,
+            <a href="?dotPattern=11101112,0,10111211,0,11121110,0,12111011,0&angle=45&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=3104">3104</a>,
+            <a href="?dotPattern=111001011121,0,001011121111,0,011121111001,0,121111001011,0&angle=45&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=3104">3104</a>;
+            <a href="?dotPattern=1,10,1,01&angle=45&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=Honeycomb">Honeycomb</a>;
 			spiders with 
-			<a href="?dotPattern=100,101,011,010,011,101&angle=45&dotsPerRing=120#8">8</a>,
-			<a href="?dotPattern=1001,1010,0110,0101,0110,1010,1001,0101&angle=45&dotsPerRing=120#8">12</a>,
-			<a href="?dotPattern=10001,10010,01010,01100,00100,01100,01010,10010,10001,00001&angle=45&dotsPerRing=120#8">16</a>
+			<a href="?dotPattern=100,101,011,010,011,101&angle=45&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=8">8</a>,
+			<a href="?dotPattern=1001,1010,0110,0101,0110,1010,1001,0101&angle=45&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=8">12</a>,
+			<a href="?dotPattern=10001,10010,01010,01100,00100,01100,01010,10010,10001,00001&angle=45&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=8">16</a>
 			legs
         </li>
         <li>Small snowflakes:
-            <a href="?dotPattern=1,0&angle=49#B2">B2</a>
+            <a href="?dotPattern=1,0&angle=49&outerDiameter=170&innerDiameter=100&dotsPerRing=120&link=B2">B2</a>
         </li>
         <li>Binche/Duchesse:
-            <a href="?dotPattern=1,10,1,01&angle=63&dotsPerRing=120#B3">B3</a>,
-            <a href="?dotPattern=011,101,211,101,011,121&angle=63&dotsPerRing=120#B4">B4-B6</a>,
-            <a href="?dotPattern=1,1210,1,1012&angle=63&dotsPerRing=120#B7">B7</a>
+            <a href="?dotPattern=1,10,1,01&angle=63&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=B3">B3</a>,
+            <a href="?dotPattern=011,101,211,101,011,121&angle=63&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=B4">B4-B6</a>,
+            <a href="?dotPattern=1,1210,1,1012&angle=63&dotsPerRing=120&outerDiameter=170&innerDiameter=100&link=B7">B7</a>
         </li>
         <li>Rotated hexagons:
-            with <a href="?dotPattern=1,10,1,01&angle=30&dotsPerRing=120">triangles</a>,
-            with <a href="?dotPattern=1,002,1,1,020,1&angle=30&dotsPerRing=120">circles</a>,
-            with
-            <a href="?angle=30&dotPattern=1,1210,1,01,1,1012,1,01&dotsPerRing=120">triangles and circles</a>
+            with <a href="?dotPattern=1,10,1,01&angle=30&dotsPerRing=120&outerDiameter=170&innerDiameter=100">triangles</a>,
+            with <a href="?dotPattern=1,002,1,1,020,1&angle=30&dotsPerRing=120&outerDiameter=170&innerDiameter=100">circles</a>,
+            with <a href="?angle=30&dotPattern=1,1210,1,01,1,1012,1,01&dotsPerRing=120&outerDiameter=170&innerDiameter=100">triangles and circles</a>
         </li>
       </ul>
     </div>
