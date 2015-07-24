@@ -27,6 +27,7 @@ public class PolarGrid
             " r=\"{3}\" sodipodi:rx=\"{3}\" sodipodi:ry=\"{3}\"" + //
             " style=\"fill:{2}\"/>";
 
+    private static double SCALE = (90 / 25.4); // 90 DPI / mm
     private final int angleOnFootside;
     private final int dotsPerCircle;
     private final double minDiameter;
@@ -53,7 +54,8 @@ public class PolarGrid
      *        measured in mm. Circles of dots are generated in groups until the circles get too small.
      * @param fillColor
      */
-    public PolarGrid(final int angleOnFootside, final int dotsPerCircle, final double diameter, final double minDiameter, final String fillColor, final double dotSize)
+    public PolarGrid(final int angleOnFootside, final int dotsPerCircle, final double diameter, final double minDiameter, final String fillColor,
+            final double dotSize)
     {
         this.dotSize = dotSize;
         if (angleOnFootside < 10 || angleOnFootside > 80)
@@ -73,32 +75,35 @@ public class PolarGrid
 
     public void print(final PrintWriter pw) throws FileNotFoundException
     {
-        double aRadians = Math.toRadians(360D / dotsPerCircle);
+        double alpha = Math.toRadians(360D / dotsPerCircle);
         double diameter = maxDiameter;
         int circleNr = 0; // on even circles the dots are shifted half a distance
-        aRadians = Math.toRadians(360D / dotsPerCircle);
-        double tan = Math.tan(Math.toRadians(this.angleOnFootside));
         do
         {
-            final double distance = tan * (diameter * Math.PI / (double) dotsPerCircle);
-            pw.println(String.format("<svg:g inkscape:label='%.1f mm per dot, diameter: %f mm'> ", distance, diameter));
-            // create the dots on one circle
-            extracted(pw, aRadians, diameter, circleNr);
+            pw.println(String.format("<svg:g inkscape:label='diameter: %f mm'> ", diameter));
+            createRingOfDots(pw, alpha, diameter, circleNr);
             pw.println("</svg:g>");
             // increment
-            diameter -= distance;
+            diameter -= delta(diameter, this.angleOnFootside, (double) dotsPerCircle);
             circleNr++;
         } while (diameter > minDiameter);
     }
 
-    private void extracted(final PrintWriter pw, double aRadians, double diameter, int circleNr)
+    double delta(double diameter, int angleOnFootside, double dotsPerCircle)
+    {
+        // for 45 degrees: delta equals half of the arc length between two dots on a circle
+        double angle = Math.toRadians(angleOnFootside);
+        return Math.tan(angle) * (diameter * Math.PI / dotsPerCircle);
+    }
+
+    private void createRingOfDots(final PrintWriter pw, double aRadians, double diameter, int circleNr)
     {
         for (int dotNr = 0; dotNr < dotsPerCircle; dotNr++)
         {
             final double a = (dotNr + ((circleNr % 2) * 0.5D)) * aRadians;
             final double x = (diameter / 2D) * Math.cos(a);
             final double y = (diameter / 2D) * Math.sin(a);
-            pw.println(MessageFormat.format(DOT, x, y, fillColor, dotSize));
+            pw.println(MessageFormat.format(DOT, x * SCALE, y * SCALE, fillColor, dotSize * SCALE));
         }
     }
 }
