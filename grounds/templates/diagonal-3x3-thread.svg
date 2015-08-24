@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.2627417"
-     inkscape:cx="93.124249"
-     inkscape:cy="936.63467"
+     inkscape:zoom="1.9841504"
+     inkscape:cx="70.23942"
+     inkscape:cy="820.58099"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -6473,7 +6473,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7591"
          x="58.642765"
-         y="217.64481">a1</tspan></text>
+         y="217.64481">A1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6484,7 +6484,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7595"
          x="46.439564"
-         y="238.63594">a2</tspan></text>
+         y="238.63594">A2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6495,7 +6495,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7599"
          x="34.12262"
-         y="259.92389">a3</tspan></text>
+         y="259.92389">A3</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6506,7 +6506,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7603"
          x="71.21209"
-         y="238.63594">b1</tspan></text>
+         y="238.63594">B1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6517,7 +6517,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7607"
          x="58.168156"
-         y="259.92389">b2</tspan></text>
+         y="259.92389">B2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6528,7 +6528,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7611"
          x="45.964954"
-         y="282.85931">b3</tspan></text>
+         y="282.85931">B3</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6539,7 +6539,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7615"
          x="84.59597"
-         y="259.95905">c1</tspan></text>
+         y="259.95905">C1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6550,7 +6550,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7619"
          x="71.68084"
-         y="282.89447">c2</tspan></text>
+         y="282.89447">C2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6561,7 +6561,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
          sodipodi:role="line"
          id="tspan7623"
          x="58.636906"
-         y="304.36819">c3</tspan></text>
+         y="304.36819">C3</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#ec5f1b;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 23.874657,20.908356 92.731913,0.351421 0,141.732283 -92.057818,0 z"

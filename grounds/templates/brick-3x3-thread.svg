@@ -27,7 +27,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.5795413"
      inkscape:cx="91.079898"
-     inkscape:cy="724.91042"
+     inkscape:cy="830.35863"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -6804,7 +6804,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          y="220.64481"
          x="5.6259289"
          id="tspan4190"
-         sodipodi:role="line">a1</tspan></text>
+         sodipodi:role="line">A1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-9"
@@ -6815,7 +6815,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          y="269.35519"
          x="62.765881"
          id="tspan4190-7"
-         sodipodi:role="line">c3</tspan></text>
+         sodipodi:role="line">C3</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-7"
@@ -6826,7 +6826,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          y="220.82645"
          x="35.243423"
          id="tspan4190-9"
-         sodipodi:role="line">b1</tspan></text>
+         sodipodi:role="line">B1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-3"
@@ -6837,7 +6837,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          y="269.35519"
          x="5.4384289"
          id="tspan4190-6"
-         sodipodi:role="line">a3</tspan></text>
+         sodipodi:role="line">A3</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-6"
@@ -6848,7 +6848,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          y="242.91867"
          x="19.63368"
          id="tspan4190-95"
-         sodipodi:role="line">a2</tspan></text>
+         sodipodi:role="line">A2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6859,7 +6859,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          sodipodi:role="line"
          id="tspan4236"
          x="62.953381"
-         y="220.66238">c1</tspan></text>
+         y="220.66238">C1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4238"
@@ -6870,7 +6870,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          y="269.46066"
          x="35.055923"
          id="tspan4240"
-         sodipodi:role="line">b3</tspan></text>
+         sodipodi:role="line">B3</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -6881,7 +6881,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          sodipodi:role="line"
          id="tspan4244"
          x="47.661388"
-         y="243.02414">b2</tspan></text>
+         y="243.02414">B2</tspan></text>
     <path
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0"
@@ -6904,6 +6904,6 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
          sodipodi:role="line"
          id="tspan4244-7"
          x="73.766411"
-         y="242.93625">c2</tspan></text>
+         y="242.93625">C2</tspan></text>
   </g>
 </svg>
