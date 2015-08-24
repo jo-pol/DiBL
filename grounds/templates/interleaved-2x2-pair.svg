@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.6194282"
-     inkscape:cx="38.623759"
-     inkscape:cy="632.12447"
+     inkscape:zoom="0.88130168"
+     inkscape:cx="467.375"
+     inkscape:cy="456.73047"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -120,7 +120,7 @@
     <g
        id="g6933"
        inkscape:label="pile"
-       transform="translate(0,252.09448)">
+       transform="translate(0,288.09448)">
       <rect
          inkscape:label="(0,0,0,0,0,0,0,0)"
          y="0.094482422"
@@ -8205,7 +8205,7 @@
     </g>
     <g
        id="g6803"
-       transform="translate(-36,-36)"
+       transform="translate(-36,0)"
        inkscape:label="base tile"
        inkscape:tile-cx="36"
        inkscape:tile-cy="144.09448"
@@ -8721,33 +8721,33 @@
     <text
        sodipodi:linespacing="125%"
        id="text4188"
-       y="186.96631"
+       y="222.96631"
        x="14.169922"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="186.96631"
+         y="222.96631"
          x="14.169922"
          id="tspan4190"
          sodipodi:role="line">A1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-7"
-       y="187.14795"
+       y="223.14795"
        x="40.082428"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="187.14795"
+         y="223.14795"
          x="40.082428"
          id="tspan4190-9"
          sodipodi:role="line">B1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-6"
-       y="209.64839"
+       y="245.64839"
        x="13.850243"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="209.64839"
+         y="245.64839"
          x="13.850243"
          id="tspan4190-95"
          sodipodi:role="line">A2</tspan></text>
@@ -8755,21 +8755,21 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="41.877953"
-       y="209.85933"
+       y="245.85933"
        id="text4242"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4244"
          x="41.877953"
-         y="209.85933">B2</tspan></text>
+         y="245.85933">B2</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-77"
-       y="160.57034"
+       y="196.57034"
        x="5.5760422"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="160.57034"
+         y="196.57034"
          x="5.5760422"
          id="tspan4190-4"
          sodipodi:role="line">base tile</tspan></text>
@@ -8777,22 +8777,22 @@
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0"
        id="path14640"
-       d="m 6,168.09448 0,54 60,0 0,-54 z"
+       d="m 6,204.09448 0,54 60,0 0,-54 z"
        style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0"
        id="path14640-5"
-       d="M 0,0.09449042 0,72.09449 l 72,0 5e-6,-72.20734958 z"
+       d="m 0,36.09449 0,72 72,0 5e-6,-72.20735 z"
        style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path14640-6"
-       d="m 36,72.09449 0,71.99999"
+       d="m 36,108.09449 0,71.99999"
        style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <g
-       transform="matrix(0.47577056,0,0,0.47571728,-81.58266,302.78043)"
+       transform="matrix(0.47577056,0,0,0.47571728,-81.58266,338.78043)"
        id="g287-8"
        inkscape:export-filename="/mnt/hgfs/Bov/Documents/Work/2007/cc/identity/srr buttons/big/by-sa.png"
        inkscape:export-xdpi="300.23013"
@@ -8913,13 +8913,24 @@
     <text
        sodipodi:linespacing="125%"
        id="text4188-77-9"
-       y="277.17523"
+       y="313.17523"
        x="43.939556"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="277.17523"
+         y="313.17523"
          x="43.939556"
          id="tspan4190-4-4"
          sodipodi:role="line">pile</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.75px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="10.655267"
+       y="20.784208"
+       id="text5674"
+       sodipodi:linespacing="0%"><tspan
+         sodipodi:role="line"
+         id="tspan5676"
+         x="10.655267"
+         y="20.784208">Supported stitches: tc, ctc, tctc, tcptc, ctcpctcp, tctcptctcp</tspan></text>
   </g>
 </svg>

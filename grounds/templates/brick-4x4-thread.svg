@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.3293597"
-     inkscape:cx="60.379889"
-     inkscape:cy="880.92648"
+     inkscape:zoom="0.88617763"
+     inkscape:cx="282.7007"
+     inkscape:cy="700.28932"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -40,7 +40,7 @@
      inkscape:window-maximized="1"
      inkscape:snap-to-guides="false"
      inkscape:object-paths="false"
-     inkscape:snap-global="false"
+     inkscape:snap-global="true"
      inkscape:snap-object-midpoints="false"
      inkscape:object-nodes="true"
      showguides="true"
@@ -477,7 +477,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        inkscape:tile-w="122.74376"
        inkscape:tile-cy="467.71651"
        inkscape:tile-cx="92.057818"
-       transform="translate(-99.244085,-1023.3444)"
+       transform="translate(-99.244085,-1004.1609)"
        id="g10713"
        inkscape:label="base tile">
       <use
@@ -945,7 +945,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
     <g
        id="g6889"
        inkscape:label="pile"
-       transform="translate(-333.42439,-535.80139)">
+       transform="translate(-330.03906,-562.884)">
       <g
          inkscape:transform-center-x="3.0685921"
          inkscape:transform-center-y="-2.6574826"
@@ -6681,11 +6681,11 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
       </g>
     </g>
     <g
-       transform="translate(-64.776974,-836.32156)"
+       transform="translate(-64.776974,-817.13805)"
        id="g3881"
        style="stroke:#ff6c00;stroke-opacity:1" />
     <g
-       transform="matrix(0.47577056,0,0,0.47571728,-63.248536,459.83739)"
+       transform="matrix(0.47577056,0,0,0.47571728,-59.86321,432.75478)"
        id="g287"
        inkscape:export-filename="/mnt/hgfs/Bov/Documents/Work/2007/cc/identity/srr buttons/big/by-sa.png"
        inkscape:export-xdpi="300.23013"
@@ -6806,78 +6806,78 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="50.946648"
-       y="422.26886"
+       x="54.331974"
+       y="395.18628"
        id="text3914"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3916"
-         x="50.946648"
-         y="422.26886">pile</tspan></text>
+         x="54.331974"
+         y="395.18628">pile</tspan></text>
     <path
        style="fill:none;stroke:#ff7f2a;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M -0.05420776,0.32069018 -0.46891472,106.16765 l 121.28780472,0 -1e-5,-105.63960633 z"
+       d="m -0.05420776,19.504203 -0.41470696,105.846957 121.28780472,0 -1e-5,-105.639603 z"
        id="path6765"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:none;stroke:#ff7f2a;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 63.492643,104.92353 63.90735,206.20871"
+       d="M 63.492643,124.10704 63.90735,225.39222"
        id="path6801"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <text
        sodipodi:linespacing="125%"
        id="text4188"
-       y="255.5755"
+       y="274.75903"
        x="4.0994878"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="255.5755"
+         y="274.75903"
          x="4.0994878"
          id="tspan4190"
          sodipodi:role="line">A1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-9"
-       y="304.28589"
+       y="323.46942"
        x="59.239475"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="304.28589"
+         y="323.46942"
          x="59.239475"
          id="tspan4190-7"
          sodipodi:role="line">C3</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-7"
-       y="255.75714"
+       y="274.94067"
        x="27.717016"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="255.75714"
+         y="274.94067"
          x="27.717016"
          id="tspan4190-9"
          sodipodi:role="line">B1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-3"
-       y="304.28589"
+       y="323.46942"
        x="3.9119878"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="304.28589"
+         y="323.46942"
          x="3.9119878"
          id="tspan4190-6"
          sodipodi:role="line">A3</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-6"
-       y="277.68384"
+       y="296.86737"
        x="14.107243"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="277.68384"
+         y="296.86737"
          x="14.107243"
          id="tspan4190-95"
          sodipodi:role="line">A2</tspan></text>
@@ -6885,21 +6885,21 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="59.426975"
-       y="255.59308"
+       y="274.77661"
        id="text4234"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4236"
          x="59.426975"
-         y="255.59308">C1</tspan></text>
+         y="274.77661">C1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4238"
-       y="304.39136"
+       y="323.57489"
        x="27.529516"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="304.39136"
+         y="323.57489"
          x="27.529516"
          id="tspan4240"
          sodipodi:role="line">B3</tspan></text>
@@ -6907,32 +6907,32 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="42.134945"
-       y="277.89478"
+       y="297.07831"
        id="text4242"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4244"
          x="42.134945"
-         y="277.89478">B2</tspan></text>
+         y="297.07831">B2</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-77"
-       y="226.88454"
+       y="246.06805"
        x="3.5380561"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="226.88454"
+         y="246.06805"
          x="3.5380561"
          id="tspan4190-4"
          sodipodi:role="line">base tile</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-9-8"
-       y="304.39136"
+       y="323.57489"
        x="86.183441"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="304.39136"
+         y="323.57489"
          x="86.183441"
          id="tspan4190-7-5"
          sodipodi:role="line">D3</tspan></text>
@@ -6940,95 +6940,95 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="86.370941"
-       y="255.75714"
+       y="274.94067"
        id="text4234-2"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4236-3"
          x="86.370941"
-         y="255.75714">D1</tspan></text>
+         y="274.94067">D1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-9-88"
-       y="328.00647"
+       y="347.19"
        x="72.671455"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="328.00647"
+         y="347.19"
          x="72.671455"
          id="tspan4190-7-2"
          sodipodi:role="line">C4</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-3-1"
-       y="327.98889"
+       y="347.17242"
        x="14.007633"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="327.98889"
+         y="347.17242"
          x="14.007633"
          id="tspan4190-6-4"
          sodipodi:role="line">A4</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4238-1"
-       y="328.18518"
+       y="347.36871"
        x="42.035336"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="328.18518"
+         y="347.36871"
          x="42.035336"
          id="tspan4240-3"
          sodipodi:role="line">B4</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-9-8-7"
-       y="328.18518"
+       y="347.36871"
        x="100.74364"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="328.18518"
+         y="347.36871"
          x="100.74364"
          id="tspan4190-7-5-3"
          sodipodi:role="line">D4</tspan></text>
-    <text
-       sodipodi:linespacing="125%"
-       id="text4188-77-1"
-       y="707.03156"
-       x="-184.42981"
-       style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
-         y="707.03156"
-         x="-184.42981"
-         id="tspan4190-4-2"
-         sodipodi:role="line">pile</tspan></text>
     <path
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0"
        id="path14640"
-       d="m 0.3604992,236.70366 -0.41470696,105.84696 121.28780776,0 -10e-6,-105.63961 z"
+       d="m 0.3604992,255.88717 -0.41470696,105.84696 121.28780776,0 -10e-6,-105.63961 z"
        style="fill:none;stroke:#ff7f2a;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <text
        sodipodi:linespacing="125%"
        id="text4188-9-2"
-       y="277.68384"
+       y="296.86737"
        x="72.870674"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="277.68384"
+         y="296.86737"
          x="72.870674"
          id="tspan4190-7-4"
          sodipodi:role="line">C2</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4188-9-8-73"
-       y="277.89478"
+       y="297.07831"
        x="100.74364"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="277.89478"
+         y="297.07831"
          x="100.74364"
          id="tspan4190-7-5-9"
          sodipodi:role="line">D4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.75px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="1.0560832"
+       y="11.063818"
+       id="text5674"
+       sodipodi:linespacing="0%"><tspan
+         sodipodi:role="line"
+         id="tspan5676"
+         x="1.0560832"
+         y="11.063818">Supported stitches: tc, tcptc</tspan></text>
   </g>
 </svg>

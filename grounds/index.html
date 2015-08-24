@@ -15,14 +15,14 @@
                     <td>pattern&nbsp;</td>
                     <td colspan="5">
                         <select size="1" id="init" name="template" onchange="templateChanged(this);">
-                                <option selected="selected" value="flanders-3x2-thread">flanders thread (only tc, ctc, tctc; max nr: 0)</option>
-                                <option value="flanders-3x2-pair">flanders pair (only tc, ctc, tctc; max nr: 0)</option>
-                                <option value="diagonal-3x3-thread">3x3 thread (only tc, tcptc; max nr: 6)</option>
-                                <option value="diagonal-4x4-thread">4x4 thread (only tc, tcptc; max nr: 208)</option>
+                                <option selected="selected" value="flanders-3x2-thread">flanders thread (max nr: 0)</option>
+                                <option value="flanders-3x2-pair">flanders pair (max nr: 0)</option>
+                                <option value="diagonal-3x3-thread">3x3 thread (max nr: 6)</option>
+                                <option value="diagonal-4x4-thread">4x4 thread (max nr: 208)</option>
                                 <option value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
-                                <option value="brick-3x3-thread">brick 3x3 thread (only tc, tcptc; max nr: 7)</option>
+                                <option value="brick-3x3-thread">brick 3x3 thread (max nr: 7)</option>
                                 <option value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
-                                <option value="brick-4x4-thread">brick 4x4 thread (only tc, tcptc; max nr: 221)</option>
+                                <option value="brick-4x4-thread">brick 4x4 thread (max nr: 221)</option>
                                 <option value="interleaved-2x2-pair">interleaved 2x2 pair (max nr: 6)</option>
                                 <option value="interleaved-2x4-pair">interleaved 2x4 pair (max nr: 56)</option>
                                 <option value="interleaved-4x2-pair">interleaved 4x2 pair (max nr: 92)</option>
@@ -42,7 +42,16 @@
                     <td class="narrow">1</td>
                     <td class="narrow"><select size="1" name="A1" class="row1 col1">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -50,7 +59,16 @@
                     </select></td>
                     <td class="narrow"><select size="1" name="B1" class="row1 col2">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -58,7 +76,16 @@
                     </select></td>
                     <td class="narrow"><select size="1" name="C1" class="row1 col3">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -66,7 +93,16 @@
                     </select></td>
                     <td><select size="1" name="D1" class="row1 col4">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -77,7 +113,16 @@
                     <td class="narrow">2</td>
                     <td><select size="1" name="A2" class="row2 col1">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -85,7 +130,16 @@
                     </select></td>
                     <td><select size="1" name="B2" class="row2 col2">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -93,7 +147,16 @@
                     </select></td>
                     <td><select size="1" name="C2" class="row2 col3">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -101,7 +164,16 @@
                     </select></td>
                     <td><select size="1" name="D2" class="row2 col4">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -112,7 +184,16 @@
                     <td class="narrow">3</td>
                     <td><select size="1" name="A3" class="row3 col1">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -120,7 +201,16 @@
                     </select></td>
                     <td><select size="1" name="B3" class="row3 col2">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -128,7 +218,16 @@
                     </select></td>
                     <td><select size="1" name="C3" class="row3 col3">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -136,7 +235,16 @@
                     </select></td>
                     <td><select size="1" name="D3" class="row3 col4">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -147,7 +255,16 @@
                     <td class="narrow" >4</td>
                     <td><select size="1" name="A4" class="row4 col1">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -155,7 +272,16 @@
                     </select></td>
                     <td><select size="1" name="B4" class="row4 col2">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -163,7 +289,16 @@
                     </select></td>
                     <td><select size="1" name="C4" class="row4 col3">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
@@ -171,7 +306,16 @@
                     </select></td>
                     <td><select size="1" name="D4" class="row4 col4">
                             <option selected="selected" value="tc">tc</option>
+                            <option value="c">c</option>
+                            <option value="cl">cl</option>
+                            <option value="cr">cr</option>
+                            <option value="lc">lc</option>
+                            <option value="rc">rc</option>
+                            <option value="crc">crc</option>
+                            <option value="clc">clc</option>
                             <option value="ctc">ctc</option>
+                            <option value="lctc">lctc</option>
+                            <option value="rctc">rctc</option>
                             <option value="tctc">tctc</option>
                             <option value="tcptc">tcptc</option>
                             <option value="ctcpctc">ctcpctc</option>
