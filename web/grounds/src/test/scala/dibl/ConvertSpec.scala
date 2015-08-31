@@ -18,17 +18,23 @@ package dibl
 
 import scala.collection.immutable.HashMap
 import scala.collection.Map
+import org.scalatest._
 
-object ConvertGraphs {
+class ConvertSpec extends FlatSpec with Matchers {
 
-  def main (args: Array[String]) {
-    val fromTuple = (Map() ++ toTuple.map(_.swap))
-    val m: M = Graph.get("brick-4x4-pair",0,M(R("")))
-    val packed = for {
+  "conversion" should "do something" in {
+    val m = Graphs.get("brick-4x4-pair",0,M(R("")))
+    pack( m ) should be ("XX")
+  }
+
+  def fromTuple = (Map() ++ toTuple.map(_.swap))
+  def pack(m: M) {
+    var s = ""
+    for {
       r <- m.indices
       c <- m(0).indices
-    } yield { fromTuple.getOrElse(m(r)(c),"") }
-    println( s"${packed.deep.toString)
+    } s = s + fromTuple.getOrElse(m(r)(c),"")
+    s
   }
 
   private val toTuple = HashMap(
@@ -102,5 +108,5 @@ object ConvertGraphs {
     "w" -> "1,1,0,0,0,-1,-1,0",
     "y" -> "1,1,0,0,0,-1,0,-1",
     "z" -> "1,1,0,0,0,0,-1,-1")
-  }
+  
 }
