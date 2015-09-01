@@ -27,14 +27,13 @@ class ConvertSpec extends FlatSpec with Matchers {
     pack( m ) should be ("XX")
   }
 
-  def fromTuple = (Map() ++ toTuple.map(_.swap))
+  def fromTuple = Map() ++ toTuple.map(_.swap)
   def pack(m: M) {
     var s = ""
     for {
       r <- m.indices
       c <- m(0).indices
     } s = s + fromTuple.getOrElse(m(r)(c),"")
-    s
   }
 
   private val toTuple = HashMap(

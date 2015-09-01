@@ -16,8 +16,6 @@
 
 package dibl
 
-import scala.collection.immutable.HashMap
-import scala.collection.Map
 import org.scalatest._
 
 class FlipSpec extends FlatSpec with Matchers {

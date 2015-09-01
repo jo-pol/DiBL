@@ -48,8 +48,8 @@ abstract class TupleFlipper extends Flipper[String] {
   /** Flips actually along the Y axis to match the flip of a skewed matrix. */
   def flipNE2SW(value: String): String = toTuple(flipper.flipLeftRight(toMatrix(value)))
 
-  protected def toMatrix(value: String): M;
-  protected def toTuple(m: M): String;
+  protected def toMatrix(value: String): M
+  protected def toTuple(m: M): String
 }
 
 private object TupleFlipper {
@@ -57,7 +57,7 @@ private object TupleFlipper {
   /** Flips tuples represented as matrices */
   private val flipper = new MatrixFlipper(new Flipper[String] {
     /** Change the sign of a tuple element */
-    def flipBottomUp(value: String): String = (-value.trim.toInt).toString()
+    def flipBottomUp(value: String): String = (-value.trim.toInt).toString
     def flipLeftRight(value: String): String = value
     def flipNW2SE(value: String): String = throw new UnsupportedOperationException
     def flipNE2SW(value: String): String = throw new UnsupportedOperationException
