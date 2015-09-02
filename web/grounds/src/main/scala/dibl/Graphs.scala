@@ -18,18 +18,92 @@ package dibl
 
 import scala.collection.immutable.HashMap
 
-/** Based on:
-  *
-  * Veronika Irvine. Broadening the Palette for Bobbin Lace: A Combinatorial Approach. Bridges 2012:
-  * Mathematics, Music, Art, Architecture, Culture, pages 191-198. Tessellations Publishing, 2012.
-  *
-  * http://web.uvic.ca/~vmi/papers/bridges2012.html
-  */
 object Graphs {
+
+  val toTuple = HashMap(
+    "%" -> "0,0,1,1,-1,-1,0", //TODO fix this mistake in the flanders templates
+    " " -> "0,0,0,0,0,0,0,0",
+    "0" -> "-1,0,0,1,1,-1,0,0",
+    "1" -> "-1,0,0,1,1,0,-1,0",
+    "2" -> "-1,0,0,1,1,0,0,-1",
+    "3" -> "-1,0,1,0,1,-1,0,0",
+    "4" -> "-1,0,1,0,1,0,-1,0",
+    "5" -> "-1,0,1,0,1,0,0,-1",
+    "6" -> "-1,0,1,1,-1,0,0,0",
+    "7" -> "-1,0,1,1,0,-1,0,0",
+    "8" -> "-1,0,1,1,0,0,-1,0",
+    "9" -> "-1,0,1,1,0,0,0,-1",
+    ":" -> "-1,1,0,0,1,-1,0,0",
+    ";" -> "-1,1,0,0,1,0,-1,0",
+    "<" -> "-1,1,0,0,1,0,0,-1",
+    "=" -> "-1,1,0,1,-1,0,0,0",
+    ">" -> "-1,1,0,1,0,-1,0,0",
+    "?" -> "-1,1,0,1,0,0,-1,0",
+    "@" -> "-1,1,0,1,0,0,0,-1",
+    "A" -> "-1,1,1,0,-1,0,0,0",
+    "B" -> "-1,1,1,0,0,-1,0,0",
+    "C" -> "-1,1,1,0,0,0,-1,0",
+    "D" -> "-1,1,1,0,0,0,0,-1",
+    "E" -> "0,0,0,1,1,-1,-1,0",
+    "F" -> "0,0,0,1,1,-1,0,-1",
+    "G" -> "0,0,0,1,1,0,-1,-1",
+    "H" -> "0,0,1,0,1,-1,-1,0",
+    "I" -> "0,0,1,0,1,-1,0,-1",
+    "J" -> "0,0,1,0,1,0,-1,-1",
+    "K" -> "0,0,1,1,-1,-1,0,0",
+    "L" -> "0,0,1,1,-1,0,-1,0",
+    "M" -> "0,0,1,1,-1,0,0,-1",
+    "N" -> "0,0,1,1,0,-1,-1,0",
+    "O" -> "0,0,1,1,0,-1,0,-1",
+    "P" -> "0,0,1,1,0,0,-1,-1",
+    "Q" -> "0,1,0,0,1,-1,-1,0",
+    "R" -> "0,1,0,0,1,-1,0,-1",
+    "S" -> "0,1,0,0,1,0,-1,-1",
+    "T" -> "0,1,0,1,-1,-1,0,0",
+    "U" -> "0,1,0,1,-1,0,-1,0",
+    "V" -> "0,1,0,1,-1,0,0,-1",
+    "W" -> "0,1,0,1,0,-1,-1,0",
+    "X" -> "0,1,0,1,0,-1,0,-1",
+    "Y" -> "0,1,0,1,0,0,-1,-1",
+    "Z" -> "0,1,1,0,-1,-1,0,0",
+    "a" -> "0,1,1,0,-1,0,-1,0",
+    "b" -> "0,1,1,0,-1,0,0,-1",
+    "c" -> "0,1,1,0,0,-1,-1,0",
+    "d" -> "0,1,1,0,0,-1,0,-1",
+    "e" -> "0,1,1,0,0,0,-1,-1",
+    "f" -> "1,0,0,0,1,-1,-1,0",
+    "g" -> "1,0,0,0,1,-1,0,-1",
+    "h" -> "1,0,0,0,1,0,-1,-1",
+    "i" -> "1,0,0,1,-1,-1,0,0",
+    "j" -> "1,0,0,1,-1,0,-1,0",
+    "k" -> "1,0,0,1,-1,0,0,-1",
+    "l" -> "1,0,0,1,0,-1,-1,0",
+    "m" -> "1,0,0,1,0,-1,0,-1",
+    "n" -> "1,0,0,1,0,0,-1,-1",
+    "o" -> "1,0,1,0,-1,-1,0,0",
+    "p" -> "1,0,1,0,-1,0,-1,0",
+    "q" -> "1,0,1,0,-1,0,0,-1",
+    "r" -> "1,0,1,0,0,-1,-1,0",
+    "s" -> "1,0,1,0,0,-1,0,-1",
+    "t" -> "1,0,1,0,0,0,-1,-1",
+    "u" -> "1,1,0,0,-1,-1,0,0",
+    "v" -> "1,1,0,0,-1,0,-1,0",
+    "w" -> "1,1,0,0,-1,0,0,-1",
+    "x" -> "1,1,0,0,0,-1,-1,0",
+    "y" -> "1,1,0,0,0,-1,0,-1",
+    "z" -> "1,1,0,0,0,0,-1,-1")
+
+  def unpack(s: String, rows: Int, cols: Int): M = {
+    val m: M = Array.ofDim(rows, cols)
+    for {
+      r <- 0 until rows
+      c <- 0 until cols
+    } m(r)(c) = toTuple.getOrElse(s.charAt(r * cols + c).toString,"?")
+    m
+  }
+
   private val matrixMap = HashMap(
-    "flanders-3x2" -> Array(M(R("-1,0,1,0,1,0,-1,0", "0,1,1,0,0,0,-1,-1"),
-                              R("1,0,1,0,-1,0,-1,0", "0,0,1,1,-1,-1,0"),
-                              R("1,0,0,0,1,-1,0,-1", "-1,1,0,1,-1,0,0,0"))),
+    "flanders-3x2" -> Array(unpack("4ep%g=",3,2)),
     "diagonal-3x3" -> diagonal_3x3.matrices,
     "brick-3x3" -> brick_3x3.matrices,
     "interleaved-2x2" -> Interleaved_2x2.matrices,
@@ -42,11 +116,22 @@ object Graphs {
 
     val matrixKey: String = template.replace("-thread", "").replace("-pair", "")
     val matrices: Array[M] = matrixMap.getOrElse(matrixKey, Array(fallBack))
-    if (pattern <0 || pattern > matrices.length)
+    if (pattern < 0 || pattern > matrices.length)
       fallBack
     else matrices(pattern).clone()
+    // TODO move unpack here after converting all hard coded matrices to a packed form
+    // unpacking all in the initialisation phase would degrade performance
   }
 }
+
+ /* Matrices of the following objects based on:
+  *
+  * Veronika Irvine. Broadening the Palette for Bobbin Lace: A Combinatorial Approach. Bridges 2012:
+  * Mathematics, Music, Art, Architecture, Culture, pages 191-198. Tessellations Publishing, 2012.
+  *
+  * http://web.uvic.ca/~vmi/papers/bridges2012.html
+  */
+
 private object diagonal_3x3 { val matrices: Array[M] = Array (
         M(R("0,1,1,0,-1,-1", "1,0,1,0,-1,-1", "0,0,1,1,-1,-1"), R("0,1,1,-1,-1,0", "-1,1,0,1,0,-1", "0,1,1,0,-1,-1"), R("-1,1,1,0,-1,0", "0,0,0,0,0,0", "1,1,0,-1,0,-1")),
         M(R("1,0,1,0,-1,-1", "1,0,1,0,-1,-1", "0,0,1,1,-1,-1"), R("0,1,1,-1,-1,0", "-1,1,0,1,0,-1", "0,1,1,-1,0,-1"), R("-1,1,1,0,0,-1", "1,0,1,-1,0,-1", "1,0,1,-1,0,-1")),
