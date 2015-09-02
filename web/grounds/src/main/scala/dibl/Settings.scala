@@ -40,15 +40,28 @@ object Settings {
   def parseUri(uri: String)(implicit console: Console, debug: Boolean): Settings = {
 
     val queryMap: Map[String, String] = (for {s <- uri.replaceAll("^[^?]+[?]", "").replace("?", "").split("&")}
-        yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
-        ).toMap
-    val template: String = queryMap.getOrElse("template","diagonal-3x3-thread")
-    val pattern: Int = Try(queryMap.getOrElse("pattern", "0").toInt).getOrElse(-1)
-    val fallBack = M(R("", "", "", ""), R("", "", "", ""), R("", "", "", ""), R("", "", "", ""))
+      yield (s.replaceAll("=.*", ""), s.replaceAll("^[^=]+=*", ""))
+      ).toMap
+    val template: String = queryMap.getOrElse("template", "diagonal-3x3-thread")
     if (debug) console.info(s"$template $uri ${queryMap.toArray.deep.toString()}")
 
-    val graph: M = Graphs.get(template, pattern, fallBack)
-    // TODO See the not yet tested object MatrixFlipper
+    val graph: M = {
+      val pattern: Int = Try(queryMap.getOrElse("pattern", "0").toInt).getOrElse(-1)
+      val fallBack = M(R("", "", "", ""), R("", "", "", ""), R("", "", "", ""), R("", "", "", ""))
+      val flip: String = queryMap.getOrElse("flip", "")
+      val m: M = Graphs.get(template, pattern, fallBack)
+      if (flip.equals("")) m
+      else template.replaceFirst("-.*$", "") match {
+          // TODO currently a wild guess when to use which type of flip
+          // for original intention see
+          // https://github.com/jo-pol/DiBL/blob/master/standalone/tiles/dibl-tiles/src/main/java/dibl/Main.java#L87
+          // no clue on
+          // https://github.com/jo-pol/DiBL/blob/4209f63b/standalone/tiles/dibl-tiles/src/main/assembly/web/tabs.html
+        case "interleaved" => MatrixFlipper.flipInterleaved(flip, m)
+        case "diagonal" => MatrixFlipper.flipDiamond(flip, m)
+        case "brick" => MatrixFlipper.flipBrick(flip, m) // FIXME: along X not OK for pattern 5
+      }
+    }
 
     val tuples: IndexedSeq[(String, String)] = for {
       r <- graph.indices
