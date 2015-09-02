@@ -24,16 +24,18 @@ class ConvertSpec extends FlatSpec with Matchers {
 
   "conversion" should "do something" in {
     val m = Graphs.get("brick-4x4-pair",0,M(R("")))
-    pack( m ) should be ("XX")
+    println(s"${m.deep}")
+    pack( m ) should be ("=:0g:::0?uuu=<:g")
   }
 
   def fromTuple = Map() ++ toTuple.map(_.swap)
-  def pack(m: M) {
+  def pack(m: M): String = {
     var s = ""
     for {
       r <- m.indices
       c <- m(0).indices
-    } s = s + fromTuple.getOrElse(m(r)(c),"")
+    } s = s + fromTuple.getOrElse(m(r)(c),"?")
+    s
   }
 
   private val toTuple = HashMap(
