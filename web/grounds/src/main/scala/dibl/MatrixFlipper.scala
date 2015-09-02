@@ -22,7 +22,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[M] {
   def flipLeftRight(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
-    val result = Array.ofDim[String](2, 2)
+    val result = Array.ofDim[String](rows, cols)
     for {r <- 0 until rows
          c <- 0 until cols
     } {
@@ -34,7 +34,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[M] {
   def flipBottomUp(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
-    val result = Array.ofDim[String](2, 2)
+    val result = Array.ofDim[String](rows, cols)
     for {r <- 0 until rows
          c <- 0 until cols
     } {
@@ -46,7 +46,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[M] {
   def flipNE2SW(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
-    val result = Array.ofDim[String](2, 2)
+    val result = Array.ofDim[String](rows, cols)
     for {r <- 0 until rows
          c <- 0 until cols
     } {
@@ -58,7 +58,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[M] {
   def flipNW2SE(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
-    val result = Array.ofDim[String](2, 2)
+    val result = Array.ofDim[String](rows, cols)
     for {r <- 0 until rows
          c <- 0 until cols
     } {
@@ -70,7 +70,7 @@ class MatrixFlipper(flipper: Flipper[String]) extends Flipper[M] {
   def fromBrickToCheckerboard(matrix: M): M = {
     val rows = matrix.length
     val cols = matrix(0).length
-    val result = Array.ofDim[String](2, 2)
+    val result = Array.ofDim[String](rows*2, cols)
     for {r <- 0 until rows
          c <- 0 until cols
     } {

@@ -19,9 +19,9 @@ package dibl
 import org.scalatest._
 
 class FlipSpec extends FlatSpec with Matchers {
-  ignore should "render original" in {
+  "flip back and forth" should "render original" in {
     // FIXME
-    val m1 = Graphs.get("interleaved-4x4-pair",0,M(R("")))
+    val m1 = Graphs.get("interleaved-4x2-pair",0,M(R("")))
     val flipped: M = MatrixFlipper.flipInterleaved("x", m1)
     val m2 = MatrixFlipper.flipInterleaved("x",flipped)
     for {
