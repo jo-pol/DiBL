@@ -50,16 +50,14 @@ object Settings {
       val fallBack = M(R("", "", "", ""), R("", "", "", ""), R("", "", "", ""), R("", "", "", ""))
       val flip: String = queryMap.getOrElse("flip", "")
       val m: M = Graphs.get(template, pattern, fallBack)
-      if (flip.equals("")) m
-      else template.replaceFirst("-.*$", "") match {
-          // TODO currently a wild guess when to use which type of flip
-          // for original intention see
-          // https://github.com/jo-pol/DiBL/blob/master/standalone/tiles/dibl-tiles/src/main/java/dibl/Main.java#L87
-          // no clue on
-          // https://github.com/jo-pol/DiBL/blob/4209f63b/standalone/tiles/dibl-tiles/src/main/assembly/web/tabs.html
-        case "interleaved" => MatrixFlipper.flipInterleaved(flip, m)
-        case "diagonal" => MatrixFlipper.flipDiamond(flip, m)
-        case "brick" => MatrixFlipper.flipBrick(flip, m) // FIXME: along X not OK for pattern 5
+      flip match {
+        case "x"|"y"|"r" => template.replaceFirst("-.*$", "") match {
+          case "interleaved" => MatrixFlipper.flipInterleaved(flip, m)
+          case "diagonal" => MatrixFlipper.flipDiamond(flip, m)
+          case "brick" => MatrixFlipper.flipBrick(flip, m) // FIXME: along X not OK for pattern 5
+          case _ => m
+        }
+        case _ => m
       }
     }
 
