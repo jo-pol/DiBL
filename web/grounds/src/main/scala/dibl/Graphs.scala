@@ -21,7 +21,6 @@ import scala.collection.immutable.HashMap
 object Graphs {
 
   val toTuple = HashMap(
-    "%" -> "0,0,1,1,-1,-1,0", //TODO fix this mistake in the flanders templates
     " " -> "0,0,0,0,0,0,0,0",
     "0" -> "-1,0,0,1,1,-1,0,0",
     "1" -> "-1,0,0,1,1,0,-1,0",
@@ -103,7 +102,7 @@ object Graphs {
   }
 
   private val matrixMap = HashMap(
-    "flanders-3x2" -> Array(unpack("4ep%g=",3,2)),
+    "flanders-3x2" -> Array(unpack("4epNg=",3,2)),
     "diagonal-3x3" -> diagonal_3x3.matrices,
     "brick-3x3" -> brick_3x3.matrices,
     "interleaved-2x2" -> Interleaved_2x2.matrices,
