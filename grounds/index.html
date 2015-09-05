@@ -9,37 +9,47 @@
 <body onload="templateChanged(document.getElementById('init'))">
 <h1>Bobbin lace working diagrams: select stitches for a computer generated ground</h1>
     <form name="interleavedConfig" action="index-dev.html" target="diagram_frame">
-        <table>
-            <tbody>
+        <label for="patternOptions">Pattern</label>
+        <fieldset id="patternOptions">
+            <label for="init">template</label>
+            <select size="1" id="init" name="template" onchange="templateChanged(this);">
+                <option selected="selected" value="flanders-3x2-thread">flanders thread (max nr: 0)</option>
+                <option value="flanders-3x2-pair">flanders pair (max nr: 0)</option>
+                <option value="diagonal-3x3-thread">diagonal 3x3 thread (max nr: 6)</option>
+                <option value="diagonal-4x4-thread">diagonal 4x4 thread (max nr: 208)</option>
+                <option value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
+                <option value="brick-3x3-thread">brick 3x3 thread (max nr: 7)</option>
+                <option value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
+                <option value="brick-4x4-thread">brick 4x4 thread (max nr: 221)</option>
+                <option value="interleaved-2x2-pair">interleaved 2x2 pair (max nr: 6)</option>
+                <option value="interleaved-2x4-pair">interleaved 2x4 pair (max nr: 56)</option>
+                <option value="interleaved-4x2-pair">interleaved 4x2 pair (max nr: 92)</option>
+            </select>
+            <br/>
+            <label for="pattern">graph nr</label>
+            <input name="pattern" min="0" max="221" value="1" type="number"/>
+            <br>
+            <label for="flip">orientation</label>
+            <select size="1" name="flip" id="flip">
+                <option value="">no flip/rotation</option>
+                <option value="x">flip along X-axis: &mdash;</option>
+                <option value="y">flip along Y-axis: &nbsp;|</option>
+                <option value="r">rotate</option>
+            </select>
+        </fieldset>
+        <br/>
+        <label for="stitches">Stitches</label>
+        <fieldset id="stitches">
+            <table>
                 <tr>
-                    <td>pattern&nbsp;</td>
-                    <td colspan="5">
-                        <select size="1" id="init" name="template" onchange="templateChanged(this);">
-                                <option selected="selected" value="flanders-3x2-thread">flanders thread (max nr: 0)</option>
-                                <option value="flanders-3x2-pair">flanders pair (max nr: 0)</option>
-                                <option value="diagonal-3x3-thread">3x3 thread (max nr: 6)</option>
-                                <option value="diagonal-4x4-thread">4x4 thread (max nr: 208)</option>
-                                <option value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
-                                <option value="brick-3x3-thread">brick 3x3 thread (max nr: 7)</option>
-                                <option value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
-                                <option value="brick-4x4-thread">brick 4x4 thread (max nr: 221)</option>
-                                <option value="interleaved-2x2-pair">interleaved 2x2 pair (max nr: 6)</option>
-                                <option value="interleaved-2x4-pair">interleaved 2x4 pair (max nr: 56)</option>
-                                <option value="interleaved-4x2-pair">interleaved 4x2 pair (max nr: 92)</option>
-                        </select>
-                        <br>nr: <input name="pattern" min="0" max="221" value="1" onkeyup="showPairTraversal()" type="number"/>
-                    </td>
+                    <th>&nbsp;</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
                 </tr>
                 <tr>
-                    <td rowspan="5">stitches&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>A</td>
-                    <td>B</td>
-                    <td>C&nbsp;&nbsp;&nbsp;</td>
-                    <td>D</td>
-                </tr>
-                <tr>
-                    <td class="narrow">1</td>
+                    <th class="narrow">1</th>
                     <td class="narrow"><select size="1" name="A1" class="row1 col1">
                             <option selected="selected" value="tc">tc</option>
                             <option value="c">c</option>
@@ -110,7 +120,7 @@
                     </select></td>
                 </tr>
                 <tr>
-                    <td class="narrow">2</td>
+                    <th class="narrow">2</th>
                     <td><select size="1" name="A2" class="row2 col1">
                             <option selected="selected" value="tc">tc</option>
                             <option value="c">c</option>
@@ -181,7 +191,7 @@
                     </select></td>
                 </tr>
                 <tr>
-                    <td class="narrow">3</td>
+                    <th class="narrow">3</th>
                     <td><select size="1" name="A3" class="row3 col1">
                             <option selected="selected" value="tc">tc</option>
                             <option value="c">c</option>
@@ -252,7 +262,7 @@
                     </select></td>
                 </tr>
                 <tr>
-                    <td class="narrow" >4</td>
+                    <th class="narrow" >4</th>
                     <td><select size="1" name="A4" class="row4 col1">
                             <option selected="selected" value="tc">tc</option>
                             <option value="c">c</option>
@@ -322,14 +332,14 @@
                             <option value="tctcptctc">tctcptctc</option>
                     </select></td>
                 </tr>
-            </tbody>
-        </table>
+            </table>
+        </fieldset>
         <p>
             <input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
             <a href="https://github.com/jo-pol/DiBL/wiki/Tiled-Templates">Help</a>
             (<a href="https://github.com/jo-pol/DiBL/tree/gh-pages/grounds">source files</a>,
             <a href="https://github.com/jo-pol/DiBL/tree/master/web/grounds/src/main/scala/dibl">scripts</a>,
-            <a href="https://github.com/jo-pol/DiBL/issues">issues</a>)
+            <a href="https://github.com/jo-pol/DiBL/issues">issue</a>)
         </p>
     </form>
     <iframe name="diagram_frame" src="execuse.html"/>

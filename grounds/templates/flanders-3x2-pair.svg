@@ -1467,7 +1467,7 @@
            sodipodi:nodetypes="cccc" />
       </g>
       <g
-         inkscape:label="tctc (0,0,1,1,-1,-1,0)"
+         inkscape:label="tctc (0,0,1,1,0,-1,-1,0)"
          id="g5083-4"
          transform="matrix(0.32821751,0,0,0.32817803,281.04087,331.92827)">
         <path
@@ -1531,7 +1531,7 @@
            sodipodi:nodetypes="cccc" />
       </g>
       <g
-         inkscape:label="tc (0,0,1,1,-1,-1,0)"
+         inkscape:label="tc (0,0,1,1,0,-1,-1,0)"
          id="g5083-4-5"
          transform="matrix(0.32821751,0,0,0.32817803,281.04087,331.92818)">
         <path
@@ -1595,7 +1595,7 @@
            sodipodi:nodetypes="cccc" />
       </g>
       <g
-         inkscape:label="ctc (0,0,1,1,-1,-1,0)"
+         inkscape:label="ctc (0,0,1,1,0,-1,-1,0)"
          id="g5083-4-2"
          transform="matrix(0.32821751,0,0,0.32817803,281.04087,331.92818)">
         <path

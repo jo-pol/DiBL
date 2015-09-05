@@ -10,54 +10,12 @@
 # available at <http://www.gnu.org/licenses/>.
 */
 
-.tab2hide, .tab3hide {
-	display:none;
-}
-.tab2show, .tab3show  {
-	display:inline;
-}
-
-p {
-	padding-left: 1em;
-	padding-right: 1em;
-	padding-top: 0px;
-}
-
-table,td {
-	border: 0px;
-}
-
-table,td,select,input {
-	margin: 0px;
-	padding: 0px;
-}
-
-td {
-	vertical-align: top;
-}
-
-td.narrow {
-	width: 1px;
-}
-
 iframe {
-    margin-left: 1em;
 	width: 820px;
 	height: 1000px; 
 }
-
-img {
-	border-style:inset;
-}
-
-td input {
-	width: 3em;
-}
-
-.show {
-	display:block;
-}
-
-.hide {
-	display:none;
-}
+form           { display:block; }
+fieldset       { display:inline-block;             padding: 0; margin:0; border:0; }
+form label     { display:inline-block; width: 4em;                       vertical-align:top; }
+fieldset label { display:inline-block; width: 5em; padding: 0; margin:0;}
+input          {                       width: 4em; }
