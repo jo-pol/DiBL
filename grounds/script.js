@@ -9,8 +9,6 @@
 // See the GNU General Public License for more details. A copy of the GNU General Public License is
 // available at http://www.gnu.org/licenses/gpl.html
 function templateChanged(formField) {
-  var cfg = formField.form;
-  cfg.pattern.value = 0;
   var rows = formField.value.split('-') [1].split('x') [0];
   var cols = formField.value.split('-') [1].split('x') [1];
   for (var i = 0; i < 4; i++) {
@@ -20,8 +18,37 @@ function templateChanged(formField) {
     }
   }
   
+  var cfg = formField.form;
+  cfg.pattern.value = 0;
   if (formField.selectedOptions != undefined)
     cfg.pattern.max = parseInt(formField.selectedOptions[0].innerHTML.split(':') [1]);
   else // IE
     cfg.pattern.max = parseInt(formField[formField.selectedIndex].innerHTML.split(':') [1]);
+
+  hideStitcheTypes(formField.value)
+}
+
+function hideStitcheTypes(template)
+{
+  var elements = document.getElementsByClassName("hide");
+  for (i = elements.length; i > 0; ) {
+    el = elements[--i]
+    el.className = el.className.replace(" hide", "");
+  }
+  if (template.split('-')[0] == "flanders") {
+    hide("pin");
+    if (template.split('-')[2] == "pair")
+      hide("flanders");
+  } else {
+    hide("flanders");
+    if (template.split('-')[2] == "thread")
+      hide("pair");
+  }
+}
+
+function hide (className) {
+  var elements = document.getElementsByClassName(className);
+  for (i = elements.length; i > 0; ) {
+    elements[--i].className+= " hide";
+  }
 }
