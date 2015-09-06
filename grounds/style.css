@@ -10,6 +10,12 @@
 # available at <http://www.gnu.org/licenses/>.
 */
 
+.show {
+	display:inline-block;
+}
+.hide {
+	display:none;
+}
 iframe {
 	width: 820px;
 	height: 1000px; 
