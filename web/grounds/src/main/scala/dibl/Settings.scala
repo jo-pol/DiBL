@@ -19,6 +19,7 @@ package dibl
 import org.scalajs.dom.raw.Console
 import scala.collection.immutable.IndexedSeq
 import scala.util.Try
+import dibl.MatrixFlipper._
 
 /**
  * @param template  The base name (no path, no extension) of an SVG document.
@@ -48,13 +49,13 @@ object Settings {
     val graph: M = {
       val pattern: Int = Try(queryMap.getOrElse("pattern", "0").toInt).getOrElse(-1)
       val fallBack = M(R("", "", "", ""), R("", "", "", ""), R("", "", "", ""), R("", "", "", ""))
-      val flip: String = queryMap.getOrElse("flip", "")
+      val direction: String = queryMap.getOrElse("flip", "")
       val m: M = Graphs.get(template, pattern, fallBack)
-      flip match {
+      direction match {
         case "x"|"y"|"r" => template.replaceFirst("-.*$", "") match {
-          case "interleaved" => MatrixFlipper.flipInterleaved(flip, m)
-          case "diagonal" => MatrixFlipper.flipDiamond(flip, m)
-          case "brick" => MatrixFlipper.flipBrick(flip, m) // FIXME: along X not OK for pattern 5
+          case "interleaved" => flip(direction, m, interleaved)
+          case "diagonal" => flip(direction, m, diamonds)
+          case "brick" => flip(direction, m, bricks)
           case _ => m
         }
         case _ => m

@@ -44,26 +44,26 @@ class FlipSpec extends FlatSpec with Matchers {
   })
   
   "y 3x3" should "succeed" in {
-    brickFlipper.flipLeftRight(fromBrickToCheckerboard(m3x3)) shouldBe
+    brickFlipper.flipLeftRight((m3x3)) shouldBe
       M(R("3", "2", "1"), 
         R("5", "4", "6"), 
         R("9", "8", "7"))
   }
   "x 3x3" should "succeed" in {
-    brickFlipper.flipBottomUp(fromBrickToCheckerboard(m3x3)) shouldBe 
+    brickFlipper.flipBottomUp((m3x3)) shouldBe 
       M(R("7", "8", "9"), 
         R("4", "5", "6"), 
         R("1", "2", "3"))
   }
   "y 4x4" should "succeed" in {
-    brickFlipper.flipLeftRight(fromBrickToCheckerboard(m4x4)) shouldBe
+    brickFlipper.flipLeftRight((m4x4)) shouldBe
       M(R("D", "C", "B", "A"),
         R("G", "F", "E", "H"), 
         R("L", "K", "J", "I"), 
         R("O", "N", "M", "P"))
   }
   "x 4x4" should "succeed" in {
-    brickFlipper.flipBottomUp(fromBrickToCheckerboard(m4x4)) shouldBe
+    brickFlipper.flipBottomUp((m4x4)) shouldBe
       M(R("M", "N", "O", "P"),
         R("J", "K", "L", "I"),
         R("E", "F", "G", "H"), 

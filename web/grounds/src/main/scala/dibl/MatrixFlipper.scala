@@ -70,33 +70,18 @@ class MatrixFlipper(cellFlipper: Flipper[String]) extends Flipper[M] {
 
 object MatrixFlipper {
 
-  def flipDiamond(instruction: String, matrix: M) = {
-    instruction match {
-      case "x" => diamonds.flipNW2SE(matrix)
-      case "y" => diamonds.flipNE2SW(matrix)
-      case "r" => diamonds.flipNE2SW(diamonds.flipNW2SE(matrix))
-    }
-  }
-  def flipInterleaved(instruction: String, brickMatrix: M) = {
-    val matrix = fromBrickToCheckerboard(brickMatrix)
-    instruction match {
-      case "y" => interleaved.flipLeftRight(matrix)
-      case "x" => interleaved.flipBottomUp(matrix)
-      case "r" => interleaved.flipBottomUp(interleaved.flipLeftRight(matrix))
-    }
-  }
-  def flipBrick(instruction: String, brickMatrix: M) = {
-    val matrix = fromBrickToCheckerboard(brickMatrix)
-    instruction match {
-      case "y" => bricks.flipLeftRight(matrix)
-      case "x" => bricks.flipBottomUp(matrix)
-      case "r" => bricks.flipBottomUp(bricks.flipLeftRight(matrix))
-    }
-  }
   val diamonds = new MatrixFlipper(ShortTupleFlipper)
   val interleaved = new MatrixFlipper(LongTupleFlipper)
   val bricks = new BrickFlipper(LongTupleFlipper)
-  
+
+  def flip(direction: String, matrix: M, flipper: MatrixFlipper) = {
+    direction match {
+      case "y" => flipper.flipLeftRight(matrix)
+      case "x" => flipper.flipBottomUp(matrix)
+      case "r" => flipper.flipBottomUp(flipper.flipLeftRight(matrix))
+    }
+  }
+
   class BrickFlipper(cellFlipper: Flipper[String]) extends 
        MatrixFlipper(cellFlipper: Flipper[String]) {
   
@@ -126,10 +111,9 @@ object MatrixFlipper {
     // ==============================
     override def flipBottomUp(matrix: M) = {
 
-      shiftOddRows(super.flipBottomUp(matrix))
       if (matrix(0).length % 2 == 0)
-        shiftOddRows(matrix)
-      else matrix
+        shiftOddRows(super.flipBottomUp(matrix))
+      else super.flipBottomUp(matrix)
     }
   }
 
@@ -144,19 +128,6 @@ object MatrixFlipper {
         result(r)(c-1) =  matrix(r)(c)
       }
       result(r)(cols-1) = saved
-    }
-    result
-  }
-
-  def fromBrickToCheckerboard(matrix: M): M = {
-    val rows = matrix.length
-    val cols = matrix(0).length
-    val result = Array.ofDim[String](rows*2, cols)
-    for {r <- 0 until rows
-         c <- 0 until cols
-    } {
-      result(r)(c) = matrix(r)(c)
-      result(r + rows)(((1.5 * cols) + c).toInt % cols) = matrix(r)(c)
     }
     result
   }
