@@ -16,9 +16,8 @@
 
 package dibl
 
-import org.scalatest._
 import dibl.MatrixFlipper._
-import dibl.Graphs._
+import org.scalatest._
 
 class FlipSpec extends FlatSpec with Matchers {
 
@@ -72,8 +71,8 @@ class FlipSpec extends FlatSpec with Matchers {
   
   "flip back and forth" should "render original" in {
     val m1 = Graphs.get("interleaved-4x2-pair",0,M(R("")))
-    val flipped: M = flipInterleaved("x", m1)
-    val m2 = flipInterleaved("x",flipped)
+    val flipped: M = flip("x", m1,interleaved)
+    val m2 = flip("x",flipped,interleaved)
     for {
       r <- m1.indices
       c <- m1(0).indices

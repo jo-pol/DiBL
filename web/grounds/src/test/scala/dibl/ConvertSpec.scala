@@ -28,9 +28,9 @@ class ConvertSpec extends FlatSpec with Matchers {
     Graphs.unpack( pack( m ),4,4 ) should equal (m)
   }
 
-  "flanders-3x2" should "converts back and forth" in {
+  "flanders-3x2" should "convert back and forth" in {
     val m: M = Graphs.get("flanders-3x2-pair",0,M(R("")))
-    pack(m) should be ("4ep%g=")
+    pack(m) should be ("4epNg=")
     Graphs.unpack(pack(m), m.length, m(0).length ) should equal (m)
   }
 
