@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0983621"
-     inkscape:cx="317.11487"
-     inkscape:cy="723.57188"
+     inkscape:zoom="1.0214184"
+     inkscape:cx="374.48449"
+     inkscape:cy="709.01743"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -40,7 +40,7 @@
      inkscape:window-maximized="1"
      inkscape:snap-to-guides="false"
      inkscape:object-paths="false"
-     inkscape:snap-global="true"
+     inkscape:snap-global="false"
      inkscape:snap-object-midpoints="false"
      inkscape:object-nodes="true"
      showguides="true"
@@ -133,7 +133,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
        inkscape:tile-w="92.057823"
        inkscape:tile-cy="406.56493"
        inkscape:tile-cx="77.574404"
-       transform="translate(14.182233,-1120.1923)"
+       transform="translate(24.951571,-1121.1713)"
        id="g10713"
        inkscape:label="base tile">
       <use
@@ -337,15 +337,6 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
     <use
        height="1052.3622"
        width="744.09448"
-       id="use10778"
-       transform="translate(91.936733,478.26676)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
        id="use10780"
        transform="translate(183.99455,-0.07965953)"
        xlink:href="#g10713"
@@ -366,15 +357,6 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
        width="744.09448"
        id="use10784"
        transform="translate(183.99455,318.81795)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
-       id="use10786"
-       transform="translate(183.99455,478.26676)"
        xlink:href="#g10713"
        inkscape:tiled-clone-of="#g10713"
        y="0"
@@ -409,15 +391,6 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
     <use
        height="1052.3622"
        width="744.09448"
-       id="use10794"
-       transform="translate(276.05239,478.26676)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
        id="use10796"
        transform="translate(368.11022,-0.07965953)"
        xlink:href="#g10713"
@@ -438,15 +411,6 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
        width="744.09448"
        id="use10800"
        transform="translate(368.11022,318.81795)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
-       id="use10802"
-       transform="translate(368.11022,478.26676)"
        xlink:href="#g10713"
        inkscape:tiled-clone-of="#g10713"
        y="0"
@@ -481,15 +445,6 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
     <use
        height="1052.3622"
        width="744.09448"
-       id="use10810"
-       transform="translate(460.16804,478.26676)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
        id="use10812"
        transform="translate(552.22587,-0.07965953)"
        xlink:href="#g10713"
@@ -514,55 +469,10 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
        inkscape:tiled-clone-of="#g10713"
        y="0"
        x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
-       id="use10818"
-       transform="translate(552.22587,478.26676)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
-       id="use10820"
-       transform="translate(644.28368,-0.07965953)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
-       id="use10822"
-       transform="translate(644.28368,159.36915)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
-       id="use10824"
-       transform="translate(644.28368,318.81795)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
-    <use
-       height="1052.3622"
-       width="744.09448"
-       id="use10826"
-       transform="translate(644.28368,478.26676)"
-       xlink:href="#g10713"
-       inkscape:tiled-clone-of="#g10713"
-       y="0"
-       x="0" />
     <g
        inkscape:label="pile"
        id="g4512"
-       transform="translate(-202.70137,257.41421)">
+       transform="translate(-191.93203,256.43518)">
       <g
          inkscape:transform-center-x="3.0685921"
          inkscape:transform-center-y="-2.6574826"
@@ -6298,7 +6208,7 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
       </g>
     </g>
     <g
-       transform="matrix(0.47577056,0,0,0.47571728,-70.470366,350.0356)"
+       transform="matrix(0.47577056,0,0,0.47571728,-59.701028,349.05657)"
        id="g287"
        inkscape:export-filename="/mnt/hgfs/Bov/Documents/Work/2007/cc/identity/srr buttons/big/by-sa.png"
        inkscape:export-xdpi="300.23013"
@@ -6421,153 +6331,147 @@ or apply another pair traversal pattern from http://web.uvic.ca/~vmi/papers/brid
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="178.79828"
-       y="875.17365"
+       x="189.56761"
+       y="874.19464"
        id="text3893"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3895"
-         x="178.79828"
-         y="875.17365" /></text>
+         x="189.56761"
+         y="874.19464" /></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="18.021059"
-       y="212.71196"
+       x="28.790398"
+       y="211.73293"
        id="text3901"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3903"
-         x="18.021059"
-         y="212.71196">base tile</tspan></text>
+         x="28.790398"
+         y="211.73293">base tile</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="54.923599"
-       y="358.99506"
+       x="65.69294"
+       y="358.01602"
        id="text3905"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3907"
-         x="54.923599"
-         y="358.99506">pile</tspan></text>
+         x="65.69294"
+         y="358.01602">pile</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ec5f1b;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 44.339752,44.618516 81.527253,104.61852 44.964752,164.93102 7.7772519,104.61852 Z"
+       style="fill:none;fill-rule:evenodd;stroke:#ec5f1b;stroke-width:1.24974787px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 55.428334,34.543099 104.55797,105.47629 55.178227,176.34642 7.1244103,105.47629 Z"
        id="path7572"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#ec5f1b;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 46.728082,221.55641 37.187501,60 -36.562501,60.3125 -37.187501,-60.3125 z"
+       d="m 57.49742,220.57738 37.187501,60 -36.562501,60.3125 -37.187501,-60.3125 z"
        id="path7572-7"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="40.438103"
-       y="243.22987"
+       x="51.207439"
+       y="242.25084"
        id="text7589"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7591"
-         x="40.438103"
-         y="243.22987">A1</tspan></text>
+         x="51.207439"
+         y="242.25084">A1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="28.2349"
-       y="264.22101"
+       x="39.004238"
+       y="263.24197"
        id="text7593"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7595"
-         x="28.2349"
-         y="264.22101">A2</tspan></text>
+         x="39.004238"
+         y="263.24197">A2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="15.917955"
-       y="285.50894"
+       x="26.687294"
+       y="284.52991"
        id="text7597"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7599"
-         x="15.917955"
-         y="285.50894">A3</tspan></text>
+         x="26.687294"
+         y="284.52991">A3</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="53.007423"
-       y="264.22101"
+       x="63.77676"
+       y="263.24197"
        id="text7601"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7603"
-         x="53.007423"
-         y="264.22101">B1</tspan></text>
+         x="63.77676"
+         y="263.24197">B1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="39.963493"
-       y="285.50894"
+       x="50.73283"
+       y="284.52991"
        id="text7605"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7607"
-         x="39.963493"
-         y="285.50894">B2</tspan></text>
+         x="50.73283"
+         y="284.52991">B2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="27.76029"
-       y="308.44437"
+       x="38.529629"
+       y="307.46533"
        id="text7609"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7611"
-         x="27.76029"
-         y="308.44437">B3</tspan></text>
+         x="38.529629"
+         y="307.46533">B3</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="66.391304"
-       y="285.5441"
+       x="77.160645"
+       y="284.56506"
        id="text7613"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7615"
-         x="66.391304"
-         y="285.5441">C1</tspan></text>
+         x="77.160645"
+         y="284.56506">C1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="53.476173"
-       y="308.47952"
+       x="64.245514"
+       y="307.50049"
        id="text7617"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7619"
-         x="53.476173"
-         y="308.47952">C2</tspan></text>
+         x="64.245514"
+         y="307.50049">C2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="40.432243"
-       y="329.95325"
+       x="51.20158"
+       y="328.97421"
        id="text7621"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7623"
-         x="40.432243"
-         y="329.95325">C3</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#ec5f1b;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 5.6699923,46.493423 92.7319097,0.351421 0,141.732286 -92.0578147,0 z"
-       id="path7572-8"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
+         x="51.20158"
+         y="328.97421">C3</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.75px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
