@@ -19,12 +19,12 @@ function templateChanged(formField) {
   }
   
   var cfg = formField.form;
-  cfg.pattern.value = 0;
   if (formField.selectedOptions != undefined)
     cfg.pattern.max = parseInt(formField.selectedOptions[0].innerHTML.split(':') [1]);
   else // IE
     cfg.pattern.max = parseInt(formField[formField.selectedIndex].innerHTML.split(':') [1]);
-
+  if (cfg.pattern.max < cfg.pattern.value)
+    cfg.pattern.value = 0;
   hideStitcheTypes(formField.value)
 }
 
