@@ -8,6 +8,44 @@
 // 
 // See the GNU General Public License for more details. A copy of the GNU General Public License is
 // available at http://www.gnu.org/licenses/gpl.html
+
+function fillForm() {
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        var fields = document.getElementsByName(key);
+        if (fields.length > 0) {
+            fields[0].value = value;
+        }
+    });
+}
+
+function loadDiagram(content) {
+    var xhr = new XMLHttpRequest();
+    var generator = dibl.Ground().main(window.console, window.location.href);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE ) {
+            if(xhr.status != 200)
+                content.innerHTML  += generator.templateURI + ' status: ' + xhr.status;
+            else {
+                // adding/stripping <html><body> required for IE/Safari, it hardly hurts FF/Chrome
+                var svgDocString = "<html><body>"+xhr.responseText+"</body></html>"
+                var svgDoc = new DOMParser().parseFromString(svgDocString, "text/html");
+                generator.apply(svgDoc);
+                var newSvgDocString = svgDoc.getElementsByTagName("body")[0].innerHTML
+
+                if (document.documentURI == undefined) // IE; TODO need another feature check
+                    content.innerHTML  = newSvgDocString;
+                else // Chrome, Firefox, safari:
+                    content.innerHTML  = "<img src='data:image/svg+xml,"+encodeURIComponent(newSvgDocString)+"' download='diagram.svg'/>";
+           }
+        }
+    }
+    xhr.open("GET", generator.templateURI, true);
+    xhr.send();
+    content.innerHTML  += "loading diagram... "
+}
+
+
 function templateChanged(formField) {
   var rows = formField.value.split('-') [1].split('x') [0];
   var cols = formField.value.split('-') [1].split('x') [1];

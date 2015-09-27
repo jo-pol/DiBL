@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8">
-<title>DiBL - Bobbin lace working diagrams for grounds</title>
-<script type="text/javascript" src="script.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="style.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>DiBL - Bobbin lace working diagrams for grounds</title>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="dibl-ground-opt.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="style.css">
 </head>
-<body onload="templateChanged(document.getElementById('template'))">
+<body onload="fillForm();templateChanged(document.getElementById('template'))">
 <img align="right" src="../logo-big.png" width="78" height="72"></img>
 <h1>Bobbin lace working diagrams: select stitches for a computer generated ground</h1>
-    <form name="interleavedConfig" action="index-dev.html" target="diagram_frame">
+<a href="https://github.com/jo-pol/DiBL/wiki/Tiled-Templates#examples"
+><img align="left" src="teaser-small.png" width="387" height="227"
+/></a>
+    <form name="interleavedConfig" action="">
         <label for="patternOptions">Pattern</label>
         <fieldset id="patternOptions">
             <label for="template">template</label>
             <select size="1" id="template" name="template" onchange="templateChanged(this);">
-                <option selected="selected" value="flanders-3x2-thread">flanders thread (max nr: 0)</option>
+                <option value="flanders-3x2-thread">flanders thread (max nr: 0)</option>
                 <option value="flanders-3x2-pair">flanders pair (max nr: 0)</option>
+                <option disabled="disabled" value="">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
                 <option value="diagonal-3x3-thread">diagonal 3x3 thread (max nr: 6)</option>
                 <option value="diagonal-3x3-pair">diagonal 3x3 pair (max nr: 6)</option>
                 <option value="diagonal-4x4-thread">diagonal 4x4 thread (max nr: 208)</option>
                 <option value="diagonal-4x4-pair">diagonal 4x4 pair (max nr: 208)</option>
+                <option disabled="disabled" value="">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
                 <option value="brick-3x3-thread">brick 3x3 thread (max nr: 7)</option>
                 <option value="brick-3x3-pair">brick 3x3 pair (max nr: 7)</option>
                 <option value="brick-4x4-thread">brick 4x4 thread (max nr: 221)</option>
                 <option value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
+                <option disabled="disabled" value="">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
                 <option value="interleaved-2x2-pair">interleaved 2x2 pair (max nr: 6)</option>
                 <option value="interleaved-2x4-pair">interleaved 2x4 pair (max nr: 56)</option>
                 <option value="interleaved-4x2-pair">interleaved 4x2 pair (max nr: 92)</option>
             </select>
             <br/>
             <label for="pattern">graph nr</label>
-            <input name="pattern" min="0" max="221" value="1" type="number"/>
+            <input name="pattern" min="0" max="221" value="0" type="number"/>
             <br>
             <label for="flip">orientation</label>
             <select size="1" name="flip" id="flip">
@@ -338,7 +345,7 @@
             </table>
         </fieldset>
         <p>
-            <input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
+            <button class="button" type="submit">draw</button>
             <a href="https://github.com/jo-pol/DiBL/wiki/Tiled-Templates">Help</a>
             (<a href="https://github.com/jo-pol/DiBL/issues">issues</a>,
             <a href="https://github.com/jo-pol/DiBL/commits/gh-pages/grounds/">changes</a>,
@@ -346,6 +353,7 @@
             <a href="https://github.com/jo-pol/DiBL/tree/master/web/grounds/src/main/scala/dibl">scripts</a>)
         </p>
     </form>
-    <iframe name="diagram_frame" src="execuse.html"/>
+    <div id="message">loading script, please wait... </div>
+    <script>loadDiagram(document.getElementById("message"))</script>
 </body>
 </html>
