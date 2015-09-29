@@ -34,6 +34,16 @@ class ConvertSpec extends FlatSpec with Matchers {
     Graphs.unpack(pack(m), m.length, m(0).length ) should equal (m)
   }
 
+  "convert" should "produce packed matrices for further development" in {
+    for ((key,value)<-Graphs.matrixMap) {
+      // TODO transform short tuples to long ones for diagonal
+      print(s"$key={")
+      for (m <- value)
+        print('"' + pack(m)+'"'+',')
+      println(s"}") // "${pack(m)}"
+    }
+  }
+
   def fromTuple = Map() ++ Graphs.toTuple.map(_.swap)
   def pack(m: M): String = {
     var s = ""
