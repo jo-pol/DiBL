@@ -16,9 +16,10 @@
 .hide {
 	display:none;
 }
-iframe {
-	width: 820px;
-	height: 1000px; 
+#message {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+	border-top: solid #DDDDDD;
 }
 form           { display:block; }
 fieldset       { display:inline-block;             padding: 0; margin:0; border:0; }

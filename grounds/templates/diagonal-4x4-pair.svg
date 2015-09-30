@@ -27,11 +27,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.6552032"
-     inkscape:cx="73.402092"
-     inkscape:cy="712.71536"
+     inkscape:zoom="2.059791"
+     inkscape:cx="252.92637"
+     inkscape:cy="933.64839"
      inkscape:document-units="px"
-     inkscape:current-layer="g10713"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="false"
      inkscape:snap-grids="false"
@@ -42,7 +42,7 @@
      inkscape:window-maximized="1"
      inkscape:snap-to-guides="false"
      inkscape:object-paths="false"
-     inkscape:snap-global="false"
+     inkscape:snap-global="true"
      inkscape:snap-object-midpoints="false"
      inkscape:object-nodes="true"
      showguides="true"
@@ -495,7 +495,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(122.52831,212.63447)"
+       transform="translate(121.61738,213.41365)"
        id="use8264"
        width="744.09448"
        height="1052.3622" />
@@ -504,7 +504,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(122.52831,425.23289)"
+       transform="translate(121.93921,426.73671)"
        id="use8266"
        width="744.09448"
        height="1052.3622" />
@@ -513,7 +513,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(245.27207,0.03601675)"
+       transform="translate(242.4302,0.09058)"
        id="use8268"
        width="744.09448"
        height="1052.3622" />
@@ -522,7 +522,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(245.27207,212.63447)"
+       transform="translate(242.75203,213.41364)"
        id="use8270"
        width="744.09448"
        height="1052.3622" />
@@ -531,7 +531,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(245.27207,425.23289)"
+       transform="translate(243.07386,426.7367)"
        id="use8272"
        width="744.09448"
        height="1052.3622" />
@@ -540,7 +540,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(368.01583,0.03601675)"
+       transform="translate(363.56485,0.09057)"
        id="use8274"
        width="744.09448"
        height="1052.3622" />
@@ -549,7 +549,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(368.01583,212.63447)"
+       transform="translate(364.3694,213.32305)"
        id="use8276"
        width="744.09448"
        height="1052.3622" />
@@ -558,7 +558,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(368.01583,425.23289)"
+       transform="translate(364.20851,426.73668)"
        id="use8278"
        width="744.09448"
        height="1052.3622" />
@@ -567,7 +567,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(490.75959,0.03601675)"
+       transform="translate(484.6995,0.0905618)"
        id="use8280"
        width="744.09448"
        height="1052.3622" />
@@ -576,7 +576,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(490.75959,212.63447)"
+       transform="translate(485.50405,213.32304)"
        id="use8282"
        width="744.09448"
        height="1052.3622" />
@@ -585,7 +585,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(490.75959,425.23289)"
+       transform="translate(485.82588,426.6461)"
        id="use8284"
        width="744.09448"
        height="1052.3622" />
@@ -594,7 +594,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(613.50335,0.03601675)"
+       transform="translate(605.99505,0.1811518)"
        id="use8286"
        width="744.09448"
        height="1052.3622" />
@@ -603,7 +603,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(613.50335,212.63447)"
+       transform="translate(606.6387,213.32304)"
        id="use8288"
        width="744.09448"
        height="1052.3622" />
@@ -612,7 +612,7 @@ http://dibl.googlecode.com can vary the stiches or apply another pair traversal 
        y="0"
        inkscape:tiled-clone-of="#g10713"
        xlink:href="#g10713"
-       transform="translate(613.50335,425.23289)"
+       transform="translate(606.96053,426.6461)"
        id="use8290"
        width="744.09448"
        height="1052.3622" />

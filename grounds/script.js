@@ -61,7 +61,7 @@ function templateChanged(formField) {
     cfg.pattern.max = parseInt(formField.selectedOptions[0].innerHTML.split(':') [1]);
   else // IE
     cfg.pattern.max = parseInt(formField[formField.selectedIndex].innerHTML.split(':') [1]);
-  if (cfg.pattern.max < cfg.pattern.value)
+  if (cfg.pattern.max*1 < cfg.pattern.value*1)
     cfg.pattern.value = 0;
   hideStitcheTypes(formField.value)
 }

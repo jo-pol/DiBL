@@ -7,13 +7,13 @@
     <script type="text/javascript" src="dibl-ground-opt.js"></script>
     <link rel="stylesheet" type="text/css" media="all" href="style.css">
 </head>
-<body onload="fillForm();templateChanged(document.getElementById('template'))">
+<body onload="fillForm();templateChanged(document.getElementById('template'));loadDiagram(document.getElementById('message'))">
 <img align="right" src="../logo-big.png" width="78" height="72"></img>
 <h1>Bobbin lace working diagrams: select stitches for a computer generated ground</h1>
 <a href="https://github.com/jo-pol/DiBL/wiki/Tiled-Templates#examples"
 ><img align="left" src="teaser-small.png" width="387" height="227"
 /></a>
-    <form name="interleavedConfig" action="">
+    <form name="interleavedConfig" action="" method="get">
         <label for="patternOptions">Pattern</label>
         <fieldset id="patternOptions">
             <label for="template">template</label>
@@ -32,7 +32,7 @@
                 <option value="brick-4x4-pair">brick 4x4 pair(max nr: 221)</option>
                 <option disabled="disabled" value="">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
                 <option value="interleaved-2x2-pair">interleaved 2x2 pair (max nr: 6)</option>
-                <option value="interleaved-2x4-pair">interleaved 2x4 pair (max nr: 56)</option>
+                <option value="interleaved-2x4-pair">interleaved 2x4 pair (max nr: 46)</option>
                 <option value="interleaved-4x2-pair">interleaved 4x2 pair (max nr: 92)</option>
             </select>
             <br/>
@@ -61,7 +61,7 @@
                 <tr>
                     <th>1</th>
                     <td><select size="1" name="A1" id="row1-col1">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -69,16 +69,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="B1" id="row1-col2">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -86,16 +86,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc  </option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="C1" id="row1-col3">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -103,16 +103,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="D1" id="row1-col4">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -120,19 +120,19 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                 </tr>
                 <tr>
                     <th>2</th>
                     <td><select size="1" name="A2" id="row2-col1">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -140,16 +140,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="B2" id="row2-col2">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -157,16 +157,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="C2" id="row2-col3">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -174,16 +174,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="D2" id="row2-col4">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -191,19 +191,19 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                 </tr>
                 <tr>
                     <th>3</th>
                     <td><select size="1" name="A3" id="row3-col1">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -211,16 +211,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="B3" id="row3-col2">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -228,16 +228,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="C3" id="row3-col3">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -245,16 +245,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="D3" id="row3-col4">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -262,19 +262,19 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                 </tr>
                 <tr>
                     <th>4</th>
                     <td><select size="1" name="A4" id="row4-col1">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -282,16 +282,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="B4" id="row4-col2">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -299,16 +299,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="C4" id="row4-col3">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -316,16 +316,16 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                     <td><select size="1" name="D4" id="row4-col4">
-                            <option selected="selected" value="tc">tc</option>
+                            <option value="tc" selected="selected">tc</option>
                             <option value="c" class="flanders">c</option>
                             <option value="cl" class="flanders">cl</option>
                             <option value="cr" class="flanders">cr</option>
@@ -333,13 +333,13 @@
                             <option value="rc" class="flanders">rc</option>
                             <option value="crc" class="flanders">crc</option>
                             <option value="clc" class="flanders">clc</option>
-                            <option value="ctc" class="pair">ctc</option>
+                            <option value="ctc">ctc</option>
                             <option value="lctc" class="flanders">lctc</option>
                             <option value="rctc" class="flanders">rctc</option>
-                            <option value="tctc" class="pair">tctc</option>
-                            <option value="tcptc" class="pin ">tcptc</option>
-                            <option value="ctcpctc" class="pin pair">ctcpctc</option>
-                            <option value="tctcptctc" class="pin pair">tctcptctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
                     </select></td>
                 </tr>
             </table>
@@ -353,7 +353,28 @@
             <a href="https://github.com/jo-pol/DiBL/tree/master/web/grounds/src/main/scala/dibl">scripts</a>)
         </p>
     </form>
+    Some examples:
+    <a href="?template=diagonal-3x3-pair&pattern=4&flip=&A1=tctc&B1=tctc&C1=tctc&A2=tctc&B2=tctc&C2=tctc&A3=tctc&B3=tctc&C3=tctc">Paris / Kat</a>,
+    <a href="?template=brick-3x3-thread&pattern=7&flip=&A1=tcptc&B1=tcptc&C1=tcptc&A2=tcptc&B2=tcptc&C2=tcptc&A3=tcptc&B3=tcptc&C3=tcptc">Torchon</a>,
+    <a href="?template=interleaved-2x4-pair&pattern=3&flip=&A1=tcptc&B1=tc&C1=tcptc&D1=tc&A2=tcptc&B2=tcptc&C2=tcptc&D2=tcptc">Rose</a>,
+    <a href="?template=flanders-3x2-thread&pattern=0&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tctc&B3=tctc">Flanders</a>,
+    <a href="?template=interleaved-2x4-pair&pattern=13&flip=&A1=tc&B1=tc&C1=tc&D1=tc&A2=tc&B2=tc&C2=tc&D2=tc">small snowflakes</a>,
+    odd fish (Milanese) variants:
+    <a href="?template=interleaved-4x2-pair&pattern=36&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">36</a>, 
+    <a href="?template=interleaved-4x2-pair&pattern=39&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">39</a>, 
+    <a href="?template=interleaved-4x2-pair&pattern=43&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">43</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=46&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">46</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=48&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">48</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=55&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">55</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=66&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">66</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=84&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">84</a>=
+    <a href="?template=interleaved-4x2-pair&pattern=85&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">85</a> even:
+    <a href="?template=interleaved-4x2-pair&pattern=44&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">44</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=45&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">45</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=61&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">61</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=62&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">62</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=76&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">76</a>,
+    <a href="?template=interleaved-4x2-pair&pattern=86&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">86</a>.
     <div id="message">loading script, please wait... </div>
-    <script>loadDiagram(document.getElementById("message"))</script>
 </body>
 </html>
