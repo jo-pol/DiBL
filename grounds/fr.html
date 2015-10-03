@@ -1,459 +1,365 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8">
-<title>Dentelle aux fuseaux : navigateur de modèles</title>
-<script type="text/javascript" src="script.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="style.css">
-<link rel="stylesheet" type="text/css" media="all" href="tabs.css">
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>DiBL - Dentelle aux fuseaux : navigateur de modèles</title>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="dibl-ground-opt.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="style.css">
 </head>
-<body onload="init()">
-<h1>Dentelle aux fuseaux : navigateur de modèles</h1>
-	<article class="tabs">
-		<section id="tab2" class="tab_block">
-			<h2>
-				<a href="#tab2">2. <img src="diagonal.png" alt="Diagonal"></a>
-			</h2>
-			<div>
-				<form name="diagonalConfig" action="index-dev.html" target="diagram_frame">
-					<table>
-						<tbody>
-							<tr>
-								<td>Modèle&nbsp;</td>
-								<td colspan="8">
-									<select size="1" name="template" onchange="templateChanged(this);" id="init">
-											<option value="diagonal-3x3-thread">3x3 thread (Nb max : 6)</option>
-											<option value="diagonal-4x4-thread">4x4 thread (Nb max : 208)</option>
-											<option value="brick-3x3-pair">brick 3x3 pair (Nb max : 7)</option>
-											<option value="brick-3x3-thread">brick 3x3 thread (Nb max : 7)</option>
-											<option value="brick-4x4-pair">brick 4x4 pair(Nb max : 221)</option>
-											<option selected="selected" value="brick-4x4-thread">brick 4x4 thread (Nb max : 221)</option>
-									</select>
-									<br>nr: <input name="pattern" min="0" max="221" value="0" onkeyup="showPairTraversal()" type="number"/>
-								</td>
-							</tr>
-							<tr>
-								<td rowspan="4">Points&nbsp;</td>
-								<td class="narrow"><select size="1" name="A1" class="tab2row1 tab2col1">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td class="narrow"></td>
-								<td class="narrow"><select size="1" name="B1" class="tab2row1 tab2col2">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td class="narrow"></td>
-								<td class="narrow"><select size="1" name="C1" class="tab2row1 tab2col3">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td class="narrow"></td>
-								<td class="narrow"><select size="1" name="D1" class="tab2row1 tab2col4">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><select size="1" name="A2" class="tab2row2 tab2col1">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="B2" class="tab2row2 tab2col2">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="C2" class="tab2row2 tab2col3">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="D2" class="tab2row2 tab2col4">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td><select size="1" name="A3" class="tab2row3 tab2col1">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="B3" class="tab2row3 tab2col2">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="C3" class="tab2row3 tab2col3">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="D3" class="tab2row3 tab2col4">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><select size="1" name="A4" class="tab2row4 tab2col1">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="B4" class="tab2row4 tab2col2">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="C4" class="tab2row4 tab2col3">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="D4" class="tab2row4 tab2col4">
-										<option selected="selected" value="tc">tc</option>
-										<option class="pair" value="ctc">ctc</option>
-										<option class="pair" value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option class="pair" value="ctcpctc">ctcpctc</option>
-										<option class="pair" value="tctctcptc">tctcptctc</option>
-								</select></td>
-							</tr>
-						</tbody>
-					</table>
-					<input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
-				</form>
-			</div>
-		</section>
-		<section id="tab3" class="tab_block">
-			<h2>
-				<a href="#tab3">3. <img src="interleaved.png" alt="Entrelacées"></a>
-			</h2>
-			<div>
-				<form name="interleavedConfig" action="index-dev.html" target="diagram_frame">
-					<table>
-						<tbody>
-							<tr>
-								<td>Modèle&nbsp;</td>
-								<td colspan="4">
-									<select size="1" name="template" onchange="templateChanged(this);">
-											<option value="interleaved-2x2-pair">2x2 pair (Nb max : 6)</option>
-											<option value="interleaved-2x4-pair">2x4 pair (Nb max : 56)</option>
-											<option selected="selected" value="interleaved-4x2-pair">4x2 pair (Nb max : 92)</option>
-									</select>
-									<br>Nb: <input name="pattern" min="0" max="92" value="1" onkeyup="showPairTraversal()" type="number"/>
-								</td>
-							</tr>
-							<tr>
-								<td rowspan="4">Points&nbsp;</td>
-								<td class="narrow"><select size="1" name="A1" class="tab3row1 tab3col1">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td class="narrow"><select size="1" name="B1" class="tab3row1 tab3col2">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td class="narrow"><select size="1" name="C1" class="tab3row1 tab3col3 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="D1" class="tab3row1 tab3col4 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td><select size="1" name="A2" class="tab3row2 tab3col1">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="B2" class="tab3row2 tab3col2">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="C2" class="tab3row2 tab3col3 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="D2" class="tab3row2 tab3col4 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td><select size="1" name="A3" class="tab3row3 tab3col1">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="B3" class="tab3row3 tab3col2">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="C3" class="tab3row3 tab3col3 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="D3" class="tab3row3 tab3col4 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td><select size="1" name="A4" class="tab3row4 tab3col1">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="B4" class="tab3row4 tab3col2">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="C4" class="tab3row4 tab3col3 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-								<td><select size="1" name="D4" class="tab3row4 tab3col4 tab3hide">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-										<option value="tcptc">tcptc</option>
-										<option value="ctcpctc">ctcpctc</option>
-										<option value="tctctcptc">tctcptctc</option>
-								</select></td>
-							</tr>
-						</tbody>
-					</table>
-					<input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
-				</form>
-			</div>
-		</section>
-		<section id="tab4" class="tab_block">
-			<h2>
-				<a href="#tab4">ct/tc?</a>
-			</h2>
-			<div>
-				<article>
-					<p>Vous aurez certainement remarqué que les descriptions des points "ouverts" ou "demi passées" sont "TC" (Tordre-Croiser)
-					<br>alors que certaines dentellières utilisent plutôt "CT" (Croiser-Tordre). Ce n'est pas une erreur !
-					<br>Il semblerait, d'après les recherches effectuées par Véronika Irvine, que cela dépende de la région d'origine de la dentelle
-					<br>et du type de carreau utilisé : le plus souvent, un carreau en forme de traversin =&gt; "TC", un carreau plat =&gt; "CT".
-					<br>Un choix devait être fait pour développer ces applications mais cela ne modifie pas profondément les résultats.
-					<p>
-				</article>
-			</div>
-		</section>
-		<section id="tab5" class="tab_block">
-			<h2>
-				<a href="#tab5">À propos</a>
-			</h2>
-			<div>
-				<article>
-					<p><a href="https://github.com/jo-pol/DiBL/wiki/Diagram-generator">Introduction</a></p>
-					<p><a href="https://github.com/jo-pol/DiBL/tree/gh-pages/grounds">Fichiers</a>,
-						<a href="https://github.com/jo-pol/DiBL/tree/master/web/grounds/src/main/scala/dibl">scripts</a></p>
-					<p>Tabs basé sur: <a href="http://dabblet.com/gist/1892497">dabblet.com</a></p>
-				</article>
-			</div>
-		</section>
-		<section id="tab1" class="tab_block">
-			<h2>
-				<a href="#tab1">1. <img src="flanders.png" alt="Flandres"></a>
-			</h2>
-			<div>
-				<form name="flandersConfig" action="index-dev.html" target="diagram_frame">
-					<input name="pattern" value="0" type="hidden">
-					<table>
-						<tbody>
-							<tr>
-								<td>pattern&nbsp;</td>
-								<td colspan="8">
-									<select size="1" name="template" onchange="templateChanged(this);">
-											<option selected="selected" value="flanders-3x2-thread">thread</option>
-											<option value="flanders-3x2-pair">pair</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td rowspan="4">Points&nbsp;</td>
-								<td class="narrow"><select size="1" name="A1">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-								</select></td>
-								<td class="narrow"></td>
-								<td><select size="1" name="A2">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-								</select></td>
-								<td rowspan="4"></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><select size="1" name="A3">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-								</select></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td><select size="1" name="B1">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-								</select></td>
-								<td></td>
-								<td><select size="1" name="B2">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><select size="1" name="B3">
-										<option selected="selected" value="tc">tc</option>
-										<option value="ctc">ctc</option>
-										<option value="tctc">tctc</option>
-								</select></td>
-							</tr>
-						</tbody>
-					</table>
-					<input type="submit" value="Show" onclick="this.form.target='diagram_frame';return true;">
-				</form>
-			</div>
-		</section>
-	</article>
-	<iframe name="diagram_frame" src="execuse.html"/>
+<body onload="fillForm();templateChanged(document.getElementById('template'));loadDiagram(document.getElementById('message'))">
+
+    <img align="right" src="../logo-big.png" width="104" height="96"></img>
+    <h1>Dentelle aux fuseaux : navigateur de modèles</h1>
+
+    <a href="https://github.com/jo-pol/DiBL/wiki/Diagram-generator#examples"
+       class="tooltip"
+    ><img align="left" src="teaser-small.png" width="387" height="227"
+    /><span class="classic">
+      Pour des configurations de cette diagrammes et plus de examples: suivre ce lien.
+    </span></a>
+
+        
+    <form name="interleavedConfig" action="" method="get">
+        <label for="patternOptions">Modèle</label>
+        <fieldset id="patternOptions">
+            <label for="template">Template</label>
+            <select size="1" id="template" name="template" onchange="templateChanged(this);">
+                <option value="flanders-3x2-thread">Flandres fil (Nb max: 0)</option>
+                <option value="flanders-3x2-pair">Flandres paire (Nb max: 0)</option>
+                <option disabled="disabled" value="">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
+                <option value="diagonal-3x3-thread">Diagonal 3x3 file (Nb max: 6)</option>
+                <option value="diagonal-3x3-pair">Diagonal 3x3 paire (Nb max: 6)</option>
+                <option value="diagonal-4x4-thread">Diagonal 4x4 fil (Nb max: 208)</option>
+                <option value="diagonal-4x4-pair">Diagonal 4x4 paire (Nb max: 208)</option>
+                <option disabled="disabled" value="">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
+                <option value="brick-3x3-thread">brick 3x3 fil (Nb max: 7)</option>
+                <option value="brick-3x3-pair">brick 3x3 paire (Nb max: 7)</option>
+                <option value="brick-4x4-thread">brick 4x4 fil (Nb max: 221)</option>
+                <option value="brick-4x4-pair">brick 4x4 paire (Nb max: 221)</option>
+                <option disabled="disabled" value="">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
+                <option value="interleaved-2x2-pair">Entrelacées 2x2 paire (Nb max: 6)</option>
+                <option value="interleaved-2x4-pair">Entrelacées 2x4 paire (Nb max: 46)</option>
+                <option value="interleaved-4x2-pair">Entrelacées 4x2 paire (Nb max: 92)</option>
+            </select>
+            <br/>
+            <label for="pattern">Graphe nb</label>
+            <input name="pattern" min="0" max="221" value="0" type="number"/>
+            <br>
+            <label for="flip">Orientation</label>
+            <select size="1" name="flip" id="flip">
+                <option value="">Pas de basculement / rotation</option>
+                <option value="x">Basculer: &mdash;</option>
+                <option value="y">Basculer: &nbsp;|</option>
+                <option value="r">Rotatation</option>
+            </select>
+        </fieldset>
+        <br/>
+        <label for="stitches">Points</label>
+        <fieldset id="stitches">
+            <table>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td><select size="1" name="A1" id="row1-col1">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="B1" id="row1-col2">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc  </option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="C1" id="row1-col3">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="D1" id="row1-col4">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td><select size="1" name="A2" id="row2-col1">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="B2" id="row2-col2">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="C2" id="row2-col3">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="D2" id="row2-col4">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td><select size="1" name="A3" id="row3-col1">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="B3" id="row3-col2">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="C3" id="row3-col3">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="D3" id="row3-col4">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td><select size="1" name="A4" id="row4-col1">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="B4" id="row4-col2">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="C4" id="row4-col3">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                    <td><select size="1" name="D4" id="row4-col4">
+                            <option value="tc" selected="selected">tc</option>
+                            <option value="c" class="flanders">c</option>
+                            <option value="cl" class="flanders">cl</option>
+                            <option value="cr" class="flanders">cr</option>
+                            <option value="lc" class="flanders">lc</option>
+                            <option value="rc" class="flanders">rc</option>
+                            <option value="crc" class="flanders">crc</option>
+                            <option value="clc" class="flanders">clc</option>
+                            <option value="ctc">ctc</option>
+                            <option value="lctc" class="flanders">lctc</option>
+                            <option value="rctc" class="flanders">rctc</option>
+                            <option value="tctc">tctc</option>
+                            <option value="tcptc" class="pin">tcptc</option>
+                            <option value="ctcpctc" class="pair pin">ctcpctc</option>
+                            <option value="tctcptctc" class="pair pin">tctcptctc</option>
+                    </select></td>
+                </tr>
+            </table>
+        </fieldset>
+        <p>
+            <button class="button" type="submit">draw</button>
+            <a href="https://github.com/jo-pol/DiBL/wiki/Diagram-generator">Aidez-moi</a>
+            (<a href="https://github.com/jo-pol/DiBL/issues">issues</a>,
+            <a href="https://github.com/jo-pol/DiBL/commits/gh-pages/grounds/">changements</a>,
+            <a href="https://github.com/jo-pol/DiBL/tree/gh-pages/grounds">fichiers</a>,
+            <a href="https://github.com/jo-pol/DiBL/tree/master/web/grounds/src/main/scala/dibl">scripts</a>)
+        </p>
+    </form>
+    <div id="message">loading script, please wait... </div>
 </body>
 </html>
