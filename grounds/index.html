@@ -8,11 +8,18 @@
     <link rel="stylesheet" type="text/css" media="all" href="style.css">
 </head>
 <body onload="fillForm();templateChanged(document.getElementById('template'));loadDiagram(document.getElementById('message'))">
-<img align="right" src="../logo-big.png" width="78" height="72"></img>
-<h1>Bobbin lace working diagrams: select stitches for a computer generated ground</h1>
-<a href="https://github.com/jo-pol/DiBL/wiki/Tiled-Templates#examples"
-><img align="left" src="teaser-small.png" width="387" height="227"
-/></a>
+
+    <img align="right" src="../logo-big.png" width="104" height="96"></img>
+    <h1>Configure bobbin lace working diagrams:<h1><h2>Select stitches for a computer generated ground</h2>
+
+    <a href="https://github.com/jo-pol/DiBL/wiki/Tiled-Templates#examples"
+       class="tooltip"
+    ><img align="left" src="teaser-small.png" width="387" height="227"
+    /><span class="classic">
+      For configurations of these diagrams and more examples: follow this link.
+    </span></a>
+
+        
     <form name="interleavedConfig" action="" method="get">
         <label for="patternOptions">Pattern</label>
         <fieldset id="patternOptions">
@@ -353,28 +360,6 @@
             <a href="https://github.com/jo-pol/DiBL/tree/master/web/grounds/src/main/scala/dibl">scripts</a>)
         </p>
     </form>
-    Some examples:
-    <a href="?template=diagonal-3x3-pair&pattern=4&flip=&A1=tctc&B1=tctc&C1=tctc&A2=tctc&B2=tctc&C2=tctc&A3=tctc&B3=tctc&C3=tctc">Paris / Kat</a>,
-    <a href="?template=brick-3x3-thread&pattern=7&flip=&A1=tcptc&B1=tcptc&C1=tcptc&A2=tcptc&B2=tcptc&C2=tcptc&A3=tcptc&B3=tcptc&C3=tcptc">Torchon</a>,
-    <a href="?template=interleaved-2x4-pair&pattern=3&flip=&A1=tcptc&B1=tc&C1=tcptc&D1=tc&A2=tcptc&B2=tcptc&C2=tcptc&D2=tcptc">Rose</a>,
-    <a href="?template=flanders-3x2-thread&pattern=0&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tctc&B3=tctc">Flanders</a>,
-    <a href="?template=interleaved-2x4-pair&pattern=13&flip=&A1=tc&B1=tc&C1=tc&D1=tc&A2=tc&B2=tc&C2=tc&D2=tc">small snowflakes</a>,
-    odd fish (Milanese) variants:
-    <a href="?template=interleaved-4x2-pair&pattern=36&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">36</a>, 
-    <a href="?template=interleaved-4x2-pair&pattern=39&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">39</a>, 
-    <a href="?template=interleaved-4x2-pair&pattern=43&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">43</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=46&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">46</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=48&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">48</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=55&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">55</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=66&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">66</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=84&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">84</a>=
-    <a href="?template=interleaved-4x2-pair&pattern=85&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">85</a> even:
-    <a href="?template=interleaved-4x2-pair&pattern=44&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">44</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=45&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">45</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=61&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">61</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=62&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">62</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=76&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">76</a>,
-    <a href="?template=interleaved-4x2-pair&pattern=86&flip=&A1=tc&B1=tc&A2=tc&B2=tc&A3=tc&B3=tc&A4=tc&B4=tc">86</a>.
     <div id="message">loading script, please wait... </div>
 </body>
 </html>
