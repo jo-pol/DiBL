@@ -53,9 +53,7 @@ class ConvertSpec extends FlatSpec with Matchers {
       }
       println(s")")
     }
-
   }
-
   val matrices = HashMap {
     // saves 150KB of scala source code, the generated JavaScript code is currently 374KB:
     // https://github.com/jo-pol/DiBL/blob/gh-pages/grounds/dibl-ground-opt.js
@@ -76,6 +74,57 @@ class ConvertSpec extends FlatSpec with Matchers {
       r <- m.indices
       c <- m(0).indices
     } s = s + fromTuple.getOrElse(m(r)(c),"?")
+    s
+  }
+
+/*
+ * Tuples define how nodes in a graph/diagram are connected. The schema's below show the numbered nodes
+ * of the tuples wrapped counter clock wise around the central X-node.
+ * 
+ * <pre>
+ * 3 2 1
+ * 4 X 0
+ * 5 6 7
+ *
+ * D3.js needs the following jason-data for a triangle: 
+ * {"nodes":[{},{},{}],"egdes":[{"source":0,"target":1},{"source":1,"target":2}{"source":2,"target":0}]}
+ *
+ * Hence the matrices can be packed by defining only incoming pairs.
+ * Permutations for incoming pairs in:
+ * - ascii-art
+ * - regular expression matching tuples
+ * - relative node connections [row,col]
+ *
+ * 0  .../_  "1,1,0,0,0,.+"      [ 0, 1],[-1, 1]
+ * 1  ..|._  "1,0,1,0,0,.+"      [ 0, 1],[-1, 0]
+ * 2  .\.._  "1,0,0,1,0,.+"      [ 0, 1],[-1,-1]
+ * 3  _..._  "1,0,0,0,1,.+"      [ 0, 1],[-1, 0]
+ * 4  ..|/.  "[^,]+,1,1,0,0,.+"  [-1, 1],[-1, 0]
+ * 5  .\./.  "[^,]+,1,0,1,0,.+"  [-1, 1],[-1,-1]
+ * 6  _../.  "[^,]+,1,0,0,1,.+"  [-1, 1],[-1, 0]
+ * 7  .\|..  "[^,]+,0,1,1,0,.+"  [-1, 0],[-1,-1]
+ * 8  _.|..  "[^,]+,0,1,0,1,.+"  [-1, 0],[-1, 0]
+ * 9  _\...  "[^,]+,0,0,1,1,.+"  [-1,-1],[-1, 0]
+ * </pre>
+ */
+  val tupleRegex = Array[String](
+    "1,1,0,0,0,.+"    ,
+    "1,0,1,0,0,.+"    ,
+    "1,0,0,1,0,.+"    ,
+    "1,0,0,0,1,.+"    ,
+    "[^,]+,1,1,0,0,.+",
+    "[^,]+,1,0,1,0,.+",
+    "[^,]+,1,0,0,1,.+",
+    "[^,]+,0,1,1,0,.+",
+    "[^,]+,0,1,0,1,.+",
+    "[^,]+,0,0,1,1,.+")
+  def packByIncomingPairs(m: M): String = {
+    var s = ""
+    for {
+      r <- m.indices
+      c <- m(0).indices
+      i <- tupleRegex.indices
+    } if (m(r)(c).matches(tupleRegex(i))) s += i
     s
   }
 }
