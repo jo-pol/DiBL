@@ -16,21 +16,19 @@
 package dibl
 
 import dibl.Matrix._
-import dibl.Graph._
 
 import scala.collection.immutable.HashMap
 import scala.collection.mutable.ListBuffer
+import scala.scalajs.js
 import scala.scalajs.js.Dictionary
 import scala.scalajs.js.annotation.JSExport
-import scala.scalajs.js
 
 case class Graph(nodes: Array[HashMap[String,Any]],
                  links: Array[HashMap[String,Any]]) {
-  private var startNr = 0
-  for (link <- links.filter (_.get("start").get.toString.startsWith("pair"))){ 
-    startNr += 1
-    val source = link.get("source").get.asInstanceOf[Int]
-    nodes(source) = Props("title" -> s"Pair $startNr")
+  private val startLinks = links.filter(_.get("start").get.toString.startsWith("pair"))
+  for (i <- startLinks.indices){
+    val source = startLinks(i).get("source").get.asInstanceOf[Int]
+    nodes(source) = Props("title" -> s"Pair ${i+1}")
   }
 }
 
@@ -110,27 +108,30 @@ object Graph {
 
     val cols = m(0).length + 4
     val links = ListBuffer[Props]()
-    var lastSource = 0
     for {row <- m.indices
-         col <- m(0).indices
-         i <- m(row)(col).indices} {
+                       col <- m(0).indices
+                       i <- m(row)(col).indices} {
       val(srcRow,srcCol) = m(row)(col)(i)
       val ds = if (srcRow < 0) (srcCol - col + 1)%2 else 0
       val dt = if (row == m.length - 1) i else 0
-      val source = cols*(srcRow+2-ds)+srcCol+2
-      links += Props("source" -> source,
-                     "target" -> (cols*(   row+2+dt)+   col+2), 
-                     "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols)
-                                 "pair" else "red"), 
-                     "end" -> (if (row+1 < m.length) "red" else ""))
-      // FIXME connect starts to prevent haphazard flipping
-      if (srcRow < 0) {
-        if (lastSource > 0)
-          // links += Props("source" -> lastSource,
-          //                "target" -> source,
-          //                "border" -> true)
-        lastSource = source
-      }
+      links += Props("source" -> (cols * (srcRow + 2 - ds) + srcCol + 2),
+      "target" -> (cols * (   row + 2 + dt) +    col + 2),
+      "start" -> (if (srcRow < 0 || srcCol < 0 || srcCol+4 >= cols)
+      "pair" else "red"),
+      "end" -> (if (row+1 < m.length) "red" else ""))
+    }
+    var lastSource = -1
+    val startLinks = links.filter(l => l.get("start").get.asInstanceOf[String].startsWith("pair")
+                                    && l.get("target").get.asInstanceOf[Int] < 3*cols
+                                 )
+    for (i <- startLinks.indices){
+      val source = startLinks(i).get("source").get.asInstanceOf[Int]
+      // FIXME ticks seem to fail
+      // if (lastSource >= 0)
+      //   links += Props("source" -> lastSource,
+      //                  "target" -> source,
+      //                  "border" -> true)
+      lastSource = source
     }
     links.toArray
   }
