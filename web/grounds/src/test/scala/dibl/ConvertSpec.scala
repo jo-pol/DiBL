@@ -77,54 +77,27 @@ class ConvertSpec extends FlatSpec with Matchers {
     s
   }
 
-/*
- * Tuples define how nodes in a graph/diagram are connected. The schema's below show the numbered nodes
- * of the tuples wrapped counter clock wise around the central X-node.
- * 
- * <pre>
- * 3 2 1
- * 4 X 0
- * 5 6 7
- *
- * D3.js needs the following jason-data for a triangle: 
- * {"nodes":[{},{},{}],"egdes":[{"source":0,"target":1},{"source":1,"target":2}{"source":2,"target":0}]}
- *
- * Hence the matrices can be packed by defining only incoming pairs.
- * Permutations for incoming pairs in:
- * - ascii-art
- * - regular expression matching tuples
- * - relative node connections [row,col]
- *
- * 0  .../_  "1,1,0,0,0,.+"      [ 0, 1],[-1, 1]
- * 1  ..|._  "1,0,1,0,0,.+"      [ 0, 1],[-1, 0]
- * 2  .\.._  "1,0,0,1,0,.+"      [ 0, 1],[-1,-1]
- * 3  _..._  "1,0,0,0,1,.+"      [ 0, 1],[-1, 0]
- * 4  ..|/.  "[^,]+,1,1,0,0,.+"  [-1, 1],[-1, 0]
- * 5  .\./.  "[^,]+,1,0,1,0,.+"  [-1, 1],[-1,-1]
- * 6  _../.  "[^,]+,1,0,0,1,.+"  [-1, 1],[-1, 0]
- * 7  .\|..  "[^,]+,0,1,1,0,.+"  [-1, 0],[-1,-1]
- * 8  _.|..  "[^,]+,0,1,0,1,.+"  [-1, 0],[-1, 0]
- * 9  _\...  "[^,]+,0,0,1,1,.+"  [-1,-1],[-1, 0]
- * </pre>
- */
-  val tupleRegex = Array[String](
-    "1,1,0,0,0,.+"    ,
-    "1,0,1,0,0,.+"    ,
-    "1,0,0,1,0,.+"    ,
-    "1,0,0,0,1,.+"    ,
-    "[^,]+,1,1,0,0,.+",
-    "[^,]+,1,0,1,0,.+",
-    "[^,]+,1,0,0,1,.+",
-    "[^,]+,0,1,1,0,.+",
-    "[^,]+,0,1,0,1,.+",
-    "[^,]+,0,0,1,1,.+")
-  def packByIncomingPairs(m: M): String = {
-    var s = ""
-    for {
-      r <- m.indices
-      c <- m(0).indices
-      i <- tupleRegex.indices
-    } if (m(r)(c).matches(tupleRegex(i))) s += i
-    s
+  "convert" should "print no question marks" in {
+
+    val tupleMap = HashMap[String,Char](
+      // ascii-art positions 43210
+      "1,1,0,0,0" -> '0', // .../_
+      "1,0,1,0,0" -> '1', // ..|._
+      "1,0,0,1,0" -> '2', // .\.._
+      "1,0,0,0,1" -> '3', // _..._
+      "0,1,1,0,0" -> '4', // ..|/.
+      "0,1,0,1,0" -> '5', // .\./.
+      "0,1,0,0,1" -> '6', // _../.
+      "0,0,1,1,0" -> '7', // .\|..
+      "0,0,1,0,1" -> '8', // _.|..
+      "0,0,0,1,1" -> '9', // _.|..
+      "0,0,0,0,0" -> '-') // _\...
+
+    Array("2x2", "2x4", "4x2").foreach { dim =>
+      println((for (m <- Graphs.matrixMap(s"interleaved-$dim")) yield
+        (for (tuple <- m.flatten) yield tupleMap.
+          getOrElse(tuple.replaceAll("-1", "0").substring(0, 9), '?')).mkString
+        ).mkString("\""+dim+"\" -> Array[String](\"", "\",\"", "\"),"))
+    }
   }
 }
