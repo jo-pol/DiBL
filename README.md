@@ -1,6 +1,8 @@
 # DiBL
-DiBL is a patchwork of sub-projects related to Diagrams for Bobbin Lace. The patchwork consists of stand-alone applications, plug-ins, scripts and code snippets, from nice tools to proofs of concept.
+DiBL used to be a cradle for sub-projects related to Diagrams for Bobbin Lace. 
+Living projects moved to http://d-bl.github.io/
 
-[Demo's](http://jo-pol.github.io/DiBL/)
+Demos of remaining projects:
 
-Demo of [work in progess](http://jo-pol.github.io/DiBL/tensioned/)
+* http://jo-pol.github.io/DiBL/grounds/
+* http://jo-pol.github.io/DiBL/flanders/
